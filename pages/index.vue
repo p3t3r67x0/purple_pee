@@ -97,17 +97,8 @@ export default {
         this.results = res
       });
     },
-    extractIpData(data) {
-      if (data.length > 0) {
-        this.ip = data[0].ip
-        this.host = data[0].host
-
-        if ('as' in data[0]) {
-          this.asn = 'AS ' + data[0]['as'][0].asn
-          this.name = data[0]['as'][0].name
-          this.prefix = data[0]['as'][0].prefix
-        }
-      }
+    extractIpData(res) {
+      this.results = res
     }
   }
 }
