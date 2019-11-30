@@ -2,6 +2,10 @@
 
 > My bee&#39;s knees Nuxt.js project
 
+
+![First draft of Purple Pee's UI](/assets/img/purple_pee_screenshot_first_draft.png?raw=true)
+
+
 ## Build Setup
 
 ``` bash
