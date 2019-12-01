@@ -28,7 +28,7 @@ export default {
       this.q = this.q.trim()
 
       if (isValidIpv4(this.q.trim())) {
-        this.$axios.$get('http://127.0.0.1:5000/' + this.q.trim()).then(res => {
+        this.$axios.$get('http://127.0.0.1:5000/ip/' + this.q.trim()).then(res => {
           this.$emit('ip-data', res)
         });
       }
