@@ -4,7 +4,7 @@
 
   <div class="container mx-auto">
     <div v-for="result in results" class="overflow-hidden bg-white rounded w-full shadow-md leading-normal mb-6 p-3">
-      <div v-if="result.domain" class="text-3xl font-medium text-purple-700">
+      <div v-if="result.domain" class="mb-4 text-3xl font-medium text-purple-700">
         {{ result.domain }}
       </div>
       <div v-if="result.a_record" class="mb-4">
@@ -23,8 +23,13 @@
           </li>
         </ul>
       </div>
-      <div v-if="result.cname">
-        {{ result.cname }}
+      <div v-if="result.cname_record" class="mb-4">
+        <strong>CNAME redords</strong>
+        <ul class="text-xl text-gray-700 font-light">
+          <li v-for="cname_record in result.cname_record" >
+            {{ cname_record.target }}
+          </li>
+        </ul>
       </div>
       <div v-if="result.mx_record">
         <strong>MX redords</strong>
