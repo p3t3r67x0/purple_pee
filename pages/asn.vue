@@ -4,7 +4,7 @@
 
   <div class="container mx-auto">
     <div v-for="result in results" class="overflow-hidden bg-white rounded w-full shadow-md leading-normal mb-6 p-3">
-      <div v-if="result.as[0].name" class="text-3xl font-medium text-purple-700">
+      <div v-if="result.as[0].name" class="mb-4 text-3xl font-medium text-purple-700">
         {{ result.as[0].name }}
       </div>
       <div v-if="result.as[0].asn" class="mb-4">
