@@ -23,14 +23,25 @@ export default {
       q: null,
     }
   },
+  created() {
+    this.q = this.ip
+  },
+  computed: {
+    ip() {
+      return this.$store.state.results[0].ip
+    }
+  },
   methods: {
     autoComplete() {
       this.q = this.q.trim()
 
-      if (isValidIpv4(this.q.trim())) {
-        this.$axios.$get('http://127.0.0.1:5000/ip/' + this.q.trim()).then(res => {
-          this.$emit('ip-data', res)
-        });
+      if (isValidIpv4(this.q)) {
+        this.$axios.$get('http://127.0.0.1:5000/ip/' + this.q).then(res => {
+          this.$store.commit('update', res)
+          this.$router.push({
+            name: 'index'
+          })
+        })
       }
     }
   }
