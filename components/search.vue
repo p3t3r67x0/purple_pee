@@ -20,15 +20,7 @@ function isValidIpv4(ip) {
 export default {
   data() {
     return {
-      q: null,
-    }
-  },
-  created() {
-    this.q = this.ip
-  },
-  computed: {
-    ip() {
-      return this.$store.state.results[0].ip
+      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip : null]
     }
   },
   methods: {
