@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.8.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "2.10.1",
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
