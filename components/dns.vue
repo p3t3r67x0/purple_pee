@@ -5,7 +5,7 @@
       {{ result.domain }}
     </div>
     <div v-if="result.a_record" class="mt-4">
-      <strong>A redords</strong>
+      <strong>A records</strong>
       <ul class="text-xl text-gray-700 font-light">
         <li v-for="a_record in result.a_record">
           {{ a_record }}
@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div v-if="result.aaaa_record" class="mt-4">
-      <strong>AAAA redords</strong>
+      <strong>AAAA records</strong>
       <ul class="text-xl text-gray-700 font-light">
         <li v-for="aaaa_record in result.aaaa_record">
           {{ aaaa_record }}
@@ -21,7 +21,7 @@
       </ul>
     </div>
     <div v-if="result.cname_record" class="mt-4">
-      <strong>CNAME redords</strong>
+      <strong>CNAME records</strong>
       <ul class="text-xl text-gray-700 font-light">
         <li v-for="cname_record in result.cname_record">
           {{ cname_record.target }}
@@ -29,7 +29,7 @@
       </ul>
     </div>
     <div v-if="result.mx_record" class="mt-4">
-      <strong>MX redords</strong>
+      <strong>MX records</strong>
       <ul class="text-xl text-gray-700 font-light">
         <li v-for="mx_record in result.mx_record">
           {{ mx_record.exchange }}, {{ mx_record.preference }}
