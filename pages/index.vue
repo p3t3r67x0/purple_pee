@@ -1,6 +1,7 @@
 <template>
 <div>
   <navigation></navigation>
+  <dns v-if="results.length > 0 && results[0].domain != null" v-bind:results="results"></dns>
 
   <div class="container mx-auto">
     <div v-for="result in results" class="overflow-hidden bg-white rounded w-full shadow-md leading-normal mb-6 p-3">
@@ -44,10 +45,12 @@
 </template>
 
 <script>
+import Dns from '@/components/dns.vue'
 import Navigation from '@/components/navigation.vue'
 
 export default {
   components: {
+    dns: Dns,
     navigation: Navigation
   },
   computed: {
