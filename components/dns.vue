@@ -37,6 +37,13 @@
       </ul>
     </div>
 
+    <div v-if="result.banner">
+      <strong>SSH banner</strong>
+      <ul class="text-xl text-gray-700 font-light">
+        {{ result.banner }}
+      </ul>
+    </div>
+
     <div v-if="result.header">
       <strong>HTTP header</strong>
       <code>
