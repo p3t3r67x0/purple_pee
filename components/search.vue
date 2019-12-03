@@ -17,6 +17,18 @@ function isValidIpv4(ip) {
   return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
 }
 
+function isValidPrefix(prefix) {
+  if (typeof(prefix) !== 'string') {
+    return false
+  }
+
+  if (!prefix.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}/)) {
+    return false
+  }
+
+  return true
+}
+
 function isValidDomain(domain) {
   if (typeof(domain) !== 'string') {
     return false
@@ -32,7 +44,7 @@ function isValidDomain(domain) {
 export default {
   data() {
     return {
-      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip || this.$store.state.results[0].domain : null]
+      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip || this.$store.state.results[0].as.prefix || this.$store.state.results[0].domain : null]
     }
   },
   methods: {
@@ -57,6 +69,15 @@ export default {
 
       if (isValidIpv4(query)) {
         this.$axios.$get('http://127.0.0.1:5000/ip/' + query).then(res => {
+          this.$store.commit('update', res)
+          this.$router.push({
+            name: 'index'
+          })
+        })
+      }
+
+      if (isValidPrefix(query)) {
+        this.$axios.$get('http://127.0.0.1:5000/subnet/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
