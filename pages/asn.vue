@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     fetchLatest() {
-      this.$axios.$get('http://127.0.0.1:5000/ip').then(res => {
+      this.$axios.$get('http://127.0.0.1:5000/asn').then(res => {
         this.results = res
       });
     },
