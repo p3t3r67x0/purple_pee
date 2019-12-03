@@ -1,6 +1,13 @@
 <template>
 <div>
   <navigation></navigation>
+
+  <div class="container mx-auto">
+    <div class="text-center text-gray-900 leading-normal mb-12">
+      <h1 class="font-sans font-thin text-5xl"><strong class="font-black">purplepee.co</strong> - Open source ASN loopup</h1>
+    </div>
+  </div>
+
   <dns v-if="results.length > 0 && results[0].domain != null" v-bind:results="results"></dns>
 
   <div class="container mx-auto">
