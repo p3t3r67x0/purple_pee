@@ -17,18 +17,46 @@ function isValidIpv4(ip) {
   return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
 }
 
+function isValidDomain(domain) {
+  if (typeof(domain) !== 'string') {
+    return false
+  }
+
+  if (!domain.match(/([a-z0-9-]{1,63}\.?[a-z0-9\-.]{1,63}\.[a-z\.]{2,})/)) {
+    return false
+  }
+
+  return true
+}
+
 export default {
   data() {
     return {
-      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip : null]
+      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip || this.$store.state.results[0].domain : null]
     }
   },
   methods: {
-    autoComplete() {
-      this.q = this.q.trim()
+    trimWhitespaces(q) {
+      if (Array.isArray(q)) {
+        q = q[0]
+      }
 
-      if (isValidIpv4(this.q)) {
-        this.$axios.$get('http://127.0.0.1:5000/ip/' + this.q).then(res => {
+      return q.trim()
+    },
+    autoComplete() {
+      const query = this.trimWhitespaces(this.q)
+
+      if (isValidDomain(query)) {
+        this.$axios.$get('http://127.0.0.1:5000/dns/' + query).then(res => {
+          this.$store.commit('update', res)
+          this.$router.push({
+            name: 'index'
+          })
+        })
+      }
+
+      if (isValidIpv4(query)) {
+        this.$axios.$get('http://127.0.0.1:5000/ip/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
