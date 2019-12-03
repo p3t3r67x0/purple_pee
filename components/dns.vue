@@ -28,7 +28,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="result.mx_record">
+    <div v-if="result.mx_record" class="mb-4">
       <strong>MX redords</strong>
       <ul class="text-xl text-gray-700 font-light">
         <li v-for="mx_record in result.mx_record">
@@ -36,14 +36,12 @@
         </li>
       </ul>
     </div>
-
-    <div v-if="result.banner">
+    <div v-if="result.banner" class="mb-4">
       <strong>SSH banner</strong>
       <ul class="text-xl text-gray-700 font-light">
         {{ result.banner }}
       </ul>
     </div>
-
     <div v-if="result.header">
       <strong>HTTP header</strong>
       <code>
