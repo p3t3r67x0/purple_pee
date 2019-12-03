@@ -41,10 +41,22 @@ function isValidDomain(domain) {
   return true
 }
 
+function isValidAsn(asn) {
+  if (typeof(asn) !== 'string') {
+    return false
+  }
+
+  if (!asn.match(/(([AS]{2})?[0-9]{3,9})/i)) {
+    return false
+  }
+
+  return true
+}
+
 export default {
   data() {
     return {
-      q: [this.$store.state.results.length > 0 ? this.$store.state.results[0].ip || this.$store.state.results[0].as.prefix || this.$store.state.results[0].domain : null]
+      q: [this.$store.state.results.length > 0 ? '' : null]
     }
   },
   methods: {
@@ -57,6 +69,15 @@ export default {
     },
     autoComplete() {
       const query = this.trimWhitespaces(this.q)
+
+      if (isValidAsn(query)) {
+        this.$axios.$get('http://127.0.0.1:5000/asn/' + query).then(res => {
+          this.$store.commit('update', res)
+          this.$router.push({
+            name: 'index'
+          })
+        })
+      }
 
       if (isValidDomain(query)) {
         this.$axios.$get('http://127.0.0.1:5000/dns/' + query).then(res => {
