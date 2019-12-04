@@ -1,14 +1,11 @@
 # purple_pee
 
-> My bee&#39;s knees Nuxt.js project
-
-
 ![First draft of Purple Pee's UI](/assets/img/purple_pee_screenshot_first_draft.png?raw=true)
 
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm run install
 
@@ -23,4 +20,20 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Systemd Setup
+
+```bash
+[Unit]
+Description=Nuxtjs instance to serve purplepee
+After=network.target
+
+[Service]
+User=<user>
+WorkingDirectory=/home/<user>/git/purple_pee
+ExecStart=/usr/bin/node /home/<user>/git/purple_pee/node_modules/.bin/nuxt start --port 3000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
