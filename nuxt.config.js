@@ -4,7 +4,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'purplepee.co - Open Source Intelligence for Networks',
     meta: [{
         charset: 'utf-8'
       },
@@ -58,7 +58,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
   ],
-  
+
   /*
    ** Build configuration
    */
