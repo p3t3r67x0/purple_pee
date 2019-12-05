@@ -1,6 +1,6 @@
 <template>
 <div>
-  <input class="px-2 py-1 rounded bg-gray-800 text-sm text-white w-full" type="text" v-on:keyup="autoComplete" v-model="q" placeholder="Search Purple Pee">
+  <input class="px-2 py-1 rounded bg-gray-800 text-sm text-white w-full" type="text" v-on:keyup="autoComplete" v-model="q" placeholder="Enter a Domain, IP, ASN or Hostname">
 </div>
 </template>
 
