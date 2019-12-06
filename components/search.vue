@@ -46,7 +46,7 @@ function isValidAsn(asn) {
     return false
   }
 
-  if (!asn.match(/(([AS]{2})?[0-9]{3,9})/i)) {
+  if (!asn.match(/((AS)+[0-9]{3,9})/i)) {
     return false
   }
 
