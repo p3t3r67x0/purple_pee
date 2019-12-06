@@ -34,7 +34,7 @@ function isValidDomain(domain) {
     return false
   }
 
-  if (!domain.match(/([a-z0-9-]{1,63}\.?[a-z0-9\-.]{1,63}\.[a-z\.]{2,})/)) {
+  if (!domain.match(/([\w\d-]{1,63}\.?[\w\d\-.]{1,63}\.[a-z\.]{2,})|([\d\w]*[^\x00-\x7F\w-]{1,63}\.?[\d\w]*[^\x00-\x7F\-.]{1,63}\.[\d\w]*[^\x00-\x7F\.]{2,})/)) {
     return false
   }
 
