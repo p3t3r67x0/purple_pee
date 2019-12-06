@@ -80,7 +80,11 @@ export default {
       }
 
       if (isValidDomain(query)) {
-        this.$axios.$get('http://127.0.0.1:5000/dns/' + query).then(res => {
+        const q = query.split(/[\.-_#+*!"§&/()=?"]/).sort(function(a, b){
+          return b.length - a.length;
+        })[0]
+
+        this.$axios.$get('http://127.0.0.1:5000/dns/' + q).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
