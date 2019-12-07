@@ -42,6 +42,14 @@
         {{ result.banner }}
       </ul>
     </div>
+    <div v-if="result.ports" class="mt-4">
+      <strong>Ports</strong>
+      <ul class="font-mono text-md font-light">
+        <li v-for="port in result.ports" class="mt-1">
+          <strong class="font-bold">{{ port.port }}/{{ port.proto }}</strong>: <span>{{ port.status }}</span>
+        </li>
+      </ul>
+    </div>
     <div v-if="result.ssl_cert" class="mt-4">
       <strong>SSL cert</strong>
       <ul v-for="ssl_cert in result.ssl_cert" class="font-mono overflow-scroll text-md font-light">
