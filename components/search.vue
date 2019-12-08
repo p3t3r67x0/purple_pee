@@ -34,7 +34,7 @@ function isValidDomain(domain) {
     return false
   }
 
-  if (!domain.match(/((^(?!(port:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i)) {
+  if (!domain.match(/((^(?!(port:|status:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i)) {
     return false
   }
 
@@ -58,7 +58,7 @@ function isValidMatch(match) {
     return false
   }
 
-  if (!match.match(/(^port:)\d{2,}|(^country:)\w{2,}|(^org:)\w{2,}|(^registry:\w{2,})\w{2,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|(^server:)\w{2,}|((site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))))/i)) {
+  if (!match.match(/(^port:)\d{2,}|(^status:)\d{2,}|(^country:)\w{2,}|(^org:)\w{2,}|(^registry:\w{2,})\w{2,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|(^server:)\w{2,}|((site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))))/i)) {
     return false
   }
 
@@ -82,7 +82,6 @@ export default {
     autoComplete() {
       const query = this.trimWhitespaces(this.q.toLowerCase())
 
-      console.log(isValidMatch(query))
       if (isValidMatch(query)) {
         this.$axios.$get('http://127.0.0.1:5000/match/' + query).then(res => {
           this.$store.commit('update', res)
