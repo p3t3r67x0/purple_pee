@@ -1,8 +1,12 @@
 <template>
 <div class="container mx-auto">
   <div v-for="result in results" class="overflow-hidden bg-white rounded w-full shadow-md leading-normal mb-6 p-3">
-    <div v-if="result.domain" class="text-3xl font-medium text-purple-700">
+    <div v-if="result.domain" class="flex text-3xl font-medium text-purple-700">
       {{ result.domain }}
+      <a v-bind:href="generateUrl(result.domain)" target="_blank" class="ml-1 mt-3 text-gray-600">
+        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M19 6.41L8.7 16.71a1 1 0 1 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41zM17 14a1 1 0 0 1 2 0v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h5a1 1 0 0 1 0 2H5v12h12v-5z" /></svg>
+      </a>
     </div>
     <div v-if="result.a_record" class="mt-4">
       <strong>A records</strong>
@@ -98,6 +102,11 @@
 export default {
   props: {
     results: Array
+  },
+  methods: {
+    generateUrl(domain) {
+      return 'http://' + domain
+    }
   }
 }
 </script>
