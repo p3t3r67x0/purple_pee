@@ -46,6 +46,14 @@
         {{ result.banner }}
       </ul>
     </div>
+    <div v-if="result.whois" class="mt-4">
+      <strong>ASN whois</strong>
+      <ul class="font-mono text-md font-light">
+        <li v-for="v, k in result.whois" class="mt-1">
+          <strong class="font-bold">{{ k }}</strong>:  <span class="text-gray-700 font-thin">{{ v }}</span>
+        </li>
+      </ul>
+    </div>
     <div v-if="result.ports" class="mt-4">
       <strong>Ports</strong>
       <ul class="font-mono text-md font-light">
