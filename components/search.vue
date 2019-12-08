@@ -22,7 +22,7 @@ function isValidPrefix(prefix) {
     return false
   }
 
-  if (!prefix.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}/)) {
+  if (!prefix.match(/(^(?!(port:|status:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
     return false
   }
 
@@ -68,19 +68,29 @@ function isValidMatch(match) {
 export default {
   data() {
     return {
-      q: [this.$store.state.results.length > 0 ? '' : null]
+      q: null
     }
   },
   methods: {
     trimWhitespaces(q) {
+      let r = q
+
       if (Array.isArray(q)) {
-        q = q[0]
+        r = q[0]
       }
 
-      return q.trim()
+      if (r !== null) {
+        return r.trim()
+      } else {
+        return r
+      }
     },
     autoComplete() {
-      const query = this.trimWhitespaces(this.q.toLowerCase())
+      let query = this.q
+
+      if (query !== null && query.length > 0) {
+        query = this.trimWhitespaces(query.toLowerCase())
+      }
 
       if (isValidMatch(query)) {
         this.$axios.$get('http://127.0.0.1:5000/match/' + query).then(res => {
