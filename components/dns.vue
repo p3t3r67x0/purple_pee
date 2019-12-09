@@ -83,9 +83,7 @@
           </div>
           <div v-if="key == 'ciphers'">
             <div v-for="v, k in val" class="mt-2">
-              <span class="font-bold">tls_version</span>: {{ v['tls_version'] }}</span>
-              <span>name</span>: {{ v['name'] }}</span>
-              <span>bits</span>: {{ v['bits'] }}</span>
+              <span class="font-bold">tls_version</span>: <span class="text-gray-700 font-thin">{{ v['tls_version'] }}</span>, <span class="text-gray-700 font-thin">{{ ['name'] }}</span>, <span>{{ v['bits'] }}</span>
             </div>
           </div>
           <div v-if="key == 'subject_alt_names'" class="mt-2">
