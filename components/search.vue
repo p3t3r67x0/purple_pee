@@ -34,7 +34,7 @@ function isValidDomain(domain) {
     return false
   }
 
-  if (!domain.match(/((^(?!(port:|status:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i)) {
+  if (!domain.match(/((^(?!(port:|status:|status:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|/i)) {
     return false
   }
 
