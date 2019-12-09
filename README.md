@@ -1,5 +1,7 @@
 # purplepee.co - Open source ASN lookup
 
+> Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet. This tool allows you in detail to view general information about a websites HTTP header, a servers DNS records or there IP addresses, a list of open ports and ASN whois information.
+
 
 ## Search with conditional Queries
 
@@ -39,7 +41,7 @@ Using the above example, if you wanted to find devices located in Singapore then
 
 ### Search for a specific subnet
 
-`cidr:8.8.8.0/24` OR `cidr:213.133.0.0/19` OR `cidr:64.239.160.0/20`
+`cidr:8.8.8.0/24` OR `cidr:213.133.0.0/19` OR `cidr:64.239.160.0/2
 
 
 ### Search for a specific server
