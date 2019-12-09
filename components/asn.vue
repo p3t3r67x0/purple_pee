@@ -1,8 +1,8 @@
 <template>
 <div class="container mx-auto">
   <div v-for="result in results" class="overflow-hidden bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 p-3">
-    <div v-if="result.name" class="text-2xl md:text-3xl font-medium text-purple-700">
-      <p class="break-all">{{ result.name }}</p>
+    <div v-if="result.ip" class="text-2xl md:text-3xl font-medium text-purple-700">
+      <p class="break-all">{{ result.ip }}</p>
     </div>
     <div v-if="result.asn" class="mt-3 md:mt-4">
       <strong class="text-lg">AS number</strong>
@@ -10,10 +10,10 @@
         {{ result.asn }}
       </p>
     </div>
-    <div v-if="result.ip" class="mt-3 md:mt-4">
-      <strong class="text-lg">IP address</strong>
+    <div v-if="result.name" class="mt-3 md:mt-4">
+      <strong class="text-lg">AS name</strong>
       <p class="text-lg md:text-xl text-gray-700 font-light">
-        {{ result.ip }}
+        {{ result.name }}
       </p>
     </div>
     <div v-if="result.host" class="mt-3 md:mt-4">
