@@ -9,7 +9,7 @@
       </a>
     </div>
     <div v-if="result.a_record" class="mt-3 md:mt-4">
-      <strong>A records</strong>
+      <strong class="text-lg">A records</strong>
       <ul class="md:text-xl text-gray-700 font-light">
         <li v-for="a_record in result.a_record">
           {{ a_record }}
@@ -17,7 +17,7 @@
       </ul>
     </div>
     <div v-if="result.aaaa_record" class="mt-3 md:mt-4">
-      <strong>AAAA records</strong>
+      <strong class="text-lg">AAAA records</strong>
       <ul class="md:text-xl text-gray-700 font-light">
         <li v-for="aaaa_record in result.aaaa_record">
           {{ aaaa_record }}
@@ -25,7 +25,7 @@
       </ul>
     </div>
     <div v-if="result.cname_record" class="mt-3 md:mt-4">
-      <strong>CNAME records</strong>
+      <strong class="text-lg">CNAME records</strong>
       <ul class="md:text-xl text-gray-700 font-light">
         <li v-for="cname_record in result.cname_record">
           {{ cname_record.target }}
@@ -33,7 +33,7 @@
       </ul>
     </div>
     <div v-if="result.mx_record" class="mt-3 md:mt-4">
-      <strong>MX records</strong>
+      <strong class="text-lg">MX records</strong>
       <ul class="md:text-xl text-gray-700 font-light">
         <li v-for="mx_record in result.mx_record">
           {{ mx_record.exchange }}, {{ mx_record.preference }}
@@ -41,13 +41,13 @@
       </ul>
     </div>
     <div v-if="result.banner" class="mt-3 md:mt-4">
-      <strong>SSH banner</strong>
+      <strong class="text-lg">SSH banner</strong>
       <ul class="md:text-xl text-gray-700 font-light">
         {{ result.banner }}
       </ul>
     </div>
     <div v-if="result.whois" class="mt-3 md:mt-4">
-      <strong>ASN whois</strong>
+      <strong class="text-lg">ASN whois</strong>
       <ul class="font-mono text-md font-light">
         <li v-for="v, k in result.whois" class="mt-1">
           <strong class="font-bold">{{ k }}</strong>:  <span class="text-gray-700 font-thin">{{ v }}</span>
@@ -55,7 +55,7 @@
       </ul>
     </div>
     <div v-if="result.ports" class="mt-3 md:mt-4">
-      <strong>Ports</strong>
+      <strong class="text-lg">Ports</strong>
       <ul class="font-mono text-md font-light">
         <li v-for="port in result.ports" class="mt-1">
           <strong class="font-bold">{{ port.port }}/{{ port.proto }}</strong>: <span>{{ port.status }}</span>
@@ -63,37 +63,42 @@
       </ul>
     </div>
     <div v-if="result.ssl_cert" class="mt-3 md:mt-4">
-      <strong>SSL cert</strong>
-      <ul v-for="ssl_cert in result.ssl_cert" class="font-mono overflow-scroll text-md font-light">
-        <li v-for="val, key in ssl_cert" class="mb-1">
+      <strong class="text-lg">SSL cert</strong>
+      <ul v-for="ssl_cert in result.ssl_cert" class="font-mono text-md font-light">
+        <li v-for="val, key in ssl_cert">
           <div v-if="key == 'subject'">
-            <div v-for="v, k in val">
-              <span class="font-bold">Subject {{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
+            <div v-for="v, k in val" class="mt-2">
+              <span class="font-bold">{{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
             </div>
           </div>
           <div v-if="key == 'issuer'">
-            <div v-for="v, k in val">
-              <span class="font-bold">Issuer {{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
+            <div v-for="v, k in val" class="mt-2">
+              <span class="font-bold">{{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
             </div>
           </div>
           <div v-if="key == 'hash'">
-            <div v-for="v, k in val">
+            <div v-for="v, k in val" class="mt-2">
               <span class="font-bold">{{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
             </div>
           </div>
-          <div v-if="key == 'extensions'">
-            <div v-for="v, k in val">
-              <span class="font-bold">{{ k }}</span>: <span class="text-gray-700 font-thin">{{ v }}</span>
+          <div v-if="key == 'ciphers'">
+            <div v-for="v, k in val" class="mt-2">
+              <span class="font-bold">tls_version</span>: {{ v['tls_version'] }}</span>
+              <span>name</span>: {{ v['name'] }}</span>
+              <span>bits</span>: {{ v['bits'] }}</span>
             </div>
           </div>
-          <div v-if="key != 'cert' && key != 'extensions' && key != 'hash' && key != 'issuer' && key != 'subject'">
+          <div v-if="key == 'subject_alt_names'" class="mt-2">
+              <span class="font-bold">subject_alt_names</span>: <span class="text-gray-700 font-thin">{{ val.join(', ') }}</span>
+          </div>
+          <div v-if="key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'" class="mt-2">
             <span class="font-bold">{{ key }}</span>: <span class="text-gray-700 font-thin">{{ val }}</span>
           </div>
         </li>
       </ul>
     </div>
     <div v-if="result.header" class="mt-3 md:mt-4">
-      <strong>HTTP header</strong>
+      <strong class="text-lg">HTTP header</strong>
       <code>
         <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
           <li v-for="val, key in result.header">
