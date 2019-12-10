@@ -37,6 +37,7 @@
       <ul class="font-mono text-md font-light">
         <li v-for="v, k in result.whois" class="mt-1">
           <strong class="font-bold">{{ k }}</strong>: <span class="text-gray-700 font-thin">{{ v }}</span>
+          <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
         </li>
       </ul>
     </div>
@@ -58,6 +59,9 @@ export default {
     results: Array
   },
   methods: {
+    generatePath(image) {
+      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
+    },
     generateUrl(domain) {
       return 'http://' + domain
     }
