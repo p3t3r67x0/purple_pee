@@ -22,7 +22,7 @@ function isValidPrefix(prefix) {
     return false
   }
 
-  if (!prefix.match(/(^(?!(port:|status:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
+  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
     return false
   }
 
@@ -34,7 +34,7 @@ function isValidDomain(domain) {
     return false
   }
 
-  if (!domain.match(/((^(?!(port:|status:|ssl:|app:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i)) {
+  if (!domain.match(/((^(?!(port:|status:|banner:|asn:|ssl:|app:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i)) {
     return false
   }
 
@@ -58,7 +58,7 @@ function isValidMatch(match) {
     return false
   }
 
-  if (!match.match(/(^port:)\d{2,}|(^status:)\d{3}|(^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i)) {
+  if (!match.match(/(^port:)\d{2,}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i)) {
     return false
   }
 
