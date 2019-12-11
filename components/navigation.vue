@@ -1,6 +1,6 @@
 <template>
-<div class="bg-purple-700 mb-6">
-  <div class="container mx-auto ">
+<div class="sticky top-0 left-0 w-full bg-purple-700 mb-6">
+  <div class="container mx-auto">
     <div class="flex items-center py-2">
       <div class="w-11/12 flex items-center">
         <nuxt-link to="/">
