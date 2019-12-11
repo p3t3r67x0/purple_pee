@@ -48,7 +48,7 @@
           </div>
           <p class="md:w-9/12 text-md sm:text-lg md:text-xl text-gray-800">
             With this query you can search for a specific HTTP response status codes. See <a href="https://developer.mozilla.org/de/docs/Web/HTTP/Status" target="_blank"
-              class="text-blue-400 hover:text-blue-600">https://developer.mozilla.org/de/docs/Web/HTTP/Status</a> for further information.
+              class="break-all text-blue-400 hover:text-blue-600">https://developer.mozilla.org/de/docs/Web/HTTP/Status</a> for further information.
           </p>
         </li>
         <li class="mt-3 md:mt-6">
