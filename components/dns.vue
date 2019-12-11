@@ -40,6 +40,30 @@
         </li>
       </ul>
     </div>
+    <div v-if="result.ns_record" class="mt-3 md:mt-4">
+      <strong class="text-lg">NS records</strong>
+      <ul class="md:text-xl text-gray-700 font-light">
+        <li v-for="ns_record in result.ns_record">
+          {{ ns_record }}
+        </li>
+      </ul>
+    </div>
+    <div v-if="result.soa_record" class="mt-3 md:mt-4">
+      <strong class="text-lg">SOA records</strong>
+      <ul class="md:text-xl text-gray-700 font-light">
+        <li v-for="soa_record in result.soa_record">
+          {{ soa_record }}
+        </li>
+      </ul>
+    </div>
+    <div v-if="result.txt_record" class="mt-3 md:mt-4">
+      <strong class="text-lg">TXT records</strong>
+      <ul class="md:text-xl text-gray-700 font-light">
+        <li v-for="txt_record in result.txt_record">
+          {{ txt_record }}
+        </li>
+      </ul>
+    </div>
     <div v-if="result.banner" class="mt-3 md:mt-4">
       <strong class="text-lg">SSH banner</strong>
       <ul class="md:text-xl text-gray-700 font-light">
