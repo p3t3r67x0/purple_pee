@@ -160,6 +160,15 @@ export default {
     asn: Asn,
     navigation: Navigation
   },
+  head: {
+    title: 'Open source ASN lookup',
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+    }]
+  },
   computed: {
     results() {
       return this.$store.state.results
