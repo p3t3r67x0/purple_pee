@@ -107,6 +107,18 @@ export default {
       {
         rel: 'icon',
         type: 'image/png',
+        sizes: '256x256',
+        href: '/android-icon-256x256.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        href: '/android-icon-512x512.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
         sizes: '32x32',
         href: '/favicon-32x32.png'
       },
