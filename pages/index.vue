@@ -146,6 +146,8 @@
       </ul>
     </div>
   </div>
+
+  <navfooter></navfooter>
 </div>
 </template>
 
