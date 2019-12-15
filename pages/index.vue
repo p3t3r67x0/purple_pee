@@ -1,6 +1,6 @@
 <template>
 <div>
-  <navigation></navigation>
+  <navheader></navheader>
 
   <div class="container mx-auto">
     <div class="text-center text-gray-900 leading-normal my-6 md:my-12">
@@ -152,13 +152,15 @@
 <script>
 import Asn from '@/components/asn.vue'
 import Dns from '@/components/dns.vue'
-import Navigation from '@/components/navigation.vue'
+import Footer from '@/components/navfooter.vue'
+import Navbar from '@/components/navheader.vue'
 
 export default {
   components: {
-    dns: Dns,
     asn: Asn,
-    navigation: Navigation
+    dns: Dns,
+    navfooter: Footer,
+    navheader: Navbar
   },
   head: {
     title: 'Open source ASN lookup',

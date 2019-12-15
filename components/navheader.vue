@@ -15,11 +15,6 @@
         <div class="ml-4 w-1/2">
           <ul class="text-sm flex items-center">
             <li class="mr-3">
-              <a href="#" class="no-underline text-gray-200">
-                BGP
-              </a>
-            </li>
-            <li class="mr-3">
               <nuxt-link to="/dns" class="no-underline text-gray-200">
                 DNS
               </nuxt-link>
@@ -33,7 +28,7 @@
         </div>
       </div>
       <div class="w-1/12 text-right flex items-center justify-end">
-        <a href="" class="">
+        <a href="#" class="block mr-3 md:mr-0">
           <svg class="fill-current text-gray-200 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" /></svg>
         </a>

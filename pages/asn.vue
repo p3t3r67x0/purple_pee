@@ -1,18 +1,21 @@
 <template>
 <div>
-  <navigation></navigation>
+  <navheader></navheader>
   <asn v-bind:results="results"></asn>
+  <navfooter></navfooter>
 </div>
 </template>
 
 <script>
 import Asn from '@/components/asn.vue'
-import Navigation from '@/components/navigation.vue'
+import Footer from '@/components/navfooter.vue'
+import Navbar from '@/components/navheader.vue'
 
 export default {
   components: {
     asn: Asn,
-    navigation: Navigation
+    navfooter: Footer,
+    navheader: Navbar
   },
   data() {
     return {
