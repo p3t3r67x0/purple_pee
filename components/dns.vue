@@ -122,21 +122,21 @@
             </li>
           </ul>
         </div>
-        <div v-if="result.header" class="mt-3 md:mt-4">
-          <strong class="text-lg">HTTP header</strong>
-          <code>
-            <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
-              <li v-for="val, key in result.header">
-                <span class="font-bold">{{ key }}</span>: <span class="font-thin">{{ val }}</span>
-              </li>
-            </ul>
-          </code>
-        </div>
       </div>
       <div v-if="result.qrcode" class="w-full sm:w-3/12 sm:text-right mt-1 mr-1">
         <strong class="block text-lg mb-2">QR code</strong>
         <img class="w-1/2 sm:w-2/3 lg:w-1/2 sm:float-right" v-bind:src="generateCode(result.qrcode)">
       </div>
+    </div>
+    <div v-if="result.header" class="mt-3 md:mt-4">
+      <strong class="text-lg">HTTP header</strong>
+      <code>
+        <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
+          <li v-for="val, key in result.header">
+            <span class="font-bold">{{ key }}</span>: <span class="font-thin">{{ val }}</span>
+          </li>
+        </ul>
+      </code>
     </div>
   </div>
 </div>
