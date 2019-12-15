@@ -78,12 +78,27 @@ $ npm run install
 # serve with hot reload at localhost:3000
 $ npm run dev
 
+# setup your .env file in the root folder
+BASE_URL=
+FAQ_URL=
+HELP_URL=
+SUPPORT_URL=
+API_URL=
+DOCS_URL=
+ISSUES_URL=
+TWITTER_URL=
+FACEBOOK_URL=
+LINKEDIN_URL=
+ABOUT_URL=
+CONTACT_URL=
+BLOG_URL=
+TERMS_URL=
+PRIVACY_URL=
+IMPRINT_URL=
+
 # build for production and launch server
 $ npm run build
 $ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
 
