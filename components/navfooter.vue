@@ -113,7 +113,7 @@ export default {
     this.blogUrl = process.env.BLOG_URL || '#'
     this.termsUrl = process.env.TERMS_URL || '#'
     this.privacyUrl = process.env.PRIVACY_URL || '#'
-    this.imprintUr = process.env.IMPRINT_URL || '#'
+    this.imprintUrl = process.env.IMPRINT_URL || '#'
   }
 }
 </script>
