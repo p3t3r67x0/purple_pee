@@ -1,7 +1,9 @@
 <template>
-<div>
-  <navheader></navheader>
-  <asn v-bind:results="results"></asn>
+<div class="min-h-screen flex flex-col">
+  <div class="flex-grow">
+    <navheader></navheader>
+    <asn v-bind:results="results"></asn>
+  </div>
   <navfooter></navfooter>
 </div>
 </template>

@@ -1,7 +1,9 @@
 <template>
-<div>
-  <navheader></navheader>
-  <dns v-bind:results="results"></dns>
+<div class="min-h-screen flex flex-col">
+  <div class="flex-grow">
+    <navheader></navheader>
+    <dns v-bind:results="results"></dns>
+  </div>
   <navfooter></navfooter>
 </div>
 </template>
