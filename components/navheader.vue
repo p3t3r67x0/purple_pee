@@ -35,10 +35,23 @@
           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
           <img alt="" border="0" src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1">
         </form>
-        <a href="#" class="block mr-3 md:mr-0">
-          <svg class="fill-current text-gray-200 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" /></svg>
-        </a>
+        <div class="relative w-full text-left">
+          <button v-on:click="handleDropdown" class="block mr-3 md:mr-0">
+            <svg class="fill-current text-gray-200 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" /></svg>
+          </button>
+          <ul v-bind:class="{ show: isOpen, hidden: !isOpen }" class="absolute w-48 mt-2 right-0 bg-gray-900 text-white text-sm rounded">
+            <li class="border-b">
+              <nuxt-link to="/" class="block hover:bg-gray-800 p-2">API Docs</nuxt-link>
+            </li>
+            <li class="border-b">
+              <nuxt-link to="/dns" class="block hover:bg-gray-800 p-2">DNS Entries</nuxt-link>
+            </li>
+            <li class="">
+              <nuxt-link to="/asn" class="block hover:bg-gray-800 p-2">ASN Entries</nuxt-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -49,8 +62,18 @@
 import Search from '@/components/search.vue'
 
 export default {
+  data() {
+    return {
+      isOpen: false
+    }
+  },
   components: {
     search: Search
+  },
+  methods: {
+    handleDropdown() {
+      return this.isOpen = !this.isOpen
+    }
   }
 }
 </script>
