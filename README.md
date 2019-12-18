@@ -12,7 +12,7 @@ To get the most out of Purplepee it's important to understand the search query s
 
 `port:21` OR `port:22` OR `port:25` OR `port:53` OR `port:80` OR `port:111` OR `port:443`
 
-We provide you a buch of ports to search for at the moment you can search for ports you see above.
+We provide you a bunch of ports to search for. You can search for following ports 21, 22, 25, 53, 80, 111, 443, 3306, 5432, 8529, 7000, 7001, 9042, 5984, 9200, 9300, 27017, 27018, 27019, 28017, 7473, 7474, 6379, 8087, 8098, 8080, 28015, 29015, 7574, 8983 with the syntax above.
 
 
 ### Search for a specific status code
