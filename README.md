@@ -73,7 +73,7 @@ This are a view examples how you can find datasets with a specific server. You c
 
 ```bash
 # install dependencies
-$ npm run install
+$ sudo apt install npm && npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
