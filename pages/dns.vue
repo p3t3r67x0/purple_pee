@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     fetchLatest() {
-      this.$axios.$get('http://127.0.0.1:5000/dns').then(res => {
+      this.$axios.$get(process.env.API_URL + '/dns').then(res => {
         this.results = res
       });
     },

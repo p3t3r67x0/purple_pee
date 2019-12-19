@@ -93,7 +93,7 @@ export default {
       }
 
       if (isValidMatch(query)) {
-        this.$axios.$get('http://127.0.0.1:5000/match/' + query).then(res => {
+        this.$axios.$get(process.env.API_URL + '/match/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
@@ -102,7 +102,7 @@ export default {
       }
 
       if (isValidAsn(query)) {
-        this.$axios.$get('http://127.0.0.1:5000/asn/' + query).then(res => {
+        this.$axios.$get(process.env.API_URL + '/asn/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
@@ -115,7 +115,7 @@ export default {
           return b.length - a.length;
         })[0]
 
-        this.$axios.$get('http://127.0.0.1:5000/dns/' + q).then(res => {
+        this.$axios.$get(process.env.API_URL + '/dns/' + q).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
@@ -124,7 +124,7 @@ export default {
       }
 
       if (isValidIpv4(query)) {
-        this.$axios.$get('http://127.0.0.1:5000/ip/' + query).then(res => {
+        this.$axios.$get(process.env.API_URL + '/ip/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'
@@ -133,7 +133,7 @@ export default {
       }
 
       if (isValidPrefix(query)) {
-        this.$axios.$get('http://127.0.0.1:5000/subnet/' + query).then(res => {
+        this.$axios.$get(process.env.API_URL + '/subnet/' + query).then(res => {
           this.$store.commit('update', res)
           this.$router.push({
             name: 'index'

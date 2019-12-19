@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get('http://127.0.0.1:5000/cidr').then(res => {
+      this.$axios.$get(process.env.API_URL + '/cidr').then(res => {
         this.results = res
       });
     }
