@@ -5,15 +5,3 @@
 body {
   @apply bg-gray-300;
 }
-
-.mx-auto-3 {
-  @apply mx-3;
-}
-
-.mx-auto-3:first-of-type {
-  @apply ml-0;
-}
-
-.mx-auto-3:last-of-type {
-  @apply mr-0;
-}
