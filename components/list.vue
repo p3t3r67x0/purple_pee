@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     generateLink(cidr) {
-      return 'subnet/' + cidr
+      return 'cidr/' + cidr
     }
   }
 }
