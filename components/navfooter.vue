@@ -3,8 +3,8 @@
   <div class="container mx-auto">
     <div class="table w-full px-3 md:px-0 pt-6">
       <div class="block sm:w-1/6 sm:table-cell">
-        <p class="uppercase font-bold font-mono text-white text-sm sm:mb-6">Links</p>
-        <ul class="list-reset text-xs mb-6">
+        <p class="uppercase font-bold font-mono text-white text-md sm:mb-6">Links</p>
+        <ul class="list-reset text-base mb-6">
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <nuxt-link v-bind:to="faqUrl" class="text-white hover:text-gray-200">FAQ</nuxt-link>
           </li>
@@ -17,8 +17,8 @@
         </ul>
       </div>
       <div class="block sm:w-1/6 sm:table-cell">
-        <p class="uppercase font-bold font-mono text-white text-sm sm:mb-6">Service</p>
-        <ul class="list-reset text-xs mb-6">
+        <p class="uppercase font-bold font-mono text-white text-md sm:mb-6">Service</p>
+        <ul class="list-reset text-base mb-6">
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <a v-bind:href="apiUrl" target="_blank" class="text-white hover:text-gray-200">API</a>
           </li>
@@ -31,8 +31,8 @@
         </ul>
       </div>
       <div class="block sm:w-1/6 sm:table-cell">
-        <p class="uppercase font-bold font-mono text-white text-sm sm:mb-6">Social</p>
-        <ul class="list-reset text-xs mb-6">
+        <p class="uppercase font-bold font-mono text-white text-md sm:mb-6">Social</p>
+        <ul class="list-reset text-base mb-6">
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <a v-bind:href="twitterUrl" target="_blank" class="text-white hover:text-gray-200">Twitter</a>
           </li>
@@ -45,8 +45,8 @@
         </ul>
       </div>
       <div class="block sm:w-1/6 sm:table-cell">
-        <p class="uppercase font-bold font-mono text-white text-sm sm:mb-6">Project</p>
-        <ul class="list-reset text-xs mb-6">
+        <p class="uppercase font-bold font-mono text-white text-md sm:mb-6">Project</p>
+        <ul class="list-reset text-base mb-6">
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <nuxt-link v-bind:to="aboutUrl" class="text-white hover:text-gray-200">About</nuxt-link>
           </li>
@@ -59,8 +59,8 @@
         </ul>
       </div>
       <div class="block sm:w-1/6 sm:table-cell">
-        <p class="uppercase font-bold font-mono text-white text-sm sm:mb-6">Legal</p>
-        <ul class="list-reset text-xs mb-6">
+        <p class="uppercase font-bold font-mono text-white text-md sm:mb-6">Legal</p>
+        <ul class="list-reset text-base mb-6">
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <nuxt-link v-bind:to="termsUrl" class="text-white hover:text-gray-200">Terms</nuxt-link>
           </li>
