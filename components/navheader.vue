@@ -10,20 +10,19 @@
             <path d="M320 71.1c0 .5.5.7 1 .4.6-.3 1-.8 1-1.1 0-.2-.4-.4-1-.4-.5 0-1 .5-1 1.1z" />
           </svg>
         </nuxt-link>
-        <div class="ml-2 w-1/2">
+        <div class="ml-2 sm:w-1/2">
           <search></search>
         </div>
-        <div class="ml-4 w-1/2">
+        <div class="ml-4 hidden sm:block sm:w-1/2">
           <ul class="text-sm flex items-center">
             <li class="mr-3">
-              <nuxt-link to="/dns" class="no-underline text-gray-200">
-                DNS
-              </nuxt-link>
+              <nuxt-link to="/cidr" class="no-underline text-gray-200">CIDR</nuxt-link>
             </li>
+              <li class="mr-3">
+                <nuxt-link to="/dns" class="no-underline text-gray-200">DNS</nuxt-link>
+              </li>
             <li class="mr-3">
-              <nuxt-link to="/asn" class="no-underline text-gray-200">
-                ASN
-              </nuxt-link>
+              <nuxt-link to="/asn" class="no-underline text-gray-200">ASN</nuxt-link>
             </li>
           </ul>
         </div>
