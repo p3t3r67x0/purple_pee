@@ -2,39 +2,36 @@
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
     <navheader></navheader>
-    <asn v-bind:results="results"></asn>
+    <list v-bind:results="results"></list>
   </div>
   <navfooter></navfooter>
 </div>
 </template>
 
 <script>
-import Asn from '@/components/asn.vue'
+import List from '@/components/asn-list.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 
 export default {
   components: {
-    asn: Asn,
+    list: List,
     navfooter: Footer,
     navheader: Navbar
   },
   data() {
     return {
-      results: []
+      results: [],
     }
   },
   created() {
-    this.fetchLatest()
+    this.fetchLatest(this.query)
   },
   methods: {
-    fetchLatest() {
+    fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/asn').then(res => {
         this.results = res
       });
-    },
-    extractIpData(res) {
-      this.results = res
     }
   }
 }

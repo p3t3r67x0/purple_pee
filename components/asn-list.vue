@@ -1,0 +1,30 @@
+<template>
+<div class="container mx-auto">
+  <h1 class="text-xl font-thin mx-3 md:mx-0 mb-3">Latest added <strong class="font-bold">AS numbers</strong></h1>
+
+  <ul class="flex content-start flex-wrap bg-gray-200 mb-6 mx-2 md:mx-0 p-1">
+    <li v-for="result in results" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1">
+      <div class="bg-white rounded shadow-md leading-normal p-3">
+        <span><img v-if="result.whois.asn_country_code" v-bind:src="generatePath(result.whois.asn_country_code)" class="inline w-9 h-4 mr-1"></span>
+        <nuxt-link v-bind:to="generateLink(result.whois.asn)" class="font-mono font-light text-base text-blue-500 hover:text-blue-700">AS {{ result.whois.asn }}</nuxt-link>
+      </div>
+    </li>
+  </ul>
+</div>
+</template>
+
+<script>
+export default {
+  props: {
+    results: Array
+  },
+  methods: {
+    generatePath(image) {
+      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
+    },
+    generateLink(query) {
+      return '/asn/AS' + query
+    }
+  }
+}
+</script>

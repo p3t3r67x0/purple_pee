@@ -10,7 +10,6 @@
     </div>
 
     <dns v-if="results.length > 0 && results[0].domain != null" v-bind:results="results"></dns>
-    <asn v-if="results.length > 0 && results[0].ip != null" v-bind:results="results"></asn>
 
     <filter-help></filter-help>
   </div>
@@ -19,7 +18,6 @@
 </template>
 
 <script>
-import Asn from '@/components/asn.vue'
 import Dns from '@/components/dns.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
@@ -27,7 +25,6 @@ import FilterHelp from '@/components/filter.vue'
 
 export default {
   components: {
-    asn: Asn,
     dns: Dns,
     navheader: Navbar,
     navfooter: Footer,
