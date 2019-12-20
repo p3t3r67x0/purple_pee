@@ -12,15 +12,15 @@
         </div>
         <div v-if="result.a_record" class="mt-3 md:mt-4">
           <strong class="text-lg">A records</strong>
-          <ul>
+          <ul class="font-mono text-md font-light">
             <li v-for="a_record in result.a_record">
-              <nuxt-link v-bind:to="generateLink('ipv4', a_record)" class="md:text-xl font-light text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
+              <nuxt-link v-bind:to="generateLink('ipv4', a_record)" class="text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
             </li>
           </ul>
         </div>
         <div v-if="result.aaaa_record" class="mt-3 md:mt-4">
           <strong class="text-lg">AAAA records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="aaaa_record in result.aaaa_record">
               {{ aaaa_record }}
             </li>
@@ -28,7 +28,7 @@
         </div>
         <div v-if="result.cname_record" class="mt-3 md:mt-4">
           <strong class="text-lg">CNAME records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="cname_record in result.cname_record">
               {{ cname_record.target }}
             </li>
@@ -36,7 +36,7 @@
         </div>
         <div v-if="result.mx_record" class="mt-3 md:mt-4">
           <strong class="text-lg">MX records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="mx_record in result.mx_record">
               {{ mx_record.exchange }}, {{ mx_record.preference }}
             </li>
@@ -44,7 +44,7 @@
         </div>
         <div v-if="result.ns_record" class="mt-3 md:mt-4">
           <strong class="text-lg">NS records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="ns_record in result.ns_record">
               {{ ns_record }}
             </li>
@@ -52,7 +52,7 @@
         </div>
         <div v-if="result.soa_record" class="mt-3 md:mt-4">
           <strong class="text-lg">SOA records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="soa_record in result.soa_record">
               {{ soa_record }}
             </li>
@@ -60,7 +60,7 @@
         </div>
         <div v-if="result.txt_record" class="mt-3 md:mt-4">
           <strong class="text-lg">TXT records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             <li v-for="txt_record in result.txt_record">
               {{ txt_record }}
             </li>
@@ -68,7 +68,7 @@
         </div>
         <div v-if="result.banner" class="mt-3 md:mt-4">
           <strong class="text-lg">SSH banner</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul class="font-mono font-light text-md text-gray-700">
             {{ result.banner }}
           </ul>
         </div>
