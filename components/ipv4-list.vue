@@ -10,7 +10,7 @@
           <span v-else class="font-thin">Country unknown</span>
           <span><img v-if="result.country_code" v-bind:src="generatePath(result.country_code)" class="inline w-9 h-4"></span>
         </div>
-        <nuxt-link v-bind:to="generateLink(result.a_record)" class="md:text-xl font-light text-blue-500 hover:text-blue-700">{{ result.a_record }}</nuxt-link>
+        <nuxt-link v-bind:to="generateLink(result.a_record)" class="font-mono font-light text-base text-blue-500 hover:text-blue-700">{{ result.a_record }}</nuxt-link>
       </div>
     </li>
   </ul>

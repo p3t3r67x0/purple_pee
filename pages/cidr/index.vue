@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import List from '@/components/list.vue'
+import List from '@/components/cidr-list.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 
