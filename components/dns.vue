@@ -131,7 +131,7 @@
     </div>
     <div v-if="result.header" class="mt-3 md:mt-4">
       <strong class="text-base sm:text-lg">HTTP header</strong>
-      <code>
+      <code class="font-mono text-sm sm:text-base">
         <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
           <li v-for="val, key in result.header">
             <span class="font-bold">{{ key }}</span>: <span class="font-thin">{{ val }}</span>
