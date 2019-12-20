@@ -12,9 +12,9 @@
         </div>
         <div v-if="result.a_record" class="mt-3 md:mt-4">
           <strong class="text-lg">A records</strong>
-          <ul class="md:text-xl text-gray-700 font-light">
+          <ul>
             <li v-for="a_record in result.a_record">
-              {{ a_record }}
+              <nuxt-link v-bind:to="generateLink('ipv4', a_record)" class="md:text-xl font-light text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -76,8 +76,9 @@
           <strong class="text-lg">ASN whois</strong>
           <ul class="font-mono text-md font-light">
             <li v-for="v, k in result.whois" class="mt-1">
-              <strong class="font-bold">{{ k }}</strong>: <span class="text-gray-700 font-thin">{{ v }}</span>
+              <strong class="font-bold">{{ k }}</strong>: <span v-if="k != 'asn_cidr'" class="text-gray-700 font-thin">{{ v }}</span>
               <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -156,6 +157,9 @@ export default {
     },
     generateUrl(domain) {
       return 'http://' + domain
+    },
+    generateLink(prefix, query) {
+      return '/' + prefix + '/' + query
     }
   }
 }
