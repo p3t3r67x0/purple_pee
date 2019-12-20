@@ -79,7 +79,7 @@
               <strong class="font-bold">{{ k }}</strong>: <span v-if="k != 'asn' && k != 'asn_cidr'" class="text-gray-700 font-thin">{{ v }}</span>
               <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
               <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', 'AS' + v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
             </li>
           </ul>
         </div>
