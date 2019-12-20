@@ -3,7 +3,7 @@
   <div v-for="result in results" class="overflow-hidden bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 p-3">
     <div class="sm:flex">
       <div class="w-full sm:w-9/12 mb-4 sm:mb-0">
-        <div v-if="result.domain" class="flex text-2xl md:text-3xl font-medium text-purple-700">
+        <div v-if="result.domain" class="flex text-2xl md:text-3xl font-light md:font-medium text-purple-700">
           <p class="break-all">{{ result.domain }}</p>
           <a v-bind:href="generateUrl(result.domain)" target="_blank" class="ml-1 mt-2 md:mt-3 text-gray-600">
             <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
@@ -11,70 +11,70 @@
           </a>
         </div>
         <div v-if="result.a_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">A records</strong>
-          <ul class="font-mono text-md font-light">
+          <strong class="text-base sm:text-lg">A records</strong>
+          <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="a_record in result.a_record">
               <nuxt-link v-bind:to="generateLink('ipv4', a_record)" class="text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
             </li>
           </ul>
         </div>
         <div v-if="result.aaaa_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">AAAA records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
+          <strong class="text-base sm:text-lg">AAAA records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="aaaa_record in result.aaaa_record">
               {{ aaaa_record }}
             </li>
           </ul>
         </div>
         <div v-if="result.cname_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">CNAME records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
-            <li v-for="cname_record in result.cname_record">
+          <strong class="text-base sm:text-lg">CNAME records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
+            <li v-for="cname_record in result.cname_record" class="break-all">
               {{ cname_record.target }}
             </li>
           </ul>
         </div>
         <div v-if="result.mx_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">MX records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
-            <li v-for="mx_record in result.mx_record">
+          <strong class="text-base sm:text-lg">MX records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
+            <li v-for="mx_record in result.mx_record" class="break-all">
               {{ mx_record.exchange }}, {{ mx_record.preference }}
             </li>
           </ul>
         </div>
         <div v-if="result.ns_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">NS records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
-            <li v-for="ns_record in result.ns_record">
+          <strong class="text-base sm:text-lg">NS records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
+            <li v-for="ns_record in result.ns_record" class="break-all">
               {{ ns_record }}
             </li>
           </ul>
         </div>
         <div v-if="result.soa_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">SOA records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
+          <strong class="text-base sm:text-lg">SOA records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="soa_record in result.soa_record">
               {{ soa_record }}
             </li>
           </ul>
         </div>
         <div v-if="result.txt_record" class="mt-3 md:mt-4">
-          <strong class="text-lg">TXT records</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
+          <strong class="text-base sm:text-lg">TXT records</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="txt_record in result.txt_record">
               {{ txt_record }}
             </li>
           </ul>
         </div>
         <div v-if="result.banner" class="mt-3 md:mt-4">
-          <strong class="text-lg">SSH banner</strong>
-          <ul class="font-mono font-light text-md text-gray-700">
+          <strong class="text-base sm:text-lg">SSH banner</strong>
+          <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             {{ result.banner }}
           </ul>
         </div>
         <div v-if="result.whois" class="mt-3 md:mt-4">
-          <strong class="text-lg">ASN whois</strong>
-          <ul class="font-mono text-md font-light">
+          <strong class="text-base sm:text-lg">ASN whois</strong>
+          <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="v, k in result.whois" class="mt-1">
               <strong class="font-bold">{{ k }}</strong>: <span v-if="k != 'asn_cidr'" class="text-gray-700 font-thin">{{ v }}</span>
               <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
@@ -83,16 +83,16 @@
           </ul>
         </div>
         <div v-if="result.ports" class="mt-3 md:mt-4">
-          <strong class="text-lg">Ports</strong>
-          <ul class="font-mono text-md font-light">
+          <strong class="text-base sm:text-lg">Ports</strong>
+          <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="port in result.ports" class="mt-1">
               <strong class="font-bold">{{ port.port }}/{{ port.proto }}</strong>: <span>{{ port.status }}</span>
             </li>
           </ul>
         </div>
         <div v-if="result.ssl_cert" class="mt-3 md:mt-4">
-          <strong class="text-lg">SSL cert</strong>
-          <ul v-for="ssl_cert in result.ssl_cert" class="font-mono text-md font-light">
+          <strong class="text-base sm:text-lg">SSL cert</strong>
+          <ul v-for="ssl_cert in result.ssl_cert" class="font-mono text-sm sm:text-base font-light">
             <li v-for="val, key in ssl_cert">
               <div v-if="key == 'subject'">
                 <div v-for="v, k in val" class="mt-2">
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div v-if="result.header" class="mt-3 md:mt-4">
-      <strong class="text-lg">HTTP header</strong>
+      <strong class="text-base sm:text-lg">HTTP header</strong>
       <code>
         <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
           <li v-for="val, key in result.header">
