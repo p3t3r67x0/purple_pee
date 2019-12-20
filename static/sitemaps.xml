@@ -1,0 +1,27 @@
+<urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://purplepee.co/</loc>
+    <lastmod>2019-12-20T20:35:48+00:00</lastmod>
+    <priority>0.20</priority>
+  </url>
+  <url>
+    <loc>https://purplepee.co/cidr</loc>
+    <lastmod>2019-12-20T20:35:48+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://purplepee.co/ipv4</loc>
+    <lastmod>2019-12-20T20:35:48+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://purplepee.co/dns</loc>
+    <lastmod>2019-12-20T20:35:48+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://purplepee.co/asn</loc>
+    <lastmod>2019-12-20T20:35:48+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+</urlset>
