@@ -18,7 +18,7 @@
               <nuxt-link to="/cidr" class="no-underline text-gray-200">CIDR</nuxt-link>
             </li>
             <li class="mr-3">
-              <nuxt-link to="/cidr" class="no-underline text-gray-200">IPv4</nuxt-link>
+              <nuxt-link to="/ipv4" class="no-underline text-gray-200">IPv4</nuxt-link>
             </li>
             <li class="mr-3">
               <nuxt-link to="/dns" class="no-underline text-gray-200">DNS</nuxt-link>
