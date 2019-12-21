@@ -59,11 +59,13 @@
       </div>
     </div>
   </div>
+  <loading v-if="loadingIndicator"></loading>
 </div>
 </template>
 
 <script>
 import Search from '@/components/search.vue'
+import Loading from '@/components/loading.vue'
 
 export default {
   data() {
@@ -72,7 +74,13 @@ export default {
     }
   },
   components: {
-    search: Search
+    search: Search,
+    loading: Loading
+  },
+  computed: {
+    loadingIndicator() {
+      return this.$store.state.loading
+    }
   },
   methods: {
     handleDropdown() {
