@@ -30,7 +30,7 @@
           <strong class="text-base sm:text-lg">CNAME records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="cname_record in result.cname_record" class="break-all">
-              {{ cname_record.target }}
+              <nuxt-link v-bind:to="generateLink('cname', cname_record.target)" class="text-blue-500 hover:text-blue-700">{{ cname_record.target }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -38,7 +38,7 @@
           <strong class="text-base sm:text-lg">MX records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="mx_record in result.mx_record" class="break-all">
-              {{ mx_record.exchange }}, {{ mx_record.preference }}
+              <nuxt-link v-bind:to="generateLink('mx', mx_record.exchange)" class="text-blue-500 hover:text-blue-700">{{ mx_record.exchange }}</nuxt-link>, {{ mx_record.preference }}
             </li>
           </ul>
         </div>
