@@ -2,7 +2,6 @@
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
     <navheader></navheader>
-    {{ loadingIndicator }}
     <query v-if="!loadingIndicator" v-bind:query="queryTitle"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
