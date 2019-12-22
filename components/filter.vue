@@ -1,5 +1,5 @@
 <template>
-<div class="container mx-auto">
+<div id="xhr" class="container mx-auto">
   <div class="bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 px-3 pt-2 pb-3">
     <h2 class="text-xl md:text-3xl text-gray-900 font-bold mb-2">Search with conditional Queries</h2>
     <p class="md:w-10/12 text-sm sm:text-base md:text-lg text-gray-800 mb-2">To get the most out of purplepee.co it's important to understand the search query syntax. Search filters are special keywords to tell Purplepee that you wish to search

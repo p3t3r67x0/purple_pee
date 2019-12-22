@@ -1,5 +1,5 @@
 <template>
-<div v-if="!loadingIndicator" class="container mx-auto">
+<div id="xhr" v-if="!loadingIndicator" class="container mx-auto">
   <h1 class="text-xl font-thin mx-3 md:mx-0 mb-3">Latest added <strong class="font-bold">Subnets</strong></h1>
 
   <ul class="flex content-start flex-wrap bg-gray-200 mb-6 mx-2 md:mx-0 p-1">

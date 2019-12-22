@@ -1,5 +1,5 @@
 <template>
-<div class="container mx-auto">
+<div id="xhr" v-if="!loadingIndicator" class="container mx-auto">
   <div v-for="result in results" class="overflow-hidden bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 p-3">
     <div class="sm:flex">
       <div class="w-full sm:w-9/12 mb-4 sm:mb-0">
@@ -148,6 +148,11 @@
 export default {
   props: {
     results: Array
+  },
+  computed: {
+    loadingIndicator() {
+      return this.$store.state.loading
+    }
   },
   methods: {
     generatePath(image) {
