@@ -164,8 +164,7 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/tailwindcss'
   ],
 
   /*
@@ -173,6 +172,7 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
 
   /*

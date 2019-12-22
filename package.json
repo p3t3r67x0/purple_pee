@@ -14,7 +14,6 @@
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "nuxt": "2.10.1",
-    "nuxt-log": "^0.1.0",
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
