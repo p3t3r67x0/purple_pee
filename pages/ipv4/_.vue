@@ -2,8 +2,8 @@
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
     <navheader></navheader>
-    <query v-bind:query="query"></query>
-    <dns v-bind:results="results"></dns>
+    <query v-if="!loadingIndicator" v-bind:query="query"></query>
+    <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -31,6 +31,9 @@ export default {
     this.fetchLatest(this.query)
   },
   computed: {
+    loadingIndicator() {
+      return this.$store.state.loading
+    },
     query() {
       return this.$route.params.pathMatch
     },
