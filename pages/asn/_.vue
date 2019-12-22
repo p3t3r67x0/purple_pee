@@ -43,9 +43,22 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/asn:' + query).then(res => {
-        this.results = res
-      });
+      this.$axios.$get(process.env.API_URL + '/match/asn:' + query).then(response => {
+        this.results = response
+      }).catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log(error.message);
+        }
+
+        console.log(error.config);
+        this.$store.commit('updateLoadingIndicator', false)
+      })
     }
   }
 }
