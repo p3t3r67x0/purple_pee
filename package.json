@@ -1,9 +1,9 @@
 {
-  "name": "purple_pee",
-  "version": "1.0.0",
-  "description": "My bee&#39;s knees Nuxt.js project",
+  "name": "purplepee.co",
+  "version": "1.0.1",
+  "description": "purplepee.co - open source ASN lookup",
   "author": "Aurelius Wendelken",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -14,6 +14,7 @@
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "nuxt": "2.10.1",
+    "nuxt-log": "^0.1.0",
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
