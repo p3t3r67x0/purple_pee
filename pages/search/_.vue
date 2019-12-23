@@ -33,6 +33,15 @@ export default {
     query() {
       return this.$route.params.pathMatch
     }
+  },
+  head: {
+    title: 'Search results for ' + this.query,
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore your search results ' + this.query
+    }]
   }
 }
 </script>

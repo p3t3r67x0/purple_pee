@@ -38,6 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
+  head: {
+    title: 'TCP port results for ' + this.query,
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore latest TCP port results ' + this.query
+    }]
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/match/port:' + query).then(res => {

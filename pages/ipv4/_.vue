@@ -38,6 +38,15 @@ export default {
       return this.$route.params.pathMatch
     },
   },
+  head: {
+    title: 'IPv4 results for ' + this.query,
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore latest IPv4 results ' + this.query
+    }]
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/match/ipv4:' + query).then(res => {

@@ -19,18 +19,14 @@ export default {
     navfooter: Footer,
     navheader: Navbar
   },
-  data() {
-    return {
-      results: []
-    }
-  },
-  created() {
-    this.xxx()
-  },
-  methods: {
-    xxx(res) {
-      this.results = res
-    }
+  head: {
+    title: 'Checkout our legal disclaimer'
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Checkout our legal disclaimer'
+    }]
   }
 }
 </script>

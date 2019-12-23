@@ -27,6 +27,15 @@ export default {
   created() {
     this.fetchLatest(this.query)
   },
+  head: {
+    title: 'Explore the latest CIDR entries'
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore the latest CIDR entries'
+    }]
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/cidr').then(res => {

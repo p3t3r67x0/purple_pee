@@ -38,6 +38,15 @@ export default {
       return this.$route.params.pathMatch
     },
   },
+  head: {
+    title: 'CIDR results for ' + this.query,
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore latest CIDR results ' + this.query
+    }]
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(res => {

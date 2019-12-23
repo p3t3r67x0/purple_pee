@@ -38,6 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
+  head: {
+    title: 'MX record results for ' + this.query,
+    meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore latest MX record results ' + this.query
+    }]
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/match/mx:' + query).then(res => {
