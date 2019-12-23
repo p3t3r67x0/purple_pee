@@ -28,7 +28,7 @@ export default {
     this.fetchLatest(this.query)
   },
   head: {
-    title: 'Explore the latest IPv4 entries'
+    title: 'Explore the latest IPv4 entries',
     meta: [
     {
       hid: 'description',

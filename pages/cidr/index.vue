@@ -28,7 +28,7 @@ export default {
     this.fetchLatest(this.query)
   },
   head: {
-    title: 'Explore the latest CIDR entries'
+    title: 'Explore the latest CIDR entries',
     meta: [
     {
       hid: 'description',

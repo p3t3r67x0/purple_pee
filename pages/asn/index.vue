@@ -28,7 +28,7 @@ export default {
     this.fetchLatest(this.query)
   },
   head: {
-    title: 'Explore the latest ASN entries'
+    title: 'Explore the latest ASN entries',
     meta: [
     {
       hid: 'description',

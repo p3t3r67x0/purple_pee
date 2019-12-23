@@ -20,7 +20,7 @@ export default {
     navheader: Navbar
   },
   head: {
-    title: 'Checkout our legal disclaimer'
+    title: 'Checkout our legal disclaimer',
     meta: [
     {
       hid: 'description',
