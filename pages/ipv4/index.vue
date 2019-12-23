@@ -27,14 +27,15 @@ export default {
   created() {
     this.fetchLatest(this.query)
   },
-  head: {
-    title: 'Explore the latest IPv4 entries',
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore the latest IPv4 entries'
-    }]
+  head() {
+    return {
+      title: 'Explore the latest IPv4 entries',
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore the latest IPv4 entries'
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

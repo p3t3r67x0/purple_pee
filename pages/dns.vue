@@ -27,14 +27,15 @@ export default {
   created() {
     this.fetchLatest()
   },
-  head: {
-    title: 'Latest DNS lookup entries',
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Find latest DNS lookup entries they change every few seconds so make sure you keep uptodate.'
-    }]
+  head() {
+    return {
+      title: 'Latest DNS lookup entries',
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Find latest DNS lookup entries they change every few seconds so make sure you keep uptodate.'
+      }]
+    }
   },
   methods: {
     fetchLatest() {

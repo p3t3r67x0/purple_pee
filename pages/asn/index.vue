@@ -27,14 +27,15 @@ export default {
   created() {
     this.fetchLatest(this.query)
   },
-  head: {
-    title: 'Explore the latest ASN entries',
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore the latest ASN entries'
-    }]
+  head() {
+    return {
+      title: 'Explore the latest ASN entries',
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore the latest ASN entries'
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

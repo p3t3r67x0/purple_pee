@@ -38,14 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
-  head: {
-    title: 'CNAME results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest CNAME results ' + this.query
-    }]
+  head() {
+    return {
+      title: 'CNAME results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest CNAME results ' + this.query
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

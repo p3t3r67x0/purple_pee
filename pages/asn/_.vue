@@ -41,14 +41,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
-  head: {
-    title: 'ASN results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest ASN results ' + this.query
-    }]
+  head() {
+    return {
+      title: 'ASN results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest ASN results ' + this.query
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

@@ -38,14 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
-  head: {
-    title: 'Organisation results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest organisation results ' + this.query
-    }]
+  head() {
+    return {
+      title: 'Organisation results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest organisation results ' + this.query
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

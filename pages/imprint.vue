@@ -19,14 +19,15 @@ export default {
     navfooter: Footer,
     navheader: Navbar
   },
-  head: {
-    title: 'Checkout our legal disclaimer',
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Checkout our legal disclaimer'
-    }]
+  head() {
+    return {
+      title: 'Checkout our legal disclaimer',
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Checkout our legal disclaimer'
+      }]
+    }
   }
 }
 </script>

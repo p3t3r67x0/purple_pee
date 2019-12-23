@@ -38,14 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
-  head: {
-    title: 'Registry results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest registry results ' + this.query
-    }]
+  head() {
+    return {
+      title: 'Registry results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest registry results ' + this.query
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

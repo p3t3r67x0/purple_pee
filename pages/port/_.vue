@@ -38,14 +38,15 @@ export default {
       return this.$route.params.pathMatch
     }
   },
-  head: {
-    title: 'TCP port results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest TCP port results ' + this.query
-    }]
+  head() {
+    return {
+      title: 'TCP port results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest TCP port results ' + this.query
+      }]
+    }
   },
   methods: {
     fetchLatest(query) {

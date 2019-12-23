@@ -27,6 +27,16 @@ export default {
       results: [],
     }
   },
+  head() {
+    return {
+      title: 'IPv4 results for ' + this.query,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest IPv4 results ' + this.query
+      }]
+    }
+  },
   created() {
     this.fetchLatest(this.query)
   },
@@ -37,15 +47,6 @@ export default {
     query() {
       return this.$route.params.pathMatch
     },
-  },
-  head: {
-    title: 'IPv4 results for ' + this.query,
-    meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Explore latest IPv4 results ' + this.query
-    }]
   },
   methods: {
     fetchLatest(query) {
