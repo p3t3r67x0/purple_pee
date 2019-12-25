@@ -2,6 +2,7 @@
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
     <navheader></navheader>
+    <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="query"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import Dns from '@/components/dns.vue'
+import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
@@ -19,6 +21,7 @@ export default {
   components: {
     dns: Dns,
     query: Query,
+    modal: Modal,
     navfooter: Footer,
     navheader: Navbar
   },
@@ -54,17 +57,11 @@ export default {
         this.results = res
       }).catch((error) => {
         if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log(error.message);
+          this.$store.commit('updateErrorMessage', error.response.data)
+          this.$store.commit('updateErrorStatus', error.response.status)
+          this.$store.commit('updateModalVisible', true)
+          this.$store.commit('updateLoadingIndicator', false)
         }
-
-        console.log(error.config);
-        this.$store.commit('updateLoadingIndicator', false)
       })
     }
   }
