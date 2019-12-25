@@ -7,7 +7,6 @@ export default ({
   app.$axios.interceptors.request.use(
     function(config) {
       app.store.commit('updateLoadingIndicator', true)
-      app.store.commit('updateModalVisible', false)
       // console.log('updateLoadingIndicator: ' + app.store.state.loading)
       return config
     },
