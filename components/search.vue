@@ -98,7 +98,7 @@ export default {
 
       if (isValidMatch(query)) {
         this.$axios.$get(process.env.API_URL + '/match/' + query).then(response => {
-          this.$store.commit('update', response)
+          this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
             params: {
@@ -123,7 +123,7 @@ export default {
 
       if (isValidAsn(query)) {
         this.$axios.$get(process.env.API_URL + '/asn/' + query).then(response => {
-          this.$store.commit('update', response)
+          this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
             params: {
@@ -152,7 +152,7 @@ export default {
         })[0]
 
         this.$axios.$get(process.env.API_URL + '/dns/' + q).then(response => {
-          this.$store.commit('update', response)
+          this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
             params: {
@@ -177,7 +177,7 @@ export default {
 
       if (isValidIpv4(query)) {
         this.$axios.$get(process.env.API_URL + '/ip/' + query).then(response => {
-          this.$store.commit('update', response)
+          this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
             params: {
@@ -202,7 +202,7 @@ export default {
 
       if (isValidPrefix(query)) {
         this.$axios.$get(process.env.API_URL + '/subnet/' + query).then(response => {
-          this.$store.commit('update', response)
+          this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
             params: {

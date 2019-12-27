@@ -41,6 +41,14 @@ export default {
       }]
     }
   },
+  watch: {
+    modalVisible: function() {}
+  },
+  computed: {
+    modalVisible() {
+      return this.$store.state.modalVisible
+    }
+  },
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/asn').then(res => {

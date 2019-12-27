@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>

@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query"></query>
+    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -33,7 +33,13 @@ export default {
   created() {
     this.fetchLatest(this.query)
   },
+  watch: {
+    modalVisible: function() {}
+  },
   computed: {
+    modalVisible() {
+      return this.$store.state.modalVisible
+    },
     loadingIndicator() {
       return this.$store.state.loading
     },

@@ -7,7 +7,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  update(state, res) {
+  updateResultList(state, res) {
     state.results = res
   },
   updateErrorMessage(state, message) {
