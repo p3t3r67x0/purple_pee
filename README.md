@@ -120,3 +120,9 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+After you created this file you must enable this service
+
+```bash
+sudo systemctl enable purplepee
+```
