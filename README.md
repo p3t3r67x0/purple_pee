@@ -104,6 +104,8 @@ $ npm run start
 
 ## Systemd Setup
 
+Create `/etc/systemd/system/purplepee.service` with following content.
+
 ```bash
 [Unit]
 Description=Nuxtjs instance to serve purplepee
