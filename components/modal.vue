@@ -40,7 +40,7 @@ export default {
     errorMessage() {
       let errorMessage = this.$store.state.errorMessage
 
-      if ('message' in errorMessage) {
+      if (errorMessage.hasAttribute('message')) {
         errorMessage = errorMessage.message
       }
 
