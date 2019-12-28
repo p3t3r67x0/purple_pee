@@ -126,3 +126,10 @@ After you created this file you must enable this service
 ```bash
 sudo systemctl enable purplepee
 ```
+
+
+## Setup Nginx with SSL from Let's Encrypt
+
+```bash
+sudo apt install nginx-full certbot python-certbot-nginx
+```
