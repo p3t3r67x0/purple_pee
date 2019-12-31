@@ -9,7 +9,7 @@
             <path d="M320 71.1c0 .5.5.7 1 .4.6-.3 1-.8 1-1.1 0-.2-.4-.4-1-.4-.5 0-1 .5-1 1.1z" />
           </svg>
         </nuxt-link>
-        <div class="ml-2 sm:w-1/2">
+        <div class="ml-2 w-11/12">
           <search></search>
         </div>
         <div class="ml-4 hidden sm:block sm:w-1/2">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="w-1/12 text-right flex items-center justify-end">
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="mt-2 mr-1">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="hidden md:block mt-2 mr-1">
           <input type="hidden" name="cmd" value="_s-xclick">
           <input type="hidden" name="hosted_button_id" value="CT7GDG2U4TAQW">
           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">

@@ -1,4 +1,5 @@
 export const state = () => ({
+  query: null,
   results: [],
   loading: false,
   errorStatus: null,
@@ -7,6 +8,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  updateQuery(state, query) {
+    state.query = query
+  },
   updateResultList(state, res) {
     state.results = res
   },

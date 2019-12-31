@@ -1,6 +1,11 @@
 <template>
-<div>
-  <input class="px-2 py-1 rounded bg-gray-800 text-sm text-white w-full" type="text" v-on:keyup="searchMatch" v-model="q" placeholder="Enter a Domain, IP, ASN or Hostname">
+<div class="flex flex-wrap items-stretch w-full relative">
+  <input type="text" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-8 border-gray-200 rounded rounded-r-none px-2 relative" @keyup.enter="searchMatch" v-model="q" autofocus placeholder="Enter a Domain, IP, ASN or Hostname">
+  <div class="flex -mr-px">
+    <span class="flex items-center leading-normal bg-gray-300 rounded rounded-l-none border border-l-0 border-gray-200 px-2 whitespace-no-wrap text-gray-dark text-sm">
+      <svg class="text-gray-600 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
+    </span>
+  </div>
 </div>
 </template>
 
@@ -17,7 +22,7 @@ function isValidIpv4(ip) {
   return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
 }
 
-function isValidPrefix(prefix) {
+function isValidCidr(prefix) {
   if (typeof(prefix) !== 'string') {
     return false
   }
@@ -48,7 +53,7 @@ function isValidAsn(asn) {
     return false
   }
 
-  if (!asn.match(/((AS)+[0-9]{3,9})/i)) {
+  if (!asn.match(/((AS)+[0-9]{1,})/i)) {
     return false
   }
 
@@ -70,9 +75,14 @@ function isValidMatch(match) {
 }
 
 export default {
-  data() {
-    return {
-      q: null
+  computed: {
+    q: {
+      get() {
+        return this.$store.state.query
+      },
+      set(query) {
+        this.$store.commit('updateQuery', query)
+      },
     }
   },
   methods: {
@@ -97,6 +107,8 @@ export default {
       }
 
       if (isValidMatch(query)) {
+        this.$store.commit('updateQuery', query)
+
         this.$axios.$get(process.env.API_URL + '/match/' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -108,10 +120,13 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
         })
       }
@@ -128,15 +143,18 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
         })
       }
 
-      if (isValidDomain(query)) {
+      if (!isValidCidr(query) && !isValidIpv4(query) && isValidDomain(query)) {
         this.$axios.$get(process.env.API_URL + '/match/site:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -148,16 +166,26 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
+
+          this.$router.push({
+            name: 'search-all',
+            params: {
+              pathMatch: query
+            }
+          })
         })
       }
 
       if (isValidIpv4(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/:ip' + query).then(response => {
+        this.$axios.$get(process.env.API_URL + '/match/ipv4:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
@@ -168,15 +196,18 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
         })
       }
 
-      if (isValidPrefix(query)) {
+      if (isValidCidr(query)) {
         this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -188,10 +219,13 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
         })
       }
