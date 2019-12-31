@@ -86,9 +86,6 @@ export default {
     }
   },
   methods: {
-    generteLink(q) {
-      return '/search/' + q
-    },
     trimWhitespaces(q) {
       let r = q
 
