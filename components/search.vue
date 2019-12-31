@@ -1,6 +1,6 @@
 <template>
 <div>
-  <input class="px-2 py-1 rounded bg-gray-800 text-sm text-white w-full" type="text" v-on:keyup="autoComplete" v-model="q" placeholder="Enter a Domain, IP, ASN or Hostname">
+  <input class="px-2 py-1 rounded bg-gray-800 text-sm text-white w-full" type="text" v-on:keyup="searchMatch" v-model="q" placeholder="Enter a Domain, IP, ASN or Hostname">
 </div>
 </template>
 
@@ -89,7 +89,7 @@ export default {
         return r
       }
     },
-    autoComplete() {
+    searchMatch() {
       let query = this.q
 
       if (query !== null && query.length > 0) {
@@ -107,22 +107,17 @@ export default {
           })
         }).catch((error) => {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log(error.message);
+            this.$store.commit('updateResultList', [])
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
           }
-
-          console.log(error.config);
-          this.$store.commit('updateLoadingIndicator', false)
         })
       }
 
       if (isValidAsn(query)) {
-        this.$axios.$get(process.env.API_URL + '/asn/' + query).then(response => {
+        this.$axios.$get(process.env.API_URL + '/match/asn:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
@@ -132,26 +127,17 @@ export default {
           })
         }).catch((error) => {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log(error.message);
+            this.$store.commit('updateResultList', [])
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
           }
-
-          console.log(error.config);
-          this.$store.commit('updateLoadingIndicator', false)
         })
       }
 
       if (isValidDomain(query)) {
-        const q = query.split(/[\.-_#+*!"§&/()=?"]/).sort(function(a, b) {
-          return b.length - a.length;
-        })[0]
-
-        this.$axios.$get(process.env.API_URL + '/dns/' + q).then(response => {
+        this.$axios.$get(process.env.API_URL + '/match/site:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
@@ -161,22 +147,17 @@ export default {
           })
         }).catch((error) => {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log(error.message);
+            this.$store.commit('updateResultList', [])
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
           }
-
-          console.log(error.config);
-          this.$store.commit('updateLoadingIndicator', false)
         })
       }
 
       if (isValidIpv4(query)) {
-        this.$axios.$get(process.env.API_URL + '/ip/' + query).then(response => {
+        this.$axios.$get(process.env.API_URL + '/match/:ip' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
@@ -186,22 +167,17 @@ export default {
           })
         }).catch((error) => {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log(error.message);
+            this.$store.commit('updateResultList', [])
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
           }
-
-          console.log(error.config);
-          this.$store.commit('updateLoadingIndicator', false)
         })
       }
 
       if (isValidPrefix(query)) {
-        this.$axios.$get(process.env.API_URL + '/subnet/' + query).then(response => {
+        this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
@@ -211,17 +187,12 @@ export default {
           })
         }).catch((error) => {
           if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log(error.message);
+            this.$store.commit('updateResultList', [])
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
           }
-
-          console.log(error.config);
-          this.$store.commit('updateLoadingIndicator', false)
         })
       }
     }
