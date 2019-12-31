@@ -42,6 +42,7 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
+    this.$store.commit('updateQuery', 'asn:' + this.query)
     this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {

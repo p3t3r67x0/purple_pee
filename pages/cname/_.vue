@@ -32,6 +32,7 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
+    this.$store.commit('updateQuery', 'cname:' + this.query)
   },
   computed: {
     loadingIndicator() {

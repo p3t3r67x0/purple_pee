@@ -42,6 +42,7 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
+    this.$store.commit('updateQuery', 'ipv4:' + this.query)
   },
   watch: {
     modalVisible: function() {}
