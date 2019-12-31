@@ -2,9 +2,9 @@
 <div class="flex flex-wrap items-stretch w-full relative">
   <input type="text" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-8 border-gray-200 rounded rounded-r-none px-2 relative" @keyup.enter="searchMatch" v-model="q" autofocus placeholder="Enter a Domain, IP, ASN or Hostname">
   <div class="flex -mr-px">
-    <span class="flex items-center leading-normal bg-gray-300 rounded rounded-l-none border border-l-0 border-gray-200 px-2 whitespace-no-wrap text-gray-dark text-sm">
+    <a v-on:click="searchMatch" class="flex items-center leading-normal bg-gray-300 rounded rounded-l-none border border-l-0 border-gray-200 px-2 whitespace-no-wrap text-gray-dark text-sm cursor-pointer">
       <svg class="text-gray-600 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
-    </span>
+    </a>
   </div>
 </div>
 </template>
@@ -86,6 +86,9 @@ export default {
     }
   },
   methods: {
+    generteLink(q) {
+      return '/search/' + q
+    },
     trimWhitespaces(q) {
       let r = q
 
