@@ -23,7 +23,7 @@
             <a v-bind:href="apiUrl" target="_blank" class="text-white hover:text-gray-200">API</a>
           </li>
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
-            <a v-bind:href="docsUrl" target="_blank" class="text-white hover:text-gray-200">Docs</a>
+            <nuxt-link v-bind:to="docsUrl" class="text-white hover:text-gray-200">Docs</nuxt-link>
           </li>
           <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
             <a v-bind:href="issuesUrl" target="_blank" class="text-white hover:text-gray-200">Issues</a>
