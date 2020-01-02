@@ -9,8 +9,11 @@
           <li class="mb-3">
             <nuxt-link to="/docs/api" class="text-blue-600 hover:text-blue-700">API Documentation</nuxt-link>
           </li>
+          <li class="mb-3">
+            <nuxt-link to="/docs/examples/server" class="text-blue-600 hover:text-blue-700">HTTP Server Names</nuxt-link>
+          </li>
           <li>
-            <nuxt-link to="/docs/examples/server" class="text-blue-600 hover:text-blue-700">HTTP Server Requests</nuxt-link>
+            <nuxt-link to="/docs/examples/status" class="text-blue-600 hover:text-blue-700">HTTP Status Codes</nuxt-link>
           </li>
         </ul>
         <h4 class="font-thin text-lg md:text-xl text-gray-900 mb-1">Index</h4>
