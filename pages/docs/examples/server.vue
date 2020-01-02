@@ -1591,7 +1591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AbaSioux/2015.00
+                <a v-bind:href="generateLink('/match/server:AbaSioux/2015.00')" target="_blank">/match/server:AbaSioux/2015.00</a>
               </div>
             </div>
           </li>
@@ -1601,7 +1601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AbaSioux/2019.00
+                <a v-bind:href="generateLink('/match/server:AbaSioux/2019.00')" target="_blank">/match/server:AbaSioux/2019.00</a>
               </div>
             </div>
           </li>
@@ -1611,7 +1611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Abyss/2.12.1-X2-Linux
+                <a v-bind:href="generateLink('/match/server:Abyss/2.12.1-X2-Linux')" target="_blank">/match/server:Abyss/2.12.1-X2-Linux</a>
               </div>
             </div>
           </li>
@@ -1621,7 +1621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Abyss/2.12.1-X2-Win32
+                <a v-bind:href="generateLink('/match/server:Abyss/2.12.1-X2-Win32')" target="_blank">/match/server:Abyss/2.12.1-X2-Win32</a>
               </div>
             </div>
           </li>
@@ -1631,7 +1631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ADAS/1.0.188
+                <a v-bind:href="generateLink('/match/server:ADAS/1.0.188')" target="_blank">/match/server:ADAS/1.0.188</a>
               </div>
             </div>
           </li>
@@ -1641,7 +1641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ADEOWS/0.5
+                <a v-bind:href="generateLink('/match/server:ADEOWS/0.5')" target="_blank">/match/server:ADEOWS/0.5</a>
               </div>
             </div>
           </li>
@@ -1651,7 +1651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AHS/3.7
+                <a v-bind:href="generateLink('/match/server:AHS/3.7')" target="_blank">/match/server:AHS/3.7</a>
               </div>
             </div>
           </li>
@@ -1661,7 +1661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AHS/3.8
+                <a v-bind:href="generateLink('/match/server:AHS/3.8')" target="_blank">/match/server:AHS/3.8</a>
               </div>
             </div>
           </li>
@@ -1671,7 +1671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AHS/4.8
+                <a v-bind:href="generateLink('/match/server:AHS/4.8')" target="_blank">/match/server:AHS/4.8</a>
               </div>
             </div>
           </li>
@@ -1681,7 +1681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AHS/6.1
+                <a v-bind:href="generateLink('/match/server:AHS/6.1')" target="_blank">/match/server:AHS/6.1</a>
               </div>
             </div>
           </li>
@@ -1691,7 +1691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Airee/Cloud
+                <a v-bind:href="generateLink('/match/server:Airee/Cloud')" target="_blank">/match/server:Airee/Cloud</a>
               </div>
             </div>
           </li>
@@ -1701,7 +1701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Aleph/0.4.4
+                <a v-bind:href="generateLink('/match/server:Aleph/0.4.4')" target="_blank">/match/server:Aleph/0.4.4</a>
               </div>
             </div>
           </li>
@@ -1711,7 +1711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Aleph/0.4.6
+                <a v-bind:href="generateLink('/match/server:Aleph/0.4.6')" target="_blank">/match/server:Aleph/0.4.6</a>
               </div>
             </div>
           </li>
@@ -1721,7 +1721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexsus/1.0.1d
+                <a v-bind:href="generateLink('/match/server:Nexsus/1.0.1d')" target="_blank">/match/server:Nexsus/1.0.1d</a>
               </div>
             </div>
           </li>
@@ -1731,7 +1731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Alpiro/1.0.2
+                <a v-bind:href="generateLink('/match/server:Alpiro/1.0.2')" target="_blank">/match/server:Alpiro/1.0.2</a>
               </div>
             </div>
           </li>
@@ -1741,7 +1741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AOLserver/4.5.1
+                <a v-bind:href="generateLink('/match/server:AOLserver/4.5.1')" target="_blank">/match/server:AOLserver/4.5.1</a>
               </div>
             </div>
           </li>
@@ -1751,7 +1751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.12.2
+                <a v-bind:href="generateLink('/match/server:Apache/1.12.2')" target="_blank">/match/server:Apache/1.12.2</a>
               </div>
             </div>
           </li>
@@ -1761,7 +1761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.20
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.20')" target="_blank">/match/server:Apache/1.3.20</a>
               </div>
             </div>
           </li>
@@ -1771,7 +1771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.29
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.29')" target="_blank">/match/server:Apache/1.3.29</a>
               </div>
             </div>
           </li>
@@ -1781,7 +1781,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.33
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.33')" target="_blank">/match/server:Apache/1.3.33</a>
               </div>
             </div>
           </li>
@@ -1791,7 +1791,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.33-Pool-070114.1
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.33-Pool-070114.1')" target="_blank">/match/server:Apache/1.3.33-Pool-070114.1</a>
               </div>
             </div>
           </li>
@@ -1801,7 +1801,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.34
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.34')" target="_blank">/match/server:Apache/1.3.34</a>
               </div>
             </div>
           </li>
@@ -1811,7 +1811,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.37
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.37')" target="_blank">/match/server:Apache/1.3.37</a>
               </div>
             </div>
           </li>
@@ -1821,7 +1821,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.41
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.41')" target="_blank">/match/server:Apache/1.3.41</a>
               </div>
             </div>
           </li>
@@ -1831,7 +1831,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.42
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.42')" target="_blank">/match/server:Apache/1.3.42</a>
               </div>
             </div>
           </li>
@@ -1841,7 +1841,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/1.3.42p3
+                <a v-bind:href="generateLink('/match/server:Apache/1.3.42p3')" target="_blank">/match/server:Apache/1.3.42p3</a>
               </div>
             </div>
           </li>
@@ -1851,7 +1851,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2
+                <a v-bind:href="generateLink('/match/server:Apache/2')" target="_blank">/match/server:Apache/2</a>
               </div>
             </div>
           </li>
@@ -1861,7 +1861,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.52
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.52')" target="_blank">/match/server:Apache/2.0.52</a>
               </div>
             </div>
           </li>
@@ -1871,7 +1871,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.54
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.54')" target="_blank">/match/server:Apache/2.0.54</a>
               </div>
             </div>
           </li>
@@ -1881,7 +1881,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.59
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.59')" target="_blank">/match/server:Apache/2.0.59</a>
               </div>
             </div>
           </li>
@@ -1891,7 +1891,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.63
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.63')" target="_blank">/match/server:Apache/2.0.63</a>
               </div>
             </div>
           </li>
@@ -1901,7 +1901,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.64
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.64')" target="_blank">/match/server:Apache/2.0.64</a>
               </div>
             </div>
           </li>
@@ -1911,7 +1911,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.0.65
+                <a v-bind:href="generateLink('/match/server:Apache/2.0.65')" target="_blank">/match/server:Apache/2.0.65</a>
               </div>
             </div>
           </li>
@@ -1921,7 +1921,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2
+                <a v-bind:href="generateLink('/match/server:Apache/2.2')" target="_blank">/match/server:Apache/2.2</a>
               </div>
             </div>
           </li>
@@ -1931,7 +1931,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.0
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.0')" target="_blank">/match/server:Apache/2.2.0</a>
               </div>
             </div>
           </li>
@@ -1941,7 +1941,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.10
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.10')" target="_blank">/match/server:Apache/2.2.10</a>
               </div>
             </div>
           </li>
@@ -1951,7 +1951,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.11
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.11')" target="_blank">/match/server:Apache/2.2.11</a>
               </div>
             </div>
           </li>
@@ -1961,7 +1961,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.12
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.12')" target="_blank">/match/server:Apache/2.2.12</a>
               </div>
             </div>
           </li>
@@ -1971,7 +1971,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.14
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.14')" target="_blank">/match/server:Apache/2.2.14</a>
               </div>
             </div>
           </li>
@@ -1981,7 +1981,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.15
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.15')" target="_blank">/match/server:Apache/2.2.15</a>
               </div>
             </div>
           </li>
@@ -1991,7 +1991,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.16
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.16')" target="_blank">/match/server:Apache/2.2.16</a>
               </div>
             </div>
           </li>
@@ -2001,7 +2001,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.17
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.17')" target="_blank">/match/server:Apache/2.2.17</a>
               </div>
             </div>
           </li>
@@ -2011,7 +2011,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.18
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.18')" target="_blank">/match/server:Apache/2.2.18</a>
               </div>
             </div>
           </li>
@@ -2021,7 +2021,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.19
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.19')" target="_blank">/match/server:Apache/2.2.19</a>
               </div>
             </div>
           </li>
@@ -2031,7 +2031,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.20
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.20')" target="_blank">/match/server:Apache/2.2.20</a>
               </div>
             </div>
           </li>
@@ -2041,7 +2041,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.21
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.21')" target="_blank">/match/server:Apache/2.2.21</a>
               </div>
             </div>
           </li>
@@ -2051,7 +2051,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.22
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.22')" target="_blank">/match/server:Apache/2.2.22</a>
               </div>
             </div>
           </li>
@@ -2061,7 +2061,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.23
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.23')" target="_blank">/match/server:Apache/2.2.23</a>
               </div>
             </div>
           </li>
@@ -2071,7 +2071,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.24
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.24')" target="_blank">/match/server:Apache/2.2.24</a>
               </div>
             </div>
           </li>
@@ -2081,7 +2081,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.25
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.25')" target="_blank">/match/server:Apache/2.2.25</a>
               </div>
             </div>
           </li>
@@ -2091,7 +2091,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.26
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.26')" target="_blank">/match/server:Apache/2.2.26</a>
               </div>
             </div>
           </li>
@@ -2101,7 +2101,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.27
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.27')" target="_blank">/match/server:Apache/2.2.27</a>
               </div>
             </div>
           </li>
@@ -2111,7 +2111,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.29
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.29')" target="_blank">/match/server:Apache/2.2.29</a>
               </div>
             </div>
           </li>
@@ -2121,7 +2121,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.3
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.3')" target="_blank">/match/server:Apache/2.2.3</a>
               </div>
             </div>
           </li>
@@ -2131,7 +2131,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.31
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.31')" target="_blank">/match/server:Apache/2.2.31</a>
               </div>
             </div>
           </li>
@@ -2141,7 +2141,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.32
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.32')" target="_blank">/match/server:Apache/2.2.32</a>
               </div>
             </div>
           </li>
@@ -2151,7 +2151,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.4
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.4')" target="_blank">/match/server:Apache/2.2.4</a>
               </div>
             </div>
           </li>
@@ -2161,7 +2161,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.35
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.35')" target="_blank">/match/server:Apache/2.2.35</a>
               </div>
             </div>
           </li>
@@ -2171,7 +2171,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.4
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.4')" target="_blank">/match/server:Apache/2.2.4</a>
               </div>
             </div>
           </li>
@@ -2181,7 +2181,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.6
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.6')" target="_blank">/match/server:Apache/2.2.6</a>
               </div>
             </div>
           </li>
@@ -2191,7 +2191,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.8
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.8')" target="_blank">/match/server:Apache/2.2.8</a>
               </div>
             </div>
           </li>
@@ -2201,7 +2201,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.2.9
+                <a v-bind:href="generateLink('/match/server:Apache/2.2.9')" target="_blank">/match/server:Apache/2.2.9</a>
               </div>
             </div>
           </li>
@@ -2211,7 +2211,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4
+                <a v-bind:href="generateLink('/match/server:Apache/2.4')" target="_blank">/match/server:Apache/2.4</a>
               </div>
             </div>
           </li>
@@ -2221,7 +2221,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.1
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.1')" target="_blank">/match/server:Apache/2.4.1</a>
               </div>
             </div>
           </li>
@@ -2231,7 +2231,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.10
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.10')" target="_blank">/match/server:Apache/2.4.10</a>
               </div>
             </div>
           </li>
@@ -2241,7 +2241,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.12
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.12')" target="_blank">/match/server:Apache/2.4.12</a>
               </div>
             </div>
           </li>
@@ -2251,7 +2251,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.14
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.14')" target="_blank">/match/server:Apache/2.4.14</a>
               </div>
             </div>
           </li>
@@ -2261,7 +2261,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.16
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.16')" target="_blank">/match/server:Apache/2.4.16</a>
               </div>
             </div>
           </li>
@@ -2271,7 +2271,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.17
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.17')" target="_blank">/match/server:Apache/2.4.17</a>
               </div>
             </div>
           </li>
@@ -2281,7 +2281,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.18
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.18')" target="_blank">/match/server:Apache/2.4.18</a>
               </div>
             </div>
           </li>
@@ -2291,7 +2291,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.2
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.2')" target="_blank">/match/server:Apache/2.4.2</a>
               </div>
             </div>
           </li>
@@ -2301,7 +2301,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.20
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.20')" target="_blank">/match/server:Apache/2.4.20</a>
               </div>
             </div>
           </li>
@@ -2311,7 +2311,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.23
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.23')" target="_blank">/match/server:Apache/2.4.23</a>
               </div>
             </div>
           </li>
@@ -2321,7 +2321,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.25
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.25')" target="_blank">/match/server:Apache/2.4.25</a>
               </div>
             </div>
           </li>
@@ -2331,7 +2331,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.26
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.26')" target="_blank">/match/server:Apache/2.4.26</a>
               </div>
             </div>
           </li>
@@ -2341,7 +2341,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.27
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.27')" target="_blank">/match/server:Apache/2.4.27</a>
               </div>
             </div>
           </li>
@@ -2351,7 +2351,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.28
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.28')" target="_blank">/match/server:Apache/2.4.28</a>
               </div>
             </div>
           </li>
@@ -2361,7 +2361,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.29
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.29')" target="_blank">/match/server:Apache/2.4.29</a>
               </div>
             </div>
           </li>
@@ -2371,7 +2371,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.3
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.3')" target="_blank">/match/server:Apache/2.4.3</a>
               </div>
             </div>
           </li>
@@ -2381,7 +2381,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.32
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.32')" target="_blank">/match/server:Apache/2.4.32</a>
               </div>
             </div>
           </li>
@@ -2391,7 +2391,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.33
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.33')" target="_blank">/match/server:Apache/2.4.33</a>
               </div>
             </div>
           </li>
@@ -2401,7 +2401,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.34
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.34')" target="_blank">/match/server:Apache/2.4.34</a>
               </div>
             </div>
           </li>
@@ -2411,7 +2411,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.35
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.35')" target="_blank">/match/server:Apache/2.4.35</a>
               </div>
             </div>
           </li>
@@ -2421,7 +2421,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.37
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.37')" target="_blank">/match/server:Apache/2.4.37</a>
               </div>
             </div>
           </li>
@@ -2431,7 +2431,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.38
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.38')" target="_blank">/match/server:Apache/2.4.38</a>
               </div>
             </div>
           </li>
@@ -2441,7 +2441,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.39
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.39')" target="_blank">/match/server:Apache/2.4.39</a>
               </div>
             </div>
           </li>
@@ -2451,7 +2451,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.4
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.4')" target="_blank">/match/server:Apache/2.4.4</a>
               </div>
             </div>
           </li>
@@ -2461,7 +2461,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.41
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.41')" target="_blank">/match/server:Apache/2.4.41</a>
               </div>
             </div>
           </li>
@@ -2471,7 +2471,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.6
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.6')" target="_blank">/match/server:Apache/2.4.6</a>
               </div>
             </div>
           </li>
@@ -2481,7 +2481,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.7
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.7')" target="_blank">/match/server:Apache/2.4.7</a>
               </div>
             </div>
           </li>
@@ -2491,7 +2491,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/2.4.9
+                <a v-bind:href="generateLink('/match/server:Apache/2.4.9')" target="_blank">/match/server:Apache/2.4.9</a>
               </div>
             </div>
           </li>
@@ -2501,7 +2501,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache/6.6.6
+                <a v-bind:href="generateLink('/match/server:Apache/6.6.6')" target="_blank">/match/server:Apache/6.6.6</a>
               </div>
             </div>
           </li>
@@ -2511,7 +2511,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache-Coyote/1.1
+                <a v-bind:href="generateLink('/match/server:Apache-Coyote/1.1')" target="_blank">/match/server:Apache-Coyote/1.1</a>
               </div>
             </div>
           </li>
@@ -2521,7 +2521,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache-Coyote/191
+                <a v-bind:href="generateLink('/match/server:Apache-Coyote/191')" target="_blank">/match/server:Apache-Coyote/191</a>
               </div>
             </div>
           </li>
@@ -2531,7 +2531,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Apache-HttpCore/1.1
+                <a v-bind:href="generateLink('/match/server:Apache-HttpCore/1.1')" target="_blank">/match/server:Apache-HttpCore/1.1</a>
               </div>
             </div>
           </li>
@@ -2541,7 +2541,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:API-GATEWAYSSL/1.0
+                <a v-bind:href="generateLink('/match/server:API-GATEWAYSSL/1.0')" target="_blank">/match/server:API-GATEWAYSSL/1.0</a>
               </div>
             </div>
           </li>
@@ -2551,7 +2551,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AppleHttpServer/216f8733b0a9
+                <a v-bind:href="generateLink('/match/server:AppleHttpServer/216f8733b0a9')" target="_blank">/match/server:AppleHttpServer/216f8733b0a9</a>
               </div>
             </div>
           </li>
@@ -2561,7 +2561,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ArcWS/4.0.20
+                <a v-bind:href="generateLink('/match/server:ArcWS/4.0.20')" target="_blank">/match/server:ArcWS/4.0.20</a>
               </div>
             </div>
           </li>
@@ -2571,7 +2571,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ARMIN/Server-v1.0
+                <a v-bind:href="generateLink('/match/server:ARMIN/Server-v1.0')" target="_blank">/match/server:ARMIN/Server-v1.0</a>
               </div>
             </div>
           </li>
@@ -2581,7 +2581,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Artifactory/6.13.1
+                <a v-bind:href="generateLink('/match/server:Artifactory/6.13.1')" target="_blank">/match/server:Artifactory/6.13.1</a>
               </div>
             </div>
           </li>
@@ -2591,7 +2591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Artifactory/6.8.17
+                <a v-bind:href="generateLink('/match/server:Artifactory/6.8.17')" target="_blank">/match/server:Artifactory/6.8.17</a>
               </div>
             </div>
           </li>
@@ -2601,7 +2601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Artinux/0.2.1
+                <a v-bind:href="generateLink('/match/server:Artinux/0.2.1')" target="_blank">/match/server:Artinux/0.2.1</a>
               </div>
             </div>
           </li>
@@ -2611,7 +2611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ARTWS/1.0
+                <a v-bind:href="generateLink('/match/server:ARTWS/1.0')" target="_blank">/match/server:ARTWS/1.0</a>
               </div>
             </div>
           </li>
@@ -2621,7 +2621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AsadaShinon/1.0.0
+                <a v-bind:href="generateLink('/match/server:AsadaShinon/1.0.0')" target="_blank">/match/server:AsadaShinon/1.0.0</a>
               </div>
             </div>
           </li>
@@ -2631,7 +2631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ASERVER/1.8.0-3
+                <a v-bind:href="generateLink('/match/server:ASERVER/1.8.0-3')" target="_blank">/match/server:ASERVER/1.8.0-3</a>
               </div>
             </div>
           </li>
@@ -2641,7 +2641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ASMP-AAA-Proxy/1.1
+                <a v-bind:href="generateLink('/match/server:ASMP-AAA-Proxy/1.1')" target="_blank">/match/server:ASMP-AAA-Proxy/1.1</a>
               </div>
             </div>
           </li>
@@ -2651,7 +2651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AstutiumForwarding/1.0
+                <a v-bind:href="generateLink('/match/server:AstutiumForwarding/1.0')" target="_blank">/match/server:AstutiumForwarding/1.0</a>
               </div>
             </div>
           </li>
@@ -2661,7 +2661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AtlassianProxy/1.15.8.1
+                <a v-bind:href="generateLink('/match/server:AtlassianProxy/1.15.8.1')" target="_blank">/match/server:AtlassianProxy/1.15.8.1</a>
               </div>
             </div>
           </li>
@@ -2671,7 +2671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Atomz/1.0
+                <a v-bind:href="generateLink('/match/server:Atomz/1.0')" target="_blank">/match/server:Atomz/1.0</a>
               </div>
             </div>
           </li>
@@ -2681,7 +2681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/5.0.1
+                <a v-bind:href="generateLink('/match/server:ATS/5.0.1')" target="_blank">/match/server:ATS/5.0.1</a>
               </div>
             </div>
           </li>
@@ -2691,7 +2691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/5.3.0
+                <a v-bind:href="generateLink('/match/server:ATS/5.3.0')" target="_blank">/match/server:ATS/5.3.0</a>
               </div>
             </div>
           </li>
@@ -2701,7 +2701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/5.3.2
+                <a v-bind:href="generateLink('/match/server:ATS/5.3.2')" target="_blank">/match/server:ATS/5.3.2</a>
               </div>
             </div>
           </li>
@@ -2711,7 +2711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/6.2.0
+                <a v-bind:href="generateLink('/match/server:ATS/6.2.0')" target="_blank">/match/server:ATS/6.2.0</a>
               </div>
             </div>
           </li>
@@ -2721,7 +2721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.0.0
+                <a v-bind:href="generateLink('/match/server:ATS/7.0.0')" target="_blank">/match/server:ATS/7.0.0</a>
               </div>
             </div>
           </li>
@@ -2731,7 +2731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.2
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.2')" target="_blank">/match/server:ATS/7.1.2</a>
               </div>
             </div>
           </li>
@@ -2741,7 +2741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.3
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.3')" target="_blank">/match/server:ATS/7.1.3</a>
               </div>
             </div>
           </li>
@@ -2751,7 +2751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.4
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.4')" target="_blank">/match/server:ATS/7.1.4</a>
               </div>
             </div>
           </li>
@@ -2761,7 +2761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.5
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.5')" target="_blank">/match/server:ATS/7.1.5</a>
               </div>
             </div>
           </li>
@@ -2771,7 +2771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.6
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.6')" target="_blank">/match/server:ATS/7.1.6</a>
               </div>
             </div>
           </li>
@@ -2781,7 +2781,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/7.1.8
+                <a v-bind:href="generateLink('/match/server:ATS/7.1.8')" target="_blank">/match/server:ATS/7.1.8</a>
               </div>
             </div>
           </li>
@@ -2791,7 +2791,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/8.0.5
+                <a v-bind:href="generateLink('/match/server:ATS/8.0.5')" target="_blank">/match/server:ATS/8.0.5</a>
               </div>
             </div>
           </li>
@@ -2801,7 +2801,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ATS/8.0.6
+                <a v-bind:href="generateLink('/match/server:ATS/8.0.6')" target="_blank">/match/server:ATS/8.0.6</a>
               </div>
             </div>
           </li>
@@ -2811,7 +2811,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:AtyponWS/7.1
+                <a v-bind:href="generateLink('/match/server:AtyponWS/7.1')" target="_blank">/match/server:AtyponWS/7.1</a>
               </div>
             </div>
           </li>
@@ -2821,7 +2821,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BaseHTTP/0.3
+                <a v-bind:href="generateLink('/match/server:BaseHTTP/0.3')" target="_blank">/match/server:BaseHTTP/0.3</a>
               </div>
             </div>
           </li>
@@ -2831,7 +2831,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BaseHTTP/0.6
+                <a v-bind:href="generateLink('/match/server:BaseHTTP/0.6')" target="_blank">/match/server:BaseHTTP/0.6</a>
               </div>
             </div>
           </li>
@@ -2841,7 +2841,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BCTC/0.0.1
+                <a v-bind:href="generateLink('/match/server:BCTC/0.0.1')" target="_blank">/match/server:BCTC/0.0.1</a>
               </div>
             </div>
           </li>
@@ -2851,7 +2851,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Beluga/1.0
+                <a v-bind:href="generateLink('/match/server:Beluga/1.0')" target="_blank">/match/server:Beluga/1.0</a>
               </div>
             </div>
           </li>
@@ -2861,7 +2861,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BelugaCDN/v2.43.0
+                <a v-bind:href="generateLink('/match/server:BelugaCDN/v2.43.0')" target="_blank">/match/server:BelugaCDN/v2.43.0</a>
               </div>
             </div>
           </li>
@@ -2871,7 +2871,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BelugaCDN/v2.44.11
+                <a v-bind:href="generateLink('/match/server:BelugaCDN/v2.44.11')" target="_blank">/match/server:BelugaCDN/v2.44.11</a>
               </div>
             </div>
           </li>
@@ -2881,7 +2881,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BGW/1.1
+                <a v-bind:href="generateLink('/match/server:BGW/1.1')" target="_blank">/match/server:BGW/1.1</a>
               </div>
             </div>
           </li>
@@ -2891,7 +2891,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BMWS/6.9.12
+                <a v-bind:href="generateLink('/match/server:BMWS/6.9.12')" target="_blank">/match/server:BMWS/6.9.12</a>
               </div>
             </div>
           </li>
@@ -2901,7 +2901,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BoldChat/8108
+                <a v-bind:href="generateLink('/match/server:BoldChat/8108')" target="_blank">/match/server:BoldChat/8108</a>
               </div>
             </div>
           </li>
@@ -2911,7 +2911,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BS/170
+                <a v-bind:href="generateLink('/match/server:BS/170')" target="_blank">/match/server:BS/170</a>
               </div>
             </div>
           </li>
@@ -2921,7 +2921,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BS/171
+                <a v-bind:href="generateLink('/match/server:BS/171')" target="_blank">/match/server:BS/171</a>
               </div>
             </div>
           </li>
@@ -2931,7 +2931,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BS/183
+                <a v-bind:href="generateLink('/match/server:BS/183')" target="_blank">/match/server:BS/183</a>
               </div>
             </div>
           </li>
@@ -2941,7 +2941,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BS/186
+                <a v-bind:href="generateLink('/match/server:BS/186')" target="_blank">/match/server:BS/186</a>
               </div>
             </div>
           </li>
@@ -2951,7 +2951,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BTWS/1.14.0
+                <a v-bind:href="generateLink('/match/server:BTWS/1.14.0')" target="_blank">/match/server:BTWS/1.14.0</a>
               </div>
             </div>
           </li>
@@ -2961,7 +2961,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BWS/1.0
+                <a v-bind:href="generateLink('/match/server:BWS/1.0')" target="_blank">/match/server:BWS/1.0</a>
               </div>
             </div>
           </li>
@@ -2971,7 +2971,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:BWS/1.1
+                <a v-bind:href="generateLink('/match/server:BWS/1.1')" target="_blank">/match/server:BWS/1.1</a>
               </div>
             </div>
           </li>
@@ -2981,7 +2981,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CA-API-Gateway/9.0
+                <a v-bind:href="generateLink('/match/server:CA-API-Gateway/9.0')" target="_blank">/match/server:CA-API-Gateway/9.0</a>
               </div>
             </div>
           </li>
@@ -2991,7 +2991,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CACHE/CLOUDSPEED_EDGE_1.1.9V
+                <a v-bind:href="generateLink('/match/server:CACHE/CLOUDSPEED_EDGE_1.1.9V')" target="_blank">/match/server:CACHE/CLOUDSPEED_EDGE_1.1.9V</a>
               </div>
             </div>
           </li>
@@ -3001,7 +3001,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CanvasReverseProxy/3.26.0
+                <a v-bind:href="generateLink('/match/server:CanvasReverseProxy/3.26.0')" target="_blank">/match/server:CanvasReverseProxy/3.26.0</a>
               </div>
             </div>
           </li>
@@ -3011,7 +3011,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CarlosSantana/1.9.4.7
+                <a v-bind:href="generateLink('/match/server:CarlosSantana/1.9.4.7')" target="_blank">/match/server:CarlosSantana/1.9.4.7</a>
               </div>
             </div>
           </li>
@@ -3021,7 +3021,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CEngine/1.15.3
+                <a v-bind:href="generateLink('/match/server:CEngine/1.15.3')" target="_blank">/match/server:CEngine/1.15.3</a>
               </div>
             </div>
           </li>
@@ -3031,7 +3031,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CentralApp/Vela/1.0.0.0
+                <a v-bind:href="generateLink('/match/server:CentralApp/Vela/1.0.0.0')" target="_blank">/match/server:CentralApp/Vela/1.0.0.0</a>
               </div>
             </div>
           </li>
@@ -3041,7 +3041,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CerberusFTPServer/11.0
+                <a v-bind:href="generateLink('/match/server:CerberusFTPServer/11.0')" target="_blank">/match/server:CerberusFTPServer/11.0</a>
               </div>
             </div>
           </li>
@@ -3051,7 +3051,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CHC/Trade-A-Plane
+                <a v-bind:href="generateLink('/match/server:CHC/Trade-A-Plane')" target="_blank">/match/server:CHC/Trade-A-Plane</a>
               </div>
             </div>
           </li>
@@ -3061,7 +3061,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Cherokee/0.99.39
+                <a v-bind:href="generateLink('/match/server:Cherokee/0.99.39')" target="_blank">/match/server:Cherokee/0.99.39</a>
               </div>
             </div>
           </li>
@@ -3071,7 +3071,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Cheroot/6.3.1
+                <a v-bind:href="generateLink('/match/server:Cheroot/6.3.1')" target="_blank">/match/server:Cheroot/6.3.1</a>
               </div>
             </div>
           </li>
@@ -3081,7 +3081,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Cheroot/8.2.1
+                <a v-bind:href="generateLink('/match/server:Cheroot/8.2.1')" target="_blank">/match/server:Cheroot/8.2.1</a>
               </div>
             </div>
           </li>
@@ -3091,7 +3091,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CherryPy/15.0.0
+                <a v-bind:href="generateLink('/match/server:CherryPy/15.0.0')" target="_blank">/match/server:CherryPy/15.0.0</a>
               </div>
             </div>
           </li>
@@ -3101,7 +3101,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CherryPy/17.4.2
+                <a v-bind:href="generateLink('/match/server:CherryPy/17.4.2')" target="_blank">/match/server:CherryPy/17.4.2</a>
               </div>
             </div>
           </li>
@@ -3111,7 +3111,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CherryPy/5.1.0
+                <a v-bind:href="generateLink('/match/server:CherryPy/5.1.0')" target="_blank">/match/server:CherryPy/5.1.0</a>
               </div>
             </div>
           </li>
@@ -3121,7 +3121,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CherryPy/7.1.0
+                <a v-bind:href="generateLink('/match/server:CherryPy/7.1.0')" target="_blank">/match/server:CherryPy/7.1.0</a>
               </div>
             </div>
           </li>
@@ -3131,7 +3131,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CherryPy/8.1.2
+                <a v-bind:href="generateLink('/match/server:CherryPy/8.1.2')" target="_blank">/match/server:CherryPy/8.1.2</a>
               </div>
             </div>
           </li>
@@ -3141,7 +3141,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CLB/Cache
+                <a v-bind:href="generateLink('/match/server:CLB/Cache')" target="_blank">/match/server:CLB/Cache</a>
               </div>
             </div>
           </li>
@@ -3151,7 +3151,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CLB/No-Cache
+                <a v-bind:href="generateLink('/match/server:CLB/No-Cache')" target="_blank">/match/server:CLB/No-Cache</a>
               </div>
             </div>
           </li>
@@ -3161,7 +3161,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Cleversafe/3.14.7.88
+                <a v-bind:href="generateLink('/match/server:Cleversafe/3.14.7.88')" target="_blank">/match/server:Cleversafe/3.14.7.88</a>
               </div>
             </div>
           </li>
@@ -3171,7 +3171,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CMPP-ConsoleUI/474-0878a4b
+                <a v-bind:href="generateLink('/match/server:CMPP-ConsoleUI/474-0878a4b')" target="_blank">/match/server:CMPP-ConsoleUI/474-0878a4b</a>
               </div>
             </div>
           </li>
@@ -3181,7 +3181,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CMWS/1.0
+                <a v-bind:href="generateLink('/match/server:CMWS/1.0')" target="_blank">/match/server:CMWS/1.0</a>
               </div>
             </div>
           </li>
@@ -3191,7 +3191,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CnGinx/1.0
+                <a v-bind:href="generateLink('/match/server:CnGinx/1.0')" target="_blank">/match/server:CnGinx/1.0</a>
               </div>
             </div>
           </li>
@@ -3201,7 +3201,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Commodore-C64-Bootloader/0.3
+                <a v-bind:href="generateLink('/match/server:Commodore-C64-Bootloader/0.3')" target="_blank">/match/server:Commodore-C64-Bootloader/0.3</a>
               </div>
             </div>
           </li>
@@ -3211,7 +3211,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CommuniGatePro/6.2.14
+                <a v-bind:href="generateLink('/match/server:CommuniGatePro/6.2.14')" target="_blank">/match/server:CommuniGatePro/6.2.14</a>
               </div>
             </div>
           </li>
@@ -3221,7 +3221,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CommuniGatePro/6.2.5
+                <a v-bind:href="generateLink('/match/server:CommuniGatePro/6.2.5')" target="_blank">/match/server:CommuniGatePro/6.2.5</a>
               </div>
             </div>
           </li>
@@ -3231,7 +3231,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CommuniGatePro/6.2.7
+                <a v-bind:href="generateLink('/match/server:CommuniGatePro/6.2.7')" target="_blank">/match/server:CommuniGatePro/6.2.7</a>
               </div>
             </div>
           </li>
@@ -3241,7 +3241,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Communique/4.2.3
+                <a v-bind:href="generateLink('/match/server:Communique/4.2.3')" target="_blank">/match/server:Communique/4.2.3</a>
               </div>
             </div>
           </li>
@@ -3251,7 +3251,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CoreCMS/0.5.1
+                <a v-bind:href="generateLink('/match/server:CoreCMS/0.5.1')" target="_blank">/match/server:CoreCMS/0.5.1</a>
               </div>
             </div>
           </li>
@@ -3261,7 +3261,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CouchDB/1.7.1
+                <a v-bind:href="generateLink('/match/server:CouchDB/1.7.1')" target="_blank">/match/server:CouchDB/1.7.1</a>
               </div>
             </div>
           </li>
@@ -3271,7 +3271,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CouchDB/2.3.1
+                <a v-bind:href="generateLink('/match/server:CouchDB/2.3.1')" target="_blank">/match/server:CouchDB/2.3.1</a>
               </div>
             </div>
           </li>
@@ -3281,7 +3281,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CppCMS-Embedded/1.2.0
+                <a v-bind:href="generateLink('/match/server:CppCMS-Embedded/1.2.0')" target="_blank">/match/server:CppCMS-Embedded/1.2.0</a>
               </div>
             </div>
           </li>
@@ -3291,7 +3291,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CryoHost.NET/3.0
+                <a v-bind:href="generateLink('/match/server:CryoHost.NET/3.0')" target="_blank">/match/server:CryoHost.NET/3.0</a>
               </div>
             </div>
           </li>
@@ -3301,7 +3301,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:CUWEBCACHE/2.9.7
+                <a v-bind:href="generateLink('/match/server:CUWEBCACHE/2.9.7')" target="_blank">/match/server:CUWEBCACHE/2.9.7</a>
               </div>
             </div>
           </li>
@@ -3311,7 +3311,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DatasnapHTTPService/2011
+                <a v-bind:href="generateLink('/match/server:DatasnapHTTPService/2011')" target="_blank">/match/server:DatasnapHTTPService/2011</a>
               </div>
             </div>
           </li>
@@ -3321,7 +3321,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:David-WebBox/12.00a
+                <a v-bind:href="generateLink('/match/server:David-WebBox/12.00a')" target="_blank">/match/server:David-WebBox/12.00a</a>
               </div>
             </div>
           </li>
@@ -3331,7 +3331,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DCSaaS/httpd
+                <a v-bind:href="generateLink('/match/server:DCSaaS/httpd')" target="_blank">/match/server:DCSaaS/httpd</a>
               </div>
             </div>
           </li>
@@ -3341,7 +3341,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DingTalk/1.0.0
+                <a v-bind:href="generateLink('/match/server:DingTalk/1.0.0')" target="_blank">/match/server:DingTalk/1.0.0</a>
               </div>
             </div>
           </li>
@@ -3351,7 +3351,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DMS/1.0.42
+                <a v-bind:href="generateLink('/match/server:DMS/1.0.42')" target="_blank">/match/server:DMS/1.0.42</a>
               </div>
             </div>
           </li>
@@ -3361,7 +3361,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DomainRedirector/2.0
+                <a v-bind:href="generateLink('/match/server:DomainRedirector/2.0')" target="_blank">/match/server:DomainRedirector/2.0</a>
               </div>
             </div>
           </li>
@@ -3371,7 +3371,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DPS/1.6.14
+                <a v-bind:href="generateLink('/match/server:DPS/1.6.14')" target="_blank">/match/server:DPS/1.6.14</a>
               </div>
             </div>
           </li>
@@ -3381,7 +3381,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DS/1.0
+                <a v-bind:href="generateLink('/match/server:DS/1.0')" target="_blank">/match/server:DS/1.0</a>
               </div>
             </div>
           </li>
@@ -3391,7 +3391,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Dubalu/2.0
+                <a v-bind:href="generateLink('/match/server:Dubalu/2.0')" target="_blank">/match/server:Dubalu/2.0</a>
               </div>
             </div>
           </li>
@@ -3401,7 +3401,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Duo/1.0
+                <a v-bind:href="generateLink('/match/server:Duo/1.0')" target="_blank">/match/server:Duo/1.0</a>
               </div>
             </div>
           </li>
@@ -3411,7 +3411,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:DWS/1.0
+                <a v-bind:href="generateLink('/match/server:DWS/1.0')" target="_blank">/match/server:DWS/1.0</a>
               </div>
             </div>
           </li>
@@ -3421,7 +3421,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ECD/PRODDSG-21
+                <a v-bind:href="generateLink('/match/server:ECD/PRODDSG-21')" target="_blank">/match/server:ECD/PRODDSG-21</a>
               </div>
             </div>
           </li>
@@ -3431,7 +3431,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Ecode-IIS/10.2
+                <a v-bind:href="generateLink('/match/server:Ecode-IIS/10.2')" target="_blank">/match/server:Ecode-IIS/10.2</a>
               </div>
             </div>
           </li>
@@ -3441,7 +3441,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:EdgePrism/4.7.2.0
+                <a v-bind:href="generateLink('/match/server:EdgePrism/4.7.2.0')" target="_blank">/match/server:EdgePrism/4.7.2.0</a>
               </div>
             </div>
           </li>
@@ -3451,7 +3451,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Epache/1.8
+                <a v-bind:href="generateLink('/match/server:Epache/1.8')" target="_blank">/match/server:Epache/1.8</a>
               </div>
             </div>
           </li>
@@ -3461,7 +3461,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:EPSON-HTTP/1.0
+                <a v-bind:href="generateLink('/match/server:EPSON-HTTP/1.0')" target="_blank">/match/server:EPSON-HTTP/1.0</a>
               </div>
             </div>
           </li>
@@ -3471,7 +3471,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Evernote/1.0
+                <a v-bind:href="generateLink('/match/server:Evernote/1.0')" target="_blank">/match/server:Evernote/1.0</a>
               </div>
             </div>
           </li>
@@ -3481,7 +3481,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Fastcast/2.2.80
+                <a v-bind:href="generateLink('/match/server:Fastcast/2.2.80')" target="_blank">/match/server:Fastcast/2.2.80</a>
               </div>
             </div>
           </li>
@@ -3491,7 +3491,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Firestarter/c11h15no2
+                <a v-bind:href="generateLink('/match/server:Firestarter/c11h15no2')" target="_blank">/match/server:Firestarter/c11h15no2</a>
               </div>
             </div>
           </li>
@@ -3501,7 +3501,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:FlashCom/3.5.7
+                <a v-bind:href="generateLink('/match/server:FlashCom/3.5.7')" target="_blank">/match/server:FlashCom/3.5.7</a>
               </div>
             </div>
           </li>
@@ -3511,7 +3511,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:FlowGuard/1.0
+                <a v-bind:href="generateLink('/match/server:FlowGuard/1.0')" target="_blank">/match/server:FlowGuard/1.0</a>
               </div>
             </div>
           </li>
@@ -3521,7 +3521,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Fly/8511af6
+                <a v-bind:href="generateLink('/match/server:Fly/8511af6')" target="_blank">/match/server:Fly/8511af6</a>
               </div>
             </div>
           </li>
@@ -3531,7 +3531,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Flywheel/4.1.0
+                <a v-bind:href="generateLink('/match/server:Flywheel/4.1.0')" target="_blank">/match/server:Flywheel/4.1.0</a>
               </div>
             </div>
           </li>
@@ -3541,7 +3541,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Flywheel/5.0.0
+                <a v-bind:href="generateLink('/match/server:Flywheel/5.0.0')" target="_blank">/match/server:Flywheel/5.0.0</a>
               </div>
             </div>
           </li>
@@ -3551,7 +3551,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Flywheel/5.1.0
+                <a v-bind:href="generateLink('/match/server:Flywheel/5.1.0')" target="_blank">/match/server:Flywheel/5.1.0</a>
               </div>
             </div>
           </li>
@@ -3561,7 +3561,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Gfp-Http-Api/1.0
+                <a v-bind:href="generateLink('/match/server:Gfp-Http-Api/1.0')" target="_blank">/match/server:Gfp-Http-Api/1.0</a>
               </div>
             </div>
           </li>
@@ -3571,7 +3571,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:GFW/2.5.0
+                <a v-bind:href="generateLink('/match/server:GFW/2.5.0')" target="_blank">/match/server:GFW/2.5.0</a>
               </div>
             </div>
           </li>
@@ -3581,7 +3581,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:GNU/Linux
+                <a v-bind:href="generateLink('/match/server:GNU/Linux')" target="_blank">/match/server:GNU/Linux</a>
               </div>
             </div>
           </li>
@@ -3591,7 +3591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Goodlucky/8.8.8
+                <a v-bind:href="generateLink('/match/server:Goodlucky/8.8.8')" target="_blank">/match/server:Goodlucky/8.8.8</a>
               </div>
             </div>
           </li>
@@ -3601,7 +3601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Google/CDN
+                <a v-bind:href="generateLink('/match/server:Google/CDN')" target="_blank">/match/server:Google/CDN</a>
               </div>
             </div>
           </li>
@@ -3611,7 +3611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Grizzly/2.4.4
+                <a v-bind:href="generateLink('/match/server:Grizzly/2.4.4')" target="_blank">/match/server:Grizzly/2.4.4</a>
               </div>
             </div>
           </li>
@@ -3621,7 +3621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Guard/0.0.0.3
+                <a v-bind:href="generateLink('/match/server:Guard/0.0.0.3')" target="_blank">/match/server:Guard/0.0.0.3</a>
               </div>
             </div>
           </li>
@@ -3631,7 +3631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:HCL-AsoC/1.1
+                <a v-bind:href="generateLink('/match/server:HCL-AsoC/1.1')" target="_blank">/match/server:HCL-AsoC/1.1</a>
               </div>
             </div>
           </li>
@@ -3641,7 +3641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:HiNetCDN/1908
+                <a v-bind:href="generateLink('/match/server:HiNetCDN/1908')" target="_blank">/match/server:HiNetCDN/1908</a>
               </div>
             </div>
           </li>
@@ -3651,7 +3651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Hippo/AppServ
+                <a v-bind:href="generateLink('/match/server:Hippo/AppServ')" target="_blank">/match/server:Hippo/AppServ</a>
               </div>
             </div>
           </li>
@@ -3661,7 +3661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:HPS/v3.4
+                <a v-bind:href="generateLink('/match/server:HPS/v3.4')" target="_blank">/match/server:HPS/v3.4</a>
               </div>
             </div>
           </li>
@@ -3671,7 +3671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:HTS/tvheadend
+                <a v-bind:href="generateLink('/match/server:HTS/tvheadend')" target="_blank">/match/server:HTS/tvheadend</a>
               </div>
             </div>
           </li>
@@ -3681,7 +3681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:HTTPAPI/2.0
+                <a v-bind:href="generateLink('/match/server:HTTPAPI/2.0')" target="_blank">/match/server:HTTPAPI/2.0</a>
               </div>
             </div>
           </li>
@@ -3691,7 +3691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IBM_HTTP_SERVER/1.3.19.4
+                <a v-bind:href="generateLink('/match/server:IBM_HTTP_SERVER/1.3.19.4')" target="_blank">/match/server:IBM_HTTP_SERVER/1.3.19.4</a>
               </div>
             </div>
           </li>
@@ -3701,7 +3701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IBM_HTTP_Server/2
+                <a v-bind:href="generateLink('/match/server:IBM_HTTP_Server/2')" target="_blank">/match/server:IBM_HTTP_Server/2</a>
               </div>
             </div>
           </li>
@@ -3711,7 +3711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IBM-PROXY-WTE/8.0
+                <a v-bind:href="generateLink('/match/server:IBM-PROXY-WTE/8.0')" target="_blank">/match/server:IBM-PROXY-WTE/8.0</a>
               </div>
             </div>
           </li>
@@ -3721,7 +3721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/10.4.5
+                <a v-bind:href="generateLink('/match/server:IceWarp/10.4.5')" target="_blank">/match/server:IceWarp/10.4.5</a>
               </div>
             </div>
           </li>
@@ -3731,7 +3731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/11.2.1.1
+                <a v-bind:href="generateLink('/match/server:IceWarp/11.2.1.1')" target="_blank">/match/server:IceWarp/11.2.1.1</a>
               </div>
             </div>
           </li>
@@ -3741,7 +3741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/11.4.3.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/11.4.3.0')" target="_blank">/match/server:IceWarp/11.4.3.0</a>
               </div>
             </div>
           </li>
@@ -3751,7 +3751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/11.4.5.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/11.4.5.0')" target="_blank">/match/server:IceWarp/11.4.5.0</a>
               </div>
             </div>
           </li>
@@ -3761,7 +3761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/11.4.6.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/11.4.6.0')" target="_blank">/match/server:IceWarp/11.4.6.0</a>
               </div>
             </div>
           </li>
@@ -3771,7 +3771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.0.2.1
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.0.2.1')" target="_blank">/match/server:IceWarp/12.0.2.1</a>
               </div>
             </div>
           </li>
@@ -3781,7 +3781,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.0.3.1
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.0.3.1')" target="_blank">/match/server:IceWarp/12.0.3.1</a>
               </div>
             </div>
           </li>
@@ -3791,7 +3791,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.1.1.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.1.1.0')" target="_blank">/match/server:IceWarp/12.1.1.0</a>
               </div>
             </div>
           </li>
@@ -3801,7 +3801,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.1.1.2
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.1.1.2')" target="_blank">/match/server:IceWarp/12.1.1.2</a>
               </div>
             </div>
           </li>
@@ -3811,7 +3811,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.1.1.3
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.1.1.3')" target="_blank">/match/server:IceWarp/12.1.1.3</a>
               </div>
             </div>
           </li>
@@ -3821,7 +3821,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.1.1.4
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.1.1.4')" target="_blank">/match/server:IceWarp/12.1.1.4</a>
               </div>
             </div>
           </li>
@@ -3831,7 +3831,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.1.1.5
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.1.1.5')" target="_blank">/match/server:IceWarp/12.1.1.5</a>
               </div>
             </div>
           </li>
@@ -3841,7 +3841,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.2.0.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.2.0.0')" target="_blank">/match/server:IceWarp/12.2.0.0</a>
               </div>
             </div>
           </li>
@@ -3851,7 +3851,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.2.0.1
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.2.0.1')" target="_blank">/match/server:IceWarp/12.2.0.1</a>
               </div>
             </div>
           </li>
@@ -3861,7 +3861,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.2.0.2
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.2.0.2')" target="_blank">/match/server:IceWarp/12.2.0.2</a>
               </div>
             </div>
           </li>
@@ -3871,7 +3871,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.2.1.0
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.2.1.0')" target="_blank">/match/server:IceWarp/12.2.1.0</a>
               </div>
             </div>
           </li>
@@ -3881,7 +3881,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IceWarp/12.2.1.1
+                <a v-bind:href="generateLink('/match/server:IceWarp/12.2.1.1')" target="_blank">/match/server:IceWarp/12.2.1.1</a>
               </div>
             </div>
           </li>
@@ -3891,7 +3891,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IdeaWebServer/0.83.320
+                <a v-bind:href="generateLink('/match/server:IdeaWebServer/0.83.320')" target="_blank">/match/server:IdeaWebServer/0.83.320</a>
               </div>
             </div>
           </li>
@@ -3901,7 +3901,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IdeaWebServer/v0.80
+                <a v-bind:href="generateLink('/match/server:IdeaWebServer/v0.80')" target="_blank">/match/server:IdeaWebServer/v0.80</a>
               </div>
             </div>
           </li>
@@ -3911,7 +3911,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IfengWeb/1.7.68
+                <a v-bind:href="generateLink('/match/server:IfengWeb/1.7.68')" target="_blank">/match/server:IfengWeb/1.7.68</a>
               </div>
             </div>
           </li>
@@ -3921,7 +3921,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IIS/4.0
+                <a v-bind:href="generateLink('/match/server:IIS/4.0')" target="_blank">/match/server:IIS/4.0</a>
               </div>
             </div>
           </li>
@@ -3931,7 +3931,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IIS/6.0
+                <a v-bind:href="generateLink('/match/server:IIS/6.0')" target="_blank">/match/server:IIS/6.0</a>
               </div>
             </div>
           </li>
@@ -3941,7 +3941,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IPL/12.08.07
+                <a v-bind:href="generateLink('/match/server:IPL/12.08.07')" target="_blank">/match/server:IPL/12.08.07</a>
               </div>
             </div>
           </li>
@@ -3951,7 +3951,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IPL/2.1
+                <a v-bind:href="generateLink('/match/server:IPL/2.1')" target="_blank">/match/server:IPL/2.1</a>
               </div>
             </div>
           </li>
@@ -3961,7 +3961,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IPL/2.2
+                <a v-bind:href="generateLink('/match/server:IPL/2.2')" target="_blank">/match/server:IPL/2.2</a>
               </div>
             </div>
           </li>
@@ -3971,7 +3971,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IPoAC/1.1.49
+                <a v-bind:href="generateLink('/match/server:IPoAC/1.1.49')" target="_blank">/match/server:IPoAC/1.1.49</a>
               </div>
             </div>
           </li>
@@ -3981,7 +3981,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:IYWS/1.0
+                <a v-bind:href="generateLink('/match/server:IYWS/1.0')" target="_blank">/match/server:IYWS/1.0</a>
               </div>
             </div>
           </li>
@@ -3991,7 +3991,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JAGeX/3.1
+                <a v-bind:href="generateLink('/match/server:JAGeX/3.1')" target="_blank">/match/server:JAGeX/3.1</a>
               </div>
             </div>
           </li>
@@ -4001,7 +4001,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JBoss-EAP/7
+                <a v-bind:href="generateLink('/match/server:JBoss-EAP/7')" target="_blank">/match/server:JBoss-EAP/7</a>
               </div>
             </div>
           </li>
@@ -4011,7 +4011,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JDWS/2.0
+                <a v-bind:href="generateLink('/match/server:JDWS/2.0')" target="_blank">/match/server:JDWS/2.0</a>
               </div>
             </div>
           </li>
@@ -4021,7 +4021,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Jetty/20171016
+                <a v-bind:href="generateLink('/match/server:Jetty/20171016')" target="_blank">/match/server:Jetty/20171016</a>
               </div>
             </div>
           </li>
@@ -4031,7 +4031,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Jexus/5.8.3.12
+                <a v-bind:href="generateLink('/match/server:Jexus/5.8.3.12')" target="_blank">/match/server:Jexus/5.8.3.12</a>
               </div>
             </div>
           </li>
@@ -4041,7 +4041,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Jexus/5.8.3.19
+                <a v-bind:href="generateLink('/match/server:Jexus/5.8.3.19')" target="_blank">/match/server:Jexus/5.8.3.19</a>
               </div>
             </div>
           </li>
@@ -4051,7 +4051,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Jexus/6.1.42
+                <a v-bind:href="generateLink('/match/server:Jexus/6.1.42')" target="_blank">/match/server:Jexus/6.1.42</a>
               </div>
             </div>
           </li>
@@ -4061,7 +4061,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JSP3/2.0.14
+                <a v-bind:href="generateLink('/match/server:JSP3/2.0.14')" target="_blank">/match/server:JSP3/2.0.14</a>
               </div>
             </div>
           </li>
@@ -4071,7 +4071,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JSWS/1.0
+                <a v-bind:href="generateLink('/match/server:JSWS/1.0')" target="_blank">/match/server:JSWS/1.0</a>
               </div>
             </div>
           </li>
@@ -4081,7 +4081,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:JuanniuX/15.12.29
+                <a v-bind:href="generateLink('/match/server:JuanniuX/15.12.29')" target="_blank">/match/server:JuanniuX/15.12.29</a>
               </div>
             </div>
           </li>
@@ -4091,7 +4091,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:KAYAK/1.0
+                <a v-bind:href="generateLink('/match/server:KAYAK/1.0')" target="_blank">/match/server:KAYAK/1.0</a>
               </div>
             </div>
           </li>
@@ -4101,7 +4101,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:KkHttp/1.0.0
+                <a v-bind:href="generateLink('/match/server:KkHttp/1.0.0')" target="_blank">/match/server:KkHttp/1.0.0</a>
               </div>
             </div>
           </li>
@@ -4111,7 +4111,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:KONICHIWA/1.1
+                <a v-bind:href="generateLink('/match/server:KONICHIWA/1.1')" target="_blank">/match/server:KONICHIWA/1.1</a>
               </div>
             </div>
           </li>
@@ -4121,7 +4121,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LB/1.4
+                <a v-bind:href="generateLink('/match/server:LB/1.4')" target="_blank">/match/server:LB/1.4</a>
               </div>
             </div>
           </li>
@@ -4131,7 +4131,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LGHOST/3.0
+                <a v-bind:href="generateLink('/match/server:LGHOST/3.0')" target="_blank">/match/server:LGHOST/3.0</a>
               </div>
             </div>
           </li>
@@ -4141,7 +4141,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LiteSpeed/1.6.4
+                <a v-bind:href="generateLink('/match/server:LiteSpeed/1.6.4')" target="_blank">/match/server:LiteSpeed/1.6.4</a>
               </div>
             </div>
           </li>
@@ -4151,7 +4151,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LiteSpeed/5.4
+                <a v-bind:href="generateLink('/match/server:LiteSpeed/5.4')" target="_blank">/match/server:LiteSpeed/5.4</a>
               </div>
             </div>
           </li>
@@ -4161,7 +4161,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LiteSpeed/5.4.2
+                <a v-bind:href="generateLink('/match/server:LiteSpeed/5.4.2')" target="_blank">/match/server:LiteSpeed/5.4.2</a>
               </div>
             </div>
           </li>
@@ -4171,7 +4171,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LTMP/2.0
+                <a v-bind:href="generateLink('/match/server:LTMP/2.0')" target="_blank">/match/server:LTMP/2.0</a>
               </div>
             </div>
           </li>
@@ -4181,7 +4181,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:LWS/1.1
+                <a v-bind:href="generateLink('/match/server:LWS/1.1')" target="_blank">/match/server:LWS/1.1</a>
               </div>
             </div>
           </li>
@@ -4191,7 +4191,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Mathopd/1.5
+                <a v-bind:href="generateLink('/match/server:Mathopd/1.5')" target="_blank">/match/server:Mathopd/1.5</a>
               </div>
             </div>
           </li>
@@ -4201,7 +4201,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MediastreamCDN/2.0
+                <a v-bind:href="generateLink('/match/server:MediastreamCDN/2.0')" target="_blank">/match/server:MediastreamCDN/2.0</a>
               </div>
             </div>
           </li>
@@ -4211,7 +4211,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Medusa/1.12
+                <a v-bind:href="generateLink('/match/server:Medusa/1.12')" target="_blank">/match/server:Medusa/1.12</a>
               </div>
             </div>
           </li>
@@ -4221,7 +4221,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-Azure-Application-Gateway/v2
+                <a v-bind:href="generateLink('/match/server:Microsoft-Azure-Application-Gateway/v2')" target="_blank">/match/server:Microsoft-Azure-Application-Gateway/v2</a>
               </div>
             </div>
           </li>
@@ -4231,7 +4231,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-HTTPAPI/2.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-HTTPAPI/2.0')" target="_blank">/match/server:Microsoft-HTTPAPI/2.0</a>
               </div>
             </div>
           </li>
@@ -4241,7 +4241,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft/IIS
+                <a v-bind:href="generateLink('/match/server:Microsoft/IIS')" target="_blank">/match/server:Microsoft/IIS</a>
               </div>
             </div>
           </li>
@@ -4251,7 +4251,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/1.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/1.0')" target="_blank">/match/server:Microsoft-IIS/1.0</a>
               </div>
             </div>
           </li>
@@ -4261,7 +4261,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/10.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/10.0')" target="_blank">/match/server:Microsoft-IIS/10.0</a>
               </div>
             </div>
           </li>
@@ -4271,7 +4271,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/5.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/5.0')" target="_blank">/match/server:Microsoft-IIS/5.0</a>
               </div>
             </div>
           </li>
@@ -4281,7 +4281,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/5.1
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/5.1')" target="_blank">/match/server:Microsoft-IIS/5.1</a>
               </div>
             </div>
           </li>
@@ -4291,7 +4291,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/5.1.17.5
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/5.1.17.5')" target="_blank">/match/server:Microsoft-IIS/5.1.17.5</a>
               </div>
             </div>
           </li>
@@ -4301,7 +4301,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/5.5
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/5.5')" target="_blank">/match/server:Microsoft-IIS/5.5</a>
               </div>
             </div>
           </li>
@@ -4311,7 +4311,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/6.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/6.0')" target="_blank">/match/server:Microsoft-IIS/6.0</a>
               </div>
             </div>
           </li>
@@ -4321,7 +4321,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/7.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/7.0')" target="_blank">/match/server:Microsoft-IIS/7.0</a>
               </div>
             </div>
           </li>
@@ -4331,7 +4331,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/7.5
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/7.5')" target="_blank">/match/server:Microsoft-IIS/7.5</a>
               </div>
             </div>
           </li>
@@ -4341,7 +4341,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/7.5.7600
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/7.5.7600')" target="_blank">/match/server:Microsoft-IIS/7.5.7600</a>
               </div>
             </div>
           </li>
@@ -4351,7 +4351,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/8.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/8.0')" target="_blank">/match/server:Microsoft-IIS/8.0</a>
               </div>
             </div>
           </li>
@@ -4361,7 +4361,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-IIS/8.5
+                <a v-bind:href="generateLink('/match/server:Microsoft-IIS/8.5')" target="_blank">/match/server:Microsoft-IIS/8.5</a>
               </div>
             </div>
           </li>
@@ -4371,7 +4371,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-NetCore/2.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-NetCore/2.0')" target="_blank">/match/server:Microsoft-NetCore/2.0</a>
               </div>
             </div>
           </li>
@@ -4381,7 +4381,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MIFE/3.0
+                <a v-bind:href="generateLink('/match/server:MIFE/3.0')" target="_blank">/match/server:MIFE/3.0</a>
               </div>
             </div>
           </li>
@@ -4391,7 +4391,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MiniServ/1.910
+                <a v-bind:href="generateLink('/match/server:MiniServ/1.910')" target="_blank">/match/server:MiniServ/1.910</a>
               </div>
             </div>
           </li>
@@ -4401,7 +4401,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MiniServ/1.920
+                <a v-bind:href="generateLink('/match/server:MiniServ/1.920')" target="_blank">/match/server:MiniServ/1.920</a>
               </div>
             </div>
           </li>
@@ -4411,7 +4411,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MiniServ/1.930
+                <a v-bind:href="generateLink('/match/server:MiniServ/1.930')" target="_blank">/match/server:MiniServ/1.930</a>
               </div>
             </div>
           </li>
@@ -4421,7 +4421,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MiniServ/1.932
+                <a v-bind:href="generateLink('/match/server:MiniServ/1.932')" target="_blank">/match/server:MiniServ/1.932</a>
               </div>
             </div>
           </li>
@@ -4431,7 +4431,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MJWS/Weather3.3
+                <a v-bind:href="generateLink('/match/server:MJWS/Weather3.3')" target="_blank">/match/server:MJWS/Weather3.3</a>
               </div>
             </div>
           </li>
@@ -4441,7 +4441,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MOCA/2.0
+                <a v-bind:href="generateLink('/match/server:MOCA/2.0')" target="_blank">/match/server:MOCA/2.0</a>
               </div>
             </div>
           </li>
@@ -4451,7 +4451,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MonkeyButler/1.0
+                <a v-bind:href="generateLink('/match/server:MonkeyButler/1.0')" target="_blank">/match/server:MonkeyButler/1.0</a>
               </div>
             </div>
           </li>
@@ -4461,7 +4461,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Mono-HTTPAPI/1.0
+                <a v-bind:href="generateLink('/match/server:Mono-HTTPAPI/1.0')" target="_blank">/match/server:Mono-HTTPAPI/1.0</a>
               </div>
             </div>
           </li>
@@ -4471,7 +4471,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MTS/1.0
+                <a v-bind:href="generateLink('/match/server:MTS/1.0')" target="_blank">/match/server:MTS/1.0</a>
               </div>
             </div>
           </li>
@@ -4481,7 +4481,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:MYBWS/1.1
+                <a v-bind:href="generateLink('/match/server:MYBWS/1.1')" target="_blank">/match/server:MYBWS/1.1</a>
               </div>
             </div>
           </li>
@@ -4491,7 +4491,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NaviServer/4.99.10
+                <a v-bind:href="generateLink('/match/server:NaviServer/4.99.10')" target="_blank">/match/server:NaviServer/4.99.10</a>
               </div>
             </div>
           </li>
@@ -4501,7 +4501,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NaviServer/4.99.15
+                <a v-bind:href="generateLink('/match/server:NaviServer/4.99.15')" target="_blank">/match/server:NaviServer/4.99.15</a>
               </div>
             </div>
           </li>
@@ -4511,7 +4511,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NaviServer/4.99.16d10
+                <a v-bind:href="generateLink('/match/server:NaviServer/4.99.16d10')" target="_blank">/match/server:NaviServer/4.99.16d10</a>
               </div>
             </div>
           </li>
@@ -4521,7 +4521,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NCSA/1.4.2
+                <a v-bind:href="generateLink('/match/server:NCSA/1.4.2')" target="_blank">/match/server:NCSA/1.4.2</a>
               </div>
             </div>
           </li>
@@ -4531,7 +4531,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NCSA/1.42
+                <a v-bind:href="generateLink('/match/server:NCSA/1.42')" target="_blank">/match/server:NCSA/1.42</a>
               </div>
             </div>
           </li>
@@ -4541,7 +4541,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NCSA/1.5.1
+                <a v-bind:href="generateLink('/match/server:NCSA/1.5.1')" target="_blank">/match/server:NCSA/1.5.1</a>
               </div>
             </div>
           </li>
@@ -4551,7 +4551,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NetDNA-cache/2.2
+                <a v-bind:href="generateLink('/match/server:NetDNA-cache/2.2')" target="_blank">/match/server:NetDNA-cache/2.2</a>
               </div>
             </div>
           </li>
@@ -4561,7 +4561,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/2.14.12-02
+                <a v-bind:href="generateLink('/match/server:Nexus/2.14.12-02')" target="_blank">/match/server:Nexus/2.14.12-02</a>
               </div>
             </div>
           </li>
@@ -4571,7 +4571,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/2.14.15-01
+                <a v-bind:href="generateLink('/match/server:Nexus/2.14.15-01')" target="_blank">/match/server:Nexus/2.14.15-01</a>
               </div>
             </div>
           </li>
@@ -4581,7 +4581,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/3.15.2-01
+                <a v-bind:href="generateLink('/match/server:Nexus/3.15.2-01')" target="_blank">/match/server:Nexus/3.15.2-01</a>
               </div>
             </div>
           </li>
@@ -4591,7 +4591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/3.18.0-01
+                <a v-bind:href="generateLink('/match/server:Nexus/3.18.0-01')" target="_blank">/match/server:Nexus/3.18.0-01</a>
               </div>
             </div>
           </li>
@@ -4601,7 +4601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/3.18.1-01
+                <a v-bind:href="generateLink('/match/server:Nexus/3.18.1-01')" target="_blank">/match/server:Nexus/3.18.1-01</a>
               </div>
             </div>
           </li>
@@ -4611,7 +4611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/3.19.1-01
+                <a v-bind:href="generateLink('/match/server:Nexus/3.19.1-01')" target="_blank">/match/server:Nexus/3.19.1-01</a>
               </div>
             </div>
           </li>
@@ -4621,7 +4621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nexus/3.5.1-02
+                <a v-bind:href="generateLink('/match/server:Nexus/3.5.1-02')" target="_blank">/match/server:Nexus/3.5.1-02</a>
               </div>
             </div>
           </li>
@@ -4631,7 +4631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nginx
+                <a v-bind:href="generateLink('/match/server:Nginx')" target="_blank">/match/server:Nginx</a>
               </div>
             </div>
           </li>
@@ -4641,7 +4641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NGX-GATEWAY/1.0
+                <a v-bind:href="generateLink('/match/server:NGX-GATEWAY/1.0')" target="_blank">/match/server:NGX-GATEWAY/1.0</a>
               </div>
             </div>
           </li>
@@ -4651,7 +4651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NHN/ND-Server
+                <a v-bind:href="generateLink('/match/server:NHN/ND-Server')" target="_blank">/match/server:NHN/ND-Server</a>
               </div>
             </div>
           </li>
@@ -4661,7 +4661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NiceFastDataServer/1.1
+                <a v-bind:href="generateLink('/match/server:NiceFastDataServer/1.1')" target="_blank">/match/server:NiceFastDataServer/1.1</a>
               </div>
             </div>
           </li>
@@ -4671,7 +4671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nimble/3.6.0-3
+                <a v-bind:href="generateLink('/match/server:Nimble/3.6.0-3')" target="_blank">/match/server:Nimble/3.6.0-3</a>
               </div>
             </div>
           </li>
@@ -4681,7 +4681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nimble/3.6.1-1
+                <a v-bind:href="generateLink('/match/server:Nimble/3.6.1-1')" target="_blank">/match/server:Nimble/3.6.1-1</a>
               </div>
             </div>
           </li>
@@ -4691,7 +4691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nimble/3.6.2-1
+                <a v-bind:href="generateLink('/match/server:Nimble/3.6.2-1')" target="_blank">/match/server:Nimble/3.6.2-1</a>
               </div>
             </div>
           </li>
@@ -4701,7 +4701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Nimble/3.6.2-2
+                <a v-bind:href="generateLink('/match/server:Nimble/3.6.2-2')" target="_blank">/match/server:Nimble/3.6.2-2</a>
               </div>
             </div>
           </li>
@@ -4711,7 +4711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:NuCDN/v2.53.3
+                <a v-bind:href="generateLink('/match/server:NuCDN/v2.53.3')" target="_blank">/match/server:NuCDN/v2.53.3</a>
               </div>
             </div>
           </li>
@@ -4721,7 +4721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OFE/0.1
+                <a v-bind:href="generateLink('/match/server:OFE/0.1')" target="_blank">/match/server:OFE/0.1</a>
               </div>
             </div>
           </li>
@@ -4731,7 +4731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/10.5.3
+                <a v-bind:href="generateLink('/match/server:OpenCms/10.5.3')" target="_blank">/match/server:OpenCms/10.5.3</a>
               </div>
             </div>
           </li>
@@ -4741,7 +4741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/10.5.4
+                <a v-bind:href="generateLink('/match/server:OpenCms/10.5.4')" target="_blank">/match/server:OpenCms/10.5.4</a>
               </div>
             </div>
           </li>
@@ -4751,7 +4751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/11.0.0
+                <a v-bind:href="generateLink('/match/server:OpenCms/11.0.0')" target="_blank">/match/server:OpenCms/11.0.0</a>
               </div>
             </div>
           </li>
@@ -4761,7 +4761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/11.0.0_beta
+                <a v-bind:href="generateLink('/match/server:OpenCms/11.0.0_beta')" target="_blank">/match/server:OpenCms/11.0.0_beta</a>
               </div>
             </div>
           </li>
@@ -4771,7 +4771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/11.0.1
+                <a v-bind:href="generateLink('/match/server:OpenCms/11.0.1')" target="_blank">/match/server:OpenCms/11.0.1</a>
               </div>
             </div>
           </li>
@@ -4781,7 +4781,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/8.0.4
+                <a v-bind:href="generateLink('/match/server:OpenCms/8.0.4')" target="_blank">/match/server:OpenCms/8.0.4</a>
               </div>
             </div>
           </li>
@@ -4791,7 +4791,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OpenCms/9.5.2
+                <a v-bind:href="generateLink('/match/server:OpenCms/9.5.2')" target="_blank">/match/server:OpenCms/9.5.2</a>
               </div>
             </div>
           </li>
@@ -4801,7 +4801,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OPTIMUS/1.11.2.4_21
+                <a v-bind:href="generateLink('/match/server:OPTIMUS/1.11.2.4_21')" target="_blank">/match/server:OPTIMUS/1.11.2.4_21</a>
               </div>
             </div>
           </li>
@@ -4811,7 +4811,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Application-Server-10g/10.1.2.0.0
+                <a v-bind:href="generateLink('/match/server:Oracle-Application-Server-10g/10.1.2.0.0')" target="_blank">/match/server:Oracle-Application-Server-10g/10.1.2.0.0</a>
               </div>
             </div>
           </li>
@@ -4821,7 +4821,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Application-Server-10g/10.1.2.0.2
+                <a v-bind:href="generateLink('/match/server:Oracle-Application-Server-10g/10.1.2.0.2')" target="_blank">/match/server:Oracle-Application-Server-10g/10.1.2.0.2</a>
               </div>
             </div>
           </li>
@@ -4831,7 +4831,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Application-Server-10g/10.1.2.2.0
+                <a v-bind:href="generateLink('/match/server:Oracle-Application-Server-10g/10.1.2.2.0')" target="_blank">/match/server:Oracle-Application-Server-10g/10.1.2.2.0</a>
               </div>
             </div>
           </li>
@@ -4841,7 +4841,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Application-Server-11g/11.1.1.7.0
+                <a v-bind:href="generateLink('/match/server:Oracle-Application-Server-11g/11.1.1.7.0')" target="_blank">/match/server:Oracle-Application-Server-11g/11.1.1.7.0</a>
               </div>
             </div>
           </li>
@@ -4851,7 +4851,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Fusion-Middleware/11g
+                <a v-bind:href="generateLink('/match/server:Oracle-Fusion-Middleware/11g')" target="_blank">/match/server:Oracle-Fusion-Middleware/11g</a>
               </div>
             </div>
           </li>
@@ -4861,7 +4861,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-iPlanet-Web-Server/7.0
+                <a v-bind:href="generateLink('/match/server:Oracle-iPlanet-Web-Server/7.0')" target="_blank">/match/server:Oracle-iPlanet-Web-Server/7.0</a>
               </div>
             </div>
           </li>
@@ -4871,7 +4871,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Oracle-Traffic-Director/12.2.1.3.0
+                <a v-bind:href="generateLink('/match/server:Oracle-Traffic-Director/12.2.1.3.0')" target="_blank">/match/server:Oracle-Traffic-Director/12.2.1.3.0</a>
               </div>
             </div>
           </li>
@@ -4881,7 +4881,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:OXGW/16.167.2
+                <a v-bind:href="generateLink('/match/server:OXGW/16.167.2')" target="_blank">/match/server:OXGW/16.167.2</a>
               </div>
             </div>
           </li>
@@ -4891,7 +4891,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Pagely-ARES/1.5.1
+                <a v-bind:href="generateLink('/match/server:Pagely-ARES/1.5.1')" target="_blank">/match/server:Pagely-ARES/1.5.1</a>
               </div>
             </div>
           </li>
@@ -4901,7 +4901,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PasteWSGIServer/0.5
+                <a v-bind:href="generateLink('/match/server:PasteWSGIServer/0.5')" target="_blank">/match/server:PasteWSGIServer/0.5</a>
               </div>
             </div>
           </li>
@@ -4911,7 +4911,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PBX/63.0
+                <a v-bind:href="generateLink('/match/server:PBX/63.0')" target="_blank">/match/server:PBX/63.0</a>
               </div>
             </div>
           </li>
@@ -4921,7 +4921,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PBX/63.0.2
+                <a v-bind:href="generateLink('/match/server:PBX/63.0.2')" target="_blank">/match/server:PBX/63.0.2</a>
               </div>
             </div>
           </li>
@@ -4931,7 +4931,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PBX/63.0.4
+                <a v-bind:href="generateLink('/match/server:PBX/63.0.4')" target="_blank">/match/server:PBX/63.0.4</a>
               </div>
             </div>
           </li>
@@ -4941,7 +4941,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PBX/63.0.5
+                <a v-bind:href="generateLink('/match/server:PBX/63.0.5')" target="_blank">/match/server:PBX/63.0.5</a>
               </div>
             </div>
           </li>
@@ -4951,7 +4951,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PBX/63.0.6
+                <a v-bind:href="generateLink('/match/server:PBX/63.0.6')" target="_blank">/match/server:PBX/63.0.6</a>
               </div>
             </div>
           </li>
@@ -4961,7 +4961,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PCX/No-Cache
+                <a v-bind:href="generateLink('/match/server:PCX/No-Cache')" target="_blank">/match/server:PCX/No-Cache</a>
               </div>
             </div>
           </li>
@@ -4971,7 +4971,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PentaSSLWaf/1.0
+                <a v-bind:href="generateLink('/match/server:PentaSSLWaf/1.0')" target="_blank">/match/server:PentaSSLWaf/1.0</a>
               </div>
             </div>
           </li>
@@ -4981,7 +4981,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Pepyaka/1.13.10
+                <a v-bind:href="generateLink('/match/server:Pepyaka/1.13.10')" target="_blank">/match/server:Pepyaka/1.13.10</a>
               </div>
             </div>
           </li>
@@ -4991,7 +4991,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Pepyaka/1.15.10
+                <a v-bind:href="generateLink('/match/server:Pepyaka/1.15.10')" target="_blank">/match/server:Pepyaka/1.15.10</a>
               </div>
             </div>
           </li>
@@ -5001,7 +5001,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PokeCDN/2
+                <a v-bind:href="generateLink('/match/server:PokeCDN/2')" target="_blank">/match/server:PokeCDN/2</a>
               </div>
             </div>
           </li>
@@ -5011,7 +5011,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PowerBoutique/2.2.3/10.0.0
+                <a v-bind:href="generateLink('/match/server:PowerBoutique/2.2.3/10.0.0')" target="_blank">/match/server:PowerBoutique/2.2.3/10.0.0</a>
               </div>
             </div>
           </li>
@@ -5021,7 +5021,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Prayer/1.3.5
+                <a v-bind:href="generateLink('/match/server:Prayer/1.3.5')" target="_blank">/match/server:Prayer/1.3.5</a>
               </div>
             </div>
           </li>
@@ -5031,7 +5031,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Primenets/1.0
+                <a v-bind:href="generateLink('/match/server:Primenets/1.0')" target="_blank">/match/server:Primenets/1.0</a>
               </div>
             </div>
           </li>
@@ -5041,7 +5041,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PRTG/19.4.52.3515
+                <a v-bind:href="generateLink('/match/server:PRTG/19.4.52.3515')" target="_blank">/match/server:PRTG/19.4.52.3515</a>
               </div>
             </div>
           </li>
@@ -5051,7 +5051,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PWS/1.0.0
+                <a v-bind:href="generateLink('/match/server:PWS/1.0.0')" target="_blank">/match/server:PWS/1.0.0</a>
               </div>
             </div>
           </li>
@@ -5061,7 +5061,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PWS/8.3.1.0.8
+                <a v-bind:href="generateLink('/match/server:PWS/8.3.1.0.8')" target="_blank">/match/server:PWS/8.3.1.0.8</a>
               </div>
             </div>
           </li>
@@ -5071,7 +5071,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PWS/8.3.2.1.0001
+                <a v-bind:href="generateLink('/match/server:PWS/8.3.2.1.0001')" target="_blank">/match/server:PWS/8.3.2.1.0001</a>
               </div>
             </div>
           </li>
@@ -5081,7 +5081,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:PWS/8.3.2.7
+                <a v-bind:href="generateLink('/match/server:PWS/8.3.2.7')" target="_blank">/match/server:PWS/8.3.2.7</a>
               </div>
             </div>
           </li>
@@ -5091,7 +5091,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Python/3.5
+                <a v-bind:href="generateLink('/match/server:Python/3.5')" target="_blank">/match/server:Python/3.5</a>
               </div>
             </div>
           </li>
@@ -5101,7 +5101,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Python/3.6
+                <a v-bind:href="generateLink('/match/server:Python/3.6')" target="_blank">/match/server:Python/3.6</a>
               </div>
             </div>
           </li>
@@ -5111,7 +5111,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Python/3.7
+                <a v-bind:href="generateLink('/match/server:Python/3.7')" target="_blank">/match/server:Python/3.7</a>
               </div>
             </div>
           </li>
@@ -5121,7 +5121,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Python/3.8
+                <a v-bind:href="generateLink('/match/server:Python/3.8')" target="_blank">/match/server:Python/3.8</a>
               </div>
             </div>
           </li>
@@ -5131,7 +5131,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Qnginx/1.3.2
+                <a v-bind:href="generateLink('/match/server:Qnginx/1.3.2')" target="_blank">/match/server:Qnginx/1.3.2</a>
               </div>
             </div>
           </li>
@@ -5141,7 +5141,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Qnginx/1.3.3
+                <a v-bind:href="generateLink('/match/server:Qnginx/1.3.3')" target="_blank">/match/server:Qnginx/1.3.3</a>
               </div>
             </div>
           </li>
@@ -5151,7 +5151,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:QTL_Cache/1.16.1.1.1.10
+                <a v-bind:href="generateLink('/match/server:QTL_Cache/1.16.1.1.1.10')" target="_blank">/match/server:QTL_Cache/1.16.1.1.1.10</a>
               </div>
             </div>
           </li>
@@ -5161,7 +5161,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:QWS/1.0
+                <a v-bind:href="generateLink('/match/server:QWS/1.0')" target="_blank">/match/server:QWS/1.0</a>
               </div>
             </div>
           </li>
@@ -5171,7 +5171,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:QWS/1.12.1
+                <a v-bind:href="generateLink('/match/server:QWS/1.12.1')" target="_blank">/match/server:QWS/1.12.1</a>
               </div>
             </div>
           </li>
@@ -5181,7 +5181,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:QWS/1.14.0
+                <a v-bind:href="generateLink('/match/server:QWS/1.14.0')" target="_blank">/match/server:QWS/1.14.0</a>
               </div>
             </div>
           </li>
@@ -5191,7 +5191,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Range-ID/425.291-P56
+                <a v-bind:href="generateLink('/match/server:Range-ID/425.291-P56')" target="_blank">/match/server:Range-ID/425.291-P56</a>
               </div>
             </div>
           </li>
@@ -5201,7 +5201,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.0.18
+                <a v-bind:href="generateLink('/match/server:Resin/3.0.18')" target="_blank">/match/server:Resin/3.0.18</a>
               </div>
             </div>
           </li>
@@ -5211,7 +5211,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.0.24
+                <a v-bind:href="generateLink('/match/server:Resin/3.0.24')" target="_blank">/match/server:Resin/3.0.24</a>
               </div>
             </div>
           </li>
@@ -5221,7 +5221,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.1.10
+                <a v-bind:href="generateLink('/match/server:Resin/3.1.10')" target="_blank">/match/server:Resin/3.1.10</a>
               </div>
             </div>
           </li>
@@ -5231,7 +5231,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.1.14
+                <a v-bind:href="generateLink('/match/server:Resin/3.1.14')" target="_blank">/match/server:Resin/3.1.14</a>
               </div>
             </div>
           </li>
@@ -5241,7 +5241,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.1.7a
+                <a v-bind:href="generateLink('/match/server:Resin/3.1.7a')" target="_blank">/match/server:Resin/3.1.7a</a>
               </div>
             </div>
           </li>
@@ -5251,7 +5251,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/3.1.8
+                <a v-bind:href="generateLink('/match/server:Resin/3.1.8')" target="_blank">/match/server:Resin/3.1.8</a>
               </div>
             </div>
           </li>
@@ -5261,7 +5261,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.33
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.33')" target="_blank">/match/server:Resin/4.0.33</a>
               </div>
             </div>
           </li>
@@ -5271,7 +5271,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.37
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.37')" target="_blank">/match/server:Resin/4.0.37</a>
               </div>
             </div>
           </li>
@@ -5281,7 +5281,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.40
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.40')" target="_blank">/match/server:Resin/4.0.40</a>
               </div>
             </div>
           </li>
@@ -5291,7 +5291,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.43
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.43')" target="_blank">/match/server:Resin/4.0.43</a>
               </div>
             </div>
           </li>
@@ -5301,7 +5301,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.47
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.47')" target="_blank">/match/server:Resin/4.0.47</a>
               </div>
             </div>
           </li>
@@ -5311,7 +5311,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.48
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.48')" target="_blank">/match/server:Resin/4.0.48</a>
               </div>
             </div>
           </li>
@@ -5321,7 +5321,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.51
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.51')" target="_blank">/match/server:Resin/4.0.51</a>
               </div>
             </div>
           </li>
@@ -5331,7 +5331,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.53
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.53')" target="_blank">/match/server:Resin/4.0.53</a>
               </div>
             </div>
           </li>
@@ -5341,7 +5341,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Resin/4.0.56
+                <a v-bind:href="generateLink('/match/server:Resin/4.0.56')" target="_blank">/match/server:Resin/4.0.56</a>
               </div>
             </div>
           </li>
@@ -5351,7 +5351,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Restlet-Framework/2.2.0
+                <a v-bind:href="generateLink('/match/server:Restlet-Framework/2.2.0')" target="_blank">/match/server:Restlet-Framework/2.2.0</a>
               </div>
             </div>
           </li>
@@ -5361,7 +5361,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Restlet-Framework/2.3.11
+                <a v-bind:href="generateLink('/match/server:Restlet-Framework/2.3.11')" target="_blank">/match/server:Restlet-Framework/2.3.11</a>
               </div>
             </div>
           </li>
@@ -5371,7 +5371,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Retargeting/v2.0.30-407-gd717b3a
+                <a v-bind:href="generateLink('/match/server:Retargeting/v2.0.30-407-gd717b3a')" target="_blank">/match/server:Retargeting/v2.0.30-407-gd717b3a</a>
               </div>
             </div>
           </li>
@@ -5381,7 +5381,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Roxen/6.1.215-r3
+                <a v-bind:href="generateLink('/match/server:Roxen/6.1.215-r3')" target="_blank">/match/server:Roxen/6.1.215-r3</a>
               </div>
             </div>
           </li>
@@ -5391,7 +5391,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Roxen/6.1.217-r3
+                <a v-bind:href="generateLink('/match/server:Roxen/6.1.217-r3')" target="_blank">/match/server:Roxen/6.1.217-r3</a>
               </div>
             </div>
           </li>
@@ -5401,7 +5401,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:RTC/5.0
+                <a v-bind:href="generateLink('/match/server:RTC/5.0')" target="_blank">/match/server:RTC/5.0</a>
               </div>
             </div>
           </li>
@@ -5411,7 +5411,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:RTC/6.0
+                <a v-bind:href="generateLink('/match/server:RTC/6.0')" target="_blank">/match/server:RTC/6.0</a>
               </div>
             </div>
           </li>
@@ -5421,7 +5421,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:RTC/7.0
+                <a v-bind:href="generateLink('/match/server:RTC/7.0')" target="_blank">/match/server:RTC/7.0</a>
               </div>
             </div>
           </li>
@@ -5431,7 +5431,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:RUMP/19.02.23.1158
+                <a v-bind:href="generateLink('/match/server:RUMP/19.02.23.1158')" target="_blank">/match/server:RUMP/19.02.23.1158</a>
               </div>
             </div>
           </li>
@@ -5441,7 +5441,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:SelenaWBX/7.1.4
+                <a v-bind:href="generateLink('/match/server:SelenaWBX/7.1.4')" target="_blank">/match/server:SelenaWBX/7.1.4</a>
               </div>
             </div>
           </li>
@@ -5451,7 +5451,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Serenity/v3.4-1-g10da380
+                <a v-bind:href="generateLink('/match/server:Serenity/v3.4-1-g10da380')" target="_blank">/match/server:Serenity/v3.4-1-g10da380</a>
               </div>
             </div>
           </li>
@@ -5461,7 +5461,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Server/2.3.2
+                <a v-bind:href="generateLink('/match/server:Server/2.3.2')" target="_blank">/match/server:Server/2.3.2</a>
               </div>
             </div>
           </li>
@@ -5471,7 +5471,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:SimpleHTTP/0.6
+                <a v-bind:href="generateLink('/match/server:SimpleHTTP/0.6')" target="_blank">/match/server:SimpleHTTP/0.6</a>
               </div>
             </div>
           </li>
@@ -5481,7 +5481,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:SMA/12.1
+                <a v-bind:href="generateLink('/match/server:SMA/12.1')" target="_blank">/match/server:SMA/12.1</a>
               </div>
             </div>
           </li>
@@ -5491,7 +5491,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Sopush/0.22.0
+                <a v-bind:href="generateLink('/match/server:Sopush/0.22.0')" target="_blank">/match/server:Sopush/0.22.0</a>
               </div>
             </div>
           </li>
@@ -5501,7 +5501,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Sparkred/1.0
+                <a v-bind:href="generateLink('/match/server:Sparkred/1.0')" target="_blank">/match/server:Sparkred/1.0</a>
               </div>
             </div>
           </li>
@@ -5511,7 +5511,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:STP/2.0
+                <a v-bind:href="generateLink('/match/server:STP/2.0')" target="_blank">/match/server:STP/2.0</a>
               </div>
             </div>
           </li>
@@ -5521,7 +5521,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Stratus/7
+                <a v-bind:href="generateLink('/match/server:Stratus/7')" target="_blank">/match/server:Stratus/7</a>
               </div>
             </div>
           </li>
@@ -5531,7 +5531,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Sucuri/Cloudproxy
+                <a v-bind:href="generateLink('/match/server:Sucuri/Cloudproxy')" target="_blank">/match/server:Sucuri/Cloudproxy</a>
               </div>
             </div>
           </li>
@@ -5541,7 +5541,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Sun-Java-System-Web-Server/7.0
+                <a v-bind:href="generateLink('/match/server:Sun-Java-System-Web-Server/7.0')" target="_blank">/match/server:Sun-Java-System-Web-Server/7.0</a>
               </div>
             </div>
           </li>
@@ -5551,7 +5551,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Sun-ONE-Web-Server/6.1
+                <a v-bind:href="generateLink('/match/server:Sun-ONE-Web-Server/6.1')" target="_blank">/match/server:Sun-ONE-Web-Server/6.1</a>
               </div>
             </div>
           </li>
@@ -5561,7 +5561,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:SurgeCDN/1.3.0
+                <a v-bind:href="generateLink('/match/server:SurgeCDN/1.3.0')" target="_blank">/match/server:SurgeCDN/1.3.0</a>
               </div>
             </div>
           </li>
@@ -5571,7 +5571,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Synapse/1.4.0
+                <a v-bind:href="generateLink('/match/server:Synapse/1.4.0')" target="_blank">/match/server:Synapse/1.4.0</a>
               </div>
             </div>
           </li>
@@ -5581,7 +5581,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Synapse/1.7.0
+                <a v-bind:href="generateLink('/match/server:Synapse/1.7.0')" target="_blank">/match/server:Synapse/1.7.0</a>
               </div>
             </div>
           </li>
@@ -5591,7 +5591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Synapse/1.7.2
+                <a v-bind:href="generateLink('/match/server:Synapse/1.7.2')" target="_blank">/match/server:Synapse/1.7.2</a>
               </div>
             </div>
           </li>
@@ -5601,7 +5601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Teletype.Server/3.4.7
+                <a v-bind:href="generateLink('/match/server:Teletype.Server/3.4.7')" target="_blank">/match/server:Teletype.Server/3.4.7</a>
               </div>
             </div>
           </li>
@@ -5611,7 +5611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/1.4.2
+                <a v-bind:href="generateLink('/match/server:Tengine/1.4.2')" target="_blank">/match/server:Tengine/1.4.2</a>
               </div>
             </div>
           </li>
@@ -5621,7 +5621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/1.4.4
+                <a v-bind:href="generateLink('/match/server:Tengine/1.4.4')" target="_blank">/match/server:Tengine/1.4.4</a>
               </div>
             </div>
           </li>
@@ -5631,7 +5631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/1.5.1
+                <a v-bind:href="generateLink('/match/server:Tengine/1.5.1')" target="_blank">/match/server:Tengine/1.5.1</a>
               </div>
             </div>
           </li>
@@ -5641,7 +5641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/1.5.2
+                <a v-bind:href="generateLink('/match/server:Tengine/1.5.2')" target="_blank">/match/server:Tengine/1.5.2</a>
               </div>
             </div>
           </li>
@@ -5651,7 +5651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.0.0
+                <a v-bind:href="generateLink('/match/server:Tengine/2.0.0')" target="_blank">/match/server:Tengine/2.0.0</a>
               </div>
             </div>
           </li>
@@ -5661,7 +5661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.0.1
+                <a v-bind:href="generateLink('/match/server:Tengine/2.0.1')" target="_blank">/match/server:Tengine/2.0.1</a>
               </div>
             </div>
           </li>
@@ -5671,7 +5671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.0.2
+                <a v-bind:href="generateLink('/match/server:Tengine/2.0.2')" target="_blank">/match/server:Tengine/2.0.2</a>
               </div>
             </div>
           </li>
@@ -5681,7 +5681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.0.3
+                <a v-bind:href="generateLink('/match/server:Tengine/2.0.3')" target="_blank">/match/server:Tengine/2.0.3</a>
               </div>
             </div>
           </li>
@@ -5691,7 +5691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.1.0
+                <a v-bind:href="generateLink('/match/server:Tengine/2.1.0')" target="_blank">/match/server:Tengine/2.1.0</a>
               </div>
             </div>
           </li>
@@ -5701,7 +5701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.1.1
+                <a v-bind:href="generateLink('/match/server:Tengine/2.1.1')" target="_blank">/match/server:Tengine/2.1.1</a>
               </div>
             </div>
           </li>
@@ -5711,7 +5711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.1.2
+                <a v-bind:href="generateLink('/match/server:Tengine/2.1.2')" target="_blank">/match/server:Tengine/2.1.2</a>
               </div>
             </div>
           </li>
@@ -5721,7 +5721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.1.3_400
+                <a v-bind:href="generateLink('/match/server:Tengine/2.1.3_400')" target="_blank">/match/server:Tengine/2.1.3_400</a>
               </div>
             </div>
           </li>
@@ -5731,7 +5731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.1.4_510366
+                <a v-bind:href="generateLink('/match/server:Tengine/2.1.4_510366')" target="_blank">/match/server:Tengine/2.1.4_510366</a>
               </div>
             </div>
           </li>
@@ -5741,7 +5741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.2.0
+                <a v-bind:href="generateLink('/match/server:Tengine/2.2.0')" target="_blank">/match/server:Tengine/2.2.0</a>
               </div>
             </div>
           </li>
@@ -5751,7 +5751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.2.1
+                <a v-bind:href="generateLink('/match/server:Tengine/2.2.1')" target="_blank">/match/server:Tengine/2.2.1</a>
               </div>
             </div>
           </li>
@@ -5761,7 +5761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.2.2
+                <a v-bind:href="generateLink('/match/server:Tengine/2.2.2')" target="_blank">/match/server:Tengine/2.2.2</a>
               </div>
             </div>
           </li>
@@ -5771,7 +5771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.2.3
+                <a v-bind:href="generateLink('/match/server:Tengine/2.2.3')" target="_blank">/match/server:Tengine/2.2.3</a>
               </div>
             </div>
           </li>
@@ -5781,7 +5781,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.3.0
+                <a v-bind:href="generateLink('/match/server:Tengine/2.3.0')" target="_blank">/match/server:Tengine/2.3.0</a>
               </div>
             </div>
           </li>
@@ -5791,7 +5791,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.3.1
+                <a v-bind:href="generateLink('/match/server:Tengine/2.3.1')" target="_blank">/match/server:Tengine/2.3.1</a>
               </div>
             </div>
           </li>
@@ -5801,7 +5801,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/2.3.2
+                <a v-bind:href="generateLink('/match/server:Tengine/2.3.2')" target="_blank">/match/server:Tengine/2.3.2</a>
               </div>
             </div>
           </li>
@@ -5811,7 +5811,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/Aserver
+                <a v-bind:href="generateLink('/match/server:Tengine/Aserver')" target="_blank">/match/server:Tengine/Aserver</a>
               </div>
             </div>
           </li>
@@ -5821,7 +5821,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tengine/Aserver/3.0.146_1169613
+                <a v-bind:href="generateLink('/match/server:Tengine/Aserver/3.0.146_1169613')" target="_blank">/match/server:Tengine/Aserver/3.0.146_1169613</a>
               </div>
             </div>
           </li>
@@ -5831,7 +5831,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Titania/8.0
+                <a v-bind:href="generateLink('/match/server:Titania/8.0')" target="_blank">/match/server:Titania/8.0</a>
               </div>
             </div>
           </li>
@@ -5841,7 +5841,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Tomcat/1469.231
+                <a v-bind:href="generateLink('/match/server:Tomcat/1469.231')" target="_blank">/match/server:Tomcat/1469.231</a>
               </div>
             </div>
           </li>
@@ -5851,7 +5851,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/2.1.1git
+                <a v-bind:href="generateLink('/match/server:TornadoServer/2.1.1git')" target="_blank">/match/server:TornadoServer/2.1.1git</a>
               </div>
             </div>
           </li>
@@ -5861,7 +5861,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/2.4.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/2.4.1')" target="_blank">/match/server:TornadoServer/2.4.1</a>
               </div>
             </div>
           </li>
@@ -5871,7 +5871,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/3.0.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/3.0.1')" target="_blank">/match/server:TornadoServer/3.0.1</a>
               </div>
             </div>
           </li>
@@ -5881,7 +5881,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/3.2.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/3.2.1')" target="_blank">/match/server:TornadoServer/3.2.1</a>
               </div>
             </div>
           </li>
@@ -5891,7 +5891,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/3.2.2
+                <a v-bind:href="generateLink('/match/server:TornadoServer/3.2.2')" target="_blank">/match/server:TornadoServer/3.2.2</a>
               </div>
             </div>
           </li>
@@ -5901,7 +5901,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.0.2
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.0.2')" target="_blank">/match/server:TornadoServer/4.0.2</a>
               </div>
             </div>
           </li>
@@ -5911,7 +5911,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.1')" target="_blank">/match/server:TornadoServer/4.1</a>
               </div>
             </div>
           </li>
@@ -5921,7 +5921,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.2
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.2')" target="_blank">/match/server:TornadoServer/4.2</a>
               </div>
             </div>
           </li>
@@ -5931,7 +5931,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.2.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.2.1')" target="_blank">/match/server:TornadoServer/4.2.1</a>
               </div>
             </div>
           </li>
@@ -5941,7 +5941,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.3
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.3')" target="_blank">/match/server:TornadoServer/4.3</a>
               </div>
             </div>
           </li>
@@ -5951,7 +5951,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.4.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.4.1')" target="_blank">/match/server:TornadoServer/4.4.1</a>
               </div>
             </div>
           </li>
@@ -5961,7 +5961,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.4.2
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.4.2')" target="_blank">/match/server:TornadoServer/4.4.2</a>
               </div>
             </div>
           </li>
@@ -5971,7 +5971,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.4.3
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.4.3')" target="_blank">/match/server:TornadoServer/4.4.3</a>
               </div>
             </div>
           </li>
@@ -5981,7 +5981,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.5
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.5')" target="_blank">/match/server:TornadoServer/4.5</a>
               </div>
             </div>
           </li>
@@ -5991,7 +5991,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.5.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.5.1')" target="_blank">/match/server:TornadoServer/4.5.1</a>
               </div>
             </div>
           </li>
@@ -6001,7 +6001,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/4.5.3
+                <a v-bind:href="generateLink('/match/server:TornadoServer/4.5.3')" target="_blank">/match/server:TornadoServer/4.5.3</a>
               </div>
             </div>
           </li>
@@ -6011,7 +6011,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/5.0
+                <a v-bind:href="generateLink('/match/server:TornadoServer/5.0')" target="_blank">/match/server:TornadoServer/5.0</a>
               </div>
             </div>
           </li>
@@ -6021,7 +6021,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/5.0.2
+                <a v-bind:href="generateLink('/match/server:TornadoServer/5.0.2')" target="_blank">/match/server:TornadoServer/5.0.2</a>
               </div>
             </div>
           </li>
@@ -6031,7 +6031,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/5.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/5.1')" target="_blank">/match/server:TornadoServer/5.1</a>
               </div>
             </div>
           </li>
@@ -6041,7 +6041,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/5.1.1
+                <a v-bind:href="generateLink('/match/server:TornadoServer/5.1.1')" target="_blank">/match/server:TornadoServer/5.1.1</a>
               </div>
             </div>
           </li>
@@ -6051,7 +6051,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TornadoServer/6.0.3
+                <a v-bind:href="generateLink('/match/server:TornadoServer/6.0.3')" target="_blank">/match/server:TornadoServer/6.0.3</a>
               </div>
             </div>
           </li>
@@ -6061,7 +6061,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:ToTheCloud/v0.01
+                <a v-bind:href="generateLink('/match/server:ToTheCloud/v0.01')" target="_blank">/match/server:ToTheCloud/v0.01</a>
               </div>
             </div>
           </li>
@@ -6071,7 +6071,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Trapeze-Srv/6.0
+                <a v-bind:href="generateLink('/match/server:Trapeze-Srv/6.0')" target="_blank">/match/server:Trapeze-Srv/6.0</a>
               </div>
             </div>
           </li>
@@ -6081,7 +6081,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TrianCDN/n-eu-dus3
+                <a v-bind:href="generateLink('/match/server:TrianCDN/n-eu-dus3')" target="_blank">/match/server:TrianCDN/n-eu-dus3</a>
               </div>
             </div>
           </li>
@@ -6091,7 +6091,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TrianCDN/n-eu-sbg3
+                <a v-bind:href="generateLink('/match/server:TrianCDN/n-eu-sbg3')" target="_blank">/match/server:TrianCDN/n-eu-sbg3</a>
               </div>
             </div>
           </li>
@@ -6101,7 +6101,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Trifork/4.1.40
+                <a v-bind:href="generateLink('/match/server:Trifork/4.1.40')" target="_blank">/match/server:Trifork/4.1.40</a>
               </div>
             </div>
           </li>
@@ -6111,7 +6111,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Triton/2.2.4.262
+                <a v-bind:href="generateLink('/match/server:Triton/2.2.4.262')" target="_blank">/match/server:Triton/2.2.4.262</a>
               </div>
             </div>
           </li>
@@ -6121,7 +6121,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TSW/1.4.3
+                <a v-bind:href="generateLink('/match/server:TSW/1.4.3')" target="_blank">/match/server:TSW/1.4.3</a>
               </div>
             </div>
           </li>
@@ -6131,7 +6131,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Twisted/2.5.0
+                <a v-bind:href="generateLink('/match/server:Twisted/2.5.0')" target="_blank">/match/server:Twisted/2.5.0</a>
               </div>
             </div>
           </li>
@@ -6141,7 +6141,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/11.1.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/11.1.0')" target="_blank">/match/server:TwistedWeb/11.1.0</a>
               </div>
             </div>
           </li>
@@ -6151,7 +6151,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/13.0.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/13.0.0')" target="_blank">/match/server:TwistedWeb/13.0.0</a>
               </div>
             </div>
           </li>
@@ -6161,7 +6161,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/16.0.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/16.0.0')" target="_blank">/match/server:TwistedWeb/16.0.0</a>
               </div>
             </div>
           </li>
@@ -6171,7 +6171,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/16.2.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/16.2.0')" target="_blank">/match/server:TwistedWeb/16.2.0</a>
               </div>
             </div>
           </li>
@@ -6181,7 +6181,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/19.10.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/19.10.0')" target="_blank">/match/server:TwistedWeb/19.10.0</a>
               </div>
             </div>
           </li>
@@ -6191,7 +6191,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/19.2.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/19.2.0')" target="_blank">/match/server:TwistedWeb/19.2.0</a>
               </div>
             </div>
           </li>
@@ -6201,7 +6201,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/19.2.1
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/19.2.1')" target="_blank">/match/server:TwistedWeb/19.2.1</a>
               </div>
             </div>
           </li>
@@ -6211,7 +6211,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TwistedWeb/9.0.0
+                <a v-bind:href="generateLink('/match/server:TwistedWeb/9.0.0')" target="_blank">/match/server:TwistedWeb/9.0.0</a>
               </div>
             </div>
           </li>
@@ -6221,7 +6221,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:TyCDN/0.2
+                <a v-bind:href="generateLink('/match/server:TyCDN/0.2')" target="_blank">/match/server:TyCDN/0.2</a>
               </div>
             </div>
           </li>
@@ -6231,7 +6231,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Variti/0.9.3a
+                <a v-bind:href="generateLink('/match/server:Variti/0.9.3a')" target="_blank">/match/server:Variti/0.9.3a</a>
               </div>
             </div>
           </li>
@@ -6241,7 +6241,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:VIVO-VOD/0.1
+                <a v-bind:href="generateLink('/match/server:VIVO-VOD/0.1')" target="_blank">/match/server:VIVO-VOD/0.1</a>
               </div>
             </div>
           </li>
@@ -6251,7 +6251,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:VShopNServer/1
+                <a v-bind:href="generateLink('/match/server:VShopNServer/1')" target="_blank">/match/server:VShopNServer/1</a>
               </div>
             </div>
           </li>
@@ -6261,7 +6261,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:W3/0.3.4
+                <a v-bind:href="generateLink('/match/server:W3/0.3.4')" target="_blank">/match/server:W3/0.3.4</a>
               </div>
             </div>
           </li>
@@ -6271,7 +6271,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WAF/2.0
+                <a v-bind:href="generateLink('/match/server:WAF/2.0')" target="_blank">/match/server:WAF/2.0</a>
               </div>
             </div>
           </li>
@@ -6281,7 +6281,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WAF/2.4-12.1
+                <a v-bind:href="generateLink('/match/server:WAF/2.4-12.1')" target="_blank">/match/server:WAF/2.4-12.1</a>
               </div>
             </div>
           </li>
@@ -6291,7 +6291,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.2.13
+                <a v-bind:href="generateLink('/match/server:Warp/3.2.13')" target="_blank">/match/server:Warp/3.2.13</a>
               </div>
             </div>
           </li>
@@ -6301,7 +6301,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.2.22
+                <a v-bind:href="generateLink('/match/server:Warp/3.2.22')" target="_blank">/match/server:Warp/3.2.22</a>
               </div>
             </div>
           </li>
@@ -6311,7 +6311,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.2.26
+                <a v-bind:href="generateLink('/match/server:Warp/3.2.26')" target="_blank">/match/server:Warp/3.2.26</a>
               </div>
             </div>
           </li>
@@ -6321,7 +6321,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.2.27
+                <a v-bind:href="generateLink('/match/server:Warp/3.2.27')" target="_blank">/match/server:Warp/3.2.27</a>
               </div>
             </div>
           </li>
@@ -6331,7 +6331,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.2.28
+                <a v-bind:href="generateLink('/match/server:Warp/3.2.28')" target="_blank">/match/server:Warp/3.2.28</a>
               </div>
             </div>
           </li>
@@ -6341,7 +6341,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Warp/3.3.4
+                <a v-bind:href="generateLink('/match/server:Warp/3.3.4')" target="_blank">/match/server:Warp/3.3.4</a>
               </div>
             </div>
           </li>
@@ -6351,7 +6351,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebDefence/7.10.71722.228
+                <a v-bind:href="generateLink('/match/server:WebDefence/7.10.71722.228')" target="_blank">/match/server:WebDefence/7.10.71722.228</a>
               </div>
             </div>
           </li>
@@ -6361,7 +6361,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebOTX_Web_Server/2.4.18
+                <a v-bind:href="generateLink('/match/server:WebOTX_Web_Server/2.4.18')" target="_blank">/match/server:WebOTX_Web_Server/2.4.18</a>
               </div>
             </div>
           </li>
@@ -6371,7 +6371,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WEBrick/1.3.1
+                <a v-bind:href="generateLink('/match/server:WEBrick/1.3.1')" target="_blank">/match/server:WEBrick/1.3.1</a>
               </div>
             </div>
           </li>
@@ -6381,7 +6381,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WEBrick/1.4.2
+                <a v-bind:href="generateLink('/match/server:WEBrick/1.4.2')" target="_blank">/match/server:WEBrick/1.4.2</a>
               </div>
             </div>
           </li>
@@ -6391,7 +6391,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSEAL/7.0.0.35
+                <a v-bind:href="generateLink('/match/server:WebSEAL/7.0.0.35')" target="_blank">/match/server:WebSEAL/7.0.0.35</a>
               </div>
             </div>
           </li>
@@ -6401,7 +6401,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSEAL/8.0.1.0
+                <a v-bind:href="generateLink('/match/server:WebSEAL/8.0.1.0')" target="_blank">/match/server:WebSEAL/8.0.1.0</a>
               </div>
             </div>
           </li>
@@ -6411,7 +6411,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSEAL/9.0.1.0
+                <a v-bind:href="generateLink('/match/server:WebSEAL/9.0.1.0')" target="_blank">/match/server:WebSEAL/9.0.1.0</a>
               </div>
             </div>
           </li>
@@ -6421,7 +6421,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSEAL/9.0.4.0
+                <a v-bind:href="generateLink('/match/server:WebSEAL/9.0.4.0')" target="_blank">/match/server:WebSEAL/9.0.4.0</a>
               </div>
             </div>
           </li>
@@ -6431,7 +6431,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSEAL/9.0.5.0
+                <a v-bind:href="generateLink('/match/server:WebSEAL/9.0.5.0')" target="_blank">/match/server:WebSEAL/9.0.5.0</a>
               </div>
             </div>
           </li>
@@ -6441,7 +6441,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebServer/1.0
+                <a v-bind:href="generateLink('/match/server:WebServer/1.0')" target="_blank">/match/server:WebServer/1.0</a>
               </div>
             </div>
           </li>
@@ -6451,7 +6451,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WebSocket++/0.7.0
+                <a v-bind:href="generateLink('/match/server:WebSocket++/0.7.0')" target="_blank">/match/server:WebSocket++/0.7.0</a>
               </div>
             </div>
           </li>
@@ -6461,7 +6461,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WeiBo/LB
+                <a v-bind:href="generateLink('/match/server:WeiBo/LB')" target="_blank">/match/server:WeiBo/LB</a>
               </div>
             </div>
           </li>
@@ -6471,7 +6471,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.10.4
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.10.4')" target="_blank">/match/server:Werkzeug/0.10.4</a>
               </div>
             </div>
           </li>
@@ -6481,7 +6481,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.11.11
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.11.11')" target="_blank">/match/server:Werkzeug/0.11.11</a>
               </div>
             </div>
           </li>
@@ -6491,7 +6491,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.11.15
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.11.15')" target="_blank">/match/server:Werkzeug/0.11.15</a>
               </div>
             </div>
           </li>
@@ -6501,7 +6501,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.12.2
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.12.2')" target="_blank">/match/server:Werkzeug/0.12.2</a>
               </div>
             </div>
           </li>
@@ -6511,7 +6511,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.14.1
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.14.1')" target="_blank">/match/server:Werkzeug/0.14.1</a>
               </div>
             </div>
           </li>
@@ -6521,7 +6521,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.15.2
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.15.2')" target="_blank">/match/server:Werkzeug/0.15.2</a>
               </div>
             </div>
           </li>
@@ -6531,7 +6531,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.15.4
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.15.4')" target="_blank">/match/server:Werkzeug/0.15.4</a>
               </div>
             </div>
           </li>
@@ -6541,7 +6541,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.15.5
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.15.5')" target="_blank">/match/server:Werkzeug/0.15.5</a>
               </div>
             </div>
           </li>
@@ -6551,7 +6551,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.16.0
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.16.0')" target="_blank">/match/server:Werkzeug/0.16.0</a>
               </div>
             </div>
           </li>
@@ -6561,7 +6561,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.8.3
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.8.3')" target="_blank">/match/server:Werkzeug/0.8.3</a>
               </div>
             </div>
           </li>
@@ -6571,7 +6571,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.9.1
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.9.1')" target="_blank">/match/server:Werkzeug/0.9.1</a>
               </div>
             </div>
           </li>
@@ -6581,7 +6581,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Werkzeug/0.9.6
+                <a v-bind:href="generateLink('/match/server:Werkzeug/0.9.6')" target="_blank">/match/server:Werkzeug/0.9.6</a>
               </div>
             </div>
           </li>
@@ -6591,7 +6591,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WildFly/10
+                <a v-bind:href="generateLink('/match/server:WildFly/10')" target="_blank">/match/server:WildFly/10</a>
               </div>
             </div>
           </li>
@@ -6601,7 +6601,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WildFly/11
+                <a v-bind:href="generateLink('/match/server:WildFly/11')" target="_blank">/match/server:WildFly/11</a>
               </div>
             </div>
           </li>
@@ -6611,7 +6611,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WildFly/12
+                <a v-bind:href="generateLink('/match/server:WildFly/12')" target="_blank">/match/server:WildFly/12</a>
               </div>
             </div>
           </li>
@@ -6621,7 +6621,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WildFly/8
+                <a v-bind:href="generateLink('/match/server:WildFly/8')" target="_blank">/match/server:WildFly/8</a>
               </div>
             </div>
           </li>
@@ -6631,7 +6631,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WildFly/9
+                <a v-bind:href="generateLink('/match/server:WildFly/9')" target="_blank">/match/server:WildFly/9</a>
               </div>
             </div>
           </li>
@@ -6641,7 +6641,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Windows-Azure-Blob/1.0
+                <a v-bind:href="generateLink('/match/server:Windows-Azure-Blob/1.0')" target="_blank">/match/server:Windows-Azure-Blob/1.0</a>
               </div>
             </div>
           </li>
@@ -6651,7 +6651,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Windows-Azure-Blob/1.0
+                <a v-bind:href="generateLink('/match/server:Windows-Azure-Blob/1.0')" target="_blank">/match/server:Windows-Azure-Blob/1.0</a>
               </div>
             </div>
           </li>
@@ -6661,7 +6661,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Microsoft-HTTPAPI/2.0
+                <a v-bind:href="generateLink('/match/server:Microsoft-HTTPAPI/2.0')" target="_blank">/match/server:Microsoft-HTTPAPI/2.0</a>
               </div>
             </div>
           </li>
@@ -6671,7 +6671,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:Windows-Azure-Web/1.0
+                <a v-bind:href="generateLink('/match/server:Windows-Azure-Web/1.0')" target="_blank">/match/server:Windows-Azure-Web/1.0</a>
               </div>
             </div>
           </li>
@@ -6681,7 +6681,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.4.1
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.4.1')" target="_blank">/match/server:WowzaStreamingEngine/4.4.1</a>
               </div>
             </div>
           </li>
@@ -6691,7 +6691,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.7.1
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.7.1')" target="_blank">/match/server:WowzaStreamingEngine/4.7.1</a>
               </div>
             </div>
           </li>
@@ -6701,7 +6701,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.7.5
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.7.5')" target="_blank">/match/server:WowzaStreamingEngine/4.7.5</a>
               </div>
             </div>
           </li>
@@ -6711,7 +6711,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.7.6
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.7.6')" target="_blank">/match/server:WowzaStreamingEngine/4.7.6</a>
               </div>
             </div>
           </li>
@@ -6721,7 +6721,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.7.7
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.7.7')" target="_blank">/match/server:WowzaStreamingEngine/4.7.7</a>
               </div>
             </div>
           </li>
@@ -6731,7 +6731,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WowzaStreamingEngine/4.7.8
+                <a v-bind:href="generateLink('/match/server:WowzaStreamingEngine/4.7.8')" target="_blank">/match/server:WowzaStreamingEngine/4.7.8</a>
               </div>
             </div>
           </li>
@@ -6741,7 +6741,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WPWS/1.0.0
+                <a v-bind:href="generateLink('/match/server:WPWS/1.0.0')" target="_blank">/match/server:WPWS/1.0.0</a>
               </div>
             </div>
           </li>
@@ -6751,7 +6751,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WSGIServer/0.1
+                <a v-bind:href="generateLink('/match/server:WSGIServer/0.1')" target="_blank">/match/server:WSGIServer/0.1</a>
               </div>
             </div>
           </li>
@@ -6761,7 +6761,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:WSGIServer/0.2
+                <a v-bind:href="generateLink('/match/server:WSGIServer/0.2')" target="_blank">/match/server:WSGIServer/0.2</a>
               </div>
             </div>
           </li>
@@ -6771,7 +6771,7 @@
                 GET
               </div>
               <div class="w-full bg-gray-800 text-white font-mono px-2 py-1">
-                /match/server:YG/18.05
+                <a v-bind:href="generateLink('/match/server:YG/18.05')" target="_blank">/match/server:YG/18.05</a>
               </div>
             </div>
           </li>
@@ -6800,9 +6800,14 @@ export default {
       }]
     }
   },
+  computed: {
+    apiUrl() {
+      return process.env.API_URL || '#'
+    }
+  },
   methods: {
-    generateLink(server) {
-      return '/match/server:' + server
+    generateLink(path) {
+      return this.apiUrl + path
     }
   }
 }
