@@ -27,7 +27,7 @@ function isValidCidr(prefix) {
     return false
   }
 
-  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
+  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
     return false
   }
 
@@ -40,7 +40,7 @@ function isValidDomain(domain) {
   }
 
   if (!domain.match(
-      /((^(?!(port:|status:|banner:|asn:|ssl:|app:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i
+      /((^(?!(port:|status:|banner:|asn:|ssl:|app:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i
     )) {
     return false
   }
@@ -66,7 +66,7 @@ function isValidMatch(match) {
   }
 
   if (!match.match(
-      /(^port:)\d{2,}|(^ipv4:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
+      /(^port:)\d{2,}|(^ipv4:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
     )) {
     return false
   }
@@ -120,6 +120,12 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
 
             if (error.response.status !== 404) {
               this.$store.commit('updateErrorMessage', error.response.data)
@@ -143,6 +149,12 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
 
             if (error.response.status !== 404) {
               this.$store.commit('updateErrorMessage', error.response.data)
@@ -166,6 +178,12 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
 
             if (error.response.status !== 404) {
               this.$store.commit('updateErrorMessage', error.response.data)
@@ -174,13 +192,6 @@ export default {
               this.$store.commit('updateLoadingIndicator', false)
             }
           }
-
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: query
-            }
-          })
         })
       }
 
@@ -196,6 +207,12 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
 
             if (error.response.status !== 404) {
               this.$store.commit('updateErrorMessage', error.response.data)
@@ -219,6 +236,12 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
 
             if (error.response.status !== 404) {
               this.$store.commit('updateErrorMessage', error.response.data)
