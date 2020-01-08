@@ -59,7 +59,7 @@ export default {
       }
 
       if (!match.match(
-          /(^port:)\d{2,}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
+          /(^port:)\d{2,}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
         )) {
         return false
       }
@@ -90,10 +90,13 @@ export default {
         }).catch((error) => {
           if (error.response) {
             this.$store.commit('updateResultList', [])
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
         })
       }

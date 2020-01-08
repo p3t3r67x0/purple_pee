@@ -34,7 +34,13 @@ export default {
     this.fetchLatest(this.query)
     this.$store.commit('updateQuery', 'country:' + this.query)
   },
+  watch: {
+    modalVisible: function() {}
+  },
   computed: {
+    modalVisible() {
+      return this.$store.state.modalVisible
+    },
     loadingIndicator() {
       return this.$store.state.loading
     },
