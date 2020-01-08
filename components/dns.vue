@@ -22,7 +22,7 @@
           <strong class="text-base sm:text-lg">AAAA records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="aaaa_record in result.aaaa_record">
-              {{ aaaa_record }}
+              <nuxt-link v-bind:to="generateLink('ipv6', aaaa_record)" class="text-blue-500 hover:text-blue-700">{{ aaaa_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -46,7 +46,7 @@
           <strong class="text-base sm:text-lg">NS records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="ns_record in result.ns_record" class="break-all">
-              {{ ns_record }}
+              <nuxt-link v-bind:to="generateLink('ns', ns_record)" class="text-blue-500 hover:text-blue-700">{{ ns_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -69,15 +69,18 @@
         <div v-if="result.banner" class="mt-3 md:mt-4">
           <strong class="text-base sm:text-lg">SSH banner</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
-            {{ result.banner }}
+            <nuxt-link v-bind:to="generateLink('banner', result.banner)" class="text-blue-500 hover:text-blue-700">{{ result.banner }}</nuxt-link>
           </ul>
         </div>
         <div v-if="result.whois" class="mt-3 md:mt-4">
           <strong class="text-base sm:text-lg">ASN whois</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="v, k in result.whois" class="mt-1">
-              <strong class="font-bold">{{ k }}</strong>: <span v-if="k != 'asn' && k != 'asn_cidr'" class="text-gray-700 font-thin">{{ v }}</span>
+              <strong class="font-bold">{{ k }}</strong>: <span v-if="k == 'asn_date'" class="text-gray-700 font-thin">{{ v }}</span>
+              <nuxt-link v-if="k == 'asn_country_code'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <nuxt-link v-if="k == 'asn_description'" v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'asn_registry'" v-bind:to="generateLink('registry', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', 'AS' + v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
             </li>
@@ -87,7 +90,7 @@
           <strong class="text-base sm:text-lg">Ports</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="port in result.ports" class="mt-1">
-              <strong class="font-bold">{{ port.port }}/{{ port.proto }}</strong>: <span>{{ port.status }}</span>
+              <nuxt-link v-bind:to="generateLink('port', port.port)" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
             </li>
           </ul>
         </div>
