@@ -15,6 +15,9 @@
         <div class="ml-4 hidden sm:block sm:w-1/2">
           <ul class="text-sm flex items-center">
             <li class="mr-3">
+              <nuxt-link to="/trends" class="no-underline text-gray-200">Trends</nuxt-link>
+            </li>
+            <li class="mr-3">
               <nuxt-link to="/cidr" class="no-underline text-gray-200">CIDR</nuxt-link>
             </li>
             <li class="mr-3">
@@ -42,6 +45,9 @@
               <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" /></svg>
           </button>
           <ul v-bind:class="{ show: isOpen, hidden: !isOpen }" class="absolute overflow-hidden w-48 mt-2 mr-2 md:mr-0 right-0 bg-gray-200 text-gray-900 text-sm rounded">
+            <li class="border-b">
+              <nuxt-link to="/trends" class="block hover:bg-gray-800 hover:text-white p-2">Trending now</nuxt-link>
+            </li>
             <li class="border-b">
               <nuxt-link to="/cidr" class="block hover:bg-gray-800 hover:text-white p-2">CIDR Entries</nuxt-link>
             </li>
