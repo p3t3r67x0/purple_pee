@@ -4,10 +4,10 @@
 
   <ul class="flex content-start flex-wrap bg-gray-200 mb-6 mx-2 md:mx-0 p-1">
     <li v-for="result in results" class="w-full sm:w-1/2 md:w-1/3 p-1">
-      <div class="bg-white rounded shadow-md leading-normal p-3">
+      <div class="bg-white rounded shadow-md leading-normal p-3 overflow-hidden">
         <p class="font-bold font-mono">{{ generateTitle(generateLink(result.trend)) }}</p>
         <span><img v-if="isCountry(generateLink(result.trend))" v-bind:src="generatePath(generateName(result.trend))" class="inline w-9 h-4 mr-1"></span>
-        <nuxt-link v-bind:to="generateLink(result.trend)" class="font-mono font-light text-base text-blue-500 hover:text-blue-700">{{ generateName(result.trend) }}</nuxt-link>
+        <nuxt-link v-bind:to="generateLink(result.trend)" class="break-words font-mono font-light text-base text-blue-500 hover:text-blue-700">{{ generateName(result.trend) }}</nuxt-link>
       </div>
     </li>
   </ul>
