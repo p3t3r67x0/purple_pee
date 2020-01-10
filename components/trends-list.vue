@@ -6,7 +6,7 @@
     <li v-for="result in results" class="w-full sm:w-1/2 md:w-1/3 p-1">
       <div class="bg-white rounded shadow-md leading-normal p-3">
         <p class="font-bold font-mono">{{ generateTitle(generateLink(result.trend)) }}</p>
-        <span><img v-if="isCountry(result.trend)" v-bind:src="generatePath(generateName(result.trend))" class="inline w-9 h-4 mr-1"></span>
+        <span><img v-if="isCountry(generateLink(result.trend))" v-bind:src="generatePath(generateName(result.trend))" class="inline w-9 h-4 mr-1"></span>
         <nuxt-link v-bind:to="generateLink(result.trend)" class="font-mono font-light text-base text-blue-500 hover:text-blue-700">{{ generateName(result.trend) }}</nuxt-link>
       </div>
     </li>
@@ -26,26 +26,21 @@ export default {
   },
   methods: {
     isCountry(path) {
-      const r = path.split(':').filter(Boolean)
+      const r = path.split('/').filter(Boolean)
 
-      if (r.length >= 2) {
-        const match = r.splice(-2)[0]
-
-        if (match.length >= 2) {
-          const prefix = match.split('/')[2]
-
-          if (prefix === 'country') {
-            return true
-          }
-        }
+      if (r[0] === 'country') {
+        return true
       }
     },
     generatePath(image) {
       return require('~/assets/svg/' + image.toLowerCase() + '.svg')
     },
     generateName(path) {
-      const r = path.split(':').filter(Boolean)
-      return r.splice(-1)[0]
+      const r = path.split(':')
+
+      if (r.length >= 2) {
+        return r.splice(1).join(':')
+      }
     },
     generateTitle(path) {
       const r = path.split('/').filter(Boolean)
@@ -89,11 +84,11 @@ export default {
       }
     },
     generateLink(path) {
-      const r = path.split(':').filter(Boolean)
+      const r = path.split(':')
 
       if (r.length >= 2) {
-        const query = r.splice(-1)[0]
-        const match = r.splice(-2)[0]
+        const query = r.splice(1).join(':')
+        const match = r.splice(0)[0]
 
         if (match.length >= 2) {
           const prefix = match.split('/')[2]
