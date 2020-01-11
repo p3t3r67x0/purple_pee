@@ -68,17 +68,19 @@ export default {
       } else if (r[0] === 'registry') {
         return 'Registry'
       } else if (r[0] === 'country') {
-        return 'ISO Code'
+        return 'ISO code'
       } else if (r[0] === 'status') {
-        return 'HTTP Status'
+        return 'HTTP status'
       } else if (r[0] === 'port') {
-        return 'TCP Port'
+        return 'TCP port'
       } else if (r[0] === 'server') {
         return 'Server'
       } else if (r[0] === 'site') {
         return 'Domain'
       } else if (r[0] === 'ssl') {
-        return 'SSL'
+        return 'SSL certificate'
+      } else if (r[0] === 'banner') {
+        return 'SSH banner'
       } else if (r[0] === 'app') {
         return 'Service'
       }
