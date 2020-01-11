@@ -141,7 +141,7 @@
             <span class="font-bold">{{ key }}</span>: <span v-if="key !== 'x-powered-by' && key !== 'status' && key !== 'server'" class="font-thin">{{ val }}</span>
             <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
             <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('app', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
           </li>
         </ul>
       </code>

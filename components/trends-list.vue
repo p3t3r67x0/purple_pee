@@ -81,7 +81,7 @@ export default {
         return 'SSL certificate'
       } else if (r[0] === 'banner') {
         return 'SSH banner'
-      } else if (r[0] === 'app') {
+      } else if (r[0] === 'service') {
         return 'Service'
       }
     },

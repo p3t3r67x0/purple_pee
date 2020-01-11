@@ -27,7 +27,7 @@ function isValidCidr(prefix) {
     return false
   }
 
-  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
+  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|service:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
     return false
   }
 
@@ -40,7 +40,7 @@ function isValidDomain(domain) {
   }
 
   if (!domain.match(
-      /((^(?!(port:|status:|banner:|asn:|ssl:|app:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|banner:|asn:|ssl:|app:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i
+      /((^(?!(port:|status:|banner:|asn:|ssl:|ssl:|service:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|status:|banner:|asn:|ssl:|service:|country:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i
     )) {
     return false
   }
@@ -66,7 +66,7 @@ function isValidMatch(match) {
   }
 
   if (!match.match(
-      /(^port:)\d{2,}|(^ipv4:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
+      /(^port:)\d{2,}|(^ipv4:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^service:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
     )) {
     return false
   }
@@ -103,7 +103,7 @@ export default {
       let query = this.q
 
       if (query !== null && query.length > 0) {
-        query = this.trimWhitespaces(query.toLowerCase())
+        query = this.trimWhitespaces(query)
       }
 
       if (isValidMatch(query)) {

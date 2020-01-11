@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/app:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/service:' + query).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {
