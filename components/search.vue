@@ -3,7 +3,8 @@
   <input type="text" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-8 border-gray-200 rounded rounded-r-none px-2 relative" @keyup.enter="searchMatch" v-model="q" autofocus placeholder="Enter a Domain, IP, ASN or Hostname">
   <div class="flex -mr-px">
     <a v-on:click="searchMatch" class="flex items-center leading-normal bg-gray-300 rounded rounded-l-none border border-l-0 border-gray-200 px-2 whitespace-no-wrap text-gray-dark text-sm cursor-pointer">
-      <svg class="text-gray-600 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
+      <svg class="text-gray-600 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
     </a>
   </div>
 </div>
@@ -135,9 +136,7 @@ export default {
             }
           }
         })
-      }
-
-      if (isValidAsn(query)) {
+      } else if (isValidAsn(query)) {
         this.$axios.$get(process.env.API_URL + '/match/asn:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -164,9 +163,7 @@ export default {
             }
           }
         })
-      }
-
-      if (!isValidCidr(query) && !isValidIpv4(query) && isValidDomain(query)) {
+      } else if (!isValidCidr(query) && !isValidIpv4(query) && isValidDomain(query)) {
         this.$axios.$get(process.env.API_URL + '/match/site:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -193,9 +190,7 @@ export default {
             }
           }
         })
-      }
-
-      if (isValidIpv4(query)) {
+      } else if (isValidIpv4(query)) {
         this.$axios.$get(process.env.API_URL + '/match/ipv4:' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
@@ -222,10 +217,35 @@ export default {
             }
           }
         })
-      }
-
-      if (isValidCidr(query)) {
+      } else if (isValidCidr(query)) {
         this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(response => {
+          this.$store.commit('updateResultList', response)
+          this.$router.push({
+            name: 'search-all',
+            params: {
+              pathMatch: query
+            }
+          })
+        }).catch((error) => {
+          if (error.response) {
+            this.$store.commit('updateResultList', [])
+            this.$router.push({
+              name: 'search-all',
+              params: {
+                pathMatch: query
+              }
+            })
+
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
+          }
+        })
+      } else {
+        this.$axios.$get(process.env.API_URL + '/query/' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
             name: 'search-all',
