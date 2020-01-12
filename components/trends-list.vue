@@ -85,6 +85,10 @@ export default {
         return 'Domain'
       } else if (r[0] === 'ssl') {
         return 'SSL certificate'
+      } else if (r[0] === 'before') {
+        return 'SSL valid not before'
+      } else if (r[0] === 'after') {
+        return 'SSL valid not after'
       } else if (r[0] === 'banner') {
         return 'SSH banner'
       } else if (r[0] === 'service') {
