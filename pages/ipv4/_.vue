@@ -65,6 +65,12 @@ export default {
       }).catch((error) => {
         if (error.response) {
           this.$store.commit('updateResultList', [])
+          this.$router.push({
+            name: 'search-all',
+            params: {
+              pathMatch: query
+            }
+          })
 
           if (error.response.status !== 404) {
             this.$store.commit('updateErrorMessage', error.response.data)

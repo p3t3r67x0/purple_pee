@@ -64,10 +64,20 @@ export default {
         this.results = res
       }).catch((error) => {
         if (error.response) {
-          this.$store.commit('updateErrorMessage', error.response.data)
-          this.$store.commit('updateErrorStatus', error.response.status)
-          this.$store.commit('updateModalVisible', true)
-          this.$store.commit('updateLoadingIndicator', false)
+          this.$store.commit('updateResultList', [])
+          this.$router.push({
+            name: 'search-all',
+            params: {
+              pathMatch: query
+            }
+          })
+
+          if (error.response.status !== 404) {
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
+          }
         }
       })
     }
