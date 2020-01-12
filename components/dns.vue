@@ -4,7 +4,9 @@
     <div class="sm:flex">
       <div class="w-full sm:w-9/12 mb-4 sm:mb-0">
         <div v-if="result.domain" class="flex">
-          <p class="break-all text-2xl md:text-3xl font-light md:font-medium text-purple-700"><nuxt-link v-bind:to="generateLink('site', result.domain)">{{ result.domain }}</nuxt-link></p>
+          <p class="break-all text-2xl md:text-3xl font-light md:font-medium text-purple-700">
+            <nuxt-link v-bind:to="generateLink('site', result.domain)">{{ result.domain }}</nuxt-link>
+          </p>
           <a v-bind:href="generateUrl(result.domain)" target="_blank" class="ml-1 mt-2 md:mt-3 text-gray-600">
             <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
               <path d="M19 6.41L8.7 16.71a1 1 0 1 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41zM17 14a1 1 0 0 1 2 0v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h5a1 1 0 0 1 0 2H5v12h12v-5z" /></svg>
@@ -70,6 +72,20 @@
           <strong class="text-base sm:text-lg">SSH banner</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <nuxt-link v-bind:to="generateLink('banner', result.banner)" class="text-blue-500 hover:text-blue-700">{{ result.banner }}</nuxt-link>
+          </ul>
+        </div>
+        <div v-if="result.geo" class="mt-3 md:mt-4">
+          <strong class="text-base sm:text-lg">GEO data</strong>
+          <ul class="font-mono text-sm sm:text-base font-light">
+            <li v-for="v, k in result.geo" class="mt-1">
+              <strong class="font-bold">{{ k }}</strong>:
+              <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])" class="text-blue-500 hover:text-blue-700">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
+            </li>
           </ul>
         </div>
         <div v-if="result.whois" class="mt-3 md:mt-4">
