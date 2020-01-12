@@ -81,7 +81,7 @@
               <strong class="font-bold">{{ k }}</strong>:
               <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
-              <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', result.geo.country_code)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])" class="text-blue-500 hover:text-blue-700">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
