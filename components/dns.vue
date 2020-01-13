@@ -85,6 +85,7 @@
               <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])" class="text-blue-500 hover:text-blue-700">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
+              <span v-if="k == 'distance'" class="text-gray-700 font-thin">{{ v }}</span>
             </li>
           </ul>
         </div>
@@ -252,9 +253,6 @@ export default {
     },
     generateLink(prefix, query) {
       return '/' + prefix + '/' + encodeURIComponent(query)
-    },
-    handleDate(date) {
-      return new Date(date).toUTCString()
     }
   }
 }
