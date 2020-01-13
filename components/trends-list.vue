@@ -66,15 +66,15 @@ export default {
       } else if (r[0] === 'org') {
         return 'ISP'
       } else if (r[0] === 'registry') {
-        return 'Registry'
+        return 'ASN registry'
       } else if (r[0] === 'country') {
-        return 'Country'
+        return 'GEO country'
       } else if (r[0] === 'state') {
-        return 'State'
+        return 'GEO state'
       } else if (r[0] === 'city') {
-        return 'City'
+        return 'GEO city'
       } else if (r[0] === 'loc') {
-        return 'Location'
+        return 'GEO location'
       } else if (r[0] === 'status') {
         return 'HTTP status'
       } else if (r[0] === 'port') {
