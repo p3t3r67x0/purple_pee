@@ -78,7 +78,7 @@
           <strong class="text-base sm:text-lg">GEO data</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="v, k in result.geo" class="mt-1">
-              <strong class="font-bold">{{ k }}</strong>:
+              <strong class="font-bold">geo_{{ k }}</strong>:
               <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
               <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
               <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', result.geo.country_code)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
