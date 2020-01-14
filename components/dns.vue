@@ -124,7 +124,7 @@
                   </p>
                   <p v-if="k == 'common_name'">
                     <span class="font-bold">ssl_subject_name</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('ssl', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organization_name'">
                     <span class="font-bold">ssl_subject_organisation</span>:
@@ -136,11 +136,11 @@
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_subject_province</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('state', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'locality_name'">
                     <span class="font-bold">ssl_subject_locality</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('city', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                 </div>
               </div>
@@ -153,11 +153,11 @@
                   </p>
                   <p v-if="k == 'common_name'">
                     <span class="font-bold">ssl_issuer_name</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('issuer', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organization_name'">
                     <span class="font-bold">ssl_issuer_organisation</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('issuer', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organizational_unit_name'">
                     <span class="font-bold">ssl_issuer_organisation_unit</span>:
@@ -165,11 +165,11 @@
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_issuer_province</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('state', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'locality_name'">
                     <span class="font-bold">ssl_issuer_locality</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('city', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                 </div>
               </div>
@@ -181,24 +181,24 @@
               </div>
               <div v-if="key == 'not_before_formatted'" class="mt-2">
                 <span class="font-bold">ssl_not_before</span>:
-                <nuxt-link v-bind:to="generateLink('before', encodeURIComponent(val))" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                <nuxt-link v-bind:to="generateLink('before', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
               <div v-if="key == 'not_after_formatted'" class="mt-2">
                 <span class="font-bold">ssl_not_after</span>:
-                <nuxt-link v-bind:to="generateLink('after', encodeURIComponent(val))" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                <nuxt-link v-bind:to="generateLink('after', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
               <div v-if="key != 'not_after_formatted' && key != 'not_before_formatted' && key != 'not_before' && key != 'not_after' && key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'" class="mt-2">
                 <p v-if="key == 'ca_issuers'">
                   <span class="font-bold">ssl_ca_issuer</span>:
-                  <nuxt-link v-bind:to="generateLink('ca', encodeURIComponent(val))" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('ca', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'crl_distribution_points'">
                   <span class="font-bold">ssl_crl_distribution</span>:
-                  <nuxt-link v-bind:to="generateLink('crl', encodeURIComponent(val))" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('crl', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'ocsp'">
                   <span class="font-bold">ssl_ocsp</span>:
-                  <nuxt-link v-bind:to="generateLink('ocsp', encodeURIComponent(val))" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('ocsp', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'serial'">
                   <span class="font-bold">ssl_serial</span>:
@@ -220,9 +220,9 @@
         <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
           <li v-for="val, key in result.header">
             <span class="font-bold">{{ key }}</span>: <span v-if="key !== 'x-powered-by' && key !== 'status' && key !== 'server'" class="font-thin">{{ val }}</span>
-            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', encodeURIComponent(val))" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', encodeURIComponent(val))" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', encodeURIComponent(val))" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
           </li>
         </ul>
       </code>
