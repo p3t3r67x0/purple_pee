@@ -85,10 +85,20 @@ export default {
         return 'Domain'
       } else if (r[0] === 'ssl') {
         return 'SSL certificate'
+      } else if (r[0] === 'issuer') {
+        return 'SSL issuer'
+      } else if (r[0] === 'ocsp') {
+        return 'SSL ocsp'
+      } else if (r[0] === 'crl') {
+        return 'SSL crl'
+      } else if (r[0] === 'ca') {
+        return 'SSL ca'
+      } else if (r[0] === 'unit') {
+        return 'SSL issuer unit'
       } else if (r[0] === 'before') {
-        return 'SSL valid not before'
+        return 'SSL valid not_before'
       } else if (r[0] === 'after') {
-        return 'SSL valid not after'
+        return 'SSL valid not_after'
       } else if (r[0] === 'banner') {
         return 'SSH banner'
       } else if (r[0] === 'service') {
