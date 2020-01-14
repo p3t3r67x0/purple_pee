@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'server:' + this.query)
+    this.$store.commit('updateQuery', 'server:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   computed: {
     modalVisible() {
@@ -41,23 +42,26 @@ export default {
     loadingIndicator() {
       return this.$store.state.loading
     },
+    queryTitle() {
+      return 'server ' + decodeURIComponent(this.$route.params.pathMatch)
+    },
     query() {
       return this.$route.params.pathMatch
     }
   },
   head() {
     return {
-      title: 'Server results for ' + this.query,
+      title: 'Server results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest server results ' + this.query
+        content: 'Explore latest server results ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/server:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/server:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

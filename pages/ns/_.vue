@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'ns:' + this.query)
+    this.$store.commit('updateQuery', 'ns:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   computed: {
     modalVisible() {
@@ -41,23 +42,26 @@ export default {
     loadingIndicator() {
       return this.$store.state.loading
     },
+    queryTitle() {
+      return 'ns_record ' + decodeURIComponent(this.$route.params.pathMatch)
+    },
     query() {
       return this.$route.params.pathMatch
     }
   },
   head() {
     return {
-      title: 'NS record results for ' + this.query,
+      title: 'NS record results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest NS record results ' + this.query
+        content: 'Explore latest NS record results ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/ns:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/ns:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

@@ -32,7 +32,7 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'cname:' + decodeURIComponent(this.query))
+    this.$store.commit('updateQuery', 'issuer:' + decodeURIComponent(this.query))
     this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
@@ -46,7 +46,7 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return 'cname_record ' + decodeURIComponent(this.$route.params.pathMatch)
+      return 'issuer ' + decodeURIComponent(this.$route.params.pathMatch)
     },
     query() {
       return this.$route.params.pathMatch
@@ -54,17 +54,17 @@ export default {
   },
   head() {
     return {
-      title: 'CNAME record results for ' + decodeURIComponent(this.query),
+      title: 'SSL ceritificate issuer ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest CNAME record results ' + decodeURIComponent(this.query)
+        content: 'Explore latest SSL ceritificates issuer results ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/cname:' + decodeURIComponent(query)).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/issuer:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

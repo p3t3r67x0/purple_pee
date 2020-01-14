@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -25,7 +25,19 @@ export default {
     navfooter: Footer,
     navheader: Navbar
   },
-  params: [true],
+  created() {
+    this.fetchLatest(this.query)
+  },
+  head() {
+    return {
+      title: 'Search results for ' + decodeURIComponent(this.query),
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore your search results ' + decodeURIComponent(this.query)
+      }]
+    }
+  },
   computed: {
     modalVisible() {
       return this.$store.state.modalVisible
@@ -36,20 +48,17 @@ export default {
     results() {
       return this.$store.state.results
     },
+    queryTitle() {
+      const splitted = decodeURIComponent(this.$route.params.pathMatch).split(':')
+
+      if (splitted.length > 1) {
+        return splitted[0] + ' ' + splitted[1]
+      } else {
+        return splitted[0]
+      }
+    },
     query() {
-      const query = this.$route.params.pathMatch
-      this.fetchLatest(query)
-      return query
-    }
-  },
-  head() {
-    return {
-      title: 'Search results for ' + this.query,
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore your search results ' + this.query
-      }]
+      return this.$route.params.pathMatch
     }
   },
   methods: {
@@ -81,10 +90,10 @@ export default {
     },
     fetchLatest(query) {
       if (query !== null && query.length > 0) {
-        query = this.trimWhitespaces(query.toLowerCase())
+        query = this.trimWhitespaces(query)
       }
 
-      if (this.isValidMatch(query)) {
+      if (this.results.length === 0 && this.isValidMatch(query)) {
         this.$axios.$get(process.env.API_URL + '/match/' + query).then(res => {
           this.$store.commit('updateResultList', res)
         }).catch((error) => {

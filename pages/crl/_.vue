@@ -33,6 +33,7 @@ export default {
   created() {
     this.fetchLatest(this.query)
     this.$store.commit('updateQuery', 'crl:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -71,7 +72,7 @@ export default {
           this.$router.push({
             name: 'search-all',
             params: {
-              pathMatch: encodeURIComponent(query)
+              pathMatch: query
             }
           })
 

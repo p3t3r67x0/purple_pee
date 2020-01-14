@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'port:' + this.query)
+    this.$store.commit('updateQuery', 'port:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   computed: {
     modalVisible() {
@@ -41,23 +42,26 @@ export default {
     loadingIndicator() {
       return this.$store.state.loading
     },
+    queryTitle() {
+      return 'port ' + decodeURIComponent(this.$route.params.pathMatch)
+    },
     query() {
       return this.$route.params.pathMatch
     }
   },
   head() {
     return {
-      title: 'TCP port results for ' + this.query,
+      title: 'TCP port results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest TCP port results ' + this.query
+        content: 'Explore latest TCP port results ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/port:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/port:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

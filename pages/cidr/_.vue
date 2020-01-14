@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'cidr:' + this.query)
+    this.$store.commit('updateQuery', 'cidr:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -44,23 +45,26 @@ export default {
     loadingIndicator() {
       return this.$store.state.loading
     },
+    queryTitle() {
+      return 'cidr ' + decodeURIComponent(this.$route.params.pathMatch)
+    },
     query() {
       return this.$route.params.pathMatch
     },
   },
   head() {
     return {
-      title: 'CIDR results for ' + this.query,
+      title: 'CIDR results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest CIDR results ' + this.query
+        content: 'Explore latest CIDR results ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/cidr:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="query" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -32,17 +32,18 @@ export default {
   },
   head() {
     return {
-      title: 'IPv4 results for ' + this.query,
+      title: 'IPv4 results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest IPv4 results ' + this.query
+        content: 'Explore latest IPv4 results ' + decodeURIComponent(this.query)
       }]
     }
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'ipv4:' + this.query)
+    this.$store.commit('updateQuery', 'ipv4:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -54,13 +55,16 @@ export default {
     loadingIndicator() {
       return this.$store.state.loading
     },
+    queryTitle() {
+      return 'a_record ' + decodeURIComponent(this.$route.params.pathMatch)
+    },
     query() {
       return this.$route.params.pathMatch
     },
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/ipv4:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/ipv4:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

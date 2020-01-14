@@ -32,17 +32,17 @@ export default {
   },
   head() {
     return {
-      title: 'ASN results for ' + this.query,
+      title: 'ASN results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest ASN results ' + this.query
+        content: 'Explore latest ASN results ' + decodeURIComponent(this.query)
       }]
     }
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'asn:' + this.query)
+    this.$store.commit('updateQuery', 'asn:' + decodeURIComponent(this.query))
     this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
@@ -56,7 +56,7 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return 'AS ' + this.$route.params.pathMatch.split(/[a-z]/i)[2]
+      return 'asn ' + this.$route.params.pathMatch.split(/[a-z]/i)[2]
     },
     query() {
       return this.$route.params.pathMatch

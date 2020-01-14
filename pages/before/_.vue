@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'before:' + this.query)
+    this.$store.commit('updateQuery', 'before:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -53,17 +54,17 @@ export default {
   },
   head() {
     return {
-      title: 'SSL ceritificates not valid before ' + this.query,
+      title: 'SSL ceritificates not valid before ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Explore latest SSL ceritificates not valid before ' + this.query
+        content: 'Explore latest SSL ceritificates not valid before ' + decodeURIComponent(this.query)
       }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/before:' + query).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/before:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {
