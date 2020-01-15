@@ -113,7 +113,7 @@
           <strong class="text-base sm:text-lg">Ports</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="port in result.ports" class="mt-2">
-              <nuxt-link v-bind:to="generateLink('port', port.port)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'port'}" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
+              <nuxt-link v-bind:to="generateLink('port', port.port)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == port.port && prefix == 'port'}" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
             </li>
           </ul>
         </div>
