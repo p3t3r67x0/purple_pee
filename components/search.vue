@@ -23,12 +23,12 @@ function isValidIpv4(ip) {
   return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
 }
 
-function isValidCidr(prefix) {
-  if (typeof(prefix) !== 'string') {
+function isValidCidr(cidr) {
+  if (typeof(cidr) !== 'string') {
     return false
   }
 
-  if (!prefix.match(/(^(?!(port:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
+  if (!cidr.match(/(^(?!(port:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
     return false
   }
 
@@ -108,8 +108,6 @@ export default {
       }
 
       if (isValidMatch(query)) {
-        this.$store.commit('updateQuery', query)
-
         this.$axios.$get(process.env.API_URL + '/match/' + query).then(response => {
           this.$store.commit('updateResultList', response)
           this.$router.push({
