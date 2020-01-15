@@ -249,19 +249,31 @@ export default {
       return this.$store.state.loading
     },
     prefix() {
-      const path = this.$route.fullPath
+      const path = decodeURIComponent(this.$route.fullPath)
 
       if (path.startsWith('/')) {
-        return path.split('/')[1]
+        const prefix = path.split('/').filter(Boolean)
+
+        if (prefix[0] == 'search') {
+          return decodeURIComponent(prefix[1]).split(':')[0]
+        } else {
+          return prefix[0]
+        }
       } else {
         return ''
       }
     },
     filter() {
-      const path = this.$route.fullPath
+      const path = decodeURIComponent(this.$route.fullPath)
 
       if (path.startsWith('/')) {
-        return decodeURIComponent(path.split('/').splice(2)[0])
+        const filter = path.split('/').filter(Boolean)
+
+        if (filter[0] == 'search') {
+          return decodeURIComponent(filter[1]).split(':').splice(1).join(':')
+        } else {
+          return filter[1]
+        }
       } else {
         return ''
       }
