@@ -5,7 +5,7 @@
       <div class="w-full sm:w-9/12 mb-4 sm:mb-0">
         <div v-if="result.domain" class="flex">
           <p class="break-all text-2xl md:text-3xl font-light md:font-medium text-purple-700">
-            <nuxt-link v-bind:to="generateLink('site', result.domain)">{{ result.domain }}</nuxt-link>
+            <nuxt-link v-bind:to="generateLink('site', result.domain)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'site'}">{{ result.domain }}</nuxt-link>
           </p>
           <a v-bind:href="generateUrl(result.domain)" target="_blank" class="ml-1 mt-2 md:mt-3 text-gray-600">
             <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
@@ -16,7 +16,7 @@
           <strong class="text-base sm:text-lg">A records</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="a_record in result.a_record">
-              <nuxt-link v-bind:to="generateLink('ipv4', a_record)" class="text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
+              <nuxt-link v-bind:to="generateLink('ipv4', a_record)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == a_record && prefix == 'ipv4'}" class="text-blue-500 hover:text-blue-700">{{ a_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -24,7 +24,7 @@
           <strong class="text-base sm:text-lg">AAAA records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="aaaa_record in result.aaaa_record">
-              <nuxt-link v-bind:to="generateLink('ipv6', aaaa_record)" class="text-blue-500 hover:text-blue-700">{{ aaaa_record }}</nuxt-link>
+              <nuxt-link v-bind:to="generateLink('ipv6', aaaa_record)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == aaaa_record && prefix == 'ipv6'}" class="text-blue-500 hover:text-blue-700">{{ aaaa_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -32,7 +32,7 @@
           <strong class="text-base sm:text-lg">CNAME records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="cname_record in result.cname_record" class="break-all">
-              <nuxt-link v-bind:to="generateLink('cname', cname_record.target)" class="text-blue-500 hover:text-blue-700">{{ cname_record.target }}</nuxt-link>
+              <nuxt-link v-bind:to="generateLink('cname', cname_record.target)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == cname_record.target && prefix == 'cname'}" class="text-blue-500 hover:text-blue-700">{{ cname_record.target }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -40,7 +40,7 @@
           <strong class="text-base sm:text-lg">MX records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="mx_record in result.mx_record" class="break-all">
-              <nuxt-link v-bind:to="generateLink('mx', mx_record.exchange)" class="text-blue-500 hover:text-blue-700">{{ mx_record.exchange }}</nuxt-link>, {{ mx_record.preference }}
+              <nuxt-link v-bind:to="generateLink('mx', mx_record.exchange)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == mx_record.exchange && prefix == 'mx'}" class="text-blue-500 hover:text-blue-700">{{ mx_record.exchange }}</nuxt-link>, {{ mx_record.preference }}
             </li>
           </ul>
         </div>
@@ -48,7 +48,7 @@
           <strong class="text-base sm:text-lg">NS records</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
             <li v-for="ns_record in result.ns_record" class="break-all">
-              <nuxt-link v-bind:to="generateLink('ns', ns_record)" class="text-blue-500 hover:text-blue-700">{{ ns_record }}</nuxt-link>
+              <nuxt-link v-bind:to="generateLink('ns', ns_record)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == ns_record && prefix == 'ns'}" class="text-blue-500 hover:text-blue-700">{{ ns_record }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -71,7 +71,9 @@
         <div v-if="result.banner" class="mt-3 md:mt-4">
           <strong class="text-base sm:text-lg">SSH banner</strong>
           <ul class="font-mono font-light text-sm sm:text-base text-gray-700">
-            <nuxt-link v-bind:to="generateLink('banner', result.banner)" class="text-blue-500 hover:text-blue-700">{{ result.banner }}</nuxt-link>
+            <li>
+              <nuxt-link v-bind:to="generateLink('banner', result.banner)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == result.banner && prefix == 'banner'}" class="text-blue-500 hover:text-blue-700">{{ result.banner }}</nuxt-link>
+            </li>
           </ul>
         </div>
         <div v-if="result.geo" class="mt-3 md:mt-4">
@@ -79,12 +81,14 @@
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="v, k in result.geo" class="mt-1">
               <strong class="font-bold">geo_{{ k }}</strong>:
-              <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <span v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'country'}">
+                <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              </span>
               <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', result.geo.country_code)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])" class="text-blue-500 hover:text-blue-700">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
+              <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'state'}" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'city'}" class="text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'loc'}" class="text-blue-500 hover:text-blue-700">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
               <span v-if="k == 'distance'" class="text-gray-700 font-thin">{{ v }}</span>
             </li>
           </ul>
@@ -94,20 +98,22 @@
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="v, k in result.whois" class="mt-1">
               <strong class="font-bold">{{ k }}</strong>: <span v-if="k == 'asn_date'" class="text-gray-700 font-thin">{{ v }}</span>
-              <nuxt-link v-if="k == 'asn_country_code'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
-              <nuxt-link v-if="k == 'asn_description'" v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'asn_registry'" v-bind:to="generateLink('registry', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-              <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', 'AS' + v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <span v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'country'}">
+                <nuxt-link v-if="k == 'asn_country_code'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              </span>
+              <nuxt-link v-if="k == 'asn_description'" v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'asn_registry'" v-bind:to="generateLink('registry', v)"  v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'registry'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'cidr'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+              <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'asn'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
             </li>
           </ul>
         </div>
         <div v-if="result.ports" class="mt-3 md:mt-4">
           <strong class="text-base sm:text-lg">Ports</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
-            <li v-for="port in result.ports" class="mt-1">
-              <nuxt-link v-bind:to="generateLink('port', port.port)" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
+            <li v-for="port in result.ports" class="mt-2">
+              <nuxt-link v-bind:to="generateLink('port', port.port)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'port'}" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
             </li>
           </ul>
         </div>
@@ -119,28 +125,30 @@
                 <div v-for="v, k in val" class="mt-2">
                   <p v-if="k == 'country_name'">
                     <span class="font-bold">ssl_subject_country</span>:
-                    <nuxt-link v-if="k == 'country_name'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
-                    <span><img v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+                    <span v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'country'}">
+                      <nuxt-link v-if="k == 'country_name'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                      <span><img v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+                    </span>
                   </p>
                   <p v-if="k == 'common_name'">
                     <span class="font-bold">ssl_subject_name</span>:
-                    <nuxt-link v-bind:to="generateLink('ssl', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('ssl', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'ssl'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organization_name'">
                     <span class="font-bold">ssl_subject_organisation</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organizational_unit_name'">
                     <span class="font-bold">ssl_subject_organisation_unit</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_subject_province</span>:
-                    <nuxt-link v-bind:to="generateLink('state', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('state', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'state'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'locality_name'">
                     <span class="font-bold">ssl_subject_locality</span>:
-                    <nuxt-link v-bind:to="generateLink('city', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('city', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'city'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                 </div>
               </div>
@@ -153,52 +161,52 @@
                   </p>
                   <p v-if="k == 'common_name'">
                     <span class="font-bold">ssl_issuer_name</span>:
-                    <nuxt-link v-bind:to="generateLink('issuer', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('issuer', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'issuer'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organization_name'">
                     <span class="font-bold">ssl_issuer_organisation</span>:
-                    <nuxt-link v-bind:to="generateLink('issuer', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('issuer', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'issuer'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'organizational_unit_name'">
                     <span class="font-bold">ssl_issuer_organisation_unit</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_issuer_province</span>:
-                    <nuxt-link v-bind:to="generateLink('state', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('state', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'state'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'locality_name'">
                     <span class="font-bold">ssl_issuer_locality</span>:
-                    <nuxt-link v-bind:to="generateLink('city', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('city', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'city'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                 </div>
               </div>
               <div v-if="key == 'subject_alt_names'" class="mt-2">
                 <span class="font-bold">ssl_subject_alt_names</span>:
                 <span v-for="v, i in val">
-                  <nuxt-link v-bind:to="generateLink('ssl', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link><span v-if="i !== val.length - 1">, </span>
+                  <nuxt-link v-bind:to="generateLink('ssl', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'ssl'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link><span v-if="i !== val.length - 1">, </span>
                 </span>
               </div>
               <div v-if="key == 'not_before_formatted'" class="mt-2">
                 <span class="font-bold">ssl_not_before</span>:
-                <nuxt-link v-bind:to="generateLink('before', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                <nuxt-link v-bind:to="generateLink('before', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'before'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
               <div v-if="key == 'not_after_formatted'" class="mt-2">
                 <span class="font-bold">ssl_not_after</span>:
-                <nuxt-link v-bind:to="generateLink('after', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                <nuxt-link v-bind:to="generateLink('after', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'after'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
               <div v-if="key != 'not_after_formatted' && key != 'not_before_formatted' && key != 'not_before' && key != 'not_after' && key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'" class="mt-2">
                 <p v-if="key == 'ca_issuers'">
                   <span class="font-bold">ssl_ca_issuer</span>:
-                  <nuxt-link v-bind:to="generateLink('ca', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('ca', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'ca'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'crl_distribution_points'">
                   <span class="font-bold">ssl_crl_distribution</span>:
-                  <nuxt-link v-bind:to="generateLink('crl', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('crl', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'crl'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'ocsp'">
                   <span class="font-bold">ssl_ocsp</span>:
-                  <nuxt-link v-bind:to="generateLink('ocsp', val)" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+                  <nuxt-link v-bind:to="generateLink('ocsp', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'ocsp'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
                 </p>
                 <p v-if="key == 'serial'">
                   <span class="font-bold">ssl_serial</span>:
@@ -220,9 +228,9 @@
         <ul class="bg-gray-300 overflow-scroll px-3 pt-3">
           <li v-for="val, key in result.header">
             <span class="font-bold">{{ key }}</span>: <span v-if="key !== 'x-powered-by' && key !== 'status' && key !== 'server'" class="font-thin">{{ val }}</span>
-            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', val)" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'status'}" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'server'}" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
+            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'service'}" class="text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
           </li>
         </ul>
       </code>
@@ -239,6 +247,24 @@ export default {
   computed: {
     loadingIndicator() {
       return this.$store.state.loading
+    },
+    prefix() {
+      const path = this.$route.fullPath
+
+      if (path.startsWith('/')) {
+        return path.split('/')[1]
+      } else {
+        return ''
+      }
+    },
+    filter() {
+      const path = this.$route.fullPath
+
+      if (path.startsWith('/')) {
+        return decodeURIComponent(path.split('/').splice(2)[0])
+      } else {
+        return ''
+      }
     }
   },
   methods: {
