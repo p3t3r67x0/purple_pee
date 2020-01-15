@@ -268,11 +268,12 @@ export default {
 
       if (path.startsWith('/')) {
         const filter = path.split('/').filter(Boolean)
+        const query = filter.splice(1).join('/')
 
         if (filter[0] == 'search') {
-          return decodeURIComponent(filter[1]).split(':').splice(1).join(':')
+          return decodeURIComponent(query).split(':').splice(1).join(':')
         } else {
-          return filter[1]
+          return query
         }
       } else {
         return ''
