@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -49,12 +49,13 @@ export default {
       return this.$store.state.results
     },
     queryTitle() {
-      const splitted = decodeURIComponent(this.$route.params.pathMatch).split(':')
+      return this.$route.params.pathMatch
+    },
+    queryTitle() {
+      const query = decodeURIComponent(this.$route.params.pathMatch).split(':')
 
-      if (splitted.length > 1) {
-        return splitted[0] + ' ' + splitted[1]
-      } else {
-        return splitted[0]
+      if (query.length >= 2) {
+        return [query[0], query.splice(1).join(':')]
       }
     },
     query() {

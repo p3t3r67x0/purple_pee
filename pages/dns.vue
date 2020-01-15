@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -27,8 +27,7 @@ export default {
   },
   data() {
     return {
-      results: [],
-      queryTitle: 'DNS entries'
+      results: []
     }
   },
   created() {
@@ -53,6 +52,9 @@ export default {
     },
     loadingIndicator() {
       return this.$store.state.loading
+    },
+    queryTitle() {
+      return ['latest', 'DNS']
     }
   },
   methods: {

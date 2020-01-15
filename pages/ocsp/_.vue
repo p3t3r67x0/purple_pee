@@ -3,7 +3,7 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results"></query>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -46,7 +46,7 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return 'ocsp ' + decodeURIComponent(this.$route.params.pathMatch)
+      return ['ocsp',  this.$route.params.pathMatch]
     },
     query() {
       return this.$route.params.pathMatch
