@@ -43,7 +43,7 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return ['organisation',  this.$route.params.pathMatch]
+      return ['org',  this.$route.params.pathMatch]
     },
     query() {
       return this.$route.params.pathMatch
