@@ -140,7 +140,7 @@
                   </p>
                   <p v-if="k == 'organizational_unit_name'">
                     <span class="font-bold">ssl_subject_organisation_unit</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('unit', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'unit'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_subject_province</span>:
@@ -169,7 +169,7 @@
                   </p>
                   <p v-if="k == 'organizational_unit_name'">
                     <span class="font-bold">ssl_issuer_organisation_unit</span>:
-                    <nuxt-link v-bind:to="generateLink('org', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'org'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
+                    <nuxt-link v-bind:to="generateLink('unit', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'unit'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
                   </p>
                   <p v-if="k == 'state_or_province_name'">
                     <span class="font-bold">ssl_issuer_province</span>:
