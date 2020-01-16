@@ -49,9 +49,6 @@ export default {
       return this.$store.state.results
     },
     queryTitle() {
-      return this.$route.params.pathMatch
-    },
-    queryTitle() {
       const query = decodeURIComponent(this.$route.params.pathMatch).split(':')
 
       if (query.length >= 2) {
