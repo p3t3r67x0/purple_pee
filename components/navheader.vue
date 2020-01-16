@@ -18,7 +18,7 @@
               <nuxt-link to="/trends" class="no-underline text-gray-200">Trends</nuxt-link>
             </li>
             <li class="mr-3">
-              <nuxt-link to="/cidr" class="no-underline text-gray-200">CIDR</nuxt-link>
+              <nuxt-link to="/isp/germany" class="no-underline text-gray-200">ISPs</nuxt-link>
             </li>
             <li class="mr-3">
               <nuxt-link to="/ipv4" class="no-underline text-gray-200">IPv4</nuxt-link>
@@ -49,7 +49,7 @@
               <nuxt-link to="/trends" class="block hover:bg-gray-800 hover:text-white p-2">Trending now</nuxt-link>
             </li>
             <li class="border-b">
-              <nuxt-link to="/cidr" class="block hover:bg-gray-800 hover:text-white p-2">CIDR Entries</nuxt-link>
+              <nuxt-link to="/isp/germany" class="block hover:bg-gray-800 hover:text-white p-2">ISPs Germany</nuxt-link>
             </li>
             <li class="border-b">
               <nuxt-link to="/ipv4" class="block hover:bg-gray-800 hover:text-white p-2">IPv4 Entries</nuxt-link>
