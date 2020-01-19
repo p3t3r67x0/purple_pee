@@ -43,10 +43,10 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return ['site',  this.$route.params.pathMatch]
+      return ['site', decodeURIComponent(this.$route.params.pathMatch)]
     },
     query() {
-      return this.$route.params.pathMatch
+      return decodeURIComponent(this.$route.params.pathMatch)
     }
   },
   head() {
@@ -66,12 +66,6 @@ export default {
       }).catch((error) => {
         if (error.response) {
           this.$store.commit('updateResultList', [])
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: query
-            }
-          })
 
           if (error.response.status !== 404) {
             this.$store.commit('updateErrorMessage', error.response.data)
