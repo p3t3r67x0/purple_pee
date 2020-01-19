@@ -53,6 +53,8 @@ export default {
 
       if (query.length >= 2) {
         return [query[0], query.splice(1).join(':')]
+      } else {
+        return ['', decodeURIComponent(this.$route.params.pathMatch)]
       }
     },
     query() {
@@ -65,9 +67,21 @@ export default {
         return false
       }
 
-      if (!match.match(
-          /(^port:)\d{2,}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^app:|^server:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|ocsp:|crl:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
-        )) {
+      if (!match.match(/(^(port:)+[0-9]{2,})/) &&
+        !match.match(/(^(status:)+[0-9]{3})/) &&
+        !match.match(/(^(org:)+[\w\/\.-]{2,})/i) &&
+        !match.match(/(^(asn:)+(AS)?[0-9]{1,})/i) &&
+        !match.match(/(^(registry:)+[a-z]{4,})/i) &&
+        !match.match(/(^(before:|after:)+[ \d:-]+)/i) &&
+        !match.match(/(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i) &&
+        !match.match(/(^(country:|state:|city:)+\w{2})/i) &&
+        !match.match(/(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/) &&
+        !match.match(/(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/) &&
+        !match.match(/(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i) &&
+        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
+        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i) &&
+        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
+        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i)) {
         return false
       }
 
