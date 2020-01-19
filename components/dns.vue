@@ -112,7 +112,7 @@
         <div v-if="result.ports" class="mt-3 md:mt-4">
           <strong class="text-base sm:text-lg">Ports</strong>
           <ul class="font-mono text-sm sm:text-base font-light">
-            <li v-for="port in result.ports" class="mt-2">
+            <li v-for="port in result.ports" class="mt-1">
               <nuxt-link v-bind:to="generateLink('port', port.port)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == port.port && prefix == 'port'}" class="text-blue-500 hover:text-blue-700">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{ port.status }}</span>
             </li>
           </ul>
@@ -122,7 +122,7 @@
           <ul class="font-mono text-sm sm:text-base font-light">
             <li v-for="val, key in result.ssl">
               <div v-if="key == 'subject'">
-                <div v-for="v, k in val" class="mt-2">
+                <div v-for="v, k in val" class="mt-1">
                   <p v-if="k == 'country_name'">
                     <span class="font-bold">ssl_subject_country</span>:
                     <span v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'country'}">
@@ -153,7 +153,7 @@
                 </div>
               </div>
               <div v-if="key == 'issuer'">
-                <div v-for="v, k in val" class="mt-2">
+                <div v-for="v, k in val" class="mt-1">
                   <p v-if="k == 'country_name'">
                     <span class="font-bold">ssl_issuer_country</span>:
                     <nuxt-link v-if="k == 'country_name'" v-bind:to="generateLink('country', v)" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link>
@@ -181,21 +181,21 @@
                   </p>
                 </div>
               </div>
-              <div v-if="key == 'subject_alt_names'" class="mt-2">
+              <div v-if="key == 'subject_alt_names'" class="mt-1">
                 <span class="font-bold">ssl_subject_alt_names</span>:
                 <span v-for="v, i in val">
                   <nuxt-link v-bind:to="generateLink('ssl', v)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == v && prefix == 'ssl'}" class="font-thin text-blue-500 hover:text-blue-700">{{ v }}</nuxt-link><span v-if="i !== val.length - 1">, </span>
                 </span>
               </div>
-              <div v-if="key == 'not_before_formatted'" class="mt-2">
+              <div v-if="key == 'not_before_formatted'" class="mt-1">
                 <span class="font-bold">ssl_not_before</span>:
                 <nuxt-link v-bind:to="generateLink('before', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'before'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
-              <div v-if="key == 'not_after_formatted'" class="mt-2">
+              <div v-if="key == 'not_after_formatted'" class="mt-1">
                 <span class="font-bold">ssl_not_after</span>:
                 <nuxt-link v-bind:to="generateLink('after', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': prefix == 'after'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
               </div>
-              <div v-if="key != 'not_after_formatted' && key != 'not_before_formatted' && key != 'not_before' && key != 'not_after' && key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'" class="mt-2">
+              <div v-if="key != 'not_after_formatted' && key != 'not_before_formatted' && key != 'not_before' && key != 'not_after' && key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'" class="mt-1">
                 <p v-if="key == 'ca_issuers'">
                   <span class="font-bold">ssl_ca_issuer</span>:
                   <nuxt-link v-bind:to="generateLink('ca', val)" v-bind:class="{'bg-green-200 rounded -ml-1 p-1': filter == val && prefix == 'ca'}" class="font-thin text-blue-500 hover:text-blue-700">{{ val }}</nuxt-link>
