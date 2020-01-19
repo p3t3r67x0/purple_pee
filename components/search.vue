@@ -11,70 +11,6 @@
 </template>
 
 <script>
-function isValidIpv4(ip) {
-  if (typeof(ip) !== 'string') {
-    return false
-  }
-
-  if (!ip.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)) {
-    return false
-  }
-
-  return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
-}
-
-function isValidCidr(cidr) {
-  if (typeof(cidr) !== 'string') {
-    return false
-  }
-
-  if (!cidr.match(/(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
-    return false
-  }
-
-  return true
-}
-
-function isValidDomain(domain) {
-  if (typeof(domain) !== 'string') {
-    return false
-  }
-
-  if (!domain.match(
-      /((^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|ssl:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63}))\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([\w\-.]{2,})))|(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63}))\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))/i
-    )) {
-    return false
-  }
-
-  return true
-}
-
-function isValidAsn(asn) {
-  if (typeof(asn) !== 'string') {
-    return false
-  }
-
-  if (!asn.match(/((AS)?[0-9]{1,})/i)) {
-    return false
-  }
-
-  return true
-}
-
-function isValidMatch(match) {
-  if (typeof(match) !== 'string') {
-    return false
-  }
-
-  if (!match.match(
-      /(^port:)\d{2,}|(^ipv6:)([a-f0-9:]+:+)+[a-f0-9]+|(^ipv4:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|(^asn:)(AS)?\d{1,}|(^status:)\d{3}|(^banner:|^service:|^server:|^loc:)(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$|(^country:|^state:|^city:)\w{2}|(^org:)[\w\/\.-]{2,}|(^registry:)\w{4,}|(^cidr:)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}|((ssl:|site:|ocsp:|crl:|ca:|issuer:|unit:|cname:|mx:|ns:)+((([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([\w\-.]{2,}))|(([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,}))*)))/i
-    )) {
-    return false
-  }
-
-  return true
-}
-
 export default {
   computed: {
     q: {
@@ -100,174 +36,163 @@ export default {
         return r
       }
     },
-    searchMatch() {
+    isValidAsn(asn) {
+      if (typeof(asn) !== 'string') {
+        return false
+      }
 
+      if (!asn.match(/^(AS)?[^\.0-9]{1,}/)) {
+        return false
+      }
+
+      return true
+    },
+    isValidIpv6(ip) {
+      if (typeof(ip) !== 'string') {
+        return false
+      }
+
+      if (!ip.match(/([a-f0-9:]+:+)+[a-f0-9]+/i)) {
+        return false
+      }
+
+      return true
+    },
+    isValidIpv4(ip) {
+      if (typeof(ip) !== 'string') {
+        return false
+      }
+
+      if (!ip.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)) {
+        return false
+      }
+
+      return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
+    },
+    isValidCidr(cidr) {
+      if (typeof(cidr) !== 'string') {
+        return false
+      }
+
+      if (!cidr.match(/(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
+        return false
+      }
+
+      return true
+    },
+    isValidDomain(domain) {
+      if (typeof(domain) !== 'string') {
+        return false
+      }
+
+      if (!domain.match(/([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([a-z\-.]{2,})/i) &&
+        !domain.match(/([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i)) {
+        return false
+      }
+
+      return true
+    },
+    isValidMatch(match) {
+      if (typeof(match) !== 'string') {
+        return false
+      }
+
+      if (!match.match(/(^(port:)+[0-9]{2,})/) &&
+        !match.match(/(^(status:)+[0-9]{3})/) &&
+        !match.match(/(^(org:)+[\w\/\.-]{2,})/i) &&
+        !match.match(/(^(asn:)+(AS)?[0-9]{1,})/i) &&
+        !match.match(/(^(registry:)+[a-z]{4,})/i) &&
+        !match.match(/(^(before:|after:)+[ \d:-]+)/i) &&
+        !match.match(/(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i) &&
+        !match.match(/(^(country:|state:|city:)+\w{2})/i) &&
+        !match.match(/(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/) &&
+        !match.match(/(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/) &&
+        !match.match(/(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i) &&
+        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
+        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i) &&
+        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
+        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i)) {
+        return false
+      }
+
+      return true
+    },
+    isValidFilter(query) {
+      if (typeof(query) !== 'string') {
+        return false
+      }
+
+      if (!query.match(/^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))/)) {
+        return false
+      }
+
+      return true
+    },
+    splitMatch(query) {
+      const splitted = query.split(':')
+
+      if (splitted.length >= 2) {
+        return [splitted[0], splitted.splice(1).join(':')]
+      }
+    },
+    searchMatch() {
       let query = this.q
 
       if (query !== null && query.length > 0) {
         query = this.trimWhitespaces(query)
       }
 
-      if (isValidMatch(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/' + query).then(response => {
-          this.$store.commit('updateResultList', response)
+      if (this.isValidFilter(query) && this.isValidMatch(query)) {
+        const q = this.splitMatch(query)
+
+        if (q[0] && q[1]) {
           this.$router.push({
-            name: 'search-all',
+            name: q[0] + '-all',
             params: {
-              pathMatch: encodeURIComponent(query)
+              pathMatch: encodeURIComponent(q[1])
             }
           })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+        }
+      } else if (this.isValidFilter(query) && !this.isValidIpv4(query) && !this.isValidDomain(query) && this.isValidAsn(query)) {
+        this.$router.push({
+          name: 'asn-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (isValidAsn(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/asn:' + query).then(response => {
-          this.$store.commit('updateResultList', response)
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: encodeURIComponent(query)
-            }
-          })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+      } else if (this.isValidFilter(query) && !this.isValidCidr(query) && !this.isValidIpv4(query) && this.isValidDomain(query)) {
+        this.$router.push({
+          name: 'site-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (!isValidCidr(query) && !isValidIpv4(query) && isValidDomain(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/site:' + query).then(response => {
-          this.$store.commit('updateResultList', response)
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: encodeURIComponent(query)
-            }
-          })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+      } else if (this.isValidFilter(query) && this.isValidIpv4(query)) {
+        this.$router.push({
+          name: 'ipv4-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (isValidIpv4(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/ipv4:' + query).then(response => {
-          this.$store.commit('updateResultList', response)
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: encodeURIComponent(query)
-            }
-          })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+      } else if (this.isValidFilter(query) && this.isValidIpv6(query)) {
+        this.$router.push({
+          name: 'ipv6-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (isValidCidr(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/cidr:' + query).then(response => {
-          this.$store.commit('updateResultList', response)
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: encodeURIComponent(query)
-            }
-          })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+      } else if (this.isValidFilter(query) && this.isValidCidr(query)) {
+        this.$router.push({
+          name: 'cidr-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
       } else {
-        this.$axios.$get(process.env.API_URL + '/query/' + query).then(response => {
-          this.$store.commit('updateResultList', response)
-          this.$router.push({
-            name: 'search-all',
-            params: {
-              pathMatch: encodeURIComponent(query)
-            }
-          })
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
-            this.$router.push({
-              name: 'search-all',
-              params: {
-                pathMatch: encodeURIComponent(query)
-              }
-            })
-
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
-            }
+        this.$router.push({
+          name: 'search-all',
+          params: {
+            pathMatch: encodeURIComponent(query)
           }
         })
       }
