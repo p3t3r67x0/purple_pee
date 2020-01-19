@@ -12,7 +12,7 @@ export default {
   },
   computed: {
     queryTitle() {
-      return this.query[0] + ' ' + this.query[1]
+      return this.query[0] + ' ' + decodeURIComponent(this.query[1])
     },
     resultsTitle() {
       const results = this.results
