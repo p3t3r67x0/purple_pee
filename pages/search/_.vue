@@ -100,26 +100,27 @@ export default {
         return r
       }
     },
-    fetchLatest(query) {
-      if (query !== null && query.length > 0) {
-        query = this.trimWhitespaces(query)
+    splitMatch(query) {
+      const splitted = query.split(':')
+
+      if (splitted.length >= 2) {
+        return [splitted[0], splitted.splice(1).join(':')]
       }
+    },
+    fetchLatest(query) {
+      this.$store.commit('updateResultList', [])
 
-      if (this.results.length === 0 && this.isValidMatch(query)) {
-        this.$axios.$get(process.env.API_URL + '/match/' + query).then(res => {
-          this.$store.commit('updateResultList', res)
-        }).catch((error) => {
-          if (error.response) {
-            this.$store.commit('updateResultList', [])
+      if (this.isValidMatch(decodeURIComponent(query))) {
+        const q = this.splitMatch(decodeURIComponent(query))
 
-            if (error.response.status !== 404) {
-              this.$store.commit('updateErrorMessage', error.response.data)
-              this.$store.commit('updateErrorStatus', error.response.status)
-              this.$store.commit('updateModalVisible', true)
-              this.$store.commit('updateLoadingIndicator', false)
+        if (q[0] && q[1]) {
+          this.$router.push({
+            name: q[0] + '-all',
+            params: {
+              pathMatch: this.trimWhitespaces(encodeURIComponent(q[1]))
             }
-          }
-        })
+          })
+        }
       }
     }
   }
