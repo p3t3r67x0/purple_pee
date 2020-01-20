@@ -122,7 +122,7 @@ export default {
         return false
       }
 
-      if (!query.match(/^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))/)) {
+      if (!query.match(/^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)/i)) {
         return false
       }
 
@@ -153,35 +153,35 @@ export default {
             }
           })
         }
-      } else if (this.isValidFilter(query) && !this.isValidIpv4(query) && !this.isValidDomain(query) && this.isValidAsn(query)) {
+      } else if (!this.isValidFilter(query) && !this.isValidIpv4(query) && !this.isValidDomain(query) && this.isValidAsn(query)) {
         this.$router.push({
           name: 'asn-all',
           params: {
             pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (this.isValidFilter(query) && !this.isValidCidr(query) && !this.isValidIpv4(query) && this.isValidDomain(query)) {
+      } else if (!this.isValidFilter(query) && !this.isValidCidr(query) && !this.isValidIpv4(query) && this.isValidDomain(query)) {
         this.$router.push({
           name: 'site-all',
           params: {
             pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (this.isValidFilter(query) && this.isValidIpv4(query)) {
+      } else if (!this.isValidFilter(query) && this.isValidIpv4(query)) {
         this.$router.push({
           name: 'ipv4-all',
           params: {
             pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (this.isValidFilter(query) && this.isValidIpv6(query)) {
+      } else if (!this.isValidFilter(query) && this.isValidIpv6(query)) {
         this.$router.push({
           name: 'ipv6-all',
           params: {
             pathMatch: encodeURIComponent(query)
           }
         })
-      } else if (this.isValidFilter(query) && this.isValidCidr(query)) {
+      } else if (!this.isValidFilter(query) && this.isValidCidr(query)) {
         this.$router.push({
           name: 'cidr-all',
           params: {
