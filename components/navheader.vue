@@ -1,5 +1,5 @@
 <template>
-<div class="sticky top-0 left-0 w-full bg-purple-700 mb-6">
+<div class="z-6000 sticky top-0 left-0 w-full bg-purple-700 mb-6">
   <div class="container mx-auto">
     <div class="flex items-center py-2">
       <div class="w-11/12 ml-2 mr-3 md:mx-0 flex items-center">
