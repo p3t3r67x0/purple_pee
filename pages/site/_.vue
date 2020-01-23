@@ -5,7 +5,7 @@
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
-    <graph v-bind:query="query"></graph>
+    <graph v-if="!loadingIndicator" v-bind:query="query"></graph>
   </div>
   <navfooter></navfooter>
 </div>
