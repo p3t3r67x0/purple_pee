@@ -5,6 +5,7 @@
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
+    <graph v-bind:query="query"></graph>
   </div>
   <navfooter></navfooter>
 </div>
@@ -14,6 +15,7 @@
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
+import Graph from '@/components/graph.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 
@@ -22,6 +24,7 @@ export default {
     dns: Dns,
     query: Query,
     modal: Modal,
+    graph: Graph,
     navfooter: Footer,
     navheader: Navbar
   },
@@ -51,6 +54,9 @@ export default {
   },
   head() {
     return {
+      script: [{
+        src: 'https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'
+      }],
       title: 'Site results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
