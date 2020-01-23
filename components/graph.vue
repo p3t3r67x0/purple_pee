@@ -61,6 +61,10 @@ export default {
           hideEdgesOnDrag: false,
           hideEdgesOnZoom: false,
           navigationButtons: true,
+        },
+        layout: {
+          randomSeed: 191006,
+          improvedLayout: true
         }
       }
     }
