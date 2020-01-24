@@ -15,12 +15,10 @@
 <script>
 export default {
   props: {
-    query: String
+    results: Object
   },
   data() {
     return {
-      nodes: [],
-      edges: [],
       options: {
         autoResize: true,
         height: '100%',
@@ -70,7 +68,9 @@ export default {
     }
   },
   mounted() {
-    this.fetchGraph(this.query)
+    if (this.results.nodes && this.results.edges) {
+      this.createGraph(this.results.nodes, this.results.edges)
+    }
   },
   methods: {
     createGraph(nodes, edges) {
@@ -109,22 +109,6 @@ export default {
             color: color
           })
         })
-      })
-    },
-    fetchGraph(query) {
-      this.$axios.$get(process.env.API_URL + '/graph/' + decodeURIComponent(query)).then(res => {
-        this.createGraph(res.nodes, res.edges)
-      }).catch((error) => {
-        if (error.response) {
-          this.$store.commit('updateResultList', [])
-
-          if (error.response.status !== 404) {
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
-          }
-        }
       })
     }
   }

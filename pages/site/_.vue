@@ -5,7 +5,7 @@
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
-    <graph v-if="!loadingIndicator" v-bind:query="query"></graph>
+    <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
   </div>
   <navfooter></navfooter>
 </div>
@@ -31,10 +31,13 @@ export default {
   data() {
     return {
       results: [],
+      graphResults: {},
+      showGraph: false
     }
   },
   created() {
     this.fetchLatest(this.query)
+    this.fetchGraph(this.query)
     this.$store.commit('updateQuery', 'site:' + decodeURIComponent(this.query))
     this.$store.commit('updateLoadingIndicator', true)
   },
@@ -67,12 +70,27 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/match/site:' + decodeURIComponent(query)).then(res => {
+      this.$axios.$get(process.env.API_URL + '/match/site:' + query).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {
           this.$store.commit('updateResultList', [])
 
+          if (error.response.status !== 404) {
+            this.$store.commit('updateErrorMessage', error.response.data)
+            this.$store.commit('updateErrorStatus', error.response.status)
+            this.$store.commit('updateModalVisible', true)
+            this.$store.commit('updateLoadingIndicator', false)
+          }
+        }
+      })
+    },
+    fetchGraph(query) {
+      this.$axios.$get(process.env.API_URL + '/graph/' + query).then(res => {
+        this.graphResults = res
+        this.showGraph = true
+      }).catch((error) => {
+        if (error.response) {
           if (error.response.status !== 404) {
             this.$store.commit('updateErrorMessage', error.response.data)
             this.$store.commit('updateErrorStatus', error.response.status)
