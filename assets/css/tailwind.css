@@ -10,6 +10,10 @@ body {
   z-index: 6000;
 }
 
+.z-6500 {
+  z-index: 6500;
+}
+
 .spinner>div {
   animation: spinner 1.4s infinite ease-in-out both;
 }

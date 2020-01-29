@@ -1,5 +1,5 @@
 <template>
-<div class="fixed top-0 right-0 left-0 m-3 flex items-center justify-center">
+<div class="z-6500 fixed top-0 right-0 left-0 m-3 flex items-center justify-center">
   <div v-bind:class="errorStatusClass" class="w-full max-w-xl rounded shadow-md bg-white px-3 pt-2 pb-3">
     <svg v-on:click="closeModal" class="bg-text-900 fill-current float-right cursor-pointer -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
       <path class="heroicon-ui" d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" /></svg>
