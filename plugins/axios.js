@@ -28,7 +28,11 @@ export default ({
       return response
     },
     function(error) {
-      app.store.commit('updateLoadingIndicator', false)
+      const splitted = error.config.url.split('/')
+
+      if (splitted.length >= 4 && splitted[3] !== 'graph') {
+        app.store.commit('updateLoadingIndicator', false)
+      }
       // console.log('updateLoadingIndicator: ' + app.store.state.loading)
       return Promise.reject(error)
     }
