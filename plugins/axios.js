@@ -19,7 +19,11 @@ export default ({
 
   app.$axios.interceptors.response.use(
     function(response) {
-      app.store.commit('updateLoadingIndicator', false)
+      const splitted = response.config.url.split('/')
+
+      if (splitted.length >= 4 && splitted[3] !== 'graph') {
+        app.store.commit('updateLoadingIndicator', false)
+      }
       // console.log('updateLoadingIndicator: ' + app.store.state.loading)
       return response
     },
