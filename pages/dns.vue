@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     fetchLatest(page = 1, pageSize = 10) {
-      this.$axios.$get(process.env.API_URL + `/dns?page=${page}&page_size=${pageSize}`)
+      this.$axios.$get(this.$env.API_URL + `/dns?page=${page}&page_size=${pageSize}`)
         .then(res => {
           this.results = res.results
         }).catch((error) => {

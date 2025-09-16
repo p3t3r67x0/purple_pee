@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/trends').then(res => {
+      this.$axios.$get(this.$env.API_URL + '/trends').then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {

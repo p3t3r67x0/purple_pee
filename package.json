@@ -5,26 +5,24 @@
   "author": "Aurelius Wendelken",
   "private": false,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "start": "nuxt preview"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.8.0",
-    "@nuxtjs/dotenv": "^1.4.1",
+    "@pinia/nuxt": "^0.5.5",
     "d3": "^7.9.0",
     "d3-drag": "^3.0.0",
     "d3-force": "^3.0.0",
     "d3-scale": "^4.0.2",
     "d3-selection": "^3.0.0",
-    "nuxt": "2.10.1",
-    "vuex-persistedstate": "^2.7.0"
+    "nuxt": "^3.13.2",
+    "pinia": "^2.1.7"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^1.0.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.3.3"
   }
 }

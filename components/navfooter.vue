@@ -99,21 +99,22 @@ export default {
     }
   },
   created() {
-    this.faqUrl = process.env.FAQ_URL || '#'
-    this.helpUrl = process.env.HELP_URL || '#'
-    this.supportUrl = process.env.SUPPORT_URL || '#'
-    this.apiUrl = process.env.API_URL || '#'
-    this.docsUrl = process.env.DOCS_URL || '#'
-    this.issuesUrl = process.env.ISSUES_URL || '#'
-    this.twitterUrl = process.env.TWITTER_URL || '#'
-    this.facebookUrl = process.env.FACEBOOK_URL || '#'
-    this.linkedinUrl = process.env.LINKEDIN_URL || '#'
-    this.aboutUrl = process.env.ABOUT_URL || '#'
-    this.contactUrl = process.env.CONTACT_URL || '#'
-    this.blogUrl = process.env.BLOG_URL || '#'
-    this.termsUrl = process.env.TERMS_URL || '#'
-    this.privacyUrl = process.env.PRIVACY_URL || '#'
-    this.imprintUrl = process.env.IMPRINT_URL || '#'
+    const env = this.$env || {}
+    this.faqUrl = env.FAQ_URL || '#'
+    this.helpUrl = env.HELP_URL || '#'
+    this.supportUrl = env.SUPPORT_URL || '#'
+    this.apiUrl = env.API_URL || '#'
+    this.docsUrl = env.DOCS_URL || '#'
+    this.issuesUrl = env.ISSUES_URL || '#'
+    this.twitterUrl = env.TWITTER_URL || '#'
+    this.facebookUrl = env.FACEBOOK_URL || '#'
+    this.linkedinUrl = env.LINKEDIN_URL || '#'
+    this.aboutUrl = env.ABOUT_URL || '#'
+    this.contactUrl = env.CONTACT_URL || '#'
+    this.blogUrl = env.BLOG_URL || '#'
+    this.termsUrl = env.TERMS_URL || '#'
+    this.privacyUrl = env.PRIVACY_URL || '#'
+    this.imprintUrl = env.IMPRINT_URL || '#'
   }
 }
 </script>

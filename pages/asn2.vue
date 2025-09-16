@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     fetchLatest() {
-      this.$axios.$get(process.env.API_URL + '/asn').then(res => {
+      this.$axios.$get(this.$env.API_URL + '/asn').then(res => {
         this.results = res
       });
     },
