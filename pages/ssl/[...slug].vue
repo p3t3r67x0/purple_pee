@@ -4,7 +4,7 @@
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-    <dns v-bind:results="results" :currentPage="currentPage" @nextPage="nextPage" @prevPage="prevPage"></dns>
+    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -29,25 +29,13 @@ export default {
   data() {
     return {
       results: [],
-      currentPage: 1,
-      pageSize: 10
+      currentPage: 1
     }
   },
   created() {
-    this.fetchLatest(this.currentPage, this.pageSize)
-  },
-  head() {
-    return {
-      title: 'Latest DNS lookup entries',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Find latest DNS lookup entries they change every few seconds so make sure you keep uptodate.'
-      }]
-    }
-  },
-  watch: {
-    modalVisible: function() {}
+    this.fetchLatest(this.query)
+    this.$store.commit('updateQuery', 'ssl:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   computed: {
     modalVisible() {
@@ -57,26 +45,29 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return ['latest', 'DNS']
+      return ['ssl',  this.$slugParam()]
+    },
+    query() {
+      return this.$slugParam()
+    }
+  },
+  head() {
+    return {
+      title: 'SSL certificate results for ' + decodeURIComponent(this.query),
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest ssl certificate results ' + decodeURIComponent(this.query)
+      }]
     }
   },
   methods: {
-    async fetchLatest(page = 1, pageSize = 10) {
+    async fetchLatest(query) {
       try {
-        const res = await fetchJson(this.$env.API_URL + `/dns?page=${page}&page_size=${pageSize}`)
-        this.results = res.results
+        const res = await fetchJson(this.$env.API_URL + '/match/ssl:' + decodeURIComponent(query))
+        this.results = res
       } catch (error) {
         handleFetchError(error)
-      }
-    },
-    nextPage() {
-      this.currentPage++
-      this.fetchLatest(this.currentPage, this.pageSize)
-    },
-    prevPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--
-        this.fetchLatest(this.currentPage, this.pageSize)
       }
     }
   }

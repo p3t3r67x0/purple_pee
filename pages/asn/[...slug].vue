@@ -4,7 +4,7 @@
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-    <dns v-bind:results="results" :currentPage="currentPage" @nextPage="nextPage" @prevPage="prevPage"></dns>
+    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -29,22 +29,23 @@ export default {
   data() {
     return {
       results: [],
-      currentPage: 1,
-      pageSize: 10
+      currentPage: 1
     }
-  },
-  created() {
-    this.fetchLatest(this.currentPage, this.pageSize)
   },
   head() {
     return {
-      title: 'Latest DNS lookup entries',
+      title: 'ASN results for ' + decodeURIComponent(this.query),
       meta: [{
         hid: 'description',
         name: 'description',
-        content: 'Find latest DNS lookup entries they change every few seconds so make sure you keep uptodate.'
+        content: 'Explore latest ASN results ' + decodeURIComponent(this.query)
       }]
     }
+  },
+  created() {
+    this.fetchLatest(this.query)
+    this.$store.commit('updateQuery', 'asn:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -57,26 +58,19 @@ export default {
       return this.$store.state.loading
     },
     queryTitle() {
-      return ['latest', 'DNS']
+      return ['asn',  this.$slugParam().split(/[a-z]/i)[2]]
+    },
+    query() {
+      return this.$slugParam()
     }
   },
   methods: {
-    async fetchLatest(page = 1, pageSize = 10) {
+    async fetchLatest(query) {
       try {
-        const res = await fetchJson(this.$env.API_URL + `/dns?page=${page}&page_size=${pageSize}`)
-        this.results = res.results
+        const response = await fetchJson(this.$env.API_URL + '/match/asn:' + query)
+        this.results = response
       } catch (error) {
         handleFetchError(error)
-      }
-    },
-    nextPage() {
-      this.currentPage++
-      this.fetchLatest(this.currentPage, this.pageSize)
-    },
-    prevPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--
-        this.fetchLatest(this.currentPage, this.pageSize)
       }
     }
   }

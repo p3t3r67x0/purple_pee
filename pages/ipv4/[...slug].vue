@@ -3,22 +3,25 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <list v-bind:results="results"></list>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
+    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
 </template>
 
 <script>
+import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
-import List from '@/components/asn-list.vue'
+import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { fetchJson, handleFetchError } from '~/utils/http'
 
 export default {
   components: {
-    list: List,
+    dns: Dns,
+    query: Query,
     modal: Modal,
     navfooter: Footer,
     navheader: Navbar
@@ -26,21 +29,23 @@ export default {
   data() {
     return {
       results: [],
-      showModal: false
+      currentPage: 1
+    }
+  },
+  head() {
+    return {
+      title: 'IPv4 results for ' + decodeURIComponent(this.query),
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest IPv4 results ' + decodeURIComponent(this.query)
+      }]
     }
   },
   created() {
     this.fetchLatest(this.query)
-  },
-  head() {
-    return {
-      title: 'Explore the latest ASN entries',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore the latest ASN entries'
-      }]
-    }
+    this.$store.commit('updateQuery', 'ipv4:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -48,12 +53,21 @@ export default {
   computed: {
     modalVisible() {
       return this.$store.state.modalVisible
-    }
+    },
+    loadingIndicator() {
+      return this.$store.state.loading
+    },
+    queryTitle() {
+      return ['ipv4',  this.$slugParam()]
+    },
+    query() {
+      return this.$slugParam()
+    },
   },
   methods: {
     async fetchLatest(query) {
       try {
-        const res = await fetchJson(this.$env.API_URL + '/asn')
+        const res = await fetchJson(this.$env.API_URL + '/match/ipv4:' + decodeURIComponent(query))
         this.results = res
       } catch (error) {
         handleFetchError(error)
