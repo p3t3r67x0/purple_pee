@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     generatePath(image) {
-      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
+      return `/svg/${image ? image.toLowerCase() : 'unknown'}.svg`
     },
     generateUrl(domain) {
       return 'http://' + domain
