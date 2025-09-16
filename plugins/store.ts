@@ -17,5 +17,4 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   nuxtApp.provide('store', storeProxy)
-  nuxtApp.vueApp.config.globalProperties.$store = storeProxy
 })

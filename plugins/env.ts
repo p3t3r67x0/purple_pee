@@ -5,5 +5,4 @@ export default defineNuxtPlugin((nuxtApp) => {
   const env = config.public
 
   nuxtApp.provide('env', env)
-  nuxtApp.vueApp.config.globalProperties.$env = env
 })
