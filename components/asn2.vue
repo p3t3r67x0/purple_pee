@@ -53,18 +53,9 @@
 </div>
 </template>
 
-<script>
-export default {
-  props: {
-    results: Array
-  },
-  methods: {
-    generatePath(image) {
-      return `/svg/${image ? image.toLowerCase() : 'unknown'}.svg`
-    },
-    generateUrl(domain) {
-      return 'http://' + domain
-    }
-  }
-}
+<script setup lang="ts">
+defineProps<{ results: Array<Record<string, any>> }>()
+
+const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
+const generateUrl = (domain: string) => `http://${domain}`
 </script>

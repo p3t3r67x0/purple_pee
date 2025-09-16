@@ -9,55 +9,43 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import Modal from '@/components/modal.vue'
 import List from '@/components/ipv4-list.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { fetchJson, handleFetchError } from '~/utils/http'
+import { useMainStore } from '~/stores/main'
+import { storeToRefs } from 'pinia'
+import { useNuxtApp } from '#app'
 
-export default {
-  components: {
-    list: List,
-    modal: Modal,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  data() {
-    return {
-      results: [],
+const results = ref<any[]>([])
+const mainStore = useMainStore()
+const { modalVisible } = storeToRefs(mainStore)
+const { $env } = useNuxtApp()
+
+useHead(() => ({
+  title: 'Explore the latest IPv4 entries',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore the latest IPv4 entries'
     }
-  },
-  created() {
-    this.fetchLatest(this.query)
-  },
-  head() {
-    return {
-      title: 'Explore the latest IPv4 entries',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore the latest IPv4 entries'
-      }]
-    }
-  },
-  watch: {
-    modalVisible: function() {}
-  },
-  computed: {
-    modalVisible() {
-      return this.$store.state.modalVisible
-    }
-  },
-  methods: {
-    async fetchLatest(query) {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/ipv4')
-        this.results = res.results
-      } catch (error) {
-        handleFetchError(error)
-      }
-    }
+  ]
+}))
+
+const fetchLatest = async () => {
+  try {
+    const response = await fetchJson(`${$env.API_URL}/ipv4`)
+    results.value = Array.isArray(response?.results) ? response.results : []
+  } catch (error) {
+    handleFetchError(error)
   }
 }
+
+onMounted(() => {
+  fetchLatest()
+})
 </script>

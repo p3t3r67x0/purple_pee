@@ -77,44 +77,27 @@
 </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      faqUrl: '',
-      helpUrl: '',
-      supportUrl: '',
-      apiUrl: '',
-      docsUrl: '',
-      issuesUrl: '',
-      twitterUrl: '',
-      facebookUrl: '',
-      linkedinUrl: '',
-      aboutUrl: '',
-      contactUrl: '',
-      blogUrl: '',
-      termsUrl: '',
-      privacyUrl: '',
-      imprintUrl: ''
-    }
-  },
-  created() {
-    const env = this.$env || {}
-    this.faqUrl = env.FAQ_URL || '#'
-    this.helpUrl = env.HELP_URL || '#'
-    this.supportUrl = env.SUPPORT_URL || '#'
-    this.apiUrl = env.API_URL || '#'
-    this.docsUrl = env.DOCS_URL || '#'
-    this.issuesUrl = env.ISSUES_URL || '#'
-    this.twitterUrl = env.TWITTER_URL || '#'
-    this.facebookUrl = env.FACEBOOK_URL || '#'
-    this.linkedinUrl = env.LINKEDIN_URL || '#'
-    this.aboutUrl = env.ABOUT_URL || '#'
-    this.contactUrl = env.CONTACT_URL || '#'
-    this.blogUrl = env.BLOG_URL || '#'
-    this.termsUrl = env.TERMS_URL || '#'
-    this.privacyUrl = env.PRIVACY_URL || '#'
-    this.imprintUrl = env.IMPRINT_URL || '#'
-  }
-}
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useNuxtApp } from '#app'
+
+const { $env } = useNuxtApp()
+const env = $env ?? {}
+const withFallback = (value?: string | null) => value || '#'
+
+const faqUrl = ref(withFallback(env.FAQ_URL))
+const helpUrl = ref(withFallback(env.HELP_URL))
+const supportUrl = ref(withFallback(env.SUPPORT_URL))
+const apiUrl = ref(withFallback(env.API_URL))
+const docsUrl = ref(withFallback(env.DOCS_URL))
+const issuesUrl = ref(withFallback(env.ISSUES_URL))
+const twitterUrl = ref(withFallback(env.TWITTER_URL))
+const facebookUrl = ref(withFallback(env.FACEBOOK_URL))
+const linkedinUrl = ref(withFallback(env.LINKEDIN_URL))
+const aboutUrl = ref(withFallback(env.ABOUT_URL))
+const contactUrl = ref(withFallback(env.CONTACT_URL))
+const blogUrl = ref(withFallback(env.BLOG_URL))
+const termsUrl = ref(withFallback(env.TERMS_URL))
+const privacyUrl = ref(withFallback(env.PRIVACY_URL))
+const imprintUrl = ref(withFallback(env.IMPRINT_URL))
 </script>

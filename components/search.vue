@@ -10,159 +10,164 @@
 </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    q: {
-      get() {
-        return this.$store.state.query
-      },
-      set(query) {
-        this.$store.commit('updateQuery', query)
-      },
-    }
-  },
-  methods: {
-    trimWhitespaces(q) {
-      let r = q
+<script setup lang="ts">
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useRouter } from '#app'
+import { useMainStore } from '~/stores/main'
 
-      if (Array.isArray(q)) {
-        r = q[0]
-      }
+const router = useRouter()
+const mainStore = useMainStore()
+const { query } = storeToRefs(mainStore)
 
-      if (r !== null) {
-        return r.trim()
-      } else {
-        return r
-      }
-    },
-    isValidAsn(asn) {
-      if (typeof(asn) !== 'string') {
-        return false
-      }
-
-      if (!asn.match(/^(AS)?[^\.0-9]{1,}/)) {
-        return false
-      }
-
-      return true
-    },
-    isValidIpv6(ip) {
-      if (typeof(ip) !== 'string') {
-        return false
-      }
-
-      if (!ip.match(/([a-f0-9:]+:+)+[a-f0-9]+/i)) {
-        return false
-      }
-
-      return true
-    },
-    isValidIpv4(ip) {
-      if (typeof(ip) !== 'string') {
-        return false
-      }
-
-      if (!ip.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)) {
-        return false
-      }
-
-      return ip.split('.').filter(octect => octect >= 0 && octect <= 255).length === 4
-    },
-    isValidCidr(cidr) {
-      if (typeof(cidr) !== 'string') {
-        return false
-      }
-
-      if (!cidr.match(/(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/)) {
-        return false
-      }
-
-      return true
-    },
-    isValidDomain(domain) {
-      if (typeof(domain) !== 'string') {
-        return false
-      }
-
-      if (!domain.match(/([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([a-z\-.]{2,})/i) &&
-        !domain.match(/([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i)) {
-        return false
-      }
-
-      return true
-    },
-    isValidMatch(match) {
-      if (typeof(match) !== 'string') {
-        return false
-      }
-
-      if (!match.match(/(^(port:)+[0-9]{2,})/) &&
-        !match.match(/(^(status:)+[0-9]{3})/) &&
-        !match.match(/(^(org:)+[\w\/\.-]{2,})/i) &&
-        !match.match(/(^(asn:)+(AS)?[0-9]{1,})/i) &&
-        !match.match(/(^(registry:)+[a-z]{4,})/i) &&
-        !match.match(/(^(before:|after:)+[ \d:-]+)/i) &&
-        !match.match(/(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i) &&
-        !match.match(/(^(country:|state:|city:)+\w{2})/i) &&
-        !match.match(/(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/) &&
-        !match.match(/(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/) &&
-        !match.match(/(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i) &&
-        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
-        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i) &&
-        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
-        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i)) {
-        return false
-      }
-
-      return true
-    },
-    isValidFilter(query) {
-      if (typeof(query) !== 'string') {
-        return false
-      }
-
-      if (!query.match(/^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)/i)) {
-        return false
-      }
-
-      return true
-    },
-    splitMatch(query) {
-      const splitted = query.split(':')
-
-      if (splitted.length >= 2) {
-        return [splitted[0], splitted.splice(1).join(':')]
-      }
-    },
-    searchMatch() {
-      let query = this.q
-
-      if (query !== null && query.length > 0) {
-        query = this.trimWhitespaces(query)
-      }
-
-      if (this.isValidFilter(query) && this.isValidMatch(query)) {
-        const q = this.splitMatch(query)
-
-        if (q[0] && q[1]) {
-          const normalized = this.trimWhitespaces(q[1])
-          this.$router.push(`/${q[0]}/${encodeURIComponent(normalized)}`)
-        }
-      } else if (!this.isValidFilter(query) && !this.isValidIpv4(query) && !this.isValidDomain(query) && this.isValidAsn(query)) {
-        this.$router.push(`/asn/${encodeURIComponent(query)}`)
-      } else if (!this.isValidFilter(query) && !this.isValidCidr(query) && !this.isValidIpv4(query) && this.isValidDomain(query)) {
-        this.$router.push(`/site/${encodeURIComponent(query)}`)
-      } else if (!this.isValidFilter(query) && this.isValidIpv4(query)) {
-        this.$router.push(`/ipv4/${encodeURIComponent(query)}`)
-      } else if (!this.isValidFilter(query) && this.isValidIpv6(query)) {
-        this.$router.push(`/ipv6/${encodeURIComponent(query)}`)
-      } else if (!this.isValidFilter(query) && this.isValidCidr(query)) {
-        this.$router.push(`/cidr/${encodeURIComponent(query)}`)
-      } else {
-        this.$router.push(`/search/${encodeURIComponent(query || '')}`)
-      }
-    }
+const q = computed({
+  get: () => query.value,
+  set: (value: string | null) => {
+    mainStore.updateQuery(value)
   }
+})
+
+const trimWhitespaces = (value: string | string[] | null) => {
+  let normalized = value
+
+  if (Array.isArray(normalized)) {
+    ;[normalized] = normalized
+  }
+
+  if (typeof normalized === 'string') {
+    return normalized.trim()
+  }
+
+  return normalized
+}
+
+const isValidAsn = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return /^(AS)?[^\.0-9]{1,}/.test(value)
+}
+
+const isValidIpv6 = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return /([a-f0-9:]+:+)+[a-f0-9]+/i.test(value)
+}
+
+const isValidIpv4 = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(value)) {
+    return false
+  }
+
+  return value.split('.').filter((octet) => {
+    const numeric = Number(octet)
+    return !Number.isNaN(numeric) && numeric >= 0 && numeric <= 255
+  }).length === 4
+}
+
+const isValidCidr = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return /(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/.test(value)
+}
+
+const isValidDomain = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return (
+    /([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([a-z\-.]{2,})/i.test(value) ||
+    /([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i.test(value)
+  )
+}
+
+const isValidMatch = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  const patterns = [
+    /(^(port:)+[0-9]{2,})/,
+    /(^(status:)+[0-9]{3})/,
+    /(^(org:)+[\w\/\.-]{2,})/i,
+    /(^(asn:)+(AS)?[0-9]{1,})/i,
+    /(^(registry:)+[a-z]{4,})/i,
+    /(^(before:|after:)+[ \d:-]+)/i,
+    /(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i,
+    /(^(country:|state:|city:)+\w{2})/i,
+    /(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/,
+    /(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/,
+    /(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i,
+    /(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
+    /(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i,
+    /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
+    /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i
+  ]
+
+  return patterns.some((pattern) => pattern.test(value))
+}
+
+const isValidFilter = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return /^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)/i.test(value)
+}
+
+const splitMatch = (value: string) => {
+  const segments = value.split(':')
+
+  if (segments.length >= 2) {
+    const [prefix] = segments
+    return [prefix, segments.splice(1).join(':')]
+  }
+
+  return null
+}
+
+const searchMatch = () => {
+  let queryValue = q.value
+
+  if (queryValue !== null && queryValue.length > 0) {
+    queryValue = trimWhitespaces(queryValue)
+  }
+
+  if (isValidFilter(queryValue) && isValidMatch(queryValue)) {
+    const parts = typeof queryValue === 'string' ? splitMatch(queryValue) : null
+
+    if (parts && parts[0] && parts[1]) {
+      const normalized = trimWhitespaces(parts[1]) ?? ''
+      router.push(`/${parts[0]}/${encodeURIComponent(normalized)}`)
+      return
+    }
+  } else if (!isValidFilter(queryValue) && !isValidIpv4(queryValue) && !isValidDomain(queryValue) && isValidAsn(queryValue)) {
+    router.push(`/asn/${encodeURIComponent(queryValue as string)}`)
+    return
+  } else if (!isValidFilter(queryValue) && !isValidCidr(queryValue) && !isValidIpv4(queryValue) && isValidDomain(queryValue)) {
+    router.push(`/site/${encodeURIComponent(queryValue as string)}`)
+    return
+  } else if (!isValidFilter(queryValue) && isValidIpv4(queryValue)) {
+    router.push(`/ipv4/${encodeURIComponent(queryValue as string)}`)
+    return
+  } else if (!isValidFilter(queryValue) && isValidIpv6(queryValue)) {
+    router.push(`/ipv6/${encodeURIComponent(queryValue as string)}`)
+    return
+  } else if (!isValidFilter(queryValue) && isValidCidr(queryValue)) {
+    router.push(`/cidr/${encodeURIComponent(queryValue as string)}`)
+    return
+  }
+
+  router.push(`/search/${encodeURIComponent((queryValue as string | null) || '')}`)
 }
 </script>

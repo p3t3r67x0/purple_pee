@@ -913,33 +913,25 @@
   <navfooter></navfooter>
 </div>
 </template>
-<script>
+<script setup lang="ts">
+import { computed } from 'vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-export default {
-  components: {
-    navheader: Navbar,
-    navfooter: Footer
-  },
-  head() {
-    return {
-      title: 'Open source ASN lookup',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
-      }]
+import { useNuxtApp } from '#app'
+
+const { $env } = useNuxtApp()
+const apiUrl = computed(() => $env?.API_URL || '#')
+
+const generateLink = (path: string) => `${apiUrl.value}${path}`
+
+useHead(() => ({
+  title: 'Open source ASN lookup',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
     }
-  },
-  computed: {
-    apiUrl() {
-      return this.$env.API_URL || '#'
-    }
-  },
-  methods: {
-    generateLink(path) {
-      return this.apiUrl + path
-    }
-  }
-}
+  ]
+}))
 </script>

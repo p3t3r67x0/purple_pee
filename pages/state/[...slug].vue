@@ -10,69 +10,17 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-import { fetchJson, handleFetchError } from '~/utils/http'
+import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
-export default {
-  components: {
-    dns: Dns,
-    query: Query,
-    modal: Modal,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  data() {
-    return {
-      results: [],
-      currentPage: 1
-    }
-  },
-  created() {
-    this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'state:' + decodeURIComponent(this.query))
-    this.$store.commit('updateLoadingIndicator', true)
-  },
-  watch: {
-    modalVisible: function() {}
-  },
-  computed: {
-    modalVisible() {
-      return this.$store.state.modalVisible
-    },
-    loadingIndicator() {
-      return this.$store.state.loading
-    },
-    queryTitle() {
-      return ['state',  this.$slugParam()]
-    },
-    query() {
-      return this.$slugParam()
-    }
-  },
-  head() {
-    return {
-      title: 'State results for ' + decodeURIComponent(this.query),
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore latest state results ' + decodeURIComponent(this.query)
-      }]
-    }
-  },
-  methods: {
-    async fetchLatest(query) {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/match/state:' + decodeURIComponent(query))
-        this.results = res
-      } catch (error) {
-        handleFetchError(error)
-      }
-    }
-  }
-}
+const { results, currentPage, modalVisible, loadingIndicator, queryTitle } = useMatchResultsPage({
+  prefix: 'state',
+  headTitle: (decodedQuery) => `State results for ${decodedQuery}`,
+  headDescription: (decodedQuery) => `Explore latest state results ${decodedQuery}`
+})
 </script>

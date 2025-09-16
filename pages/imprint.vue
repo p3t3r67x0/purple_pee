@@ -8,26 +8,19 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import Imprint from '@/components/imprint.vue'
 
-export default {
-  components: {
-    imprint: Imprint,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  head() {
-    return {
-      title: 'Checkout our legal disclaimer',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Checkout our legal disclaimer'
-      }]
+useHead(() => ({
+  title: 'Checkout our legal disclaimer',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Checkout our legal disclaimer'
     }
-  }
-}
+  ]
+}))
 </script>

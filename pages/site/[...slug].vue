@@ -13,7 +13,8 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, watch } from 'vue'
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
@@ -21,92 +22,65 @@ import Graph from '@/components/graph.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { fetchJson, handleFetchError } from '~/utils/http'
+import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
+import { useNuxtApp } from '#app'
 
-export default {
-  components: {
-    dns: Dns,
-    query: Query,
-    modal: Modal,
-    graph: Graph,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  data() {
-    return {
-      results: [],
-      graphResults: { nodes: [], edges: [] },
-      showGraph: false,
-      currentPage: 1
+const graphResults = ref<{ nodes: any[]; edges: any[] }>({ nodes: [], edges: [] })
+const showGraph = ref(false)
+const { $env } = useNuxtApp()
+
+const { results, currentPage, modalVisible, loadingIndicator, queryTitle, decodedQuery } = useMatchResultsPage({
+  prefix: 'site',
+  headTitle: (decodedQuery) => `Site results for ${decodedQuery}`,
+  headDescription: (decodedQuery) => `Explore latest site results ${decodedQuery}`,
+  buildQueryTitle: (decodedQuery) => ['site', decodedQuery]
+})
+
+useHead(() => ({
+  script: [
+    {
+      src: 'https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'
     }
-  },
-  created() {
-    this.fetchLatest(this.query)
-    this.fetchGraph(this.query)
-    this.$store.commit('updateQuery', 'site:' + decodeURIComponent(this.query))
-    this.$store.commit('updateLoadingIndicator', true)
-  },
-  computed: {
-    modalVisible() {
-      return this.$store.state.modalVisible
-    },
-    loadingIndicator() {
-      return this.$store.state.loading
-    },
-    queryTitle() {
-      return ['site', decodeURIComponent(this.$slugParam())]
-    },
-    query() {
-      return decodeURIComponent(this.$slugParam())
+  ]
+}))
+
+const fetchGraph = async (query: string) => {
+  if (!query) {
+    graphResults.value = { nodes: [], edges: [] }
+    showGraph.value = false
+    return
+  }
+
+  try {
+    const response = await fetchJson(`${$env.API_URL}/graph/${query}`, { trackLoading: false })
+
+    if (Array.isArray(response) && response.length > 0) {
+      const raw = response[0] as { main: Array<{ domain: string }>; all: Array<{ domain: string }> }
+      const nodes = [
+        ...raw.main.map((m, index) => ({ id: `main-${index}`, label: m.domain })),
+        ...raw.all.map((a, index) => ({ id: `all-${index}`, label: a.domain }))
+      ]
+      const edges = raw.all.map((_, index) => ({ from: 'main-0', to: `all-${index}` }))
+
+      graphResults.value = { nodes, edges }
+      showGraph.value = true
+    } else {
+      graphResults.value = { nodes: [], edges: [] }
+      showGraph.value = false
     }
-  },
-  head() {
-    return {
-      script: [{
-        src: 'https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'
-      }],
-      title: 'Site results for ' + decodeURIComponent(this.query),
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore latest site results ' + decodeURIComponent(this.query)
-      }]
-    }
-  },
-  methods: {
-    async fetchLatest(query) {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/match/site:' + query)
-        this.results = res
-      } catch (error) {
-        handleFetchError(error)
-      }
-    },
-    async fetchGraph(query) {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/graph/' + query, { trackLoading: false })
-
-        if (Array.isArray(res) && res.length > 0) {
-          const raw = res[0]
-
-          // transform into nodes + edges for D3
-          const nodes = [
-            ...raw.main.map((m, i) => ({ id: `main-${i}`, label: m.domain })),
-            ...raw.all.map((a, i) => ({ id: `all-${i}`, label: a.domain }))
-          ]
-
-          const edges = raw.all.map((a, i) => ({
-            from: 'main-0', // link all subdomains to the first main node
-            to: `all-${i}`
-          }))
-
-          this.graphResults = { nodes, edges }
-          this.showGraph = true
-        }
-      } catch (error) {
-        handleFetchError(error, { updateResultList: false })
-      }
-    }
+  } catch (error) {
+    handleFetchError(error, { updateResultList: false })
+    graphResults.value = { nodes: [], edges: [] }
+    showGraph.value = false
   }
 }
+
+watch(
+  decodedQuery,
+  (value) => {
+    fetchGraph(value)
+  },
+  { immediate: true }
+)
 </script>
 

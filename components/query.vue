@@ -4,27 +4,29 @@
 </div>
 </template>
 
-<script>
-export default {
-  props: {
-    results: Number,
-    query: Array
-  },
-  computed: {
-    queryTitle() {
-      return this.query[0] + ' ' + decodeURIComponent(this.query[1])
-    },
-    resultsTitle() {
-      const results = this.results
+<script setup lang="ts">
+import { computed } from 'vue'
 
-      if (results === 0) {
-        return 'No results found for '
-      } else if (results === 1) {
-        return '1 result found for '
-      } else {
-        return results + ' results found for '
-      }
-    }
+const props = defineProps<{ results: number; query: Array<string | null | undefined> }>()
+
+const queryTitle = computed(() => {
+  const [prefix = '', value = ''] = props.query ?? []
+  const decodedValue = typeof value === 'string' ? decodeURIComponent(value) : ''
+
+  return `${prefix} ${decodedValue}`.trim()
+})
+
+const resultsTitle = computed(() => {
+  const results = props.results ?? 0
+
+  if (results === 0) {
+    return 'No results found for '
   }
-}
+
+  if (results === 1) {
+    return '1 result found for '
+  }
+
+  return `${results} results found for `
+})
 </script>

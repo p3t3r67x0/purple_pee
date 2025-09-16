@@ -17,28 +17,19 @@
 </div>
 </template>
 
-<script>
-import Dns from '@/components/dns.vue'
+<script setup lang="ts">
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import FilterHelp from '@/components/filter.vue'
 
-export default {
-  components: {
-    dns: Dns,
-    navheader: Navbar,
-    navfooter: Footer,
-    filterHelp: FilterHelp
-  },
-  head() {
-    return {
-      title: 'Open source ASN lookup',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
-      }]
+useHead(() => ({
+  title: 'Open source ASN lookup',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
     }
-  }
-}
+  ]
+}))
 </script>
