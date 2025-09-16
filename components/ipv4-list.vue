@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     generatePath(image) {
-      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
+      return `/svg/${image ? image.toLowerCase() : 'unknown'}.svg`
     },
     generateLink(ip) {
       return 'ipv4/' + ip

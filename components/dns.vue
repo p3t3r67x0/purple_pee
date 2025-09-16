@@ -367,7 +367,7 @@ export default {
   },
   methods: {
     generatePath(image) {
-      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
+      return '/svg/' + image.toLowerCase() + '.svg'
     },
     generateCode(base64) {
       return 'data:image/png;base64,' + base64
