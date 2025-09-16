@@ -10,69 +10,17 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-import { fetchJson, handleFetchError } from '~/utils/http'
+import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
-export default {
-  components: {
-    dns: Dns,
-    query: Query,
-    modal: Modal,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  data() {
-    return {
-      results: [],
-      currentPage: 1
-    }
-  },
-  head() {
-    return {
-      title: 'IPv4 results for ' + decodeURIComponent(this.query),
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore latest IPv4 results ' + decodeURIComponent(this.query)
-      }]
-    }
-  },
-  created() {
-    this.fetchLatest(this.query)
-    this.$store.commit('updateQuery', 'ipv4:' + decodeURIComponent(this.query))
-    this.$store.commit('updateLoadingIndicator', true)
-  },
-  watch: {
-    modalVisible: function() {}
-  },
-  computed: {
-    modalVisible() {
-      return this.$store.state.modalVisible
-    },
-    loadingIndicator() {
-      return this.$store.state.loading
-    },
-    queryTitle() {
-      return ['ipv4',  this.$slugParam()]
-    },
-    query() {
-      return this.$slugParam()
-    },
-  },
-  methods: {
-    async fetchLatest(query) {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/match/ipv4:' + decodeURIComponent(query))
-        this.results = res
-      } catch (error) {
-        handleFetchError(error)
-      }
-    }
-  }
-}
+const { results, currentPage, modalVisible, loadingIndicator, queryTitle } = useMatchResultsPage({
+  prefix: 'ipv4',
+  headTitle: (decodedQuery) => `IPv4 results for ${decodedQuery}`,
+  headDescription: (decodedQuery) => `Explore latest IPv4 results ${decodedQuery}`
+})
 </script>

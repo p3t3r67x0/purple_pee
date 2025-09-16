@@ -178,24 +178,18 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 
-export default {
-  components: {
-    navheader: Navbar,
-    navfooter: Footer
-  },
-  head() {
-    return {
-      title: 'Open source ASN lookup',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
-      }]
+useHead(() => ({
+  title: 'Open source ASN lookup',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
     }
-  }
-}
+  ]
+}))
 </script>

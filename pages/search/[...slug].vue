@@ -10,115 +10,164 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { computed, watch } from 'vue'
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
 import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
+import { useRouter } from '#app'
+import { useMainStore } from '~/stores/main'
+import { storeToRefs } from 'pinia'
+import { useSlugParam } from '~/composables/useSlugParam'
 
-export default {
-  components: {
-    dns: Dns,
-    query: Query,
-    modal: Modal,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  created() {
-    this.fetchLatest(this.query)
-  },
-  head() {
-    return {
-      title: 'Search results for ' + decodeURIComponent(this.query),
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore your search results ' + decodeURIComponent(this.query)
-      }]
-    }
-  },
-  computed: {
-    modalVisible() {
-      return this.$store.state.modalVisible
-    },
-    loadingIndicator() {
-      return this.$store.state.loading
-    },
-    results() {
-      return this.$store.state.results
-    },
-    queryTitle() {
-      const query = decodeURIComponent(this.$slugParam()).split(':')
+const slug = useSlugParam()
+const router = useRouter()
+const mainStore = useMainStore()
+const { modalVisible, loading: loadingIndicator, results } = storeToRefs(mainStore)
 
-      if (query.length >= 2) {
-        return [query[0], query.splice(1).join(':')]
-      } else {
-        return ['', decodeURIComponent(this.$slugParam())]
-      }
-    },
-    query() {
-      return this.$slugParam()
-    }
-  },
-  methods: {
-    isValidMatch(match) {
-      if (typeof(match) !== 'string') {
-        return false
-      }
-
-      if (!match.match(/(^(port:)+[0-9]{2,})/) &&
-        !match.match(/(^(status:)+[0-9]{3})/) &&
-        !match.match(/(^(org:)+[\w\/\.-]{2,})/i) &&
-        !match.match(/(^(asn:)+(AS)?[0-9]{1,})/i) &&
-        !match.match(/(^(registry:)+[a-z]{4,})/i) &&
-        !match.match(/(^(before:|after:)+[ \d:-]+)/i) &&
-        !match.match(/(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i) &&
-        !match.match(/(^(country:|state:|city:)+\w{2})/i) &&
-        !match.match(/(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/) &&
-        !match.match(/(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/) &&
-        !match.match(/(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i) &&
-        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
-        !match.match(/(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i) &&
-        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i) &&
-        !match.match(/(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i)) {
-        return false
-      }
-
-      return true
-    },
-    trimWhitespaces(query) {
-      let r = query
-
-      if (Array.isArray(query)) {
-        r = query[0]
-      }
-
-      if (r !== null) {
-        return r.trim()
-      } else {
-        return r
-      }
-    },
-    splitMatch(query) {
-      const splitted = query.split(':')
-
-      if (splitted.length >= 2) {
-        return [splitted[0], splitted.splice(1).join(':')]
-      }
-    },
-    fetchLatest(query) {
-      this.$store.commit('updateResultList', [])
-
-      if (this.isValidMatch(decodeURIComponent(query))) {
-        const q = this.splitMatch(decodeURIComponent(query))
-
-        if (q[0] && q[1]) {
-          const normalized = this.trimWhitespaces(q[1])
-          this.$router.push(`/${q[0]}/${encodeURIComponent(normalized)}`)
-        }
-      }
-    }
+const decodedSlug = computed(() => {
+  const value = slug.value || ''
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
   }
+})
+
+const queryTitle = computed(() => {
+  const value = decodedSlug.value
+  const parts = value.split(':')
+
+  if (parts.length >= 2) {
+    return [parts[0], parts.slice(1).join(':')]
+  }
+
+  return ['', decodedSlug.value]
+})
+
+useHead(() => ({
+  title: `Search results for ${decodedSlug.value}`,
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: `Explore your search results ${decodedSlug.value}`
+    }
+  ]
+}))
+
+const trimWhitespaces = (value: string | null) => (value ? value.trim() : value)
+
+const isValidMatch = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  const patterns = [
+    /(^(port:)+[0-9]{2,})/,
+    /(^(status:)+[0-9]{3})/,
+    /(^(org:)+[\w\/\.-]{2,})/i,
+    /(^(asn:)+(AS)?[0-9]{1,})/i,
+    /(^(registry:)+[a-z]{4,})/i,
+    /(^(before:|after:)+[ \d:-]+)/i,
+    /(^(ipv6:)+([a-f0-9:]+:+)+[a-f0-9]+)/i,
+    /(^(country:|state:|city:)+\w{2})/i,
+    /(^(ipv4:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/,
+    /(^(cidr:)+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3})/,
+    /(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i,
+    /(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
+    /(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i,
+    /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
+    /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i
+  ]
+
+  return patterns.some((pattern) => pattern.test(value))
 }
+
+const isValidFilter = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return /^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)/i.test(value)
+}
+
+const isValidAsn = (value: unknown) => typeof value === 'string' && /^(AS)?[^\.0-9]{1,}/.test(value)
+const isValidIpv4 = (value: unknown) => typeof value === 'string' && /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(value)
+const isValidIpv6 = (value: unknown) => typeof value === 'string' && /([a-f0-9:]+:+)+[a-f0-9]+/i.test(value)
+const isValidDomain = (value: unknown) => {
+  if (typeof value !== 'string') {
+    return false
+  }
+
+  return (
+    /([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})\.([a-z\-.]{2,})/i.test(value) ||
+    /([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})/i.test(value)
+  )
+}
+
+const isValidCidr = (value: unknown) =>
+  typeof value === 'string' && /(^(?!(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:))\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3})/.test(value)
+
+const splitMatch = (value: string) => {
+  const parts = value.split(':')
+
+  if (parts.length >= 2) {
+    const [prefix] = parts
+    return [prefix, parts.slice(1).join(':')]
+  }
+
+  return null
+}
+
+const navigateToMatch = (value: string | null) => {
+  if (value === null) {
+    return
+  }
+
+  const trimmed = trimWhitespaces(value)
+
+  if (!trimmed) {
+    router.push('/search/')
+    return
+  }
+
+  if (isValidFilter(trimmed) && isValidMatch(trimmed)) {
+    const parts = splitMatch(trimmed)
+
+    if (parts && parts[0] && parts[1]) {
+      const normalized = trimWhitespaces(parts[1]) ?? ''
+      router.push(`/${parts[0]}/${encodeURIComponent(normalized)}`)
+      return
+    }
+  } else if (!isValidFilter(trimmed) && !isValidIpv4(trimmed) && !isValidDomain(trimmed) && isValidAsn(trimmed)) {
+    router.push(`/asn/${encodeURIComponent(trimmed)}`)
+    return
+  } else if (!isValidFilter(trimmed) && !isValidCidr(trimmed) && !isValidIpv4(trimmed) && isValidDomain(trimmed)) {
+    router.push(`/site/${encodeURIComponent(trimmed)}`)
+    return
+  } else if (!isValidFilter(trimmed) && isValidIpv4(trimmed)) {
+    router.push(`/ipv4/${encodeURIComponent(trimmed)}`)
+    return
+  } else if (!isValidFilter(trimmed) && isValidIpv6(trimmed)) {
+    router.push(`/ipv6/${encodeURIComponent(trimmed)}`)
+    return
+  } else if (!isValidFilter(trimmed) && isValidCidr(trimmed)) {
+    router.push(`/cidr/${encodeURIComponent(trimmed)}`)
+    return
+  }
+
+  router.push(`/search/${encodeURIComponent(trimmed || '')}`)
+}
+
+watch(
+  decodedSlug,
+  (value) => {
+    mainStore.updateResultList([])
+    navigateToMatch(value)
+  },
+  { immediate: true }
+)
 </script>

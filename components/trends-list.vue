@@ -14,110 +14,112 @@
 </div>
 </template>
 
-<script>
-export default {
-  props: {
-    results: Array
-  },
-  computed: {
-    loadingIndicator() {
-      return this.$store.state.loading
-    }
-  },
-  methods: {
-    isCountry(path) {
-      const r = path.split('/').filter(Boolean)
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useMainStore } from '~/stores/main'
 
-      if (r[0] === 'country') {
-        return true
-      }
-    },
-    generatePath(image) {
-      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
-    },
-    generateName(path) {
-      const r = path.split(':')
+defineProps<{ results: Array<Record<string, any>> }>()
 
-      if (r.length >= 2) {
-        return r.splice(1).join(':')
-      }
-    },
-    generateTitle(path) {
-      const r = path.split('/').filter(Boolean)
+const mainStore = useMainStore()
+const { loading: loadingIndicator } = storeToRefs(mainStore)
 
-      if (r[0] === 'mx') {
-        return 'MX record'
-      } else if (r[0] === 'ipv4') {
-        return 'A record'
-      } else if (r[0] === 'ipv6') {
-        return 'AAAA record'
-      } else if (r[0] === 'cname') {
-        return 'CNAME record'
-      } else if (r[0] === 'soa') {
-        return 'SOA record'
-      } else if (r[0] === 'ns') {
-        return 'NS record'
-      } else if (r[0] === 'cidr') {
-        return 'CIDR'
-      } else if (r[0] === 'dns') {
-        return 'DNS'
-      } else if (r[0] === 'asn') {
-        return 'ASN'
-      } else if (r[0] === 'org') {
-        return 'ISP'
-      } else if (r[0] === 'registry') {
-        return 'ASN registry'
-      } else if (r[0] === 'country') {
-        return 'GEO country'
-      } else if (r[0] === 'state') {
-        return 'GEO state'
-      } else if (r[0] === 'city') {
-        return 'GEO city'
-      } else if (r[0] === 'loc') {
-        return 'GEO location'
-      } else if (r[0] === 'status') {
-        return 'HTTP status'
-      } else if (r[0] === 'port') {
-        return 'TCP port'
-      } else if (r[0] === 'server') {
-        return 'Server'
-      } else if (r[0] === 'site') {
-        return 'Domain'
-      } else if (r[0] === 'ssl') {
-        return 'SSL certificate'
-      } else if (r[0] === 'issuer') {
-        return 'SSL issuer'
-      } else if (r[0] === 'ocsp') {
-        return 'SSL ocsp'
-      } else if (r[0] === 'crl') {
-        return 'SSL crl'
-      } else if (r[0] === 'ca') {
-        return 'SSL ca'
-      } else if (r[0] === 'unit') {
-        return 'SSL issuer unit'
-      } else if (r[0] === 'before') {
-        return 'SSL valid not_before'
-      } else if (r[0] === 'after') {
-        return 'SSL valid not_after'
-      } else if (r[0] === 'banner') {
-        return 'SSH banner'
-      } else if (r[0] === 'service') {
-        return 'Service'
-      }
-    },
-    generateLink(path) {
-      const r = path.split(':')
+const isCountry = (path: string) => {
+  const segments = path.split('/').filter(Boolean)
+  return segments[0] === 'country'
+}
 
-      if (r.length >= 2) {
-        const query = r.splice(1).join(':')
-        const match = r.splice(0)[0]
+const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
 
-        if (match.length >= 2) {
-          const prefix = match.split('/')[2]
-          return '/' + prefix + '/' + query
-        }
-      }
+const generateName = (path: string) => {
+  const segments = path.split(':')
+
+  if (segments.length >= 2) {
+    return segments.splice(1).join(':')
+  }
+
+  return ''
+}
+
+const generateTitle = (path: string) => {
+  const [prefix] = path.split('/').filter(Boolean)
+
+  switch (prefix) {
+    case 'mx':
+      return 'MX record'
+    case 'ipv4':
+      return 'A record'
+    case 'ipv6':
+      return 'AAAA record'
+    case 'cname':
+      return 'CNAME record'
+    case 'soa':
+      return 'SOA record'
+    case 'ns':
+      return 'NS record'
+    case 'cidr':
+      return 'CIDR'
+    case 'dns':
+      return 'DNS'
+    case 'asn':
+      return 'ASN'
+    case 'org':
+      return 'ISP'
+    case 'registry':
+      return 'ASN registry'
+    case 'country':
+      return 'GEO country'
+    case 'state':
+      return 'GEO state'
+    case 'city':
+      return 'GEO city'
+    case 'loc':
+      return 'GEO location'
+    case 'status':
+      return 'HTTP status'
+    case 'port':
+      return 'TCP port'
+    case 'server':
+      return 'Server'
+    case 'site':
+      return 'Domain'
+    case 'ssl':
+      return 'SSL certificate'
+    case 'issuer':
+      return 'SSL issuer'
+    case 'ocsp':
+      return 'SSL ocsp'
+    case 'crl':
+      return 'SSL crl'
+    case 'ca':
+      return 'SSL ca'
+    case 'unit':
+      return 'SSL issuer unit'
+    case 'before':
+      return 'SSL valid not_before'
+    case 'after':
+      return 'SSL valid not_after'
+    case 'banner':
+      return 'SSH banner'
+    case 'service':
+      return 'Service'
+    default:
+      return ''
+  }
+}
+
+const generateLink = (path: string) => {
+  const segments = path.split(':')
+
+  if (segments.length >= 2) {
+    const query = segments.splice(1).join(':')
+    const match = segments.splice(0)[0]
+
+    if (match.length >= 2) {
+      const prefix = match.split('/')[2]
+      return `/${prefix}/${query}`
     }
   }
+
+  return '#'
 }
 </script>

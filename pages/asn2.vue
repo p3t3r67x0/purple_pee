@@ -8,38 +8,27 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import Asn from '@/components/asn2.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { fetchJson, handleFetchError } from '~/utils/http'
+import { useNuxtApp } from '#app'
 
-export default {
-  components: {
-    asn: Asn,
-    navfooter: Footer,
-    navheader: Navbar
-  },
-  data() {
-    return {
-      results: []
-    }
-  },
-  created() {
-    this.fetchLatest()
-  },
-  methods: {
-    async fetchLatest() {
-      try {
-        const res = await fetchJson(this.$env.API_URL + '/asn')
-        this.results = res
-      } catch (error) {
-        handleFetchError(error)
-      }
-    },
-    extractIpData(res) {
-      this.results = res
-    }
+const results = ref<any[]>([])
+const { $env } = useNuxtApp()
+
+const fetchLatest = async () => {
+  try {
+    const response = await fetchJson(`${$env.API_URL}/asn`)
+    results.value = Array.isArray(response) ? response : []
+  } catch (error) {
+    handleFetchError(error)
   }
 }
+
+onMounted(() => {
+  fetchLatest()
+})
 </script>

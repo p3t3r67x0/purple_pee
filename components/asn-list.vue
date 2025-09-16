@@ -13,23 +13,15 @@
 </div>
 </template>
 
-<script>
-export default {
-  props: {
-    results: Array
-  },
-  computed: {
-    loadingIndicator() {
-      return this.$store.state.loading
-    }
-  },
-  methods: {
-    generatePath(image) {
-      return require('~/assets/svg/' + image.toLowerCase() + '.svg')
-    },
-    generateLink(query) {
-      return '/asn/AS' + query
-    }
-  }
-}
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useMainStore } from '~/stores/main'
+
+defineProps<{ results: Array<Record<string, any>> }>()
+
+const mainStore = useMainStore()
+const { loading: loadingIndicator } = storeToRefs(mainStore)
+
+const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
+const generateLink = (query: string | number) => `/asn/AS${query}`
 </script>

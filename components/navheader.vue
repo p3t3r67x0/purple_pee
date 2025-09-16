@@ -69,29 +69,18 @@
 </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import Search from '@/components/search.vue'
 import Loading from '@/components/loading.vue'
+import { useMainStore } from '~/stores/main'
 
-export default {
-  data() {
-    return {
-      isOpen: false
-    }
-  },
-  components: {
-    search: Search,
-    loading: Loading
-  },
-  computed: {
-    loadingIndicator() {
-      return this.$store.state.loading
-    }
-  },
-  methods: {
-    handleDropdown() {
-      return this.isOpen = !this.isOpen
-    }
-  }
+const isOpen = ref(false)
+const mainStore = useMainStore()
+const { loading: loadingIndicator } = storeToRefs(mainStore)
+
+const handleDropdown = () => {
+  isOpen.value = !isOpen.value
 }
 </script>

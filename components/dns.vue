@@ -320,68 +320,67 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    results: Array,
-    currentPage: {
-      type: Number,
-      required: true
-    }
-  },
-  computed: {
-    loadingIndicator() {
-      return this.$store.state.loading
-    },
-    prefix() {
-      const path = decodeURIComponent(this.$route.fullPath)
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from '#app'
+import { storeToRefs } from 'pinia'
+import { useMainStore } from '~/stores/main'
 
-      if (path.startsWith('/')) {
-        const prefix = path.split('/').filter(Boolean)
+interface DnsResult {
+  [key: string]: any
+}
 
-        if (prefix[0] == 'search') {
-          return decodeURIComponent(prefix[1]).split(':')[0]
-        } else {
-          return prefix[0]
-        }
-      } else {
-        return ''
-      }
-    },
-    filter() {
-      const path = decodeURIComponent(this.$route.fullPath)
+const props = defineProps<{ results: DnsResult[]; currentPage: number }>()
 
-      if (path.startsWith('/')) {
-        const filter = path.split('/').filter(Boolean)
-        const query = filter.splice(1).join('/')
+const emit = defineEmits(['nextPage', 'prevPage'])
+const $emit = emit
 
-        if (filter[0] == 'search') {
-          return decodeURIComponent(query).split(':').splice(1).join(':')
-        } else {
-          return query
-        }
-      } else {
-        return ''
-      }
-    }
-  },
-  methods: {
-    generatePath(image) {
-      return '/svg/' + image.toLowerCase() + '.svg'
-    },
-    generateCode(base64) {
-      return 'data:image/png;base64,' + base64
-    },
-    generateUrl(domain) {
-      return 'http://' + domain
-    },
-    generateLink(prefix, query) {
-      return '/' + prefix + '/' + encodeURIComponent(query)
-    },
-    convertToLocalDatetime(isoTimestamp) {
-      const date = new Date(isoTimestamp)
-      return date.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })
-    }
+const mainStore = useMainStore()
+const { loading: loadingIndicator } = storeToRefs(mainStore)
+const route = useRoute()
+
+const prefix = computed(() => {
+  const path = decodeURIComponent(route.fullPath ?? '')
+
+  if (!path.startsWith('/')) {
+    return ''
   }
+
+  const segments = path.split('/').filter(Boolean)
+  const [firstSegment, secondSegment] = segments
+
+  if (firstSegment === 'search' && secondSegment) {
+    return decodeURIComponent(secondSegment).split(':')[0] ?? ''
+  }
+
+  return firstSegment ?? ''
+})
+
+const filter = computed(() => {
+  const path = decodeURIComponent(route.fullPath ?? '')
+
+  if (!path.startsWith('/')) {
+    return ''
+  }
+
+  const segments = path.split('/').filter(Boolean)
+  const [, ...rest] = segments
+  const query = rest.join('/')
+
+  if (segments[0] === 'search') {
+    const decoded = decodeURIComponent(query)
+    return decoded.split(':').slice(1).join(':')
+  }
+
+  return query
+})
+
+const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
+const generateCode = (base64: string) => `data:image/png;base64,${base64}`
+const generateUrl = (domain: string) => `http://${domain}`
+const generateLink = (linkPrefix: string, query: string) => `/${linkPrefix}/${encodeURIComponent(query)}`
+const convertToLocalDatetime = (isoTimestamp: string) => {
+  const date = new Date(isoTimestamp)
+  return date.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })
 }
 </script>
