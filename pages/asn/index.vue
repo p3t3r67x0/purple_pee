@@ -54,6 +54,7 @@ export default {
     async fetchLatest(query) {
       try {
         const res = await fetchJson(this.$env.API_URL + '/asn')
+
         this.results = res
       } catch (error) {
         handleFetchError(error)
