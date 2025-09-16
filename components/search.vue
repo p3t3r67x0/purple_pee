@@ -146,55 +146,21 @@ export default {
         const q = this.splitMatch(query)
 
         if (q[0] && q[1]) {
-          this.$router.push({
-            name: q[0] + '-all',
-            params: {
-              pathMatch: encodeURIComponent(q[1])
-            }
-          })
+          const normalized = this.trimWhitespaces(q[1])
+          this.$router.push(`/${q[0]}/${encodeURIComponent(normalized)}`)
         }
       } else if (!this.isValidFilter(query) && !this.isValidIpv4(query) && !this.isValidDomain(query) && this.isValidAsn(query)) {
-        this.$router.push({
-          name: 'asn-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/asn/${encodeURIComponent(query)}`)
       } else if (!this.isValidFilter(query) && !this.isValidCidr(query) && !this.isValidIpv4(query) && this.isValidDomain(query)) {
-        this.$router.push({
-          name: 'site-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/site/${encodeURIComponent(query)}`)
       } else if (!this.isValidFilter(query) && this.isValidIpv4(query)) {
-        this.$router.push({
-          name: 'ipv4-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/ipv4/${encodeURIComponent(query)}`)
       } else if (!this.isValidFilter(query) && this.isValidIpv6(query)) {
-        this.$router.push({
-          name: 'ipv6-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/ipv6/${encodeURIComponent(query)}`)
       } else if (!this.isValidFilter(query) && this.isValidCidr(query)) {
-        this.$router.push({
-          name: 'cidr-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/cidr/${encodeURIComponent(query)}`)
       } else {
-        this.$router.push({
-          name: 'search-all',
-          params: {
-            pathMatch: encodeURIComponent(query)
-          }
-        })
+        this.$router.push(`/search/${encodeURIComponent(query || '')}`)
       }
     }
   }

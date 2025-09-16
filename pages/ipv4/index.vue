@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(process.env.API_URL + '/ipv4').then(res => {
+      this.$axios.$get(this.$env.API_URL + '/ipv4').then(res => {
         this.results = res.results
       }).catch((error) => {
         if (error.response) {

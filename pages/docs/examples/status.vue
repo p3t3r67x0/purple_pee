@@ -933,7 +933,7 @@ export default {
   },
   computed: {
     apiUrl() {
-      return process.env.API_URL || '#'
+      return this.$env.API_URL || '#'
     }
   },
   methods: {

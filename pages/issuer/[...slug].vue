@@ -3,21 +3,24 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <list v-bind:results="results"></list>
+    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
+    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
 </template>
 
 <script>
+import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
-import List from '@/components/cidr-list.vue'
+import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 
 export default {
   components: {
-    list: List,
+    dns: Dns,
+    query: Query,
     modal: Modal,
     navfooter: Footer,
     navheader: Navbar
@@ -25,20 +28,13 @@ export default {
   data() {
     return {
       results: [],
+      currentPage: 1
     }
   },
   created() {
     this.fetchLatest(this.query)
-  },
-  head() {
-    return {
-      title: 'Explore the latest CIDR entries',
-      meta: [{
-        hid: 'description',
-        name: 'description',
-        content: 'Explore the latest CIDR entries'
-      }]
-    }
+    this.$store.commit('updateQuery', 'issuer:' + decodeURIComponent(this.query))
+    this.$store.commit('updateLoadingIndicator', true)
   },
   watch: {
     modalVisible: function() {}
@@ -46,11 +42,30 @@ export default {
   computed: {
     modalVisible() {
       return this.$store.state.modalVisible
+    },
+    loadingIndicator() {
+      return this.$store.state.loading
+    },
+    queryTitle() {
+      return ['issuer',  this.$slugParam()]
+    },
+    query() {
+      return this.$slugParam()
+    }
+  },
+  head() {
+    return {
+      title: 'SSL ceritificate issuer ' + decodeURIComponent(this.query),
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Explore latest SSL ceritificates issuer results ' + decodeURIComponent(this.query)
+      }]
     }
   },
   methods: {
     fetchLatest(query) {
-      this.$axios.$get(this.$env.API_URL + '/cidr').then(res => {
+      this.$axios.$get(this.$env.API_URL + '/match/issuer:' + decodeURIComponent(query)).then(res => {
         this.results = res
       }).catch((error) => {
         if (error.response) {
