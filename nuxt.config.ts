@@ -150,7 +150,7 @@ export default defineNuxtConfig({
   },
   css: [],
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
-  plugins: ['~/plugins/axios', '~/plugins/env', '~/plugins/store', '~/plugins/router', '~/plugins/persistedState.client'],
+  plugins: ['~/plugins/env', '~/plugins/store', '~/plugins/router', '~/plugins/persistedState.client'],
   runtimeConfig: {
     public: {
       BASE_URL: process.env.BASE_URL || '',

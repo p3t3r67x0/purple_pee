@@ -12,6 +12,7 @@
 import Asn from '@/components/asn2.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
+import { fetchJson, handleFetchError } from '~/utils/http'
 
 export default {
   components: {
@@ -28,10 +29,13 @@ export default {
     this.fetchLatest()
   },
   methods: {
-    fetchLatest() {
-      this.$axios.$get(this.$env.API_URL + '/asn').then(res => {
+    async fetchLatest() {
+      try {
+        const res = await fetchJson(this.$env.API_URL + '/asn')
         this.results = res
-      });
+      } catch (error) {
+        handleFetchError(error)
+      }
     },
     extractIpData(res) {
       this.results = res

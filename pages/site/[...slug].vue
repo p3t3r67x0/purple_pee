@@ -20,6 +20,7 @@ import Query from '@/components/query.vue'
 import Graph from '@/components/graph.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
+import { fetchJson, handleFetchError } from '~/utils/http'
 
 export default {
   components: {
@@ -72,24 +73,18 @@ export default {
     }
   },
   methods: {
-    fetchLatest(query) {
-      this.$axios.$get(this.$env.API_URL + '/match/site:' + query).then(res => {
+    async fetchLatest(query) {
+      try {
+        const res = await fetchJson(this.$env.API_URL + '/match/site:' + query)
         this.results = res
-      }).catch((error) => {
-        if (error.response) {
-          this.$store.commit('updateResultList', [])
-
-          if (error.response.status !== 404) {
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
-          }
-        }
-      })
+      } catch (error) {
+        handleFetchError(error)
+      }
     },
-    fetchGraph(query) {
-      this.$axios.$get(this.$env.API_URL + '/graph/' + query).then(res => {
+    async fetchGraph(query) {
+      try {
+        const res = await fetchJson(this.$env.API_URL + '/graph/' + query, { trackLoading: false })
+
         if (Array.isArray(res) && res.length > 0) {
           const raw = res[0]
 
@@ -107,16 +102,9 @@ export default {
           this.graphResults = { nodes, edges }
           this.showGraph = true
         }
-      }).catch((error) => {
-        if (error.response) {
-          if (error.response.status !== 404) {
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
-          }
-        }
-      })
+      } catch (error) {
+        handleFetchError(error, { updateResultList: false })
+      }
     }
   }
 }
