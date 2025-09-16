@@ -51,7 +51,7 @@ export default {
   methods: {
     fetchLatest(query) {
       this.$axios.$get(process.env.API_URL + '/ipv4').then(res => {
-        this.results = res
+        this.results = res.results
       }).catch((error) => {
         if (error.response) {
           this.$store.commit('updateResultList', [])

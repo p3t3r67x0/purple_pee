@@ -4,7 +4,7 @@
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-    <dns v-bind:results="results"></dns>
+    <dns v-bind:results="results" :currentPage="currentPage" @nextPage="nextPage" @prevPage="prevPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -27,11 +27,13 @@ export default {
   },
   data() {
     return {
-      results: []
+      results: [],
+      currentPage: 1,
+      pageSize: 10
     }
   },
   created() {
-    this.fetchLatest()
+    this.fetchLatest(this.currentPage, this.pageSize)
   },
   head() {
     return {
@@ -58,21 +60,32 @@ export default {
     }
   },
   methods: {
-    fetchLatest() {
-      this.$axios.$get(process.env.API_URL + '/dns').then(res => {
-        this.results = res
-      }).catch((error) => {
-        if (error.response) {
-          this.$store.commit('updateResultList', [])
+    fetchLatest(page = 1, pageSize = 10) {
+      this.$axios.$get(process.env.API_URL + `/dns?page=${page}&page_size=${pageSize}`)
+        .then(res => {
+          this.results = res.results
+        }).catch((error) => {
+          if (error.response) {
+            this.$store.commit('updateResultList', [])
 
-          if (error.response.status !== 404) {
-            this.$store.commit('updateErrorMessage', error.response.data)
-            this.$store.commit('updateErrorStatus', error.response.status)
-            this.$store.commit('updateModalVisible', true)
-            this.$store.commit('updateLoadingIndicator', false)
+            if (error.response.status !== 404) {
+              this.$store.commit('updateErrorMessage', error.response.data)
+              this.$store.commit('updateErrorStatus', error.response.status)
+              this.$store.commit('updateModalVisible', true)
+              this.$store.commit('updateLoadingIndicator', false)
+            }
           }
-        }
-      })
+        })
+    },
+    nextPage() {
+      this.currentPage++
+      this.fetchLatest(this.currentPage, this.pageSize)
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--
+        this.fetchLatest(this.currentPage, this.pageSize)
+      }
     }
   }
 }

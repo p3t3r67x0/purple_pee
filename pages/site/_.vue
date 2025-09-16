@@ -1,14 +1,16 @@
 <template>
-<div class="min-h-screen flex flex-col">
-  <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-    <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
-    <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
+  <div class="min-h-screen flex flex-col">
+    <div class="flex-grow">
+      <navheader></navheader>
+      <modal v-if="modalVisible"></modal>
+      <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
+      <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
+      <client-only>
+        <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
+      </client-only>
+    </div>
+    <navfooter></navfooter>
   </div>
-  <navfooter></navfooter>
-</div>
 </template>
 
 <script>
@@ -31,8 +33,9 @@ export default {
   data() {
     return {
       results: [],
-      graphResults: {},
-      showGraph: false
+      graphResults: { nodes: [], edges: [] },
+      showGraph: false,
+      currentPage: 1
     }
   },
   created() {
@@ -87,8 +90,23 @@ export default {
     },
     fetchGraph(query) {
       this.$axios.$get(process.env.API_URL + '/graph/' + query).then(res => {
-        this.graphResults = res
-        this.showGraph = true
+        if (Array.isArray(res) && res.length > 0) {
+          const raw = res[0]
+
+          // transform into nodes + edges for D3
+          const nodes = [
+            ...raw.main.map((m, i) => ({ id: `main-${i}`, label: m.domain })),
+            ...raw.all.map((a, i) => ({ id: `all-${i}`, label: a.domain }))
+          ]
+
+          const edges = raw.all.map((a, i) => ({
+            from: 'main-0', // link all subdomains to the first main node
+            to: `all-${i}`
+          }))
+
+          this.graphResults = { nodes, edges }
+          this.showGraph = true
+        }
       }).catch((error) => {
         if (error.response) {
           if (error.response.status !== 404) {
@@ -103,3 +121,4 @@ export default {
   }
 }
 </script>
+

@@ -4,7 +4,7 @@
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
     <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-    <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
+    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       results: [],
+      currentPage: 1
     }
   },
   created() {

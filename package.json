@@ -13,6 +13,11 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/dotenv": "^1.4.1",
+    "d3": "^7.9.0",
+    "d3-drag": "^3.0.0",
+    "d3-force": "^3.0.0",
+    "d3-scale": "^4.0.2",
+    "d3-selection": "^3.0.0",
     "nuxt": "2.10.1",
     "vuex-persistedstate": "^2.7.0"
   },
