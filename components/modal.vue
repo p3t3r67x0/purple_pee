@@ -1,12 +1,31 @@
 <template>
-<div class="z-6500 fixed top-0 right-0 left-0 m-3 flex items-center justify-center">
-  <div v-bind:class="errorStatusClass" class="w-full max-w-xl rounded shadow-md bg-white px-3 pt-2 pb-3">
-    <svg v-on:click="closeModal" class="bg-text-900 fill-current float-right cursor-pointer -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-      <path class="heroicon-ui" d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" /></svg>
-    <h2 class="text-xl font-medium">{{ errorTitle }}</h2>
-    <p class="font-thin">{{ errorMessageText }}</p>
+  <div class="z-6500 fixed inset-0 flex items-center justify-center px-4 py-6 sm:py-12">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" @click="closeModal" aria-hidden="true"></div>
+    <div
+      :class="[
+        'relative w-full max-w-lg rounded-2xl p-6 shadow-xl transition sm:p-8',
+        errorStatusClass
+      ]"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <button
+        type="button"
+        @click="closeModal"
+        class="absolute right-4 top-4 rounded-full p-1 text-gray-600 transition hover:bg-white/40 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-600"
+        aria-label="Close"
+      >
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="space-y-2 pr-4">
+        <h2 id="modal-title" class="text-xl font-semibold">{{ errorTitle }}</h2>
+        <p class="text-sm leading-relaxed">{{ errorMessageText }}</p>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">
@@ -48,14 +67,14 @@ const errorStatusClass = computed(() => {
   const status = errorStatusValue.value
 
   if (status === 409 || status === 404) {
-    return 'bg-orange-300'
+    return 'border-l-4 border-orange-500 bg-orange-50 text-orange-900'
   }
 
   if (status === 500 || status === 400 || status === 401 || status === 405) {
-    return 'bg-red-300'
+    return 'border-l-4 border-red-500 bg-red-50 text-red-900'
   }
 
-  return 'bg-gray-300'
+  return 'border-l-4 border-gray-500 bg-gray-50 text-gray-900'
 })
 
 const closeModal = () => {
