@@ -1,20 +1,24 @@
 <template>
-<div class="min-h-screen flex flex-col">
-  <div class="flex-grow">
-    <navheader></navheader>
+  <div class="flex min-h-screen flex-col">
+    <div class="flex-grow">
+      <navheader />
 
-    <div class="container mx-auto">
-      <div class="text-center text-gray-900 leading-normal mx-3 md:mx-0 my-6 md:my-12">
-        <h1 class="font-sans font-thin text-3xl md:text-5xl mb-3"><strong class="font-black">purplepee.co</strong> - Open source ASN lookup</h1>
-        <h2 class="font-sans font-thin text-xl md:text-3xl">Welcome to purplepee.co! This tool allows you to view general relations about a websites HTTP header, websites DNS records, websites SSL certificates and open TCP ports as well as ASN whois
-          information.</h2>
-      </div>
+      <main class="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
+        <section class="space-y-4 text-center">
+          <h1 class="text-3xl font-light text-gray-900 sm:text-5xl">
+            <strong class="font-black">purplepee.co</strong> — Open source ASN lookup
+          </h1>
+          <p class="mx-auto max-w-3xl text-base leading-relaxed text-gray-700 sm:text-lg">
+            Welcome to purplepee.co! This tool allows you to view general relations about a website's HTTP headers, DNS records,
+            SSL certificates, open TCP ports and ASN WHOIS information.
+          </p>
+        </section>
+
+        <filter-help />
+      </main>
     </div>
-
-    <filter-help></filter-help>
+    <navfooter />
   </div>
-  <navfooter></navfooter>
-</div>
 </template>
 
 <script setup lang="ts">
@@ -28,7 +32,8 @@ useHead(() => ({
     {
       hid: 'description',
       name: 'description',
-      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+      content:
+        'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
     }
   ]
 }))

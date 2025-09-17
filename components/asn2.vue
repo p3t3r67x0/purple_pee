@@ -1,56 +1,72 @@
 <template>
-<div class="container mx-auto">
-  <div v-for="result in results" class="overflow-hidden bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 p-3">
-    <div v-if="result.ip" class="flex text-2xl md:text-3xl font-medium text-purple-700">
-      <p>{{ result.ip }}</p>
-      <a v-bind:href="generateUrl(result.ip)" target="_blank" class="ml-1 mt-2 md:mt-3 text-gray-600">
-        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
-          <path d="M19 6.41L8.7 16.71a1 1 0 1 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41zM17 14a1 1 0 0 1 2 0v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h5a1 1 0 0 1 0 2H5v12h12v-5z" /></svg>
-      </a>
-    </div>
-    <div v-if="result.asn" class="mt-3 md:mt-4">
-      <strong class="text-lg">AS number</strong>
-      <p class="text-lg md:text-xl text-gray-700 font-light">
-        {{ result.asn }}
-      </p>
-    </div>
-    <div v-if="result.name" class="mt-3 md:mt-4">
-      <strong class="text-lg">AS name</strong>
-      <p class="break-all text-lg md:text-xl text-gray-700 font-light">
-        {{ result.name }}
-      </p>
-    </div>
-    <div v-if="result.host" class="mt-3 md:mt-4">
-      <strong class="text-lg">Hostname</strong>
-      <p class="text-lg md:text-xl text-gray-700 font-light">
-        {{ result.host }}
-      </p>
-    </div>
-    <div v-if="result.cidr" class="mt-3 md:mt-4">
-      <strong class="text-lg">Prefixes</strong>
-      <p class="text-lg md:text-xl text-gray-700 font-light">
-        {{ result.cidr.join(', ') }}
-      </p>
-    </div>
-    <div v-if="result.whois" class="mt-3 md:mt-4">
-      <strong class="text-lg">ASN whois</strong>
-      <ul class="font-mono text-md font-light">
-        <li v-for="v, k in result.whois" class="mt-1">
-          <strong class="font-bold">{{ k }}</strong>: <span class="text-gray-700 font-thin">{{ v }}</span>
-          <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
-        </li>
-      </ul>
-    </div>
-    <div v-if="result.ports" class="mt-3 md:mt-4">
-      <strong class="text-lg">Ports</strong>
-      <ul class="font-mono text-md font-light">
-        <li v-for="port in result.ports" class="mt-1">
-          <strong class="font-bold">{{ port.port }}/{{ port.proto }}</strong>: <span>{{ port.status }}</span>
-        </li>
-      </ul>
-    </div>
+  <div class="max-w-5xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
+    <article
+      v-for="result in results"
+      :key="`${result.asn}-${result.ip ?? ''}`"
+      class="space-y-5 rounded-2xl border border-purple-100 bg-white p-5 shadow-sm sm:p-8"
+    >
+      <header v-if="result.ip" class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p class="break-all text-2xl font-semibold text-purple-700 sm:text-3xl">{{ result.ip }}</p>
+        <a
+          :href="generateUrl(result.ip)"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-sm font-medium text-purple-700 transition hover:text-purple-900"
+        >
+          Open host
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M19 6.41 8.7 16.71a1 1 0 0 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41Z" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 13v5H5V6h5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </header>
+
+      <dl class="grid gap-4 sm:grid-cols-2">
+        <div v-if="result.asn" class="space-y-1">
+          <dt class="text-sm font-semibold text-gray-600">AS number</dt>
+          <dd class="text-base font-medium text-gray-800 sm:text-lg">{{ result.asn }}</dd>
+        </div>
+        <div v-if="result.name" class="space-y-1 sm:col-span-2">
+          <dt class="text-sm font-semibold text-gray-600">AS name</dt>
+          <dd class="break-all text-base font-medium text-gray-800 sm:text-lg">{{ result.name }}</dd>
+        </div>
+        <div v-if="result.host" class="space-y-1 sm:col-span-2">
+          <dt class="text-sm font-semibold text-gray-600">Hostname</dt>
+          <dd class="break-all text-base font-medium text-gray-800 sm:text-lg">{{ result.host }}</dd>
+        </div>
+        <div v-if="result.cidr" class="space-y-1 sm:col-span-2">
+          <dt class="text-sm font-semibold text-gray-600">Prefixes</dt>
+          <dd class="text-base font-medium text-gray-800 sm:text-lg">{{ result.cidr.join(', ') }}</dd>
+        </div>
+      </dl>
+
+      <section v-if="result.whois" class="space-y-3">
+        <h3 class="text-base font-semibold text-gray-900 sm:text-lg">ASN whois</h3>
+        <ul class="space-y-2 rounded-lg bg-gray-50 p-4 font-mono text-sm text-gray-800">
+          <li v-for="(value, key) in result.whois" :key="key" class="flex flex-wrap items-center gap-2">
+            <span class="font-semibold text-gray-700">{{ key }}:</span>
+            <span class="font-light text-gray-700">{{ value }}</span>
+            <img
+              v-if="key === 'asn_country_code'"
+              :src="generatePath(value as string)"
+              class="h-4 w-8 rounded-sm"
+              :alt="`${value} flag`"
+            />
+          </li>
+        </ul>
+      </section>
+
+      <section v-if="result.ports" class="space-y-3">
+        <h3 class="text-base font-semibold text-gray-900 sm:text-lg">Ports</h3>
+        <ul class="grid gap-2 sm:grid-cols-2">
+          <li v-for="port in result.ports" :key="`${port.port}-${port.proto}`" class="rounded-lg bg-gray-50 px-3 py-2 font-mono text-sm text-gray-800">
+            <strong class="font-semibold text-gray-900">{{ port.port }}/{{ port.proto }}</strong>
+            <span class="ml-2 text-gray-600">{{ port.status }}</span>
+          </li>
+        </ul>
+      </section>
+    </article>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">

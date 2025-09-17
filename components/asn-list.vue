@@ -1,16 +1,28 @@
 <template>
-<div id="xhr" v-if="!loadingIndicator" class="container mx-auto">
-  <h1 class="text-xl font-thin mx-3 md:mx-0 mb-3">Latest added <strong class="font-bold">AS numbers</strong></h1>
+  <div id="xhr" v-if="!loadingIndicator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="mb-4 text-2xl font-semibold text-gray-900 sm:text-3xl">
+      <span class="font-light">Latest added </span><strong>AS numbers</strong>
+    </h1>
 
-  <ul class="flex content-start flex-wrap bg-gray-200 mb-6 mx-2 md:mx-0 p-1">
-    <li v-for="result in results" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1">
-      <div class="bg-white rounded shadow-md leading-normal p-3">
-        <span><img v-if="result.whois.asn_country_code" v-bind:src="generatePath(result.whois.asn_country_code)" class="inline w-9 h-4 mr-1"></span>
-        <nuxt-link v-bind:to="generateLink(result.whois.asn)" class="font-mono font-light text-base text-blue-500 hover:text-blue-700">AS {{ result.whois.asn }}</nuxt-link>
-      </div>
-    </li>
-  </ul>
-</div>
+    <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <li v-for="result in results" :key="result.whois.asn" class="flex">
+        <div class="flex w-full items-center gap-3 rounded-lg border border-purple-100 bg-white p-4 shadow-sm transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md">
+          <img
+            v-if="result.whois.asn_country_code"
+            :src="generatePath(result.whois.asn_country_code)"
+            class="h-5 w-8 rounded-sm object-cover"
+            :alt="`${result.whois.asn_country_code} flag`"
+          />
+          <nuxt-link
+            :to="generateLink(result.whois.asn)"
+            class="font-mono text-sm font-semibold text-blue-600 transition hover:text-blue-700 sm:text-base"
+          >
+            AS {{ result.whois.asn }}
+          </nuxt-link>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
