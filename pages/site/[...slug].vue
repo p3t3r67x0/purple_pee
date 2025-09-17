@@ -3,8 +3,7 @@
     <div class="flex-grow">
       <navheader></navheader>
       <modal v-if="modalVisible"></modal>
-      <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
-      <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage"></dns>
+      <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage" :total="pagination.total"></dns>
       <client-only>
         <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
       </client-only>
@@ -17,7 +16,6 @@
 import { ref, watch } from 'vue'
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
-import Query from '@/components/query.vue'
 import Graph from '@/components/graph.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
@@ -29,7 +27,7 @@ const graphResults = ref<{ nodes: any[]; edges: any[] }>({ nodes: [], edges: [] 
 const showGraph = ref(false)
 const { $env } = useNuxtApp()
 
-const { results, currentPage, modalVisible, loadingIndicator, queryTitle, decodedQuery } = useMatchResultsPage({
+const { results, currentPage, pagination, modalVisible, loadingIndicator, decodedQuery } = useMatchResultsPage({
   prefix: 'site',
   headTitle: (decodedQuery) => `Site results for ${decodedQuery}`,
   headDescription: (decodedQuery) => `Explore latest site results ${decodedQuery}`,

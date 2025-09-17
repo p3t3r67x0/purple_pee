@@ -3,7 +3,43 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply bg-gray-300;
+  @apply bg-cosmic-void bg-cosmic-gradient text-slate-100 antialiased;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+::selection {
+  background: rgba(127, 90, 240, 0.45);
+  color: #fdfbff;
+}
+
+.glass-panel {
+  backdrop-filter: blur(28px);
+  background: linear-gradient(135deg, rgba(15, 18, 38, 0.75), rgba(66, 19, 133, 0.35));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 70px rgba(8, 12, 32, 0.45);
+}
+
+.glass-border {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+.neon-divider {
+  position: relative;
+}
+
+.neon-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(127, 90, 240, 0.35), transparent 70%);
+  opacity: 0.6;
+  filter: blur(24px);
+  pointer-events: none;
 }
 
 .z-6000 {

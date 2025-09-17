@@ -1,110 +1,114 @@
 <template>
-<div id="xhr" v-if="!loadingIndicator" class="container mx-auto px-3 md:px-0">
-  <h1 class="text-xl font-thin mb-6">Explore current <strong class="font-bold">trends</strong></h1>
+<div id="xhr" v-if="!loadingIndicator" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+  <div class="glass-panel rounded-3xl border border-white/10 px-5 py-6 shadow-glass sm:px-8">
+    <h1 class="text-2xl font-light tracking-wide text-white/90">
+      Explore current <strong class="font-semibold text-white">trends</strong>
+    </h1>
 
-  <div class="grid gap-6 lg:grid-cols-3">
-    <section class="lg:col-span-2 space-y-4">
-      <header class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold text-gray-800">Traffic Timeline</h2>
-        <p class="text-sm text-gray-500" v-if="metadataInfo">
-          <span class="font-medium capitalize">{{ metadataInfo.interval }}</span>
-          • Last {{ metadataInfo.lookback_minutes }} minutes
-        </p>
-      </header>
-      <p
-        v-if="metadataInfo && (metadataInfo.total_requests !== undefined || metadataInfo.bucket_count !== undefined)"
-        class="text-xs text-gray-500"
-      >
-        <span v-if="metadataInfo.total_requests !== undefined">Total requests: {{ metadataInfo.total_requests }}</span>
-        <span
-          v-if="metadataInfo.bucket_count !== undefined"
-          :class="{ 'ml-2': metadataInfo.total_requests !== undefined }"
+    <div class="mt-8 grid gap-6 lg:grid-cols-3">
+      <section class="lg:col-span-2 space-y-5">
+        <header class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <h2 class="text-lg font-semibold text-white">Traffic Timeline</h2>
+          <p class="text-sm text-white/60" v-if="metadataInfo">
+            <span class="font-medium capitalize text-white/80">{{ metadataInfo.interval }}</span>
+            • Last {{ metadataInfo.lookback_minutes }} minutes
+          </p>
+        </header>
+        <p
+          v-if="metadataInfo && (metadataInfo.total_requests !== undefined || metadataInfo.bucket_count !== undefined)"
+          class="text-xs text-white/50"
         >
-          Buckets: {{ metadataInfo.bucket_count }}
-        </span>
-      </p>
+          <span v-if="metadataInfo.total_requests !== undefined">Total requests: {{ metadataInfo.total_requests }}</span>
+          <span
+            v-if="metadataInfo.bucket_count !== undefined"
+            :class="{ 'ml-2': metadataInfo.total_requests !== undefined }"
+          >
+            Buckets: {{ metadataInfo.bucket_count }}
+          </span>
+        </p>
 
-      <div class="hidden md:block">
-        <table class="min-w-full table-auto border divide-y divide-gray-200 rounded-lg shadow-sm bg-white">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Window</th>
-              <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Count</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr v-for="bucket in timelineBuckets" :key="bucket.window_start">
-              <td class="px-4 py-2">
-                <div class="font-mono text-sm text-gray-700">
+        <div class="hidden md:block">
+          <table class="min-w-full table-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left shadow-glass">
+            <thead class="bg-white/5">
+              <tr>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Window</th>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="bucket in timelineBuckets" :key="bucket.window_start" class="border-t border-white/10">
+                <td class="px-4 py-3 font-mono text-sm text-white/80">
                   {{ formatWindow(bucket.window_start, bucket.window_end) }}
-                </div>
-              </td>
-              <td class="px-4 py-2">
-                <span class="font-semibold text-indigo-600">{{ bucket.count }}</span>
-              </td>
-            </tr>
-            <tr v-if="!timelineBuckets.length">
-              <td colspan="2" class="px-4 py-6 text-center text-sm text-gray-500">No timeline data available.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                </td>
+                <td class="px-4 py-3">
+                  <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-cosmic-aurora">
+                    {{ bucket.count }}
+                  </span>
+                </td>
+              </tr>
+              <tr v-if="!timelineBuckets.length">
+                <td colspan="2" class="px-4 py-6 text-center text-sm text-white/60">No timeline data available.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <ul v-if="timelineBuckets.length" class="space-y-3 md:hidden">
-        <li v-for="bucket in timelineBuckets" :key="bucket.window_start" class="rounded-lg border border-purple-200 bg-white p-3 shadow-sm">
-          <p class="font-mono text-sm text-gray-700">{{ formatWindow(bucket.window_start, bucket.window_end) }}</p>
-          <p class="mt-2 text-sm font-semibold text-indigo-600">{{ bucket.count }} requests</p>
-        </li>
-      </ul>
-      <p v-else class="md:hidden text-sm text-gray-500">No timeline data available.</p>
-    </section>
-
-    <section class="space-y-4">
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <header class="border-b border-gray-200 px-4 py-3">
-          <h2 class="text-lg font-semibold text-gray-800">Top Paths</h2>
-          <p class="text-sm text-gray-500">Most requested endpoints in the selected window.</p>
-        </header>
-        <ul class="divide-y divide-gray-200">
-          <li v-for="path in topPathsList" :key="path.path" class="px-4 py-3">
-            <div class="flex items-center justify-between">
-              <nuxt-link :to="normalizePath(path.path)" class="font-mono text-sm text-blue-600 hover:text-blue-700 break-all">
-                {{ path.path }}
-              </nuxt-link>
-              <span class="ml-4 inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600">
-                {{ path.count }}
-              </span>
-            </div>
+        <ul v-if="timelineBuckets.length" class="space-y-3 md:hidden">
+          <li v-for="bucket in timelineBuckets" :key="bucket.window_start" class="rounded-2xl border border-white/10 bg-white/10 p-4 shadow-glass">
+            <p class="font-mono text-sm text-white/80">{{ formatWindow(bucket.window_start, bucket.window_end) }}</p>
+            <p class="mt-2 text-sm font-semibold text-cosmic-aurora">{{ bucket.count }} requests</p>
           </li>
-          <li v-if="!topPathsList.length" class="px-4 py-6 text-center text-sm text-gray-500">No top paths recorded.</li>
         </ul>
-      </div>
+        <p v-else class="md:hidden text-sm text-white/60">No timeline data available.</p>
+      </section>
 
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <header class="border-b border-gray-200 px-4 py-3">
-          <h2 class="text-lg font-semibold text-gray-800">Recent Requests</h2>
-          <p class="text-sm text-gray-500">Latest activity across endpoints.</p>
-        </header>
-        <ul class="divide-y divide-gray-200">
-          <li v-for="request in recentRequestsList" :key="request.created + request.path" class="px-4 py-3">
-            <div class="flex flex-col space-y-1">
-              <div class="flex items-center justify-between">
-                <nuxt-link :to="normalizePath(request.path)" class="font-mono text-sm text-blue-600 hover:text-blue-700 break-all">
-                  {{ request.path }}
+      <section class="space-y-4">
+        <div class="rounded-2xl border border-white/10 bg-white/10 shadow-glass">
+          <header class="border-b border-white/10 px-4 py-3">
+            <h2 class="text-lg font-semibold text-white">Top Paths</h2>
+            <p class="text-sm text-white/60">Most requested endpoints in the selected window.</p>
+          </header>
+          <ul class="divide-y divide-white/10">
+            <li v-for="path in topPathsList" :key="path.path" class="px-4 py-3">
+              <div class="flex items-center justify-between gap-4">
+                <nuxt-link :to="normalizePath(path.path)" class="break-all font-mono text-sm text-cosmic-aurora transition hover:text-cosmic-rose">
+                  {{ path.path }}
                 </nuxt-link>
-                <span class="text-xs font-medium text-gray-500">{{ formatTimestamp(request.created) }}</span>
+                <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">
+                  {{ path.count }}
+                </span>
               </div>
-              <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500">
-                <span class="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 font-medium uppercase">{{ request.request_method }}</span>
-                <span class="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 font-medium">{{ request.status_code }}</span>
-                <span class="font-mono">{{ request.remote_address }}</span>
+            </li>
+            <li v-if="!topPathsList.length" class="px-4 py-6 text-center text-sm text-white/60">No top paths recorded.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/10 shadow-glass">
+          <header class="border-b border-white/10 px-4 py-3">
+            <h2 class="text-lg font-semibold text-white">Recent Requests</h2>
+            <p class="text-sm text-white/60">Latest activity across endpoints.</p>
+          </header>
+          <ul class="divide-y divide-white/10">
+            <li v-for="request in recentRequestsList" :key="request.created + request.path" class="px-4 py-3">
+              <div class="flex flex-col space-y-1">
+                <div class="flex items-start justify-between gap-3">
+                  <nuxt-link :to="normalizePath(request.path)" class="break-all font-mono text-sm text-cosmic-aurora transition hover:text-cosmic-rose">
+                    {{ request.path }}
+                  </nuxt-link>
+                  <span class="text-xs font-medium text-white/50">{{ formatTimestamp(request.created) }}</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-xs text-white/60">
+                  <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2 py-0.5 font-medium uppercase">{{ request.request_method }}</span>
+                  <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2 py-0.5 font-medium">{{ request.status_code }}</span>
+                  <span class="font-mono">{{ request.remote_address }}</span>
+                </div>
               </div>
-            </div>
-          </li>
-          <li v-if="!recentRequestsList.length" class="px-4 py-6 text-center text-sm text-gray-500">No recent requests recorded.</li>
-        </ul>
-      </div>
-    </section>
+            </li>
+            <li v-if="!recentRequestsList.length" class="px-4 py-6 text-center text-sm text-white/60">No recent requests recorded.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
 </template>

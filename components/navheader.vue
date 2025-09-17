@@ -1,21 +1,21 @@
 <template>
-  <header class="sticky top-0 z-50 w-full bg-purple-700/90 backdrop-blur border-b border-purple-500/30 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-between gap-3 py-2 sm:py-3">
+  <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-gradient-to-br from-cosmic-haze/85 via-purple-800/60 to-black/70 backdrop-blur-2xl shadow-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-3 py-3 sm:py-4">
         <!-- Logo -->
         <div class="flex w-full items-center justify-between md:w-auto">
-          <nuxt-link to="/" class="flex items-center gap-2 text-white">
-            <svg class="w-8 h-8 sm:w-9 sm:h-9" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 692 692">
+          <nuxt-link to="/" class="flex items-center gap-2 text-slate-100 transition hover:drop-shadow-neon">
+            <svg class="w-9 h-9 sm:w-10 sm:h-10 text-cosmic-aurora" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 692 692">
               <path d="..." />
             </svg>
-            <span class="hidden text-base font-semibold sm:inline">purplepee.co</span>
+            <span class="hidden text-base font-semibold tracking-wide sm:inline">purplepee.co</span>
           </nuxt-link>
         </div>
 
         <!-- Search -->
-        <div class="w-full order-last md:order-none md:flex-1 md:max-w-md">
+        <div class="w-full order-last md:order-none md:flex-1 md:max-w-lg">
           <div class="flex items-center gap-2">
-            <div class="flex-1">
+            <div class="flex-1 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl shadow-glass">
               <search />
             </div>
 
@@ -25,7 +25,7 @@
               @click="toggleMenu"
               :aria-expanded="isMenuOpen ? 'true' : 'false'"
               aria-controls="mobile-menu"
-              class="inline-flex items-center justify-center rounded-md p-2 text-purple-100 transition hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-700 md:hidden"
+              class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-cosmic-aurora/60 hover:text-cosmic-aurora focus:outline-none focus:ring-2 focus:ring-cosmic-aurora focus:ring-offset-2 focus:ring-offset-black md:hidden"
             >
               <span class="sr-only">Toggle navigation</span>
               <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -39,12 +39,12 @@
         </div>
 
         <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-5 ml-auto text-sm font-medium text-purple-100">
-          <nuxt-link to="/trends" class="hover:text-white">Trends</nuxt-link>
-          <nuxt-link to="/isp/germany" class="hover:text-white">ISPs</nuxt-link>
-          <nuxt-link to="/ipv4" class="hover:text-white">IPv4</nuxt-link>
-          <nuxt-link to="/dns" class="hover:text-white">DNS</nuxt-link>
-          <nuxt-link to="/asn" class="hover:text-white">ASN</nuxt-link>
+        <nav class="hidden md:flex items-center gap-6 ml-auto text-sm font-medium text-slate-100/90">
+          <nuxt-link to="/trends" class="rounded-full px-3 py-1.5 transition hover:bg-white/10 hover:text-white">Trends</nuxt-link>
+          <nuxt-link to="/isp/germany" class="rounded-full px-3 py-1.5 transition hover:bg-white/10 hover:text-white">ISPs</nuxt-link>
+          <nuxt-link to="/ipv4" class="rounded-full px-3 py-1.5 transition hover:bg-white/10 hover:text-white">IPv4</nuxt-link>
+          <nuxt-link to="/dns" class="rounded-full px-3 py-1.5 transition hover:bg-white/10 hover:text-white">DNS</nuxt-link>
+          <nuxt-link to="/asn" class="rounded-full px-3 py-1.5 transition hover:bg-white/10 hover:text-white">ASN</nuxt-link>
         </nav>
 
       </div>
@@ -59,13 +59,13 @@
         leave-to-class="opacity-0 -translate-y-2"
       >
         <div v-if="isMenuOpen" class="md:hidden pb-4" id="mobile-menu">
-          <div class="space-y-3 rounded-lg border border-purple-400/30 bg-purple-600/90 p-4 shadow-lg backdrop-blur-sm">
-            <nav class="flex flex-col gap-2 text-sm font-medium text-purple-50">
-              <nuxt-link to="/trends" class="rounded px-3 py-2 hover:bg-purple-500/60" @click="closeMenu">Trending now</nuxt-link>
-              <nuxt-link to="/isp/germany" class="rounded px-3 py-2 hover:bg-purple-500/60" @click="closeMenu">ISPs Germany</nuxt-link>
-              <nuxt-link to="/ipv4" class="rounded px-3 py-2 hover:bg-purple-500/60" @click="closeMenu">IPv4 Entries</nuxt-link>
-              <nuxt-link to="/dns" class="rounded px-3 py-2 hover:bg-purple-500/60" @click="closeMenu">DNS Entries</nuxt-link>
-              <nuxt-link to="/asn" class="rounded px-3 py-2 hover:bg-purple-500/60" @click="closeMenu">ASN Entries</nuxt-link>
+          <div class="space-y-3 rounded-3xl border border-white/10 bg-white/10 p-5 shadow-glass backdrop-blur-xl">
+            <nav class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+              <nuxt-link to="/trends" class="rounded-full px-4 py-2 transition hover:bg-white/15 hover:text-white" @click="closeMenu">Trending now</nuxt-link>
+              <nuxt-link to="/isp/germany" class="rounded-full px-4 py-2 transition hover:bg-white/15 hover:text-white" @click="closeMenu">ISPs Germany</nuxt-link>
+              <nuxt-link to="/ipv4" class="rounded-full px-4 py-2 transition hover:bg-white/15 hover:text-white" @click="closeMenu">IPv4 Entries</nuxt-link>
+              <nuxt-link to="/dns" class="rounded-full px-4 py-2 transition hover:bg-white/15 hover:text-white" @click="closeMenu">DNS Entries</nuxt-link>
+              <nuxt-link to="/asn" class="rounded-full px-4 py-2 transition hover:bg-white/15 hover:text-white" @click="closeMenu">ASN Entries</nuxt-link>
             </nav>
 
           </div>

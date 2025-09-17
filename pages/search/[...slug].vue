@@ -3,7 +3,6 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
   </div>
   <navfooter></navfooter>
@@ -14,7 +13,6 @@
 import { computed, watch } from 'vue'
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
-import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { useRouter } from '#app'
@@ -34,17 +32,6 @@ const decodedSlug = computed(() => {
   } catch {
     return value
   }
-})
-
-const queryTitle = computed(() => {
-  const value = decodedSlug.value
-  const parts = value.split(':')
-
-  if (parts.length >= 2) {
-    return [parts[0], parts.slice(1).join(':')]
-  }
-
-  return ['', decodedSlug.value]
 })
 
 useHead(() => ({

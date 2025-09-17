@@ -3,9 +3,9 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <query v-if="!loadingIndicator" v-bind:query="queryTitle" v-bind:results="results.length"></query>
     <dns
       v-bind:results="results"
+      :total="pagination.total"
       :currentPage="currentPage"
       :hasNext="pagination.has_next"
       :hasPrevious="pagination.has_previous"
@@ -18,10 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Dns from '@/components/dns.vue'
 import Modal from '@/components/modal.vue'
-import Query from '@/components/query.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
@@ -44,8 +43,6 @@ const pagination = ref({
 const mainStore = useMainStore()
 const { modalVisible, loading: loadingIndicator } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
-
-const queryTitle = computed(() => ['latest', 'DNS'])
 
 useHead(() => ({
   title: 'Latest DNS lookup entries',

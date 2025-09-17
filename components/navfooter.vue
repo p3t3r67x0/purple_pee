@@ -1,80 +1,85 @@
 <template>
-  <footer class="mt-12 bg-purple-700 text-purple-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <footer class="mt-16 border-t border-white/10 bg-gradient-to-br from-cosmic-haze/70 via-[#1a1440]/60 to-black/80 text-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
       <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
         <div class="text-center sm:text-left">
-          <p class="text-sm font-semibold uppercase tracking-wide text-purple-100">Links</p>
-          <ul class="mt-4 space-y-2 text-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Links</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-200/80">
             <li>
-              <nuxt-link v-bind:to="faqUrl" class="transition hover:text-white">FAQ</nuxt-link>
+              <nuxt-link v-bind:to="faqUrl" class="transition hover:text-white/95">FAQ</nuxt-link>
             </li>
             <li>
-              <nuxt-link v-bind:to="helpUrl" class="transition hover:text-white">Help</nuxt-link>
+              <nuxt-link v-bind:to="helpUrl" class="transition hover:text-white/95">Help</nuxt-link>
             </li>
             <li>
-              <nuxt-link v-bind:to="supportUrl" class="transition hover:text-white">Support</nuxt-link>
-            </li>
-          </ul>
-        </div>
-        <div class="text-center sm:text-left">
-          <p class="text-sm font-semibold uppercase tracking-wide text-purple-100">Service</p>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li>
-              <a v-bind:href="apiUrl" target="_blank" class="transition hover:text-white">API</a>
-            </li>
-            <li>
-              <nuxt-link v-bind:to="docsUrl" class="transition hover:text-white">Docs</nuxt-link>
-            </li>
-            <li>
-              <a v-bind:href="issuesUrl" target="_blank" class="transition hover:text-white">Issues</a>
+              <nuxt-link v-bind:to="supportUrl" class="transition hover:text-white/95">Support</nuxt-link>
             </li>
           </ul>
         </div>
         <div class="text-center sm:text-left">
-          <p class="text-sm font-semibold uppercase tracking-wide text-purple-100">Social</p>
-          <ul class="mt-4 space-y-2 text-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Service</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-200/80">
             <li>
-              <a v-bind:href="twitterUrl" target="_blank" class="transition hover:text-white">Twitter</a>
+              <a v-bind:href="apiUrl" target="_blank" class="transition hover:text-white/95">API</a>
             </li>
             <li>
-              <a v-bind:href="facebookUrl" target="_blank" class="transition hover:text-white">Facebook</a>
+              <nuxt-link v-bind:to="docsUrl" class="transition hover:text-white/95">Docs</nuxt-link>
             </li>
             <li>
-              <a v-bind:href="linkedinUrl" target="_blank" class="transition hover:text-white">LinkedIn</a>
-            </li>
-          </ul>
-        </div>
-        <div class="text-center sm:text-left">
-          <p class="text-sm font-semibold uppercase tracking-wide text-purple-100">Project</p>
-          <ul class="mt-4 space-y-2 text-sm">
-            <li>
-              <nuxt-link v-bind:to="aboutUrl" class="transition hover:text-white">About</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link v-bind:to="contactUrl" class="transition hover:text-white">Contact</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link v-bind:to="blogUrl" class="transition hover:text-white">Blog</nuxt-link>
+              <a v-bind:href="issuesUrl" target="_blank" class="transition hover:text-white/95">Issues</a>
             </li>
           </ul>
         </div>
         <div class="text-center sm:text-left">
-          <p class="text-sm font-semibold uppercase tracking-wide text-purple-100">Legal</p>
-          <ul class="mt-4 space-y-2 text-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Social</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-200/80">
             <li>
-              <nuxt-link v-bind:to="termsUrl" class="transition hover:text-white">Terms</nuxt-link>
+              <a v-bind:href="twitterUrl" target="_blank" class="transition hover:text-white/95">Twitter</a>
             </li>
             <li>
-              <nuxt-link v-bind:to="privacyUrl" class="transition hover:text-white">Privacy</nuxt-link>
+              <a v-bind:href="facebookUrl" target="_blank" class="transition hover:text-white/95">Facebook</a>
             </li>
             <li>
-              <nuxt-link v-bind:to="imprintUrl" class="transition hover:text-white">Imprint</nuxt-link>
+              <a v-bind:href="linkedinUrl" target="_blank" class="transition hover:text-white/95">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+        <div class="text-center sm:text-left">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Project</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-200/80">
+            <li>
+              <nuxt-link v-bind:to="aboutUrl" class="transition hover:text-white/95">About</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link v-bind:to="contactUrl" class="transition hover:text-white/95">Contact</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link v-bind:to="blogUrl" class="transition hover:text-white/95">Blog</nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="text-center sm:text-left">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">Legal</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-200/80">
+            <li>
+              <nuxt-link v-bind:to="termsUrl" class="transition hover:text-white/95">Terms</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link v-bind:to="privacyUrl" class="transition hover:text-white/95">Privacy</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link v-bind:to="imprintUrl" class="transition hover:text-white/95">Imprint</nuxt-link>
             </li>
           </ul>
         </div>
       </div>
-      <div class="mt-10 border-t border-white/20 pt-6 text-center text-xs text-purple-100/80">
-        © {{ currentYear }} purplepee.co — Open source ASN lookup
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-slate-300/70 sm:flex-row">
+        <span>© {{ currentYear }} purplepee.co — Open source ASN lookup</span>
+        <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-slate-400/70">
+          <span class="h-px w-8 bg-gradient-to-r from-transparent via-white/40 to-transparent"></span>
+          crafted for curious minds
+          <span class="h-px w-8 bg-gradient-to-r from-transparent via-white/40 to-transparent"></span>
+        </span>
       </div>
     </div>
   </footer>

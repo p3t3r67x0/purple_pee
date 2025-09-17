@@ -5,6 +5,7 @@
     <modal v-if="modalVisible"></modal>
     <list
       v-bind:results="results"
+      :total="pagination.total"
       :currentPage="currentPage"
       :hasNext="pagination.has_next"
       :hasPrevious="pagination.has_previous"

@@ -3,14 +3,16 @@
     <div class="flex-grow">
       <navheader />
 
-      <main class="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
-        <section class="space-y-4 text-center">
-          <h1 class="text-3xl font-light text-gray-900 sm:text-5xl">
-            <strong class="font-black">purplepee.co</strong> — Open source ASN lookup
+      <main class="mx-auto max-w-6xl space-y-12 px-4 py-16 sm:px-6 lg:px-8">
+        <section class="glass-panel rounded-4xl border border-white/10 px-6 py-10 text-center shadow-glass sm:px-12">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+            Internet intelligence
+          </span>
+          <h1 class="mt-6 text-3xl font-light tracking-wide text-white/90 sm:text-5xl">
+            <strong class="font-semibold text-white">purplepee.co</strong> — Open source ASN lookup
           </h1>
-          <p class="mx-auto max-w-3xl text-base leading-relaxed text-gray-700 sm:text-lg">
-            Welcome to purplepee.co! This tool allows you to view general relations about a website's HTTP headers, DNS records,
-            SSL certificates, open TCP ports and ASN WHOIS information.
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg">
+            Welcome to purplepee.co! Explore HTTP headers, DNS records, SSL certificates, open TCP ports, and ASN WHOIS data in a single place.
           </p>
         </section>
 
@@ -24,7 +26,7 @@
 <script setup lang="ts">
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-import FilterHelp from '@/components/filter.vue'
+import FilterHelp from '/components/filter.vue'
 
 useHead(() => ({
   title: 'Open source ASN lookup',
