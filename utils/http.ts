@@ -4,6 +4,34 @@ interface FetchJsonOptions extends RequestInit {
   trackLoading?: boolean
 }
 
+export interface PaginatedResponse<T> {
+  page: number
+  page_size: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+  results: T[]
+}
+
+export const isPaginatedResponse = <T = unknown>(value: unknown): value is PaginatedResponse<T> => {
+  if (!value || typeof value !== 'object') {
+    return false
+  }
+
+  const candidate = value as Partial<PaginatedResponse<T>>
+
+  return (
+    Array.isArray(candidate.results) &&
+    typeof candidate.page === 'number' &&
+    typeof candidate.page_size === 'number' &&
+    typeof candidate.total === 'number' &&
+    typeof candidate.total_pages === 'number' &&
+    typeof candidate.has_next === 'boolean' &&
+    typeof candidate.has_previous === 'boolean'
+  )
+}
+
 export interface FetchError extends Error {
   response?: {
     data: unknown

@@ -15,7 +15,7 @@ import Modal from '@/components/modal.vue'
 import List from '@/components/cidr-list.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-import { fetchJson, handleFetchError } from '~/utils/http'
+import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'
 import { useNuxtApp } from '#app'
@@ -36,16 +36,30 @@ useHead(() => ({
   ]
 }))
 
-const fetchLatest = async () => {
+const DEFAULT_PAGE = 1
+const DEFAULT_PAGE_SIZE = 25
+
+const fetchLatest = async (page = DEFAULT_PAGE) => {
   try {
-    const response = await fetchJson(`${$env.API_URL}/cidr`)
-    results.value = Array.isArray(response?.results) ? response.results : []
+    const response = await fetchJson(`${$env.API_URL}/cidr?page=${page}&page_size=${DEFAULT_PAGE_SIZE}`)
+
+    if (isPaginatedResponse<any>(response)) {
+      results.value = response.results
+      return
+    }
+
+    if (response && typeof response === 'object' && Array.isArray((response as { results?: unknown[] }).results)) {
+      results.value = (response as { results?: any[] }).results ?? []
+      return
+    }
+
+    results.value = Array.isArray(response) ? response : []
   } catch (error) {
     handleFetchError(error)
   }
 }
 
 onMounted(() => {
-  fetchLatest()
+  fetchLatest(DEFAULT_PAGE)
 })
 </script>

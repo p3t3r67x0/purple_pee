@@ -1,125 +1,206 @@
 <template>
-<div id="xhr" v-if="!loadingIndicator" class="container mx-auto">
-  <h1 class="text-xl font-thin mx-3 md:mx-0 mb-3">Explore current <strong class="font-bold">trends</strong></h1>
+<div id="xhr" v-if="!loadingIndicator" class="container mx-auto px-3 md:px-0">
+  <h1 class="text-xl font-thin mb-6">Explore current <strong class="font-bold">trends</strong></h1>
 
-  <ul class="flex content-start flex-wrap bg-gray-200 mb-6 mx-2 md:mx-0 p-1">
-    <li v-for="result in results" class="w-full sm:w-1/2 md:w-1/3 p-1">
-      <div class="bg-white rounded shadow-md leading-normal p-3 overflow-hidden">
-        <p class="font-bold font-mono">{{ generateTitle(generateLink(result.trend)) }}</p>
-        <span><img v-if="isCountry(generateLink(result.trend))" v-bind:src="generatePath(generateName(result.trend))" class="inline w-9 h-4 mr-1"></span>
-        <nuxt-link v-bind:to="generateLink(result.trend)" class="break-words font-mono font-light text-base text-blue-500 hover:text-blue-700">{{ generateName(result.trend) }}</nuxt-link>
+  <div class="grid gap-6 lg:grid-cols-3">
+    <section class="lg:col-span-2 space-y-4">
+      <header class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold text-gray-800">Traffic Timeline</h2>
+        <p class="text-sm text-gray-500" v-if="metadataInfo">
+          <span class="font-medium capitalize">{{ metadataInfo.interval }}</span>
+          • Last {{ metadataInfo.lookback_minutes }} minutes
+        </p>
+      </header>
+      <p
+        v-if="metadataInfo && (metadataInfo.total_requests !== undefined || metadataInfo.bucket_count !== undefined)"
+        class="text-xs text-gray-500"
+      >
+        <span v-if="metadataInfo.total_requests !== undefined">Total requests: {{ metadataInfo.total_requests }}</span>
+        <span
+          v-if="metadataInfo.bucket_count !== undefined"
+          :class="{ 'ml-2': metadataInfo.total_requests !== undefined }"
+        >
+          Buckets: {{ metadataInfo.bucket_count }}
+        </span>
+      </p>
+
+      <div class="hidden md:block">
+        <table class="min-w-full table-auto border divide-y divide-gray-200 rounded-lg shadow-sm bg-white">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Window</th>
+              <th class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Count</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr v-for="bucket in timelineBuckets" :key="bucket.window_start">
+              <td class="px-4 py-2">
+                <div class="font-mono text-sm text-gray-700">
+                  {{ formatWindow(bucket.window_start, bucket.window_end) }}
+                </div>
+              </td>
+              <td class="px-4 py-2">
+                <span class="font-semibold text-indigo-600">{{ bucket.count }}</span>
+              </td>
+            </tr>
+            <tr v-if="!timelineBuckets.length">
+              <td colspan="2" class="px-4 py-6 text-center text-sm text-gray-500">No timeline data available.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </li>
-  </ul>
+
+      <ul v-if="timelineBuckets.length" class="space-y-3 md:hidden">
+        <li v-for="bucket in timelineBuckets" :key="bucket.window_start" class="rounded-lg border border-purple-200 bg-white p-3 shadow-sm">
+          <p class="font-mono text-sm text-gray-700">{{ formatWindow(bucket.window_start, bucket.window_end) }}</p>
+          <p class="mt-2 text-sm font-semibold text-indigo-600">{{ bucket.count }} requests</p>
+        </li>
+      </ul>
+      <p v-else class="md:hidden text-sm text-gray-500">No timeline data available.</p>
+    </section>
+
+    <section class="space-y-4">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <header class="border-b border-gray-200 px-4 py-3">
+          <h2 class="text-lg font-semibold text-gray-800">Top Paths</h2>
+          <p class="text-sm text-gray-500">Most requested endpoints in the selected window.</p>
+        </header>
+        <ul class="divide-y divide-gray-200">
+          <li v-for="path in topPathsList" :key="path.path" class="px-4 py-3">
+            <div class="flex items-center justify-between">
+              <nuxt-link :to="normalizePath(path.path)" class="font-mono text-sm text-blue-600 hover:text-blue-700 break-all">
+                {{ path.path }}
+              </nuxt-link>
+              <span class="ml-4 inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600">
+                {{ path.count }}
+              </span>
+            </div>
+          </li>
+          <li v-if="!topPathsList.length" class="px-4 py-6 text-center text-sm text-gray-500">No top paths recorded.</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <header class="border-b border-gray-200 px-4 py-3">
+          <h2 class="text-lg font-semibold text-gray-800">Recent Requests</h2>
+          <p class="text-sm text-gray-500">Latest activity across endpoints.</p>
+        </header>
+        <ul class="divide-y divide-gray-200">
+          <li v-for="request in recentRequestsList" :key="request.created + request.path" class="px-4 py-3">
+            <div class="flex flex-col space-y-1">
+              <div class="flex items-center justify-between">
+                <nuxt-link :to="normalizePath(request.path)" class="font-mono text-sm text-blue-600 hover:text-blue-700 break-all">
+                  {{ request.path }}
+                </nuxt-link>
+                <span class="text-xs font-medium text-gray-500">{{ formatTimestamp(request.created) }}</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                <span class="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 font-medium uppercase">{{ request.request_method }}</span>
+                <span class="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 font-medium">{{ request.status_code }}</span>
+                <span class="font-mono">{{ request.remote_address }}</span>
+              </div>
+            </div>
+          </li>
+          <li v-if="!recentRequestsList.length" class="px-4 py-6 text-center text-sm text-gray-500">No recent requests recorded.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '~/stores/main'
 
-defineProps<{ results: Array<Record<string, any>> }>()
+interface TimelineBucket {
+  window_start: string
+  window_end: string
+  count: number
+}
+
+interface TrendsMetadata {
+  interval: string
+  lookback_minutes: number
+  total_requests?: number
+  bucket_count?: number
+}
+
+const props = withDefaults(
+  defineProps<{
+    results: Array<Record<string, any>>
+    timeline?: TimelineBucket[]
+    topPaths?: Array<Record<string, any>>
+    recentRequests?: Array<Record<string, any>>
+    metadata?: TrendsMetadata | null
+  }>(),
+  {
+    results: () => [],
+    timeline: () => [],
+    topPaths: () => [],
+    recentRequests: () => [],
+    metadata: null
+  }
+)
 
 const mainStore = useMainStore()
 const { loading: loadingIndicator } = storeToRefs(mainStore)
 
-const isCountry = (path: string) => {
-  const segments = path.split('/').filter(Boolean)
-  return segments[0] === 'country'
-}
+const timelineBuckets = computed(() => props.timeline ?? [])
+const topPathsList = computed(() => props.topPaths ?? [])
+const recentRequestsList = computed(() => props.recentRequests ?? [])
+const metadataInfo = computed(() => props.metadata)
 
-const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
-
-const generateName = (path: string) => {
-  const segments = path.split(':')
-
-  if (segments.length >= 2) {
-    return segments.splice(1).join(':')
+const normalizePath = (path: string) => {
+  if (!path || path === '#') {
+    return '#'
   }
 
-  return ''
+  return path.startsWith('/') ? path : `/${path}`
 }
 
-const generateTitle = (path: string) => {
-  const [prefix] = path.split('/').filter(Boolean)
-
-  switch (prefix) {
-    case 'mx':
-      return 'MX record'
-    case 'ipv4':
-      return 'A record'
-    case 'ipv6':
-      return 'AAAA record'
-    case 'cname':
-      return 'CNAME record'
-    case 'soa':
-      return 'SOA record'
-    case 'ns':
-      return 'NS record'
-    case 'cidr':
-      return 'CIDR'
-    case 'dns':
-      return 'DNS'
-    case 'asn':
-      return 'ASN'
-    case 'org':
-      return 'ISP'
-    case 'registry':
-      return 'ASN registry'
-    case 'country':
-      return 'GEO country'
-    case 'state':
-      return 'GEO state'
-    case 'city':
-      return 'GEO city'
-    case 'loc':
-      return 'GEO location'
-    case 'status':
-      return 'HTTP status'
-    case 'port':
-      return 'TCP port'
-    case 'server':
-      return 'Server'
-    case 'site':
-      return 'Domain'
-    case 'ssl':
-      return 'SSL certificate'
-    case 'issuer':
-      return 'SSL issuer'
-    case 'ocsp':
-      return 'SSL ocsp'
-    case 'crl':
-      return 'SSL crl'
-    case 'ca':
-      return 'SSL ca'
-    case 'unit':
-      return 'SSL issuer unit'
-    case 'before':
-      return 'SSL valid not_before'
-    case 'after':
-      return 'SSL valid not_after'
-    case 'banner':
-      return 'SSH banner'
-    case 'service':
-      return 'Service'
-    default:
-      return ''
+const formatTimestamp = (value?: string) => {
+  if (!value) {
+    return ''
   }
+
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return value
+  }
+
+  return date.toLocaleString(undefined, {
+    hour12: false,
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  })
 }
 
-const generateLink = (path: string) => {
-  const segments = path.split(':')
-
-  if (segments.length >= 2) {
-    const query = segments.splice(1).join(':')
-    const match = segments.splice(0)[0]
-
-    if (match.length >= 2) {
-      const prefix = match.split('/')[2]
-      return `/${prefix}/${query}`
-    }
+const formatWindow = (start?: string, end?: string) => {
+  if (!start || !end) {
+    return 'Unknown window'
   }
 
-  return '#'
+  const startDate = new Date(start)
+  const endDate = new Date(end)
+
+  if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) {
+    return `${start} → ${end}`
+  }
+
+  const startLabel = startDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false })
+  const endLabel = endDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false })
+  const sameDay = startDate.toDateString() === endDate.toDateString()
+
+  if (sameDay) {
+    return `${startDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} ${startLabel} → ${endLabel}`
+  }
+
+  return `${startDate.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })} → ${endDate.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })}`
 }
 </script>

@@ -22,6 +22,22 @@
         </div>
       </li>
     </ul>
+    <div class="flex justify-center my-6 space-x-4">
+      <button
+        @click="$emit('prevPage')"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        :disabled="!hasPrevious"
+      >
+        Previous
+      </button>
+      <button
+        @click="$emit('nextPage')"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        :disabled="!hasNext"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -29,7 +45,17 @@
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '~/stores/main'
 
-defineProps<{ results: Array<Record<string, any>> }>()
+withDefaults(
+  defineProps<{ results: Array<Record<string, any>>; currentPage?: number; hasNext?: boolean; hasPrevious?: boolean }>(),
+  {
+    results: () => [],
+    currentPage: 1,
+    hasNext: false,
+    hasPrevious: false
+  }
+)
+
+const $emit = defineEmits(['nextPage', 'prevPage'])
 
 const mainStore = useMainStore()
 const { loading: loadingIndicator } = storeToRefs(mainStore)

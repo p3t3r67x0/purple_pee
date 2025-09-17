@@ -312,10 +312,20 @@
       </div>
     </div>
     <div class="flex justify-center my-4 space-x-4">
-      <button @click="$emit('prevPage')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        :disabled="currentPage === 1">Previous</button>
-      <button @click="$emit('nextPage')"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
+      <button
+        @click="$emit('prevPage')"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        :disabled="!hasPrevious"
+      >
+        Previous
+      </button>
+      <button
+        @click="$emit('nextPage')"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        :disabled="!hasNext"
+      >
+        Next
+      </button>
     </div>
   </div>
 </template>
@@ -330,7 +340,15 @@ interface DnsResult {
   [key: string]: any
 }
 
-const props = defineProps<{ results: DnsResult[]; currentPage: number }>()
+withDefaults(
+  defineProps<{ results: DnsResult[]; currentPage: number; hasNext?: boolean; hasPrevious?: boolean }>(),
+  {
+    results: () => [],
+    currentPage: 1,
+    hasNext: false,
+    hasPrevious: false
+  }
+)
 
 const emit = defineEmits(['nextPage', 'prevPage'])
 const $emit = emit

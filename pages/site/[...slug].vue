@@ -21,7 +21,7 @@ import Query from '@/components/query.vue'
 import Graph from '@/components/graph.vue'
 import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
-import { fetchJson, handleFetchError } from '~/utils/http'
+import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 import { useNuxtApp } from '#app'
 
@@ -53,9 +53,10 @@ const fetchGraph = async (query: string) => {
 
   try {
     const response = await fetchJson(`${$env.API_URL}/graph/${query}`, { trackLoading: false })
+    const payload = isPaginatedResponse<any>(response) ? response.results : response
 
-    if (Array.isArray(response) && response.length > 0) {
-      const raw = response[0] as { main: Array<{ domain: string }>; all: Array<{ domain: string }> }
+    if (Array.isArray(payload) && payload.length > 0) {
+      const raw = payload[0] as { main: Array<{ domain: string }>; all: Array<{ domain: string }> }
       const nodes = [
         ...raw.main.map((m, index) => ({ id: `main-${index}`, label: m.domain })),
         ...raw.all.map((a, index) => ({ id: `all-${index}`, label: a.domain }))
@@ -83,4 +84,3 @@ watch(
   { immediate: true }
 )
 </script>
-

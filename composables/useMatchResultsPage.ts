@@ -2,7 +2,7 @@ import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '~/stores/main'
 import { useHead, useNuxtApp } from '#app'
-import { fetchJson, handleFetchError } from '~/utils/http'
+import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useSlugParam } from '~/composables/useSlugParam'
 
 interface MatchResultsOptions {
@@ -31,8 +31,20 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
   const mainStore = useMainStore()
   const { modalVisible, loading: loadingIndicator } = storeToRefs(mainStore)
 
+  const DEFAULT_PAGE = 1
+  const DEFAULT_PAGE_SIZE = 25
+
   const results = ref<any[]>([])
-  const currentPage = ref(1)
+  const currentPage = ref(DEFAULT_PAGE)
+  const pageSize = ref(DEFAULT_PAGE_SIZE)
+  const pagination = ref({
+    page: DEFAULT_PAGE,
+    page_size: DEFAULT_PAGE_SIZE,
+    total: 0,
+    total_pages: 1,
+    has_next: false,
+    has_previous: false
+  })
 
   const rawQuery = computed(() => slug.value)
   const decodedQuery = computed(() => decodeValue(rawQuery.value))
@@ -56,13 +68,80 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
     ]
   }))
 
-  const fetchLatest = async (decoded: string, raw: string) => {
+  const fetchLatest = async (decoded: string, raw: string, page = DEFAULT_PAGE) => {
     try {
       const endpoint = fetchPath ? fetchPath(decoded, raw) : `${apiUrl}/match/${prefix}:${decoded}`
-      const response = await fetchJson(endpoint)
-      results.value = Array.isArray(response) ? response : []
+      const separator = endpoint.includes('?') ? '&' : '?'
+      const url = `${endpoint}${separator}page=${page}&page_size=${pageSize.value}`
+      const response = await fetchJson(url)
+
+      if (isPaginatedResponse<any>(response)) {
+        results.value = response.results ?? []
+        pagination.value = {
+          page: response.page,
+          page_size: response.page_size,
+          total: response.total,
+          total_pages: response.total_pages,
+          has_next: response.has_next,
+          has_previous: response.has_previous
+        }
+        currentPage.value = response.page
+        pageSize.value = response.page_size
+        mainStore.updateResultList(response.results ?? [])
+        return
+      }
+
+      if (Array.isArray(response)) {
+        results.value = response
+        pagination.value = {
+          page,
+          page_size: pageSize.value,
+          total: response.length,
+          total_pages: response.length > 0 ? Math.max(1, Math.ceil(response.length / pageSize.value)) : 1,
+          has_next: false,
+          has_previous: page > 1
+        }
+        currentPage.value = pagination.value.page
+        mainStore.updateResultList(response)
+        return
+      }
+
+      if (response && typeof response === 'object' && Array.isArray((response as { results?: unknown[] }).results)) {
+        const fallbackResults = (response as { results?: any[] }).results ?? []
+        results.value = fallbackResults
+        pagination.value = {
+          page,
+          page_size: pageSize.value,
+          total: fallbackResults.length,
+          total_pages: fallbackResults.length > 0 ? Math.max(1, Math.ceil(fallbackResults.length / pageSize.value)) : 1,
+          has_next: false,
+          has_previous: page > 1
+        }
+        currentPage.value = pagination.value.page
+        mainStore.updateResultList(fallbackResults)
+        return
+      }
+
+      results.value = []
+      pagination.value = {
+        page,
+        page_size: pageSize.value,
+        total: 0,
+        total_pages: 1,
+        has_next: false,
+        has_previous: page > 1
+      }
+      mainStore.updateResultList([])
     } catch (error) {
       results.value = []
+      pagination.value = {
+        page,
+        page_size: pageSize.value,
+        total: 0,
+        total_pages: 1,
+        has_next: false,
+        has_previous: page > 1
+      }
       handleFetchError(error)
     }
   }
@@ -81,7 +160,7 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
       mainStore.updateQuery(queryForStore ?? null)
       mainStore.updateLoadingIndicator(true)
 
-      await fetchLatest(decoded, normalized)
+      await fetchLatest(decoded, normalized, DEFAULT_PAGE)
     },
     { immediate: true }
   )
@@ -89,10 +168,12 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
   return {
     results,
     currentPage,
+    pageSize,
+    pagination,
     modalVisible,
     loadingIndicator,
     queryTitle,
     decodedQuery,
-    refresh: () => fetchLatest(decodedQuery.value, rawQuery.value)
+    refresh: () => fetchLatest(decodedQuery.value, rawQuery.value, currentPage.value)
   }
 }
