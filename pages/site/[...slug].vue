@@ -3,7 +3,16 @@
     <div class="flex-grow">
       <navheader></navheader>
       <modal v-if="modalVisible"></modal>
-      <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage" :total="pagination.total"></dns>
+      <dns
+        v-if="!loadingIndicator"
+        v-bind:results="results"
+        :currentPage="currentPage"
+        :total="pagination.total"
+        :hasNext="pagination.has_next"
+        :hasPrevious="pagination.has_previous"
+        @nextPage="nextPage"
+        @prevPage="prevPage"
+      ></dns>
       <client-only>
         <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
       </client-only>
@@ -27,7 +36,7 @@ const graphResults = ref<{ nodes: any[]; edges: any[] }>({ nodes: [], edges: [] 
 const showGraph = ref(false)
 const { $env } = useNuxtApp()
 
-const { results, currentPage, pagination, modalVisible, loadingIndicator, decodedQuery } = useMatchResultsPage({
+const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage, decodedQuery } = useMatchResultsPage({
   prefix: 'site',
   headTitle: (decodedQuery) => `Site results for ${decodedQuery}`,
   headDescription: (decodedQuery) => `Explore latest site results ${decodedQuery}`,

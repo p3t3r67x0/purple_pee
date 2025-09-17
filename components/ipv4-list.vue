@@ -15,7 +15,7 @@
       <li v-for="result in results" :key="result.a_record" class="group">
         <div class="rounded-2xl border border-white/10 bg-white/10 p-4 shadow-glass transition duration-300 hover:border-cosmic-aurora/60 hover:shadow-glow">
           <span>
-            <img v-if="result.country_code" :src="generatePath(result.country_code)" class="mr-2 inline h-4 w-9 rounded-sm border border-white/20 object-cover" />
+            <img v-if="result.country_code" :src="generatePath(result.country_code)" class="mr-2 inline h-5 border border-white/20" alt="flag"/>
           </span>
           <nuxt-link :to="generateLink(result.a_record)" class="font-mono text-base text-white transition hover:text-cosmic-aurora">
             {{ result.a_record }}

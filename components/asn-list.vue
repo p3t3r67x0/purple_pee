@@ -17,12 +17,12 @@
             <img
               v-if="result.whois.asn_country_code"
               :src="generatePath(result.whois.asn_country_code)"
-              class="h-5 w-9 rounded-md border border-white/20 object-cover"
+              class="h-5 border border-white/20"
               :alt="`${result.whois.asn_country_code} flag`"
             />
             <nuxt-link
               :to="generateLink(result.whois.asn)"
-              class="font-mono text-sm font-semibold text-white transition hover:text-cosmic-aurora sm:text-base"
+              class="font-mono text-sm text-white transition hover:text-cosmic-aurora sm:text-base"
             >
               AS {{ result.whois.asn }}
             </nuxt-link>

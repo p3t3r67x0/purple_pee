@@ -1,13 +1,46 @@
 <template>
-<div class="flex flex-wrap items-stretch w-full relative">
-  <input type="text" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-8 border-gray-200 rounded rounded-r-none px-2 relative" @keyup.enter="searchMatch" v-model="q" autofocus placeholder="Enter a Domain, IP, ASN or Hostname">
-  <div class="flex -mr-px">
-    <a v-on:click="searchMatch" class="flex items-center leading-normal bg-gray-300 rounded rounded-l-none border border-l-0 border-gray-200 px-2 whitespace-no-wrap text-gray-dark text-sm cursor-pointer">
-      <svg class="text-gray-600 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-        <path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
-    </a>
+  <div class="relative w-full">
+    <div class="pointer-events-none absolute inset-0 -z-10 rounded-3xl bg-gradient-to-r from-cosmic-flare/30 via-cosmic-aurora/25 to-sky-500/20 opacity-70 blur-3xl transition duration-500"></div>
+
+    <div class="relative flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-glass backdrop-blur-2xl transition duration-300 focus-within:border-cosmic-aurora/70 focus-within:shadow-glow">
+      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-cosmic-aurora/80 via-purple-500/70 to-cosmic-flare/80 text-white shadow-glow">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.1-4.3a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" />
+        </svg>
+      </div>
+
+      <div class="flex flex-1 flex-col">
+        <label for="global-search" class="sr-only">Search across Purplepee</label>
+        <input
+          id="global-search"
+          type="text"
+          class="w-full border-none bg-transparent text-base font-medium text-white placeholder-white/40 outline-none focus:ring-0"
+          @keyup.enter="searchMatch"
+          v-model="q"
+          autofocus
+          placeholder="Search domains, IPs, ASNs, datasets..."
+        />
+        <div class="mt-2 hidden items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/45 sm:flex">
+          <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5">Domain</span>
+          <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5">ASN</span>
+          <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5">IPv4</span>
+          <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5">IPv6</span>
+          <span class="rounded-full border border-white/15 bg-white/10 px-2 py-0.5">CIDR</span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        @click="searchMatch"
+        class="flex items-center gap-2 rounded-2xl border border-white/10 bg-gradient-to-r from-cosmic-flare via-cosmic-aurora to-indigo-400 px-4 py-2 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cosmic-aurora/70"
+      >
+        <span>Explore</span>
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+      </button>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">

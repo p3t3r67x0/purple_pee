@@ -61,13 +61,16 @@ const fetchLatest = async (page = 1, size = DEFAULT_PAGE_SIZE) => {
 
     if (isPaginatedResponse<any>(response)) {
       results.value = response.results
+      const derivedHasNext = response.page < response.total_pages
+      const derivedHasPrevious = response.page > 1
+
       pagination.value = {
         page: response.page,
         page_size: response.page_size,
         total: response.total,
         total_pages: response.total_pages,
-        has_next: response.has_next,
-        has_previous: response.has_previous
+        has_next: Boolean(response.has_next) || derivedHasNext,
+        has_previous: Boolean(response.has_previous) || derivedHasPrevious
       }
       currentPage.value = response.page
       pageSize.value = response.page_size
@@ -77,12 +80,14 @@ const fetchLatest = async (page = 1, size = DEFAULT_PAGE_SIZE) => {
     if (response && typeof response === 'object' && Array.isArray((response as { results?: unknown[] }).results)) {
       const fallbackResults = (response as { results?: any[] }).results ?? []
       results.value = fallbackResults
+      const totalPages = fallbackResults.length > 0 ? Math.max(1, Math.ceil(fallbackResults.length / size)) : 1
+
       pagination.value = {
         page,
         page_size: size,
         total: fallbackResults.length,
-        total_pages: 1,
-        has_next: false,
+        total_pages: totalPages,
+        has_next: page < totalPages,
         has_previous: page > 1
       }
       currentPage.value = pagination.value.page
@@ -92,12 +97,14 @@ const fetchLatest = async (page = 1, size = DEFAULT_PAGE_SIZE) => {
 
     const fallbackArray = Array.isArray(response) ? response : []
     results.value = fallbackArray
+    const totalPages = fallbackArray.length > 0 ? Math.max(1, Math.ceil(fallbackArray.length / size)) : 1
+
     pagination.value = {
       page,
       page_size: size,
       total: fallbackArray.length,
-      total_pages: 1,
-      has_next: false,
+      total_pages: totalPages,
+      has_next: page < totalPages,
       has_previous: page > 1
     }
     currentPage.value = pagination.value.page

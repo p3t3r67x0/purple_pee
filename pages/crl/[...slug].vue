@@ -3,7 +3,16 @@
   <div class="flex-grow">
     <navheader></navheader>
     <modal v-if="modalVisible"></modal>
-    <dns v-if="!loadingIndicator" v-bind:results="results" :currentPage="currentPage" :total="pagination.total"></dns>
+    <dns
+      v-if="!loadingIndicator"
+      v-bind:results="results"
+      :currentPage="currentPage"
+      :total="pagination.total"
+      :hasNext="pagination.has_next"
+      :hasPrevious="pagination.has_previous"
+      @nextPage="nextPage"
+      @prevPage="prevPage"
+    ></dns>
   </div>
   <navfooter></navfooter>
 </div>
@@ -16,7 +25,7 @@ import Footer from '@/components/navfooter.vue'
 import Navbar from '@/components/navheader.vue'
 import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
-const { results, currentPage, pagination, modalVisible, loadingIndicator } = useMatchResultsPage({
+const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'crl',
   headTitle: (decodedQuery) => `SSL ceritificate crl ${decodedQuery}`,
   headDescription: (decodedQuery) => `Explore latest SSL ceritificates crl results ${decodedQuery}`

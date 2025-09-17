@@ -77,13 +77,16 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
 
       if (isPaginatedResponse<any>(response)) {
         results.value = response.results ?? []
+        const derivedHasNext = response.page < response.total_pages
+        const derivedHasPrevious = response.page > 1
+
         pagination.value = {
           page: response.page,
           page_size: response.page_size,
           total: response.total,
           total_pages: response.total_pages,
-          has_next: response.has_next,
-          has_previous: response.has_previous
+          has_next: Boolean(response.has_next) || derivedHasNext,
+          has_previous: Boolean(response.has_previous) || derivedHasPrevious
         }
         currentPage.value = response.page
         pageSize.value = response.page_size
@@ -93,12 +96,14 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
 
       if (Array.isArray(response)) {
         results.value = response
+        const totalPages = response.length > 0 ? Math.max(1, Math.ceil(response.length / pageSize.value)) : 1
+
         pagination.value = {
           page,
           page_size: pageSize.value,
           total: response.length,
-          total_pages: response.length > 0 ? Math.max(1, Math.ceil(response.length / pageSize.value)) : 1,
-          has_next: false,
+          total_pages: totalPages,
+          has_next: page < totalPages,
           has_previous: page > 1
         }
         currentPage.value = pagination.value.page
@@ -109,12 +114,14 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
       if (response && typeof response === 'object' && Array.isArray((response as { results?: unknown[] }).results)) {
         const fallbackResults = (response as { results?: any[] }).results ?? []
         results.value = fallbackResults
+        const totalPages = fallbackResults.length > 0 ? Math.max(1, Math.ceil(fallbackResults.length / pageSize.value)) : 1
+
         pagination.value = {
           page,
           page_size: pageSize.value,
           total: fallbackResults.length,
-          total_pages: fallbackResults.length > 0 ? Math.max(1, Math.ceil(fallbackResults.length / pageSize.value)) : 1,
-          has_next: false,
+          total_pages: totalPages,
+          has_next: page < totalPages,
           has_previous: page > 1
         }
         currentPage.value = pagination.value.page
@@ -146,6 +153,22 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
     }
   }
 
+  const nextPage = () => {
+    if (!pagination.value.has_next) {
+      return
+    }
+
+    fetchLatest(decodedQuery.value, rawQuery.value, currentPage.value + 1)
+  }
+
+  const prevPage = () => {
+    if (!pagination.value.has_previous) {
+      return
+    }
+
+    fetchLatest(decodedQuery.value, rawQuery.value, currentPage.value - 1)
+  }
+
   watch(
     slug,
     async (rawValue) => {
@@ -174,6 +197,8 @@ export const useMatchResultsPage = (options: MatchResultsOptions) => {
     loadingIndicator,
     queryTitle,
     decodedQuery,
+    nextPage,
+    prevPage,
     refresh: () => fetchLatest(decodedQuery.value, rawQuery.value, currentPage.value)
   }
 }
