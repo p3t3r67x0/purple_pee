@@ -69,21 +69,26 @@ This are a view examples how you can find datasets with a specific server. You c
 ![First draft of Purple Pee's UI](/assets/img/purple_pee_screenshot_first_draft.png?raw=true)
 
 
-## Build Setup
+## Local Development
+
+Install Node.js 20 (LTS) using your preferred method (for example through [nvm](https://github.com/nvm-sh/nvm)) and then install dependencies.
 
 ```bash
 # install dependencies
-$ sudo apt install npm && npm install
+npm install
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# start the Nuxt 3 dev server on http://localhost:3000
+npm run dev
+```
 
-# setup your .env file in the root folder
-BASE_URL=
+`purplepee` reads all public runtime configuration from environment variables. You can copy `.env` to `.env.local` (ignored by git) and adjust it to your needs:
+
+```bash
+BASE_URL=http://localhost
 FAQ_URL=
 HELP_URL=
 SUPPORT_URL=
-API_URL=
+API_URL=http://localhost:8000
 DOCS_URL=
 ISSUES_URL=
 TWITTER_URL=
@@ -95,36 +100,44 @@ BLOG_URL=
 TERMS_URL=
 PRIVACY_URL=
 IMPRINT_URL=
+```
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+Run a production build locally with:
+
+```bash
+npm run build
+NODE_ENV=production node .output/server/index.mjs
 ```
 
 
-## Systemd Setup
+## Systemd Service
 
-Create `/etc/systemd/system/purplepee.service` with following content.
+Build the project (`npm run build`) and create `/etc/systemd/system/purplepee.service` with the following content. Adjust the paths, user and group to match your environment.
 
 ```bash
 [Unit]
-Description=Nuxtjs instance to serve purplepee
+Description=Nuxt 3 instance to serve purplepee
 After=network.target
 
 [Service]
 User=<user>
+Group=<group>
 WorkingDirectory=/home/<user>/git/purple_pee
-ExecStart=/usr/bin/node /home/<user>/git/purple_pee/node_modules/.bin/nuxt start --port 3000
+EnvironmentFile=/etc/purplepee.env
+ExecStart=/usr/bin/env NODE_ENV=production PORT=3000 node .output/server/index.mjs
 Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-After you created this file you must enable this service
+The optional `/etc/purplepee.env` file can store the same variables as `.env`. After creating or updating the service definition reload systemd, enable the service and start it:
 
 ```bash
+sudo systemctl daemon-reload
 sudo systemctl enable purplepee
+sudo systemctl start purplepee
 ```
 
 
@@ -134,4 +147,41 @@ Install dependencies from Ubuntu repository
 
 ```bash
 sudo apt install nginx-full certbot python-certbot-nginx
+```
+
+Create `/etc/nginx/sites-available/purplepee` and symlink it to `sites-enabled`. Replace `purplepee.example.com` with your domain.
+
+```nginx
+server {
+  listen 80;
+  listen [::]:80;
+  server_name purplepee.example.com;
+
+  location / {
+    proxy_pass http://127.0.0.1:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+}
+```
+
+```bash
+sudo ln -s /etc/nginx/sites-available/purplepee /etc/nginx/sites-enabled/purplepee
+```
+
+Test the configuration and reload nginx:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Finally request certificates with certbot:
+
+```bash
+sudo certbot --nginx -d purplepee.example.com
 ```
