@@ -1,7 +1,22 @@
 <template>
-  <div id="xhr" class="container mx-auto">
-    <div class="bg-white rounded shadow-md leading-normal mx-3 md:mx-0 mb-6 px-3 pt-2 pb-3">
-      <svg ref="svg" width="100%" height="800"></svg>
+  <div
+    id="xhr"
+    class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"
+  >
+    <div
+      class="glass-panel rounded-3xl border border-white/10 px-5 pb-6 pt-5 shadow-glass sm:px-8"
+    >
+      <h2 class="text-lg font-semibold uppercase tracking-[0.35em] text-white/60">
+        Relationship graph
+      </h2>
+      <div class="mt-6 overflow-hidden rounded-2xl border border-white/5 bg-white/5">
+        <svg
+          ref="svg"
+          class="h-[32rem] w-full sm:h-[36rem] lg:h-[40rem]"
+          width="100%"
+          height="640"
+        ></svg>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +41,17 @@ const props = defineProps<{ results: { nodes?: GraphNode[]; edges?: GraphEdge[] 
 
 const svg = ref<SVGSVGElement | null>(null)
 
+const palette = {
+  mainNode: '#2cb1bc',
+  subNode: '#5c1bb3',
+  nodeStroke: 'rgba(255,255,255,0.85)',
+  linkStroke: 'rgba(255,255,255,0.28)',
+  label: 'rgba(255,255,255,0.85)',
+  tooltipBackground: 'rgba(15,13,35,0.92)',
+  tooltipBorder: 'rgba(92,27,179,0.6)',
+  tooltipShadow: '0 18px 40px rgba(6,4,26,0.65)'
+}
+
 const renderGraph = async () => {
   if (!process.client || !svg.value) {
     return
@@ -43,7 +69,10 @@ const renderGraph = async () => {
   svgSelection.selectAll('*').remove()
 
   const width = svg.value.clientWidth
-  const height = 800
+  const height = Math.max(svg.value.clientHeight || 0, 400)
+
+  svg.value.setAttribute('height', `${height}`)
+  svgSelection.attr('viewBox', `0 0 ${width} ${height}`).attr('preserveAspectRatio', 'xMidYMid meet')
 
   const nodes = rawNodes.map((node, index) => ({
     id: node.id ?? index,
@@ -70,7 +99,7 @@ const renderGraph = async () => {
     .attr('orient', 'auto')
     .append('path')
     .attr('d', 'M0,-5L10,0L0,5')
-    .attr('fill', '#999')
+    .attr('fill', palette.linkStroke)
 
   const simulation = d3
     .forceSimulation(nodes)
@@ -80,7 +109,7 @@ const renderGraph = async () => {
 
   const link = svgSelection
     .append('g')
-    .attr('stroke', '#999')
+    .attr('stroke', palette.linkStroke)
     .attr('stroke-opacity', 0.6)
     .selectAll('line')
     .data(links)
@@ -96,9 +125,14 @@ const renderGraph = async () => {
     .enter()
     .append('circle')
     .attr('r', (d: any) => (d.type === 'main' ? 16 : 10))
-    .attr('fill', (d: any) => (d.type === 'main' ? '#2b6cb0' : '#63b3ed'))
-    .attr('stroke', '#fff')
+    .attr('fill', (d: any) => (d.type === 'main' ? palette.mainNode : palette.subNode))
+    .attr('stroke', palette.nodeStroke)
     .attr('stroke-width', 2)
+    .style('filter', (d: any) =>
+      d.type === 'main'
+        ? 'drop-shadow(0 0 18px rgba(44,177,188,0.35))'
+        : 'drop-shadow(0 0 12px rgba(92,27,179,0.32))'
+    )
     .call(
       d3
         .drag()
@@ -128,7 +162,7 @@ const renderGraph = async () => {
     .attr('font-size', 12)
     .attr('dy', -20)
     .attr('text-anchor', 'middle')
-    .attr('fill', '#333')
+    .attr('fill', palette.label)
 
   d3.selectAll('.graph-tooltip').remove()
 
@@ -137,13 +171,16 @@ const renderGraph = async () => {
     .append('div')
     .attr('class', 'graph-tooltip')
     .style('position', 'absolute')
-    .style('background', 'white')
-    .style('padding', '4px 8px')
-    .style('border', '1px solid #ccc')
-    .style('border-radius', '4px')
+    .style('background', palette.tooltipBackground)
+    .style('padding', '8px 12px')
+    .style('border', `1px solid ${palette.tooltipBorder}`)
+    .style('border-radius', '12px')
     .style('font-size', '12px')
     .style('pointer-events', 'none')
     .style('opacity', 0)
+    .style('color', palette.label)
+    .style('box-shadow', palette.tooltipShadow)
+    .style('backdrop-filter', 'blur(12px)')
 
   node
     .on('mouseover', (event: any, d: any) => {

@@ -167,139 +167,244 @@
           </div>
           <div v-if="result.ssl" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">SSL cert</strong>
-            <ul class="font-mono text-sm sm:text-base font-light">
-              <li v-for="val, key in result.ssl">
-                <div v-if="key == 'subject'">
-                  <div v-for="v, k in val" class="mt-1">
-                    <p v-if="k == 'country_name'">
-                      <span class="font-bold">ssl_subject_country</span>:
-                      <span v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'country' }">
-                        <nuxt-link v-if="k == 'country_name'" v-bind:to="generateLink('country', v)"
-                          class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                        <span><img v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
-                      </span>
-                    </p>
-                    <p v-if="k == 'common_name'">
-                      <span class="font-bold">ssl_subject_name</span>:
-                      <nuxt-link v-bind:to="generateLink('ssl', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'ssl' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'organization_name'">
-                      <span class="font-bold">ssl_subject_organisation</span>:
-                      <nuxt-link v-bind:to="generateLink('org', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'org' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'organizational_unit_name'">
-                      <span class="font-bold">ssl_subject_organisation_unit</span>:
-                      <nuxt-link v-bind:to="generateLink('unit', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'unit' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'state_or_province_name'">
-                      <span class="font-bold">ssl_subject_province</span>:
-                      <nuxt-link v-bind:to="generateLink('state', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'state' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'locality_name'">
-                      <span class="font-bold">ssl_subject_locality</span>:
-                      <nuxt-link v-bind:to="generateLink('city', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'city' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                  </div>
+            <div class="mt-2 space-y-4 font-mono text-sm sm:text-base font-light text-white/70">
+              <div v-if="result.ssl.subject" class="space-y-1">
+                <span class="font-bold text-white/80">Subject</span>
+                <ul class="space-y-1">
+                  <li v-if="result.ssl.subject.common_name">
+                    <span class="font-bold text-white">Common name</span>:
+                    <nuxt-link
+                      :to="generateLink('ssl', result.ssl.subject.common_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.subject.common_name && prefix == 'ssl' }
+                      ]"
+                    >{{ result.ssl.subject.common_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.subject.organization_name">
+                    <span class="font-bold text-white">Organisation</span>:
+                    <nuxt-link
+                      :to="generateLink('org', result.ssl.subject.organization_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.subject.organization_name && prefix == 'org' }
+                      ]"
+                    >{{ result.ssl.subject.organization_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.subject.organizational_unit_name">
+                    <span class="font-bold text-white">Organisation unit</span>:
+                    <nuxt-link
+                      :to="generateLink('unit', result.ssl.subject.organizational_unit_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        {
+                          'rounded-full border border-white/15 bg-white/10 px-2 py-1':
+                            filter == result.ssl.subject.organizational_unit_name && prefix == 'unit'
+                        }
+                      ]"
+                    >{{ result.ssl.subject.organizational_unit_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.subject.state_or_province_name">
+                    <span class="font-bold text-white">Province</span>:
+                    <nuxt-link
+                      :to="generateLink('state', result.ssl.subject.state_or_province_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.subject.state_or_province_name && prefix == 'state' }
+                      ]"
+                    >{{ result.ssl.subject.state_or_province_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.subject.locality_name">
+                    <span class="font-bold text-white">Locality</span>:
+                    <nuxt-link
+                      :to="generateLink('city', result.ssl.subject.locality_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.subject.locality_name && prefix == 'city' }
+                      ]"
+                    >{{ result.ssl.subject.locality_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.subject.country_name">
+                    <span class="font-bold text-white">Country</span>:
+                    <span class="inline-flex items-center gap-2">
+                      <nuxt-link
+                        :to="generateLink('country', result.ssl.subject.country_name)"
+                        :class="[
+                          'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                          { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.subject.country_name && prefix == 'country' }
+                        ]"
+                      >{{ result.ssl.subject.country_name }}</nuxt-link>
+                      <img :src="generatePath(result.ssl.subject.country_name)" class="inline h-4 w-9" />
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div v-if="result.ssl.issuer" class="space-y-1">
+                <span class="font-bold text-white/80">Issuer</span>
+                <ul class="space-y-1">
+                  <li v-if="result.ssl.issuer.common_name">
+                    <span class="font-bold text-white">Common name</span>:
+                    <nuxt-link
+                      :to="generateLink('issuer', result.ssl.issuer.common_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.issuer.common_name && prefix == 'issuer' }
+                      ]"
+                    >{{ result.ssl.issuer.common_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.issuer.organization_name">
+                    <span class="font-bold text-white">Organisation</span>:
+                    <nuxt-link
+                      :to="generateLink('issuer', result.ssl.issuer.organization_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.issuer.organization_name && prefix == 'issuer' }
+                      ]"
+                    >{{ result.ssl.issuer.organization_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.issuer.organizational_unit_name">
+                    <span class="font-bold text-white">Organisation unit</span>:
+                    <nuxt-link
+                      :to="generateLink('unit', result.ssl.issuer.organizational_unit_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        {
+                          'rounded-full border border-white/15 bg-white/10 px-2 py-1':
+                            filter == result.ssl.issuer.organizational_unit_name && prefix == 'unit'
+                        }
+                      ]"
+                    >{{ result.ssl.issuer.organizational_unit_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.issuer.state_or_province_name">
+                    <span class="font-bold text-white">Province</span>:
+                    <nuxt-link
+                      :to="generateLink('state', result.ssl.issuer.state_or_province_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.issuer.state_or_province_name && prefix == 'state' }
+                      ]"
+                    >{{ result.ssl.issuer.state_or_province_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.issuer.locality_name">
+                    <span class="font-bold text-white">Locality</span>:
+                    <nuxt-link
+                      :to="generateLink('city', result.ssl.issuer.locality_name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.issuer.locality_name && prefix == 'city' }
+                      ]"
+                    >{{ result.ssl.issuer.locality_name }}</nuxt-link>
+                  </li>
+                  <li v-if="result.ssl.issuer.country_name">
+                    <span class="font-bold text-white">Country</span>:
+                    <span class="inline-flex items-center gap-2">
+                      <nuxt-link
+                        :to="generateLink('country', result.ssl.issuer.country_name)"
+                        :class="[
+                          'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                          { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.issuer.country_name && prefix == 'country' }
+                        ]"
+                      >{{ result.ssl.issuer.country_name }}</nuxt-link>
+                      <img :src="generatePath(result.ssl.issuer.country_name)" class="inline h-4 w-9" />
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div v-if="hasAltNames(result.ssl)" class="space-y-1">
+                <span class="font-bold text-white/80">Subject alternative names</span>
+                <ul class="flex flex-wrap gap-2">
+                  <li v-for="name in getAltNames(result.ssl)" :key="name">
+                    <nuxt-link
+                      :to="generateLink('ssl', name)"
+                      :class="[
+                        'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                        { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == name && prefix == 'ssl' }
+                      ]"
+                    >{{ name }}</nuxt-link>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-1">
+                <div v-if="result.ssl.serial">
+                  <span class="font-bold text-white">Serial</span>:
+                  <span class="text-white/60">{{ result.ssl.serial }}</span>
                 </div>
-                <div v-if="key == 'issuer'">
-                  <div v-for="v, k in val" class="mt-1">
-                    <p v-if="k == 'country_name'">
-                      <span class="font-bold">ssl_issuer_country</span>:
-                      <nuxt-link v-if="k == 'country_name'" v-bind:to="generateLink('country', v)"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                      <span><img v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
-                    </p>
-                    <p v-if="k == 'common_name'">
-                      <span class="font-bold">ssl_issuer_name</span>:
-                      <nuxt-link v-bind:to="generateLink('issuer', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'issuer' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'organization_name'">
-                      <span class="font-bold">ssl_issuer_organisation</span>:
-                      <nuxt-link v-bind:to="generateLink('issuer', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'issuer' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'organizational_unit_name'">
-                      <span class="font-bold">ssl_issuer_organisation_unit</span>:
-                      <nuxt-link v-bind:to="generateLink('unit', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'unit' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'state_or_province_name'">
-                      <span class="font-bold">ssl_issuer_province</span>:
-                      <nuxt-link v-bind:to="generateLink('state', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'state' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                    <p v-if="k == 'locality_name'">
-                      <span class="font-bold">ssl_issuer_locality</span>:
-                      <nuxt-link v-bind:to="generateLink('city', v)"
-                        v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'city' }"
-                        class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                    </p>
-                  </div>
+                <div v-if="result.ssl.version !== undefined">
+                  <span class="font-bold text-white">Version</span>:
+                  <span class="text-white/60">{{ result.ssl.version }}</span>
                 </div>
-                <div v-if="key == 'subject_alt_names'" class="mt-1">
-                  <span class="font-bold">ssl_subject_alt_names</span>:
-                  <span v-for="v, i in val">
-                    <nuxt-link v-bind:to="generateLink('ssl', v)"
-                      v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'ssl' }"
-                      class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link><span
-                      v-if="i !== val.length - 1">, </span>
+                <div v-if="result.ssl.not_before">
+                  <span class="font-bold text-white">Valid from</span>:
+                  <nuxt-link
+                    :to="generateLink('before', result.ssl.not_before)"
+                    :class="[
+                      'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                      { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'before' }
+                    ]"
+                  >{{ convertToLocalDatetime(result.ssl.not_before) }}</nuxt-link>
+                </div>
+                <div v-if="result.ssl.not_after">
+                  <span class="font-bold text-white">Valid until</span>:
+                  <nuxt-link
+                    :to="generateLink('after', result.ssl.not_after)"
+                    :class="[
+                      'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                      { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'after' }
+                    ]"
+                  >{{ convertToLocalDatetime(result.ssl.not_after) }}</nuxt-link>
+                </div>
+                <div v-if="result.ssl.handshake_version || result.ssl.handshake_cipher">
+                  <span class="font-bold text-white">Handshake</span>:
+                  <span class="text-white/60">
+                    <span v-if="result.ssl.handshake_version">{{ result.ssl.handshake_version }}</span>
+                    <span v-if="describeCipher(result.ssl.handshake_cipher)" class="text-white/60">
+                      <span v-if="result.ssl.handshake_version"> · </span>{{ describeCipher(result.ssl.handshake_cipher) }}
+                    </span>
                   </span>
                 </div>
-                <div v-if="key == 'not_before'" class="mt-1">
-                  <span class="font-bold">ssl_not_before</span>:
-                  <nuxt-link v-bind:to="generateLink('before', val)"
-                    v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'before' }"
-                    class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ convertToLocalDatetime(val) }}</nuxt-link>
+                <div v-if="result.ssl.ocsp">
+                  <span class="font-bold text-white">OCSP</span>:
+                  <nuxt-link
+                    :to="generateLink('ocsp', result.ssl.ocsp)"
+                    :class="[
+                      'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                      { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.ocsp && prefix == 'ocsp' }
+                    ]"
+                  >{{ result.ssl.ocsp }}</nuxt-link>
                 </div>
-                <div v-if="key == 'not_after'" class="mt-1">
-                  <span class="font-bold">ssl_not_after</span>:
-                  <nuxt-link v-bind:to="generateLink('after', val)"
-                    v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'after' }"
-                    class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ convertToLocalDatetime(val) }}</nuxt-link>
+                <div v-if="result.ssl.ca_issuers">
+                  <span class="font-bold text-white">CA issuer</span>:
+                  <nuxt-link
+                    :to="generateLink('ca', result.ssl.ca_issuers)"
+                    :class="[
+                      'font-thin text-cosmic-aurora hover:text-cosmic-rose',
+                      { 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == result.ssl.ca_issuers && prefix == 'ca' }
+                    ]"
+                  >{{ result.ssl.ca_issuers }}</nuxt-link>
                 </div>
-                <div
-                  v-if="key != 'ssl_not_before' && key != 'ssl_not_after' && key != 'ciphers' && key != 'subject_alt_names' && key != 'issuer' && key != 'subject'"
-                  class="mt-1">
-                  <p v-if="key == 'ca_issuers'">
-                    <span class="font-bold">ssl_ca_issuer</span>:
-                    <nuxt-link v-bind:to="generateLink('ca', val)"
-                      v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'ca' }"
-                      class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
-                  </p>
-                  <p v-if="key == 'crl_distribution_points'">
-                    <span class="font-bold">ssl_crl_distribution</span>:
-                    <nuxt-link v-bind:to="generateLink('crl', val)"
-                      v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'crl' }"
-                      class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
-                  </p>
-                  <p v-if="key == 'ocsp'">
-                    <span class="font-bold">ssl_ocsp</span>:
-                    <nuxt-link v-bind:to="generateLink('ocsp', val)"
-                      v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'ocsp' }"
-                      class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
-                  </p>
-                  <p v-if="key == 'serial'">
-                    <span class="font-bold">ssl_serial</span>:
-                    <span class="text-white/70 font-thin">{{ val }}</span>
-                  </p>
-                </div>
-              </li>
-            </ul>
+              </div>
+
+              <div v-if="result.ssl.tls_versions" class="space-y-1">
+                <span class="font-bold text-white/80">TLS versions</span>
+                <ul class="space-y-1">
+                  <li v-for="(tlsDetails, tlsVersion) in result.ssl.tls_versions" :key="tlsVersion">
+                    <span class="font-bold text-white">{{ tlsVersion }}</span>:
+                    <span :class="tlsDetails.accepted ? 'text-cosmic-aurora' : 'text-cosmic-rose'">
+                      {{ tlsDetails.accepted ? 'accepted' : 'rejected' }}
+                    </span>
+                    <span v-if="describeCipher(tlsDetails.cipher)" class="text-white/60">
+                      — {{ describeCipher(tlsDetails.cipher) }}
+                    </span>
+                    <span v-else-if="tlsDetails.version" class="text-white/60">
+                      — {{ tlsDetails.version }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         <div v-if="result.qrcode" class="w-full sm:w-3/12 sm:text-right mt-1 mr-1">
@@ -415,6 +520,92 @@ const filter = computed(() => {
 
   return query
 })
+
+const normalizeAltNames = (value: unknown): string[] => {
+  if (!value) {
+    return []
+  }
+
+  if (Array.isArray(value)) {
+    return (value as Array<string | number | null | undefined>)
+      .map((item) => (item ?? '').toString().trim())
+      .filter((item) => item.length > 0)
+  }
+
+  if (typeof value === 'string') {
+    const trimmed = value.trim()
+    return trimmed ? [trimmed] : []
+  }
+
+  return []
+}
+
+const getAltNames = (ssl: Record<string, unknown> | null | undefined): string[] => {
+  if (!ssl || typeof ssl !== 'object') {
+    return []
+  }
+
+  return normalizeAltNames((ssl as { subject_alt_names?: unknown }).subject_alt_names)
+}
+
+const hasAltNames = (ssl: Record<string, unknown> | null | undefined): boolean => getAltNames(ssl).length > 0
+
+const describeCipher = (cipher: unknown): string => {
+  if (!cipher) {
+    return ''
+  }
+
+  if (Array.isArray(cipher)) {
+    const [name, protocol, strength] = cipher as Array<string | number | undefined>
+    const parts: string[] = []
+
+    if (typeof name === 'string' && name) {
+      parts.push(name)
+    }
+
+    if (typeof protocol === 'string' && protocol) {
+      parts.push(protocol)
+    }
+
+    if (typeof strength === 'number' && strength > 0) {
+      parts.push(`${strength}-bit`)
+    } else if (typeof strength === 'string' && strength) {
+      parts.push(strength)
+    }
+
+    return parts.join(' · ')
+  }
+
+  if (typeof cipher === 'string') {
+    return cipher
+  }
+
+  if (typeof cipher === 'object') {
+    const { name, protocol, version, bits, strength } = cipher as Record<string, unknown>
+    const parts: string[] = []
+
+    if (typeof name === 'string' && name) {
+      parts.push(name)
+    }
+
+    if (typeof protocol === 'string' && protocol) {
+      parts.push(protocol)
+    }
+
+    if (typeof version === 'string' && version) {
+      parts.push(version)
+    }
+
+    const sizeCandidate = typeof bits === 'number' ? bits : typeof strength === 'number' ? strength : null
+    if (sizeCandidate && sizeCandidate > 0) {
+      parts.push(`${sizeCandidate}-bit`)
+    }
+
+    return parts.join(' · ')
+  }
+
+  return ''
+}
 
 const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
 const generateCode = (base64: string) => `data:image/png;base64,${base64}`
