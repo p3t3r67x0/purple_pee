@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'port',
-  headTitle: (decodedQuery) => `TCP port results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest TCP port results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Port ${decodedQuery} Analysis | NetScanner Network Service Discovery`,
+  headDescription: (decodedQuery) => `Comprehensive analysis of TCP port ${decodedQuery}. Discover running services, open ports, service banners, security configurations, and network service intelligence for this port number.`
 })
 </script>

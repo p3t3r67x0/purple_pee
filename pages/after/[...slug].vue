@@ -28,7 +28,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'after',
   displayPrefix: 'not_after',
-  headTitle: (decodedQuery) => `SSL ceritificates not valid after ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificates not valid after ${decodedQuery}`
+  headTitle: (decodedQuery) => `SSL Validity Period (After): ${decodedQuery} | NetScanner Certificate Expiration`,
+  headDescription: (decodedQuery) => `SSL certificates expiring after ${decodedQuery}. Monitor certificate lifecycles, renewal schedules, security compliance timelines, and expiration management strategies.`
 })
 </script>

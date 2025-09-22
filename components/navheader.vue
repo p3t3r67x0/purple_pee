@@ -5,10 +5,12 @@
         <!-- Logo -->
         <div class="flex w-full items-center justify-between md:w-auto">
           <nuxt-link to="/" class="flex items-center gap-2 text-slate-100 transition hover:drop-shadow-neon">
-            <svg class="w-9 h-9 sm:w-10 sm:h-10 text-cosmic-aurora" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 692 692">
-              <path d="..." />
-            </svg>
-            <span class="hidden text-base font-semibold tracking-wide sm:inline">purplepee.co</span>
+            <span class="hidden text-xl font-light tracking-[0.2em] sm:inline bg-gradient-to-r from-slate-100 via-white to-slate-200 bg-clip-text text-transparent transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)] cursor-pointer">
+              <span class="relative">
+                Net<span class="text-slate-100">Scanner</span>
+                <span class="absolute -inset-1 bg-gradient-to-r from-white/10 via-slate-100/15 to-white/10 blur-sm -z-10 rounded-lg opacity-75"></span>
+              </span>
+            </span>
           </nuxt-link>
 
           <!-- Mobile Menu Button -->

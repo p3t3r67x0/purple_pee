@@ -47,12 +47,24 @@ const { modalVisible } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
 
 useHead(() => ({
-  title: 'Explore the latest ASN entries',
+  title: 'Latest ASN Database & Autonomous System Lookup | NetScanner ASN Registry',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Explore the latest ASN entries'
+      content: 'Explore the latest Autonomous System Number (ASN) database entries. Comprehensive ASN registry with ISP information, network allocations, BGP routing data, and internet backbone infrastructure details.'
+    },
+    {
+      name: 'keywords',
+      content: 'ASN database, autonomous system, ISP lookup, BGP routing, network allocations, internet backbone, ASN registry, network providers'
+    },
+    {
+      property: 'og:title',
+      content: 'Latest ASN Database & Autonomous System Lookup | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Comprehensive ASN database with autonomous system information, ISP data, and network allocation details for internet infrastructure analysis.'
     }
   ]
 }))

@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'state',
-  headTitle: (decodedQuery) => `State results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest state results ${decodedQuery}`
+  headTitle: (decodedQuery) => `State Infrastructure: ${decodedQuery} | NetScanner Regional Network Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive network infrastructure analysis for ${decodedQuery} state/province. Explore regional ISPs, data centers, government networks, IP allocations, and telecommunications infrastructure.`
 })
 </script>

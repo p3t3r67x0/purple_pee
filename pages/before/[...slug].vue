@@ -28,7 +28,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'before',
   displayPrefix: 'not_before',
-  headTitle: (decodedQuery) => `SSL ceritificates not valid before ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificates not valid before ${decodedQuery}`
+  headTitle: (decodedQuery) => `SSL Validity Period (Before): ${decodedQuery} | NetScanner Certificate Timeline`,
+  headDescription: (decodedQuery) => `SSL certificates with validity starting before ${decodedQuery}. Analyze certificate timelines, expiration patterns, security compliance, and temporal certificate management.`
 })
 </script>

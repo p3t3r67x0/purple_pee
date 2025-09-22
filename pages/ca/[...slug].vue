@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ca',
-  headTitle: (decodedQuery) => `SSL ceritificate authority ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificate authority results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Certificate Authority: ${decodedQuery} | NetScanner SSL CA Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive Certificate Authority analysis for ${decodedQuery}. Explore CA trust chains, certificate policies, issuance patterns, and PKI infrastructure details for this certificate authority.`
 })
 </script>

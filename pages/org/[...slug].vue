@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'org',
-  headTitle: (decodedQuery) => `Organisation results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest organisation results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Organization: ${decodedQuery} | NetScanner Corporate Network Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive network analysis for ${decodedQuery}. Explore corporate infrastructure, IP allocations, ASN registrations, domain portfolios, and organizational network intelligence.`
 })
 </script>

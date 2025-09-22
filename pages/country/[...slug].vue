@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'country',
-  headTitle: (decodedQuery) => `Country results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest country results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Network Infrastructure in ${decodedQuery} | NetScanner Country Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive network infrastructure analysis for ${decodedQuery}. Explore ISPs, data centers, IP allocations, domains, and internet infrastructure hosted in ${decodedQuery} with detailed geographic network intelligence.`
 })
 </script>

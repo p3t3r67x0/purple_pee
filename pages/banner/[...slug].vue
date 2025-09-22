@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'banner',
-  headTitle: (decodedQuery) => `SSH banner results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSH banner results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Service Banner: ${decodedQuery} | NetScanner Network Fingerprinting`,
+  headDescription: (decodedQuery) => `Service banner analysis for ${decodedQuery}. Discover SSH banners, FTP greetings, HTTP headers, application fingerprints, and network service identification intelligence.`
 })
 </script>

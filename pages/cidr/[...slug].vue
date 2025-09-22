@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'cidr',
-  headTitle: (decodedQuery) => `CIDR results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest CIDR results ${decodedQuery}`
+  headTitle: (decodedQuery) => `CIDR Block Analysis: ${decodedQuery} | NetScanner IP Range Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive CIDR block analysis for ${decodedQuery}. Explore IP address ranges, subnet allocations, network topology, routing information, and ISP infrastructure within this CIDR block.`
 })
 </script>

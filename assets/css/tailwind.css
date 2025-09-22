@@ -2,6 +2,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for anchor links to account for fixed headers */
+[id] {
+  scroll-margin-top: 80px;
+}
+
 body {
   @apply bg-cosmic-void bg-cosmic-gradient text-slate-100 antialiased;
   background-attachment: fixed;

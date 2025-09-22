@@ -38,8 +38,8 @@ const { $env } = useNuxtApp()
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage, decodedQuery } = useMatchResultsPage({
   prefix: 'site',
-  headTitle: (decodedQuery) => `Site results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest site results ${decodedQuery}`,
+  headTitle: (decodedQuery) => `Website Analysis: ${decodedQuery} | NetScanner Domain Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive website and domain analysis for ${decodedQuery}. Explore DNS records, SSL certificates, subdomains, hosting infrastructure, and security intelligence for this domain.`,
   buildQueryTitle: (decodedQuery) => ['site', decodedQuery]
 })
 

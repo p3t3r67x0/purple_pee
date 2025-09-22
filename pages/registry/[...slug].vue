@@ -28,7 +28,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'registry',
   displayPrefix: 'reqistry',
-  headTitle: (decodedQuery) => `Registry results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest registry results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Internet Registry: ${decodedQuery} | NetScanner Regional Network Authority`,
+  headDescription: (decodedQuery) => `Comprehensive analysis of ${decodedQuery} internet registry. Explore regional internet registries (RIRs), IP address allocations, ASN assignments, WHOIS data, and internet governance for this registry authority.`
 })
 </script>

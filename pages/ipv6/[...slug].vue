@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ipv6',
-  headTitle: (decodedQuery) => `IPv6 results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest IPv6 results ${decodedQuery}`
+  headTitle: (decodedQuery) => `IPv6 Address Analysis: ${decodedQuery} | NetScanner IPv6 Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive IPv6 address analysis for ${decodedQuery}. Explore IPv6 geolocation, network allocations, prefix delegations, dual-stack configurations, and next-generation internet protocol intelligence.`
 })
 </script>

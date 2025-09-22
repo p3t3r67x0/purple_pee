@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'status',
-  headTitle: (decodedQuery) => `CNAME results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest CNAME results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Service Status: ${decodedQuery} | NetScanner Network Service Monitoring`,
+  headDescription: (decodedQuery) => `Real-time service status monitoring for ${decodedQuery}. Track network availability, service uptime, connectivity issues, and performance metrics across global infrastructure.`
 })
 </script>

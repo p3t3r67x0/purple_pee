@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'crl',
-  headTitle: (decodedQuery) => `SSL ceritificate crl ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificates crl results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Certificate Revocation List: ${decodedQuery} | NetScanner SSL CRL Analysis`,
+  headDescription: (decodedQuery) => `Certificate Revocation List analysis for ${decodedQuery}. Explore revoked certificates, CRL distribution points, revocation reasons, and PKI security intelligence for this CRL endpoint.`
 })
 </script>

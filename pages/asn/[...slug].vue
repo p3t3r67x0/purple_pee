@@ -27,8 +27,8 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'asn',
-  headTitle: (decodedQuery) => `ASN results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest ASN results ${decodedQuery}`,
+  headTitle: (decodedQuery) => `ASN ${decodedQuery} Network Analysis | NetScanner Autonomous System Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive analysis of Autonomous System ${decodedQuery}. Explore network allocations, IP ranges, ISP information, BGP routing data, and infrastructure details for this ASN.`,
   buildQueryTitle: (decodedQuery, rawQuery) => { const parts = rawQuery.split(/[a-z]/i); return ['asn', parts[2] ?? decodedQuery]; }
 })
 </script>

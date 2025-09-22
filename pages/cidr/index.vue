@@ -26,12 +26,24 @@ const { modalVisible } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
 
 useHead(() => ({
-  title: 'Explore the latest CIDR entries',
+  title: 'Latest CIDR Blocks & Network Ranges | NetScanner Subnet Database',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Explore the latest CIDR entries'
+      content: 'Explore the latest CIDR block entries and network subnet allocations. Comprehensive database of IP ranges, network blocks, routing information, and subnet analysis for network administrators.'
+    },
+    {
+      name: 'keywords',
+      content: 'CIDR blocks, subnet analysis, network ranges, IP allocations, routing tables, network administration, subnet calculator, network blocks'
+    },
+    {
+      property: 'og:title',
+      content: 'Latest CIDR Blocks & Network Ranges | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Comprehensive CIDR database with network subnet allocations, IP ranges, and routing information for network analysis.'
     }
   ]
 }))

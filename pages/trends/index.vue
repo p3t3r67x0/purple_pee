@@ -36,12 +36,24 @@ const { modalVisible } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
 
 useHead(() => ({
-  title: 'See what is trending now',
+  title: 'Network Trends & Analytics Dashboard | NetScanner Real-time Statistics',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Explore trends on purplepee.co'
+      content: 'Explore real-time network trends and analytics on NetScanner. Monitor API usage patterns, popular queries, traffic analytics, and discover trending domains, IPs, and network infrastructure changes.'
+    },
+    {
+      name: 'keywords',
+      content: 'network trends, analytics dashboard, API statistics, traffic monitoring, trending domains, network analytics, real-time data, usage patterns'
+    },
+    {
+      property: 'og:title',
+      content: 'Network Trends & Analytics Dashboard | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Real-time network analytics and trends dashboard with API usage statistics, popular queries, and traffic monitoring.'
     }
   ]
 }))

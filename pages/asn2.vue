@@ -45,4 +45,27 @@ const fetchLatest = async (page = DEFAULT_PAGE) => {
 onMounted(() => {
   fetchLatest(DEFAULT_PAGE)
 })
+
+useHead(() => ({
+  title: 'Latest ASN Records & Network Analysis | NetScanner ASN Database',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Explore the latest Autonomous System Number (ASN) records and network allocations. Comprehensive ASN database with ISP information, IP ranges, and network infrastructure details.'
+    },
+    {
+      name: 'keywords',
+      content: 'ASN lookup, autonomous system, network analysis, ISP information, IP allocations, BGP routing, network infrastructure, internet backbone'
+    },
+    {
+      property: 'og:title',
+      content: 'Latest ASN Records & Network Analysis | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Comprehensive ASN database and network analysis with real-time updates on autonomous systems and network allocations.'
+    }
+  ]
+}))
 </script>

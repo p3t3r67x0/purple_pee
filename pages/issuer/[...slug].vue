@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'issuer',
-  headTitle: (decodedQuery) => `SSL ceritificate issuer ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificates issuer results ${decodedQuery}`
+  headTitle: (decodedQuery) => `SSL Certificate Issuer: ${decodedQuery} | NetScanner CA Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive analysis of SSL certificates issued by ${decodedQuery}. Explore certificate authority profiles, issuance patterns, trust chains, and security assessments for certificates from this issuer.`
 })
 </script>

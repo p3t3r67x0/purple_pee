@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ipv4',
-  headTitle: (decodedQuery) => `IPv4 results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest IPv4 results ${decodedQuery}`
+  headTitle: (decodedQuery) => `IPv4 Address Analysis ${decodedQuery} | NetScanner IP Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive IPv4 address analysis for ${decodedQuery}. Discover geolocation, ISP information, open ports, SSL certificates, DNS records, and network intelligence for this IP address.`
 })
 </script>

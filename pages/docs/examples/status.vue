@@ -925,13 +925,37 @@ const apiUrl = computed(() => $env?.API_URL || '#')
 const generateLink = (path: string) => `${apiUrl.value}${path}`
 
 useHead(() => ({
-  title: 'Open source ASN lookup',
+  title: 'HTTP Status Codes Reference | NetScanner Match Conditions Guide',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+      content: 'Comprehensive HTTP status codes reference and match conditions guide for NetScanner. Learn about filtering techniques using status codes 1xx-5xx for network analysis and web server investigation.'
+    },
+    {
+      name: 'keywords',
+      content: 'HTTP status codes, match conditions, network filtering, web server analysis, status code reference, HTTP response codes'
+    },
+    {
+      property: 'og:title',
+      content: 'HTTP Status Codes Reference | NetScanner Documentation'
+    },
+    {
+      property: 'og:description',
+      content: 'Complete guide to HTTP status codes and match conditions for advanced network analysis and filtering.'
     }
   ]
 }))
 </script>
+
+<style scoped>
+/* Smooth scrolling for anchor links */
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+/* Enhance the scroll offset for better positioning */
+:global([id]) {
+  scroll-margin-top: 80px;
+}
+</style>

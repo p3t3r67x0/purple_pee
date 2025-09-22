@@ -49,6 +49,10 @@ import { storeToRefs } from 'pinia'
 import { useRouter } from '#app'
 import { useMainStore } from '~/stores/main'
 
+const emit = defineEmits<{
+  search: []
+}>()
+
 const router = useRouter()
 const mainStore = useMainStore()
 const { query } = storeToRefs(mainStore)
@@ -143,6 +147,7 @@ const isValidMatch = (value: unknown) => {
     /(^(issuer:|unit:|banner:|service:|server:|loc:)+(?! )[\w ;\(\):=,\/\.-]{2,}[^\s]$)/i,
     /(^(ssl:|site:|cname:|mx:|ns:)+([\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
     /(^(ssl:|site:|cname:|mx:|ns:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i,
+    /(^(live:)+([\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i,
     /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w-.]{1,63}|[\w-.]{1,63}[^\x00-\x7F\w-]{1,63})\.?([\w\-.]{1,63}|[\w\-.]{1,63}[^\x00-\x7F\w-]{1,63})*\.([a-z\-.]{2,}))/i,
     /(^(ocsp:|crl:|ca:)+((http:\/\/)?[\w\d-]{1,63}|[\d\w-]*[^\x00-\x7F\w-]{1,63})\.?([\w\d]{1,63}|[\d\w\-.]*[^\x00-\x7F\-.]{1,63})(\.([a-z\.]{2,}|[\w]*[^\x00-\x7F\.]{2,})))/i
   ]
@@ -155,7 +160,7 @@ const isValidFilter = (value: unknown) => {
     return false
   }
 
-  return /^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:)/i.test(value)
+  return /^(port:|ipv4:|ipv6:|status:|banner:|asn:|ssl:|ocsp:|crl:|ca:|issuer:|unit:|service:|country:|state:|city:|loc:|org:|registry:|cidr:|server:|site:|cname:|mx:|ns:|live:)/i.test(value)
 }
 
 const splitMatch = (value: string) => {
@@ -181,26 +186,38 @@ const searchMatch = () => {
 
     if (parts && parts[0] && parts[1]) {
       const normalized = trimWhitespaces(parts[1]) ?? ''
-      router.push(`/${parts[0]}/${encodeURIComponent(normalized)}`)
+      const prefix = String(parts[0]).toLowerCase()
+      if (prefix === 'live') {
+        router.push(`/live/scan/${encodeURIComponent(normalized)}`)
+      } else {
+        router.push(`/${prefix}/${encodeURIComponent(normalized)}`)
+      }
+      emit('search')
       return
     }
   } else if (!isValidFilter(queryValue) && !isValidIpv4(queryValue) && !isValidDomain(queryValue) && isValidAsn(queryValue)) {
     router.push(`/asn/${encodeURIComponent(queryValue as string)}`)
+    emit('search')
     return
   } else if (!isValidFilter(queryValue) && !isValidCidr(queryValue) && !isValidIpv4(queryValue) && isValidDomain(queryValue)) {
     router.push(`/site/${encodeURIComponent(queryValue as string)}`)
+    emit('search')
     return
   } else if (!isValidFilter(queryValue) && isValidIpv4(queryValue)) {
     router.push(`/ipv4/${encodeURIComponent(queryValue as string)}`)
+    emit('search')
     return
   } else if (!isValidFilter(queryValue) && isValidIpv6(queryValue)) {
     router.push(`/ipv6/${encodeURIComponent(queryValue as string)}`)
+    emit('search')
     return
   } else if (!isValidFilter(queryValue) && isValidCidr(queryValue)) {
     router.push(`/cidr/${encodeURIComponent(queryValue as string)}`)
+    emit('search')
     return
   }
 
   router.push(`/search/${encodeURIComponent((queryValue as string | null) || '')}`)
+  emit('search')
 }
 </script>

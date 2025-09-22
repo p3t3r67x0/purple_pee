@@ -28,7 +28,7 @@
               <h2 class="text-2xl font-semibold">Discover datasets across Purplepee</h2>
             </div>
 
-            <Search />
+            <Search @search="close" />
 
             <div class="grid gap-3 text-xs text-white/60 sm:grid-cols-3">
               <div class="rounded-2xl border border-white/10 bg-white/5 p-3">

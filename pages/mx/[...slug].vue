@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'mx',
-  headTitle: (decodedQuery) => `MX record results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest MX record results ${decodedQuery}`
+  headTitle: (decodedQuery) => `MX Records for ${decodedQuery} | NetScanner Mail Server Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive MX record analysis for ${decodedQuery}. Discover mail servers, email routing configuration, mail exchange priorities, and email infrastructure intelligence for this domain.`
 })
 </script>

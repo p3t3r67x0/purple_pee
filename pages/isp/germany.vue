@@ -2600,12 +2600,24 @@ import Navbar from '@/components/navheader.vue'
 const generatePath = (image?: string) => `/svg/${(image ?? 'unknown').toLowerCase()}.svg`
 
 useHead(() => ({
-  title: 'Open source ASN lookup',
+  title: 'German ISP Database | Internet Service Providers in Germany | NetScanner',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+      content: 'Comprehensive database of German Internet Service Providers (ISPs) and their autonomous systems. Explore major German ISPs, telecommunications companies, ASN allocations, and network infrastructure in Germany.'
+    },
+    {
+      name: 'keywords',
+      content: 'German ISPs, Germany internet providers, German ASN, telecommunications Germany, Deutsche Telekom, internet infrastructure Germany, German networks'
+    },
+    {
+      property: 'og:title',
+      content: 'German ISP Database - Internet Service Providers in Germany'
+    },
+    {
+      property: 'og:description',
+      content: 'Complete directory of German ISPs and autonomous systems with network infrastructure analysis.'
     }
   ]
 }))

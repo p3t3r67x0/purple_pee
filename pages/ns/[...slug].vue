@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ns',
-  headTitle: (decodedQuery) => `NS record results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest NS record results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Name Servers for ${decodedQuery} | NetScanner DNS Authority Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive nameserver analysis for ${decodedQuery}. Explore authoritative DNS servers, domain delegation, DNS infrastructure, and name resolution intelligence for this domain or server.`
 })
 </script>

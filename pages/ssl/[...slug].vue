@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ssl',
-  headTitle: (decodedQuery) => `SSL certificate results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest ssl certificate results ${decodedQuery}`
+  headTitle: (decodedQuery) => `SSL Certificate Analysis ${decodedQuery} | NetScanner Security Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive SSL certificate analysis for ${decodedQuery}. Discover certificate details, validity periods, issuers, cipher suites, and security configurations with detailed SSL/TLS intelligence.`
 })
 </script>

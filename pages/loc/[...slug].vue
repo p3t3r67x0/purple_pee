@@ -28,7 +28,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'loc',
   displayPrefix: 'location',
-  headTitle: (decodedQuery) => `Location based results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest location results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Geographic Location: ${decodedQuery} | NetScanner Geolocation Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive geolocation analysis for ${decodedQuery}. Discover IP geolocation data, data center locations, network infrastructure coordinates, and geographic network intelligence for this location.`
 })
 </script>

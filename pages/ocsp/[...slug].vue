@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'ocsp',
-  headTitle: (decodedQuery) => `SSL ceritificate ocsp ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest SSL ceritificates ocsp results ${decodedQuery}`
+  headTitle: (decodedQuery) => `OCSP Responder: ${decodedQuery} | NetScanner SSL Certificate Status`,
+  headDescription: (decodedQuery) => `OCSP (Online Certificate Status Protocol) analysis for ${decodedQuery}. Explore real-time certificate validation, revocation status, OCSP responder endpoints, and SSL certificate security intelligence.`
 })
 </script>

@@ -35,12 +35,24 @@ const decodedSlug = computed(() => {
 })
 
 useHead(() => ({
-  title: `Search results for ${decodedSlug.value}`,
+  title: `Search Results: ${decodedSlug.value} | NetScanner Network Intelligence Search`,
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: `Explore your search results ${decodedSlug.value}`
+      content: `Comprehensive network intelligence search results for "${decodedSlug.value}". Discover domains, IP addresses, SSL certificates, DNS records, ASN data, and network infrastructure related to your search query.`
+    },
+    {
+      name: 'keywords',
+      content: 'network search, domain search, IP lookup, SSL search, DNS search, ASN search, infrastructure search, cybersecurity intelligence'
+    },
+    {
+      property: 'og:title',
+      content: `Search Results: ${decodedSlug.value} | NetScanner`
+    },
+    {
+      property: 'og:description',
+      content: 'Advanced network intelligence search with comprehensive results for domains, IPs, certificates, and infrastructure data.'
     }
   ]
 }))

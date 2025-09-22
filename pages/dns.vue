@@ -45,12 +45,24 @@ const { modalVisible, loading: loadingIndicator } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
 
 useHead(() => ({
-  title: 'Latest DNS lookup entries',
+  title: 'Latest DNS Records & Domain Lookups | NetScanner DNS Analysis',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Find latest DNS lookup entries they change every few seconds so make sure you keep uptodate.'
+      content: 'Explore the latest DNS lookup entries and domain records. Comprehensive DNS analysis including A, AAAA, MX, CNAME, TXT records with real-time updates and historical data.'
+    },
+    {
+      name: 'keywords',
+      content: 'DNS lookup, domain records, DNS analysis, A records, MX records, CNAME records, TXT records, nameservers, DNS resolution'
+    },
+    {
+      property: 'og:title',
+      content: 'Latest DNS Records & Domain Lookups | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Real-time DNS analysis and domain record exploration with comprehensive lookup history.'
     }
   ]
 }))

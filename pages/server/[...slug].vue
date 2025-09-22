@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'server',
-  headTitle: (decodedQuery) => `Server results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest server results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Web Server ${decodedQuery} Analysis | NetScanner HTTP Server Intelligence`,
+  headDescription: (decodedQuery) => `Comprehensive web server analysis for ${decodedQuery}. Discover server software, versions, configurations, HTTP headers, security settings, and web infrastructure intelligence.`
 })
 </script>

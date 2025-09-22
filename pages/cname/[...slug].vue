@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'cname',
-  headTitle: (decodedQuery) => `CNAME record results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest CNAME record results ${decodedQuery}`
+  headTitle: (decodedQuery) => `CNAME Records for ${decodedQuery} | NetScanner DNS Alias Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive CNAME record analysis for ${decodedQuery}. Explore DNS aliases, canonical name mappings, domain redirection chains, and DNS infrastructure intelligence for this hostname.`
 })
 </script>

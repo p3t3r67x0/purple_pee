@@ -27,7 +27,7 @@ import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({
   prefix: 'city',
-  headTitle: (decodedQuery) => `City results for ${decodedQuery}`,
-  headDescription: (decodedQuery) => `Explore latest city results ${decodedQuery}`
+  headTitle: (decodedQuery) => `Network Infrastructure in ${decodedQuery} | NetScanner City Analysis`,
+  headDescription: (decodedQuery) => `Comprehensive network infrastructure analysis for ${decodedQuery}. Explore data centers, ISPs, hosting providers, IP allocations, and internet infrastructure located in this city.`
 })
 </script>

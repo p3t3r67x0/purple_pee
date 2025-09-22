@@ -47,12 +47,24 @@ const { modalVisible } = storeToRefs(mainStore)
 const { $env } = useNuxtApp()
 
 useHead(() => ({
-  title: 'Explore the latest IPv4 entries',
+  title: 'Latest IPv4 Addresses & Network Analysis | NetScanner IP Database',
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: 'Explore the latest IPv4 entries'
+      content: 'Explore the latest IPv4 address entries and network analysis data. Comprehensive IPv4 database with geolocation, ASN information, port scans, and network infrastructure details.'
+    },
+    {
+      name: 'keywords',
+      content: 'IPv4 addresses, IP database, network analysis, geolocation, ASN lookup, port scanning, IP intelligence, network infrastructure'
+    },
+    {
+      property: 'og:title',
+      content: 'Latest IPv4 Addresses & Network Analysis | NetScanner'
+    },
+    {
+      property: 'og:description',
+      content: 'Comprehensive IPv4 database with real-time network analysis, geolocation data, and infrastructure intelligence.'
     }
   ]
 }))
