@@ -77,20 +77,20 @@
           </nuxt-link>
 
           <nuxt-link
-            to="/isp/germany"
+            to="/live/scan"
             class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-white/80 transition duration-300 hover:-translate-y-0.5 hover:border-cosmic-aurora/70 hover:text-white hover:shadow-glow"
           >
             <span class="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-              <span class="absolute -left-8 top-1/2 h-16 w-16 -translate-y-1/2 rounded-full bg-purple-400/45 blur-2xl"></span>
-              <span class="absolute -right-6 -top-6 h-14 w-14 rounded-full bg-cosmic-haze/35 blur-2xl"></span>
+              <span class="absolute -left-8 top-1/2 h-16 w-16 -translate-y-1/2 rounded-full bg-green-400/45 blur-2xl"></span>
+              <span class="absolute -right-6 -top-6 h-14 w-14 rounded-full bg-emerald-400/35 blur-2xl"></span>
             </span>
             <span class="relative z-10 flex items-center gap-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-400/80 to-cosmic-haze/80 text-white shadow-glass">
+              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-green-400/80 to-emerald-400/80 text-white shadow-glass">
                 <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h10M4 17h7" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a7.5 7.5 0 0 1 0-10.606m9.546 0a7.5 7.5 0 0 1 0 10.606M12 12h.008v.008H12V12Z" />
                 </svg>
               </span>
-              <span>ISPs</span>
+              <span>Live Scan</span>
               <svg class="h-4 w-4 text-white/50 transition group-hover:translate-x-1 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 5l8 7-8 7" />
               </svg>
@@ -237,19 +237,19 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/isp/germany"
+                  to="/live/scan"
                   class="group flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3 text-white/85 transition duration-300 hover:-translate-y-0.5 hover:border-cosmic-aurora/70 hover:text-white hover:shadow-glow"
                   @click="closeMenu"
                 >
                   <div class="flex items-center gap-3">
-                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-400/80 to-cosmic-haze/80 text-white shadow-glass">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-green-400/80 to-emerald-400/80 text-white shadow-glass">
                       <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h10M4 17h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a7.5 7.5 0 0 1 0-10.606m9.546 0a7.5 7.5 0 0 1 0 10.606M12 12h.008v.008H12V12Z" />
                       </svg>
                     </span>
                     <div class="text-left">
-                      <p class="text-sm font-semibold">ISPs Germany</p>
-                      <p class="text-xs text-white/60">Curated list of German providers</p>
+                      <p class="text-sm font-semibold">Live Scan</p>
+                      <p class="text-xs text-white/60">Real-time network scanning</p>
                     </div>
                   </div>
                   <svg class="h-4 w-4 text-white/50 transition group-hover:translate-x-1 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

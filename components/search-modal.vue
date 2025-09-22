@@ -25,7 +25,7 @@
           <div class="flex flex-col gap-6 text-white">
             <div class="flex flex-col gap-2">
               <p class="text-xs uppercase tracking-[0.35em] text-white/50">Search</p>
-              <h2 class="text-2xl font-semibold">Discover datasets across Purplepee</h2>
+              <h2 class="text-2xl font-semibold">Discover datasets across NetScanner</h2>
             </div>
 
             <Search @search="close" />

@@ -249,7 +249,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const apiUrl = computed(() => process.env.API_URL || 'https://api.purplepee.co')
+const apiUrl = computed(() => process.env.API_URL)
 
 // Network Discovery Examples
 const networkExamples = [

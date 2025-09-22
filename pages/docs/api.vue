@@ -388,31 +388,314 @@
 
             <!-- Examples -->
             <div class="mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-6">
-              <h2 class="text-2xl font-semibold text-white mb-4">Quick Examples</h2>
-              <div class="space-y-4">
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-gray-300 text-sm mb-2">Search for domains in Google's ASN:</div>
-                  <div class="font-mono text-xs text-purple-300 break-all">
-                    {{ apiUrl }}/match/asn:15169
+              <h2 class="text-2xl font-semibold text-white mb-6">Interactive Examples</h2>
+              
+              <!-- Basic Search Examples -->
+              <div class="mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">Basic Domain & Infrastructure Search</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Search for Google domains:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/query/google.com
+                    </div>
+                    <div class="text-xs text-gray-400">Full-text search across DNS records</div>
+                  </div>
+                  
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Latest DNS records:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/dns?page=1&page_size=10
+                    </div>
+                    <div class="text-xs text-gray-400">Recently updated DNS entries</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">IPv4 lookup:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/ip/8.8.8.8
+                    </div>
+                    <div class="text-xs text-gray-400">Detailed IP address information</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">ASN information:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/asn?country_code=US
+                    </div>
+                    <div class="text-xs text-gray-400">US-based autonomous systems</div>
                   </div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-gray-300 text-sm mb-2">Find all domains with SSL by Let's Encrypt:</div>
-                  <div class="font-mono text-xs text-purple-300 break-all">
-                    {{ apiUrl }}/match/issuer:Let's Encrypt
+              </div>
+
+              <!-- Advanced Match Conditions -->
+              <div class="mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">Advanced Match Conditions</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Domains on Google's ASN:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/asn:15169
+                    </div>
+                    <div class="text-xs text-gray-400">All domains hosted on Google infrastructure</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Domains with HTTPS enabled:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/port:443
+                    </div>
+                    <div class="text-xs text-gray-400">Find all domains with SSL/TLS</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Let's Encrypt certificates:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/ssl:Let's Encrypt
+                    </div>
+                    <div class="text-xs text-gray-400">Domains using Let's Encrypt SSL</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">German infrastructure:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/country:DE
+                    </div>
+                    <div class="text-xs text-gray-400">Domains hosted in Germany</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Nginx web servers:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/server:nginx
+                    </div>
+                    <div class="text-xs text-gray-400">Sites running Nginx</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">HTTP status codes:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/status:200
+                    </div>
+                    <div class="text-xs text-gray-400">Successfully responding domains</div>
                   </div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-gray-300 text-sm mb-2">Search by country (Germany):</div>
-                  <div class="font-mono text-xs text-purple-300 break-all">
-                    {{ apiUrl }}/match/country:DE
+              </div>
+
+              <!-- Network Analysis -->
+              <div class="mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">Network Analysis & Topology</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Subnet analysis:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/subnet/192.168.1/24
+                    </div>
+                    <div class="text-xs text-gray-400">Analyze specific network ranges</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">CIDR network ranges:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/cidr?page=1&page_size=20
+                    </div>
+                    <div class="text-xs text-gray-400">Latest CIDR allocations</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Domain relationship graph:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/graph/example.com
+                    </div>
+                    <div class="text-xs text-gray-400">SSL, DNS, and infrastructure relationships</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">IPv4 records:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/ipv4?page=1&page_size=25
+                    </div>
+                    <div class="text-xs text-gray-400">Recent IPv4 address discoveries</div>
                   </div>
                 </div>
-                <div class="bg-slate-900/50 rounded p-4">
-                  <div class="text-gray-300 text-sm mb-2">Latest DNS records:</div>
-                  <div class="font-mono text-xs text-purple-300 break-all">
-                    {{ apiUrl }}/dns?page=1&page_size=10
+              </div>
+
+              <!-- Specialized Match Conditions -->
+              <div class="mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">Specialized Security & Certificate Analysis</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Certificate authorities:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/ca:DigiCert
+                    </div>
+                    <div class="text-xs text-gray-400">Domains with DigiCert certificates</div>
                   </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Organizational units:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/unit:IT Department
+                    </div>
+                    <div class="text-xs text-gray-400">Certificates by organizational unit</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Certificate validity periods:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/before:2024-01-01
+                    </div>
+                    <div class="text-xs text-gray-400">Certificates valid before date</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">OCSP responders:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/ocsp:ocsp.digicert.com
+                    </div>
+                    <div class="text-xs text-gray-400">Certificate revocation endpoints</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Service detection:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/service:PHP
+                    </div>
+                    <div class="text-xs text-gray-400">Sites powered by specific technologies</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Geographic regions:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/match/state:California
+                    </div>
+                    <div class="text-xs text-gray-400">Infrastructure by state/province</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- API Analytics -->
+              <div class="mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">API Analytics & Monitoring</h3>
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Request trends (hourly):</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/trends/requests?interval=hour&lookback_minutes=1440
+                    </div>
+                    <div class="text-xs text-gray-400">API usage patterns over 24 hours</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Popular endpoints:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/trends/requests?top_paths=10&recent_limit=50
+                    </div>
+                    <div class="text-xs text-gray-400">Most frequently used API endpoints</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Endpoint-specific trends:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/trends/requests?path=/dns&interval=minute
+                    </div>
+                    <div class="text-xs text-gray-400">Usage patterns for specific endpoints</div>
+                  </div>
+
+                  <div class="bg-slate-900/50 rounded p-4">
+                    <div class="text-gray-300 text-sm mb-2">Daily aggregation:</div>
+                    <div class="font-mono text-xs text-purple-300 break-all mb-3">
+                      {{ apiUrl }}/trends/requests?interval=day&buckets=7
+                    </div>
+                    <div class="text-xs text-gray-400">Weekly request patterns</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sample Response -->
+              <div class="mb-6">
+                <h3 class="text-lg font-medium text-purple-300 mb-4">Sample Response Structure</h3>
+                <div class="bg-slate-900/50 rounded p-4 font-mono text-sm">
+                  <pre class="text-gray-300 whitespace-pre-wrap overflow-x-auto">{
+  "results": [
+    {
+      "domain": "example.com",
+      "a_record": ["93.184.216.34"],
+      "cname_record": [{"target": "example.edgekey.net"}],
+      "mx_record": [{"exchange": "mail.example.com", "priority": 10}],
+      "ns_record": ["ns1.example.com", "ns2.example.com"],
+      "ssl": {
+        "issuer": {
+          "common_name": "DigiCert Global Root CA",
+          "organization": "DigiCert Inc",
+          "country": "US"
+        },
+        "subject": {
+          "common_name": "example.com",
+          "organization": "Example Corp"
+        },
+        "subject_alt_names": ["example.com", "www.example.com"],
+        "not_before": "2023-06-01T00:00:00Z",
+        "not_after": "2024-06-01T00:00:00Z"
+      },
+      "header": {
+        "status": "200",
+        "server": "nginx/1.18.0",
+        "x-powered-by": "Express"
+      },
+      "geo": {
+        "country_code": "US",
+        "country": "United States",
+        "state": "California",
+        "city": "San Francisco"
+      },
+      "whois": {
+        "asn": "15169",
+        "asn_description": "GOOGLE - Google LLC, US",
+        "asn_country_code": "US",
+        "asn_cidr": "93.184.216.0/24",
+        "asn_registry": "arin"
+      },
+      "ports": [
+        {"port": 80, "protocol": "tcp"},
+        {"port": 443, "protocol": "tcp"}
+      ],
+      "created": "2024-01-15T10:30:00Z",
+      "updated": "2024-09-22T14:20:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "page_size": 25,
+    "total": 1247,
+    "pages": 50,
+    "has_next": true,
+    "has_previous": false
+  }
+}</pre>
+                </div>
+              </div>
+
+              <!-- Try It Out -->
+              <div class="text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-6 border border-purple-500/20">
+                <h3 class="text-lg font-semibold text-white mb-3">Ready to Explore?</h3>
+                <p class="text-gray-300 mb-4">
+                  Start with these endpoints or build your own queries using the comprehensive API reference above.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a 
+                    :href="`${apiUrl}/dns?page=1&page_size=5`"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  >
+                    🚀 Try Live API
+                  </a>
+                  <NuxtLink 
+                    to="/docs/examples/status" 
+                    class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  >
+                    📖 View More Examples
+                  </NuxtLink>
                 </div>
               </div>
             </div>
@@ -426,8 +709,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useNuxtApp } from '#imports'
 
-const apiUrl = computed(() => process.env.API_URL || 'https://api.purplepee.co')
+const { $env } = useNuxtApp()
+const apiUrl = computed(() => $env?.API_URL)
 
 useHead(() => ({
   title: 'API Documentation | NetScanner Developer Reference & Endpoints',

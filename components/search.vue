@@ -10,7 +10,7 @@
       </div>
 
       <div class="flex flex-1 flex-col">
-        <label for="global-search" class="sr-only">Search across Purplepee</label>
+        <label for="global-search" class="sr-only">Search across NetScanner</label>
         <input
           id="global-search"
           type="text"

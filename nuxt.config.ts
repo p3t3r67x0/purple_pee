@@ -33,24 +33,24 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:site_name',
-          content: 'purplepee.co'
+          content: 'NetScanner'
         },
         {
           property: 'og:title',
-          content: 'purplepee.co - Open source ASN lookup'
+          content: 'NetScanner - Advanced Internet Intelligence & Network Analysis Platform'
         },
         {
           property: 'og:description',
           content:
-            'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+            'Discover comprehensive network intelligence with NetScanner. Advanced domain analysis, ASN lookups, SSL certificate monitoring, real-time network scanning, and cybersecurity research tools. Free API access with 20+ endpoints for developers and security professionals.'
         },
         {
           property: 'og:url',
-          content: 'https://purplepee.co'
+          content: 'https://netscanner.io'
         },
         {
           property: 'og:image',
-          content: '/logo-300x300.png'
+          content: 'https://netscanner.io/logo-300x300.png'
         },
         {
           property: 'og:image:type',
@@ -65,6 +65,10 @@ export default defineNuxtConfig({
           content: '300'
         },
         {
+          property: 'og:image:alt',
+          content: 'NetScanner - Internet Intelligence Platform Logo'
+        },
+        {
           property: 'og:type',
           content: 'website'
         },
@@ -73,10 +77,114 @@ export default defineNuxtConfig({
           content: 'en_US'
         },
         {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          name: 'twitter:site',
+          content: '@netscanner_io'
+        },
+        {
+          name: 'twitter:creator',
+          content: '@netscanner_io'
+        },
+        {
+          name: 'twitter:title',
+          content: 'NetScanner - Advanced Internet Intelligence & Network Analysis'
+        },
+        {
+          name: 'twitter:description',
+          content: 'Comprehensive network intelligence platform with domain analysis, ASN lookups, SSL monitoring, and real-time scanning. Free API for developers.'
+        },
+        {
+          name: 'twitter:image',
+          content: 'https://netscanner.io/logo-300x300.png'
+        },
+        {
+          name: 'twitter:image:alt',
+          content: 'NetScanner Platform Logo'
+        },
+        {
+          name: 'author',
+          content: 'NetScanner Team'
+        },
+        {
+          name: 'robots',
+          content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        },
+        {
+          name: 'googlebot',
+          content: 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
+        },
+        {
+          name: 'language',
+          content: 'en'
+        },
+        {
+          name: 'classification',
+          content: 'Network Analysis, Cybersecurity, API, Developer Tools'
+        },
+        {
+          name: 'category',
+          content: 'Technology'
+        },
+        {
+          name: 'coverage',
+          content: 'Worldwide'
+        },
+        {
+          name: 'distribution',
+          content: 'Global'
+        },
+        {
+          name: 'rating',
+          content: 'General'
+        },
+        {
           key: 'description',
           name: 'description',
           content:
-            'Purplepee is a simple tool allowing individuals to view all sort of analytics data about the current state and structure of the internet.'
+            'NetScanner provides advanced internet intelligence and network analysis capabilities. Explore domains, ASN lookups, SSL certificates, real-time scanning, and comprehensive API access. Essential tools for cybersecurity professionals, researchers, and developers.'
+        },
+        {
+          name: 'keywords',
+          content: 'network analysis, domain intelligence, ASN lookup, SSL certificates, cybersecurity, API, real-time scanning, DNS analysis, IP geolocation, infrastructure monitoring, security research, developer tools, OSINT, network reconnaissance'
+        },
+        {
+          name: 'application-name',
+          content: 'NetScanner'
+        },
+        {
+          name: 'apple-mobile-web-app-title',
+          content: 'NetScanner'
+        },
+        {
+          name: 'apple-mobile-web-app-capable',
+          content: 'yes'
+        },
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: 'black-translucent'
+        },
+        {
+          name: 'mobile-web-app-capable',
+          content: 'yes'
+        },
+        {
+          name: 'geo.region',
+          content: 'US'
+        },
+        {
+          name: 'geo.placename',
+          content: 'United States'
+        },
+        {
+          name: 'format-detection',
+          content: 'telephone=no'
+        },
+        {
+          'http-equiv': 'Content-Security-Policy',
+          content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; connect-src 'self' https: wss:; font-src 'self' data:; object-src 'none'; media-src 'self'; frame-src 'none';"
         }
       ],
       link: [
@@ -142,10 +250,19 @@ export default defineNuxtConfig({
         {
           rel: 'manifest',
           href: '/manifest.json'
+        },
+        {
+          rel: 'canonical',
+          href: 'https://netscanner.io'
+        },
+        {
+          rel: 'sitemap',
+          type: 'application/xml',
+          href: '/sitemaps.xml'
         }
       ],
-      titleTemplate: '%s - purplepee.co',
-      title: 'Open source ASN lookup'
+      titleTemplate: '%s | NetScanner - Internet Intelligence Platform',
+      title: 'Advanced Network Analysis & Domain Intelligence'
     }
   },
   css: [],

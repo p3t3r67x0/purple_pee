@@ -10,7 +10,7 @@
 
     <h2 class="text-2xl">Contact Information</h2>
     <address class="block mb-6 text-gray-700">
-      E-Mail: purplepeeco@yandex.com
+      E-Mail: netscanner@yandex.com
     </address>
 
     <h2 class="text-2xl">Disclaimer</h2>

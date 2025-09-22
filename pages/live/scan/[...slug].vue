@@ -5,7 +5,7 @@
       <modal v-if="modalVisible"></modal>
       <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <div class="glass-panel rounded-3xl border border-white/10 bg-black/80 shadow-glass">
-          <div class="flex items-center space-x-2 border-b border-white/10 bg-black/40 px-5 py-3">
+          <div class="flex items-center space-x-2 border-b border-white/10 bg-black/40 px-5 py-3 rounded-t-3xl">
             <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
             <span class="h-3 w-3 rounded-full bg-amber-300/80"></span>
             <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
@@ -14,8 +14,21 @@
           <div class="p-5 sm:p-8">
             <div class="space-y-4 font-mono text-sm text-green-200">
               <p>
-                <span class="text-emerald-300">purplepee@scanner</span>:~$ live-scan
-                <span class="ml-2 text-white/80">{{ decodedDomain || 'waiting-for-target' }}</span>
+                <span class="text-emerald-300">netscanner@live</span>:~$ live-scan
+                <span v-if="decodedDomain" class="ml-2 text-white/80">{{ decodedDomain }}</span>
+                <span v-else class="ml-2">
+                  <input
+                    ref="domainInput"
+                    v-model="inputDomain"
+                    @keyup.enter="startScanWithInput"
+                    @blur="handleInputBlur"
+                    class="bg-transparent text-white/80 border-none outline-none placeholder-white/50 caret-emerald-300 min-w-[200px]"
+                    placeholder="waiting-for-target"
+                    type="text"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </span>
               </p>
 
               <template v-if="true">
@@ -63,7 +76,7 @@ import Navbar from '@/components/navheader.vue'
 import { useSlugParam } from '~/composables/useSlugParam'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'
-import { useNuxtApp, useHead } from '#app'
+import { useNuxtApp, useHead, navigateTo } from '#app'
 
 const slug = useSlugParam()
 const { $env } = useNuxtApp()
@@ -75,6 +88,8 @@ const result = ref<unknown>(null)
 const errorMessage = ref<string | null>(null)
 const lastUpdated = ref<number | null>(null)
 const socket = ref<WebSocket | null>(null)
+const inputDomain = ref<string>('')
+const domainInput = ref<HTMLInputElement | null>(null)
 
 const rawDomain = computed(() => slug.value)
 const decodedDomain = computed(() => {
@@ -214,6 +229,23 @@ const startScan = (domain: string) => {
   }
 }
 
+const startScanWithInput = () => {
+  const domain = inputDomain.value.trim()
+  if (domain) {
+    // Navigate to the scan page with the domain
+    navigateTo(`/live/scan/${encodeURIComponent(domain)}`)
+  }
+}
+
+const handleInputBlur = () => {
+  // Keep focus if no domain is provided
+  if (!inputDomain.value.trim() && !decodedDomain.value) {
+    setTimeout(() => {
+      domainInput.value?.focus()
+    }, 100)
+  }
+}
+
 let stopWatching: (() => void) | null = null
 
 onMounted(() => {
@@ -224,6 +256,13 @@ onMounted(() => {
     },
     { immediate: true }
   )
+
+  // Auto-focus input if no domain is provided
+  if (!decodedDomain.value) {
+    setTimeout(() => {
+      domainInput.value?.focus()
+    }, 100)
+  }
 })
 
 onBeforeUnmount(() => {

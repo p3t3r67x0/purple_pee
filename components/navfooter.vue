@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-slate-300/70 sm:flex-row">
-        <span>© {{ currentYear }} purplepee.co — Open source ASN lookup</span>
+        <span>© {{ currentYear }} netscanner.io — Open source ASN lookup</span>
         <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-slate-400/70">
           <span class="h-px w-8 bg-gradient-to-r from-transparent via-white/40 to-transparent"></span>
           crafted for curious minds
