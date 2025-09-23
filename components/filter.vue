@@ -1,13 +1,13 @@
 <template>
-  <div id="xhr" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="glass-panel space-y-10 rounded-3xl border border-white/10 px-5 py-8 shadow-glass sm:px-10 sm:py-12">
+  <div id="xhr" class="mx-auto max-w-6xl px-3 sm:px-6 lg:px-8">
+    <div class="glass-panel space-y-6 sm:space-y-10 rounded-3xl border border-white/10 px-3 py-6 shadow-glass sm:px-10 sm:py-12">
       <header class="space-y-4 text-center sm:text-left">
         <h2 class="text-2xl font-semibold text-white sm:text-3xl">Complete Guide to NetScanner</h2>
         <p class="mx-auto max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
           NetScanner is a powerful network reconnaissance tool that allows you to search and analyze internet-connected devices, services, and infrastructure. 
           This comprehensive guide will help you master all the search capabilities and filtering options available.
         </p>
-        <div class="rounded-2xl border border-cosmic-aurora/30 bg-cosmic-aurora/10 p-4">
+        <div class="rounded-2xl border border-cosmic-aurora/30 bg-cosmic-aurora/10 p-3 sm:p-4">
           <h3 class="text-lg font-semibold text-cosmic-aurora mb-2">Quick Start</h3>
           <p class="text-sm text-white/80 mb-3">
             All search queries follow the format: <code class="rounded border border-white/15 bg-white/10 px-1 py-0.5 text-xs font-semibold text-white/80">filter:value</code>
@@ -22,8 +22,8 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">Getting Started</h3>
         
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div class="grid gap-3 sm:gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-3 sm:p-4">
             <h4 class="text-lg font-semibold text-cosmic-aurora mb-2">Basic Search</h4>
             <p class="text-sm text-white/70 mb-3">Enter any domain, IP address, or identifier directly in the search box:</p>
             <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2 mb-2">
@@ -37,7 +37,7 @@
             </div>
           </div>
           
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-3 sm:p-4">
             <h4 class="text-lg font-semibold text-cosmic-aurora mb-2">Advanced Filtering</h4>
             <p class="text-sm text-white/70 mb-3">Combine multiple filters for precise results:</p>
             <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2 mb-2">
@@ -57,7 +57,7 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">Network & Infrastructure Filters</h3>
         
-        <ul class="space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           <li class="space-y-3">
             <div class="flex items-center gap-3">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cosmic-aurora/80 to-cosmic-flare/80 text-white text-sm font-bold">IP</span>
@@ -115,7 +115,7 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">Service & Port Analysis</h3>
         
-        <ul class="space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           <li class="space-y-3">
             <div class="flex items-center gap-3">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-400/80 to-orange-400/80 text-white text-sm font-bold">PT</span>
@@ -130,8 +130,8 @@
                 <nuxt-link to="/port/27017" class="hover:text-cosmic-rose">port:27017</nuxt-link>
               </code>
             </div>
-            <div class="grid gap-3 mt-4 sm:grid-cols-2">
-              <div class="rounded-lg bg-cosmic-aurora/10 border border-cosmic-aurora/30 p-3">
+            <div class="grid gap-3 mt-3 sm:mt-4 sm:grid-cols-2">
+              <div class="rounded-lg bg-cosmic-aurora/10 border border-cosmic-aurora/30 p-2 sm:p-3">
                 <h5 class="font-semibold text-cosmic-aurora text-sm mb-2">Common Ports</h5>
                 <ul class="text-xs text-white/70 space-y-1">
                   <li><code>22</code> - SSH (Secure Shell)</li>
@@ -141,7 +141,7 @@
                   <li><code>53</code> - DNS Server</li>
                 </ul>
               </div>
-              <div class="rounded-lg bg-cosmic-flare/10 border border-cosmic-flare/30 p-3">
+              <div class="rounded-lg bg-cosmic-flare/10 border border-cosmic-flare/30 p-2 sm:p-3">
                 <h5 class="font-semibold text-cosmic-flare text-sm mb-2">Database Ports</h5>
                 <ul class="text-xs text-white/70 space-y-1">
                   <li><code>3306</code> - MySQL Database</li>
@@ -185,8 +185,8 @@
                 <nuxt-link to="/status/302" class="hover:text-cosmic-rose">status:302</nuxt-link>
               </code>
             </div>
-            <div class="grid gap-3 mt-4 sm:grid-cols-3">
-              <div class="rounded-lg bg-green-500/10 border border-green-500/30 p-3">
+            <div class="grid gap-3 mt-3 sm:mt-4 sm:grid-cols-3">
+              <div class="rounded-lg bg-green-500/10 border border-green-500/30 p-2 sm:p-3">
                 <h5 class="font-semibold text-green-400 text-sm mb-2">Success (2xx)</h5>
                 <ul class="text-xs text-white/70 space-y-1">
                   <li><code>200</code> - OK</li>
@@ -194,7 +194,7 @@
                   <li><code>204</code> - No Content</li>
                 </ul>
               </div>
-              <div class="rounded-lg bg-yellow-500/10 border border-yellow-500/30 p-3">
+              <div class="rounded-lg bg-yellow-500/10 border border-yellow-500/30 p-2 sm:p-3">
                 <h5 class="font-semibold text-yellow-400 text-sm mb-2">Redirect (3xx)</h5>
                 <ul class="text-xs text-white/70 space-y-1">
                   <li><code>301</code> - Moved Permanently</li>
@@ -202,7 +202,7 @@
                   <li><code>304</code> - Not Modified</li>
                 </ul>
               </div>
-              <div class="rounded-lg bg-red-500/10 border border-red-500/30 p-3">
+              <div class="rounded-lg bg-red-500/10 border border-red-500/30 p-2 sm:p-3">
                 <h5 class="font-semibold text-red-400 text-sm mb-2">Error (4xx/5xx)</h5>
                 <ul class="text-xs text-white/70 space-y-1">
                   <li><code>404</code> - Not Found</li>
@@ -219,7 +219,7 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">Geographic & Organizational Intelligence</h3>
         
-        <ul class="space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           <li class="space-y-3">
             <div class="flex items-center gap-3">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/80 to-indigo-500/80 text-white text-sm font-bold">GEO</span>
@@ -262,13 +262,13 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">DNS & Domain Analysis</h3>
         
-        <ul class="space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           <li class="space-y-3">
             <div class="flex items-center gap-3">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-green-400/80 to-teal-500/80 text-white text-sm font-bold">DNS</span>
               <p class="text-lg font-semibold text-white sm:text-xl">DNS Records</p>
             </div>
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div class="space-y-2">
                 <h5 class="font-semibold text-green-400 text-sm">Name Servers</h5>
                 <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
@@ -302,7 +302,7 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">SSL/TLS & Security Analysis</h3>
         
-        <ul class="space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           <li class="space-y-3">
             <div class="flex items-center gap-3">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-red-400/80 to-pink-500/80 text-white text-sm font-bold">SSL</span>
@@ -326,8 +326,8 @@
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">Advanced Search Techniques</h3>
         
-        <div class="grid gap-6 lg:grid-cols-2">
-          <div class="rounded-2xl border border-cosmic-aurora/30 bg-cosmic-aurora/5 p-6">
+        <div class="grid gap-4 sm:gap-6 lg:grid-cols-2">
+          <div class="rounded-2xl border border-cosmic-aurora/30 bg-cosmic-aurora/5 p-4 sm:p-6">
             <h4 class="text-lg font-semibold text-cosmic-aurora mb-4">Query Combinations</h4>
             <div class="space-y-3">
               <div>
@@ -351,7 +351,7 @@
             </div>
           </div>
 
-          <div class="rounded-2xl border border-cosmic-flare/30 bg-cosmic-flare/5 p-6">
+          <div class="rounded-2xl border border-cosmic-flare/30 bg-cosmic-flare/5 p-4 sm:p-6">
             <h4 class="text-lg font-semibold text-cosmic-flare mb-4">Search Tips</h4>
             <ul class="space-y-3 text-sm text-white/80">
               <li class="flex items-start gap-2">
@@ -382,38 +382,185 @@
       <!-- API & Integration -->
       <section class="space-y-6">
         <h3 class="text-xl font-semibold text-white border-b border-white/20 pb-2">API & Integration</h3>
-        <div class="rounded-2xl border border-sky-400/30 bg-sky-400/5 p-6">
+        <div class="rounded-2xl border border-sky-400/30 bg-sky-400/5 p-4 sm:p-6">
           <h4 class="text-lg font-semibold text-sky-400 mb-4">Programmatic Access</h4>
           <p class="text-sm text-white/80 mb-4">
-            Access NetScanner data programmatically through our REST API. Perfect for automation, monitoring, and integration with your security tools.
+            NetScanner provides a powerful REST API for programmatic access to network intelligence data. Built with FastAPI, 
+            it offers high-performance async operations with comprehensive documentation and real-time capabilities.
           </p>
-          <div class="grid gap-4 sm:grid-cols-2">
+          
+          <div class="grid gap-4 sm:gap-6 lg:grid-cols-2 mb-6">
             <div>
-              <h5 class="font-semibold text-sky-300 text-sm mb-2">API Endpoints</h5>
-              <ul class="text-xs text-white/70 space-y-1">
-                <li><code>/api/search</code> - General search</li>
-                <li><code>/api/host/{ip}</code> - Host details</li>
-                <li><code>/api/domain/{domain}</code> - Domain info</li>
-                <li><code>/api/asn/{asn}</code> - ASN analysis</li>
-              </ul>
+              <h5 class="font-semibold text-sky-300 text-sm mb-3">Core API Endpoints</h5>
+              <div class="space-y-2">
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /query/{domain}</code>
+                  <p class="text-xs text-white/70 mt-1">Domain information lookup</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /ip/{ipv4}</code>
+                  <p class="text-xs text-white/70 mt-1">IPv4 address analysis</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /match/{query}</code>
+                  <p class="text-xs text-white/70 mt-1">Advanced search with conditions</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /graph/{site}</code>
+                  <p class="text-xs text-white/70 mt-1">Network relationship mapping</p>
+                </div>
+              </div>
             </div>
             <div>
-              <h5 class="font-semibold text-sky-300 text-sm mb-2">Response Formats</h5>
-              <ul class="text-xs text-white/70 space-y-1">
-                <li>JSON (default)</li>
-                <li>CSV export</li>
-                <li>XML format</li>
-                <li>Raw data streams</li>
-              </ul>
+              <h5 class="font-semibold text-sky-300 text-sm mb-3">Data Collections</h5>
+              <div class="space-y-2">
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /dns</code>
+                  <p class="text-xs text-white/70 mt-1">Latest DNS records</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /asn</code>
+                  <p class="text-xs text-white/70 mt-1">ASN information</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /cidr</code>
+                  <p class="text-xs text-white/70 mt-1">CIDR network ranges</p>
+                </div>
+                <div class="rounded-lg bg-white/10 border border-white/15 px-3 py-2">
+                  <code class="text-xs text-cosmic-aurora">GET /ipv4</code>
+                  <p class="text-xs text-white/70 mt-1">IPv4 address listings</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mt-4">
+
+          <div class="grid gap-4 sm:gap-6 lg:grid-cols-2 mb-6">
+            <div>
+              <h5 class="font-semibold text-emerald-300 text-sm mb-3">Real-time Features</h5>
+              <div class="rounded-lg bg-emerald-500/10 border border-emerald-500/30 p-3">
+                <div class="mb-2">
+                  <code class="text-xs text-emerald-400">WebSocket /live/scan/{domain}</code>
+                </div>
+                <p class="text-xs text-white/70 mb-2">Live domain scanning with real-time progress updates</p>
+                <div class="rounded bg-white/10 px-2 py-1 text-xs">
+                  <span class="text-white/60">Events:</span> start, progress, result, error
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 class="font-semibold text-orange-300 text-sm mb-3">Analytics & Monitoring</h5>
+              <div class="rounded-lg bg-orange-500/10 border border-orange-500/30 p-3">
+                <div class="mb-2">
+                  <code class="text-xs text-orange-400">GET /trends/requests</code>
+                </div>
+                <p class="text-xs text-white/70 mb-2">API usage analytics and request patterns</p>
+                <div class="text-xs text-white/60">
+                  <span>Parameters:</span> interval, lookback_minutes, buckets
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h5 class="font-semibold text-purple-300 text-sm mb-3">Advanced Search Conditions</h5>
+            <p class="text-xs text-white/70 mb-3">The <code class="bg-white/10 px-1 py-0.5 rounded">/match/{query}</code> endpoint supports powerful search operators:</p>
+            <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">Network:</span>
+                <div class="text-white/70">ipv6:, port:, cidr:, asn:</div>
+              </div>
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">Geographic:</span>
+                <div class="text-white/70">country:, state:, city:, org:</div>
+              </div>
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">Security:</span>
+                <div class="text-white/70">ssl:, ca:, crl:, ocsp:</div>
+              </div>
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">Service:</span>
+                <div class="text-white/70">server:, status:, service:</div>
+              </div>
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">Temporal:</span>
+                <div class="text-white/70">before:, after:</div>
+              </div>
+              <div class="text-xs">
+                <span class="text-purple-400 font-semibold">DNS:</span>
+                <div class="text-white/70">mx:, ns:, cname:, site:</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h5 class="font-semibold text-indigo-300 text-sm mb-3">Pagination & Response Format</h5>
+            <div class="rounded-lg bg-indigo-500/10 border border-indigo-500/30 p-3">
+              <p class="text-xs text-white/70 mb-3">All endpoints support pagination with standardized response format:</p>
+              <div class="rounded bg-white/10 border border-white/15 px-3 py-2 overflow-x-auto">
+                <pre class="text-xs text-indigo-300"><code>{
+  "page": 1,
+  "page_size": 25,
+  "total": 1250,
+  "total_pages": 50,
+  "has_next": true,
+  "has_previous": false,
+  "results": [...]
+}</code></pre>
+              </div>
+              <div class="mt-2 text-xs text-white/60">
+                <span class="font-semibold">Parameters:</span> page (default: 1), page_size (default: 25, max: 200)
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h5 class="font-semibold text-cyan-300 text-sm mb-3">Integration Examples</h5>
+            <div class="space-y-3">
+              <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/30 p-3">
+                <div class="text-xs font-semibold text-cyan-300 mb-2">Python with httpx</div>
+                <div class="rounded bg-white/10 border border-white/15 px-3 py-2 overflow-x-auto">
+                  <pre class="text-xs text-cyan-200"><code>import httpx
+
+async with httpx.AsyncClient() as client:
+    response = await client.get(
+        "{{ apiUrl }}/query/google.com",
+        params={"page": 1, "page_size": 50}
+    )
+    data = response.json()</code></pre>
+                </div>
+              </div>
+              <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/30 p-3">
+                <div class="text-xs font-semibold text-cyan-300 mb-2">JavaScript WebSocket</div>
+                <div class="rounded bg-white/10 border border-white/15 px-3 py-2 overflow-x-auto">
+                  <pre class="text-xs text-cyan-200"><code>const ws = new WebSocket('{{ apiUrl.replace('http', 'ws') }}/live/scan/example.com');
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    console.log(data.type, data.progress || data.result);
+};</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
             <nuxt-link to="/docs/api" class="inline-flex items-center gap-2 rounded-lg bg-sky-400/20 border border-sky-400/40 px-4 py-2 text-sm font-semibold text-sky-300 hover:bg-sky-400/30 transition">
-              <span>View API Documentation</span>
+              <span>Interactive API Docs</span>
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
             </nuxt-link>
+            <a :href="`${apiUrl}/docs`" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-emerald-400/20 border border-emerald-400/40 px-4 py-2 text-sm font-semibold text-emerald-300 hover:bg-emerald-400/30 transition">
+              <span>Swagger UI</span>
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+            <a :href="`${apiUrl}/redoc`" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-indigo-400/20 border border-indigo-400/40 px-4 py-2 text-sm font-semibold text-indigo-300 hover:bg-indigo-400/30 transition">
+              <span>ReDoc</span>
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -428,3 +575,8 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const config = useRuntimeConfig()
+const apiUrl = config.public.API_URL
+</script>

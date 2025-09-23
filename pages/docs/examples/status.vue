@@ -1,32 +1,152 @@
 <template>
-  <div class="min-h-screen flex flex-col">
-    <div class="flex-grow">
-      <navheader></navheader>
-      <modal v-if="modalVisible"></modal>
-      
-      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-        <!-- Header -->
-        <div class="mb-8">
-          <h1 class="text-3xl font-bold text-white mb-4">NetScanner API Comprehensive Guide</h1>
-          <p class="text-slate-300 text-lg">Complete documentation for all endpoints, conditions, and advanced features</p>
-          <div class="flex flex-wrap gap-2 mt-4">
-            <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm">20+ Endpoints</span>
-            <span class="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-sm">15+ Match Conditions</span>
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">Real-time Analytics</span>
-            <span class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-sm">GraphQL Support</span>
+  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <navheader></navheader>
+    <modal v-if="modalVisible"></modal>
+    
+    <div class="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-4 sm:p-6 sticky top-8">
+            <nav>
+              <div class="mb-4 sm:mb-6">
+                <h2 class="text-lg font-semibold text-white">API Examples</h2>
+              </div>
+              <ul class="space-y-2">
+                <li>
+                  <NuxtLink 
+                    to="/docs/examples" 
+                    class="block py-2 px-3 text-sm text-gray-400 hover:text-purple-300 rounded"
+                  >
+                    Overview
+                  </NuxtLink>
+                </li>
+                <li>
+                  <div class="text-purple-300 text-sm font-medium py-2 px-3">Match Conditions</div>
+                  <ul class="ml-4 space-y-1">
+                    <li>
+                      <a href="#network-infrastructure" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Network Infrastructure
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#geographic-filtering" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Geographic Filtering
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#ssl-security" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        SSL/TLS Security
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#web-technology" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Web Technology
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#dns-domain" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        DNS & Domain
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#organizational" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Organizational
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-3 sm:mt-4">Integration</div>
+                  <ul class="ml-4 space-y-1">
+                    <li>
+                      <a href="#security-research" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Security Research
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#compliance-monitoring" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Compliance & Monitoring
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#data-analytics" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Data Analytics
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-3 sm:mt-4">Reference</div>
+                  <ul class="ml-4 space-y-1">
+                    <li>
+                      <a href="#api-response" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Response Format
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#quick-start" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                        Quick Start
+                      </a>
+                    </li>
+                    <li>
+                      <NuxtLink 
+                        to="/docs/examples/server" 
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
+                      >
+                        Server Examples
+                      </NuxtLink>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-3 sm:mt-4">Documentation</div>
+                  <ul class="ml-4 space-y-1">
+                    <li>
+                      <NuxtLink 
+                        to="/docs/api" 
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
+                      >
+                        API Reference
+                      </NuxtLink>
+                    </li>
+                    <li>
+                      <NuxtLink 
+                        to="/docs/faq" 
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
+                      >
+                        FAQ
+                      </NuxtLink>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 
         <!-- Main Content -->
-        <div class="glass-panel rounded-3xl border border-white/10 bg-black/80 shadow-glass p-8">
+        <div class="lg:col-span-3">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-4 sm:p-8">
+            <!-- Header -->
+            <div class="mb-6 sm:mb-8">
+              <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">NetScanner API Comprehensive Guide</h1>
+              <p class="text-slate-300 text-lg">Complete documentation for all endpoints, conditions, and advanced features</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm">20+ Endpoints</span>
+                <span class="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-sm">15+ Match Conditions</span>
+                <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">Real-time Analytics</span>
+                <span class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-sm">GraphQL Support</span>
+              </div>
+            </div>
           
           <!-- API Endpoints Overview -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Core API Endpoints</h2>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Core API Endpoints</h2>
+            <div class="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
               
               <!-- Query Endpoint -->
-              <div class="bg-gradient-to-br from-purple-900/30 to-purple-800/30 rounded-xl p-4 border border-purple-500/20">
+              <div class="bg-gradient-to-br from-purple-900/30 to-purple-800/30 rounded-xl p-3 sm:p-4 border border-purple-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-purple-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">Query Search</h3>
@@ -39,7 +159,7 @@
               </div>
 
               <!-- DNS Endpoint -->
-              <div class="bg-gradient-to-br from-emerald-900/30 to-emerald-800/30 rounded-xl p-4 border border-emerald-500/20">
+              <div class="bg-gradient-to-br from-emerald-900/30 to-emerald-800/30 rounded-xl p-3 sm:p-4 border border-emerald-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-emerald-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">DNS Records</h3>
@@ -52,7 +172,7 @@
               </div>
 
               <!-- IP Endpoint -->
-              <div class="bg-gradient-to-br from-blue-900/30 to-blue-800/30 rounded-xl p-4 border border-blue-500/20">
+              <div class="bg-gradient-to-br from-blue-900/30 to-blue-800/30 rounded-xl p-3 sm:p-4 border border-blue-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-blue-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">IP Analysis</h3>
@@ -65,7 +185,7 @@
               </div>
 
               <!-- Match Endpoint -->
-              <div class="bg-gradient-to-br from-amber-900/30 to-amber-800/30 rounded-xl p-4 border border-amber-500/20">
+              <div class="bg-gradient-to-br from-amber-900/30 to-amber-800/30 rounded-xl p-3 sm:p-4 border border-amber-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-amber-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">Conditional Search</h3>
@@ -78,7 +198,7 @@
               </div>
 
               <!-- Graph Endpoint -->
-              <div class="bg-gradient-to-br from-cyan-900/30 to-cyan-800/30 rounded-xl p-4 border border-cyan-500/20">
+              <div class="bg-gradient-to-br from-cyan-900/30 to-cyan-800/30 rounded-xl p-3 sm:p-4 border border-cyan-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-cyan-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">Relationship Graph</h3>
@@ -91,7 +211,7 @@
               </div>
 
               <!-- Trends Endpoint -->
-              <div class="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-xl p-4 border border-pink-500/20">
+              <div class="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-xl p-3 sm:p-4 border border-pink-500/20">
                 <div class="flex items-center gap-2 mb-3">
                   <span class="w-3 h-3 bg-pink-400 rounded-full"></span>
                   <h3 class="text-lg font-semibold text-white">Analytics & Trends</h3>
@@ -107,12 +227,12 @@
           </div>
 
           <!-- Network Infrastructure Endpoints -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Network Infrastructure</h2>
-            <div class="grid gap-6 md:grid-cols-2">
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Network Infrastructure</h2>
+            <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
               
               <!-- ASN Analysis -->
-              <div class="bg-slate-900/30 rounded-xl p-6 border border-slate-700/30">
+              <div class="bg-slate-900/30 rounded-xl p-4 sm:p-6 border border-slate-700/30">
                 <h3 class="text-xl font-semibold text-emerald-400 mb-4">ASN (Autonomous Systems)</h3>
                 <div class="space-y-3">
                   <div class="bg-black/50 rounded-lg p-3">
@@ -133,7 +253,7 @@
               </div>
 
               <!-- CIDR Networks -->
-              <div class="bg-slate-900/30 rounded-xl p-6 border border-slate-700/30">
+              <div class="bg-slate-900/30 rounded-xl p-4 sm:p-6 border border-slate-700/30">
                 <h3 class="text-xl font-semibold text-sky-400 mb-4">CIDR Network Ranges</h3>
                 <div class="space-y-3">
                   <div class="bg-black/50 rounded-lg p-3">
@@ -154,7 +274,7 @@
               </div>
 
               <!-- IPv4 & IPv6 -->
-              <div class="bg-slate-900/30 rounded-xl p-6 border border-slate-700/30">
+              <div class="bg-slate-900/30 rounded-xl p-4 sm:p-6 border border-slate-700/30">
                 <h3 class="text-xl font-semibold text-purple-400 mb-4">IP Address Analysis</h3>
                 <div class="space-y-3">
                   <div class="bg-black/50 rounded-lg p-3">
@@ -175,7 +295,7 @@
               </div>
 
               <!-- Geographic Data -->
-              <div class="bg-slate-900/30 rounded-xl p-6 border border-slate-700/30">
+              <div class="bg-slate-900/30 rounded-xl p-4 sm:p-6 border border-slate-700/30">
                 <h3 class="text-xl font-semibold text-orange-400 mb-4">Geographic Intelligence</h3>
                 <div class="space-y-3">
                   <div class="bg-black/50 rounded-lg p-3">
@@ -200,14 +320,14 @@
           </div>
 
           <!-- All Match Conditions -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Complete Match Conditions Reference</h2>
-            <p class="text-slate-300 mb-6">Use <code class="text-amber-300">/match/{condition}:{value}</code> for powerful filtering capabilities</p>
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Complete Match Conditions Reference</h2>
+            <p class="text-slate-300 mb-4 sm:mb-6">Use <code class="text-amber-300">/match/{condition}:{value}</code> for powerful filtering capabilities</p>
             
-            <div class="grid gap-6">
+            <div class="grid gap-4 sm:gap-6">
 
               <!-- Network Infrastructure Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-emerald-500/20">
+              <div id="network-infrastructure" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-emerald-500/20">
                 <h3 class="text-xl font-semibold text-emerald-400 mb-4">🌐 Network Infrastructure</h3>
                 <div class="grid gap-4 md:grid-cols-2">
                   
@@ -243,7 +363,7 @@
               </div>
 
               <!-- Geographic Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-blue-500/20">
+              <div id="geographic-filtering" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-blue-500/20">
                 <h3 class="text-xl font-semibold text-blue-400 mb-4">🌍 Geographic Filtering</h3>
                 <div class="grid gap-4 md:grid-cols-3">
                   
@@ -269,7 +389,7 @@
               </div>
 
               <!-- SSL/TLS Security Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-green-500/20">
+              <div id="ssl-security" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-green-500/20">
                 <h3 class="text-xl font-semibold text-green-400 mb-4">🔒 SSL/TLS & Security</h3>
                 <div class="grid gap-4 md:grid-cols-2">
                   
@@ -317,7 +437,7 @@
               </div>
 
               <!-- Web Technology Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-purple-500/20">
+              <div id="web-technology" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-purple-500/20">
                 <h3 class="text-xl font-semibold text-purple-400 mb-4">⚙️ Web Technology & Services</h3>
                 <div class="grid gap-4 md:grid-cols-2">
                   
@@ -353,7 +473,7 @@
               </div>
 
               <!-- DNS & Domain Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-cyan-500/20">
+              <div id="dns-domain" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-cyan-500/20">
                 <h3 class="text-xl font-semibold text-cyan-400 mb-4">🌐 DNS & Domain Intelligence</h3>
                 <div class="grid gap-4 md:grid-cols-3">
                   
@@ -379,7 +499,7 @@
               </div>
 
               <!-- Organizational Conditions -->
-              <div class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-6 border border-orange-500/20">
+              <div id="organizational" class="bg-gradient-to-r from-slate-900/50 to-slate-800/50 rounded-xl p-4 sm:p-6 border border-orange-500/20">
                 <h3 class="text-xl font-semibold text-orange-400 mb-4">🏢 Organizational Intelligence</h3>
                 <div class="grid gap-4 md:grid-cols-2">
                   
@@ -418,12 +538,12 @@
           </div>
 
           <!-- Analytics & Monitoring -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Analytics & Monitoring Endpoints</h2>
-            <div class="grid gap-6 md:grid-cols-2">
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Analytics & Monitoring Endpoints</h2>
+            <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
               
               <!-- Trends Analysis -->
-              <div class="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-xl p-6 border border-pink-500/20">
+              <div class="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-xl p-4 sm:p-6 border border-pink-500/20">
                 <h3 class="text-xl font-semibold text-pink-400 mb-4">📊 Request Trends</h3>
                 <div class="space-y-3">
                   <div class="bg-black/30 rounded-lg p-3">
@@ -459,7 +579,7 @@
               </div>
 
               <!-- Live Monitoring -->
-              <div class="bg-gradient-to-br from-cyan-900/30 to-cyan-800/30 rounded-xl p-6 border border-cyan-500/20">
+              <div class="bg-gradient-to-br from-cyan-900/30 to-cyan-800/30 rounded-xl p-4 sm:p-6 border border-cyan-500/20">
                 <h3 class="text-xl font-semibold text-cyan-400 mb-4">🔴 Live Monitoring</h3>
                 <div class="space-y-3">
                   <div class="bg-black/30 rounded-lg p-3">
@@ -496,15 +616,15 @@
           </div>
 
           <!-- Advanced Integration Examples -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Real-World Integration Examples</h2>
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Real-World Integration Examples</h2>
             
             <!-- Security Research -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">🔍 Security Research Workflows</h3>
-              <div class="grid gap-4 md:grid-cols-2">
+            <div id="security-research" class="mb-4 sm:mb-6">
+              <h3 class="text-lg font-semibold text-emerald-400 mb-3 sm:mb-4">🔍 Security Research Workflows</h3>
+              <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-emerald-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-emerald-500/20">
                   <h4 class="font-medium text-white mb-3">Certificate Authority Analysis</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -522,7 +642,7 @@
                   </div>
                 </div>
 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-emerald-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-emerald-500/20">
                   <h4 class="font-medium text-white mb-3">Infrastructure Reconnaissance</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -544,11 +664,11 @@
             </div>
 
             <!-- Compliance Monitoring -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-blue-400 mb-4">📋 Compliance & Monitoring</h3>
-              <div class="grid gap-4 md:grid-cols-2">
+            <div id="compliance-monitoring" class="mb-4 sm:mb-6">
+              <h3 class="text-lg font-semibold text-blue-400 mb-3 sm:mb-4">📋 Compliance & Monitoring</h3>
+              <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-blue-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-blue-500/20">
                   <h4 class="font-medium text-white mb-3">Geographic Compliance</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -566,7 +686,7 @@
                   </div>
                 </div>
 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-blue-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-blue-500/20">
                   <h4 class="font-medium text-white mb-3">Service Monitoring</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -588,11 +708,11 @@
             </div>
 
             <!-- Data Science & Analytics -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 Data Science & Analytics</h3>
-              <div class="grid gap-4 md:grid-cols-2">
+            <div id="data-analytics" class="mb-4 sm:mb-6">
+              <h3 class="text-lg font-semibold text-purple-400 mb-3 sm:mb-4">📊 Data Science & Analytics</h3>
+              <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-purple-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-purple-500/20">
                   <h4 class="font-medium text-white mb-3">Market Intelligence</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -610,7 +730,7 @@
                   </div>
                 </div>
 
-                <div class="bg-slate-900/30 rounded-xl p-4 border border-purple-500/20">
+                <div class="bg-slate-900/30 rounded-xl p-3 sm:p-4 border border-purple-500/20">
                   <h4 class="font-medium text-white mb-3">Trend Analysis</h4>
                   <div class="space-y-2 text-sm">
                     <div class="bg-black/50 rounded p-2">
@@ -633,13 +753,13 @@
           </div>
 
           <!-- API Response Examples -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Complete Response Format Reference</h2>
+          <div id="api-response" class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Complete Response Format Reference</h2>
             
             <!-- Standard Domain Response -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-amber-400 mb-4">Standard Domain Record Response</h3>
-              <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+            <div class="mb-4 sm:mb-6">
+              <h3 class="text-lg font-semibold text-amber-400 mb-3 sm:mb-4">Standard Domain Record Response</h3>
+              <div class="bg-slate-900/50 rounded-xl p-3 sm:p-4 border border-slate-700/50">
                 <pre class="text-emerald-300 text-sm overflow-x-auto"><code>{
   "results": [
     {
@@ -804,9 +924,9 @@
             </div>
 
             <!-- Trends Response Example -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-pink-400 mb-4">Analytics Trends Response</h3>
-              <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+            <div class="mb-4 sm:mb-6">
+              <h3 class="text-lg font-semibold text-pink-400 mb-3 sm:mb-4">Analytics Trends Response</h3>
+              <div class="bg-slate-900/50 rounded-xl p-3 sm:p-4 border border-slate-700/50">
                 <pre class="text-emerald-300 text-sm overflow-x-auto"><code>{
   "trends": [
     {
@@ -851,29 +971,29 @@
           </div>
 
           <!-- Quick Start Guide -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-white mb-6">Quick Start Guide</h2>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div id="quick-start" class="mb-6 sm:mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Quick Start Guide</h2>
+            <div class="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
               
-              <div class="bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-xl p-4 border border-emerald-500/20">
+              <div class="bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-xl p-3 sm:p-4 border border-emerald-500/20">
                 <div class="text-emerald-400 font-semibold mb-2">1. Basic Search</div>
                 <code class="text-emerald-300 text-sm">/query/google.com</code>
                 <div class="text-slate-400 text-xs mt-2">Start with simple domain queries</div>
               </div>
 
-              <div class="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-xl p-4 border border-blue-500/20">
+              <div class="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-xl p-3 sm:p-4 border border-blue-500/20">
                 <div class="text-blue-400 font-semibold mb-2">2. Filter by ASN</div>
                 <code class="text-blue-300 text-sm">/match/asn:13335</code>
                 <div class="text-slate-400 text-xs mt-2">Find Cloudflare-hosted domains</div>
               </div>
 
-              <div class="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-4 border border-purple-500/20">
+              <div class="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-3 sm:p-4 border border-purple-500/20">
                 <div class="text-purple-400 font-semibold mb-2">3. Geographic Search</div>
                 <code class="text-purple-300 text-sm">/match/country:US</code>
                 <div class="text-slate-400 text-xs mt-2">US-hosted infrastructure</div>
               </div>
 
-              <div class="bg-gradient-to-br from-amber-500/10 to-amber-600/10 rounded-xl p-4 border border-amber-500/20">
+              <div class="bg-gradient-to-br from-amber-500/10 to-amber-600/10 rounded-xl p-3 sm:p-4 border border-amber-500/20">
                 <div class="text-amber-400 font-semibold mb-2">4. Analyze Trends</div>
                 <code class="text-amber-300 text-sm">/trends/requests</code>
                 <div class="text-slate-400 text-xs mt-2">Monitor API usage patterns</div>
@@ -881,24 +1001,24 @@
 
             </div>
             
-            <div class="mt-6 text-center">
+            <div class="mt-4 sm:mt-6 text-center">
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a 
                   href="https://api.netscanner.io/dns?page=1&page_size=5"
                   target="_blank"
-                  class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
                 >
                   🚀 Try Live API
                 </a>
                 <NuxtLink 
                   to="/docs/api" 
-                  class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
                 >
                   📖 API Documentation
                 </NuxtLink>
                 <NuxtLink 
                   to="/live/scan" 
-                  class="inline-flex items-center gap-2 border border-emerald-400/50 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  class="inline-flex items-center gap-2 border border-emerald-400/50 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
                 >
                   🔍 Live Scanner
                 </NuxtLink>
@@ -910,14 +1030,15 @@
           <div class="text-center">
             <nuxt-link 
               to="/docs/api" 
-              class="inline-flex items-center gap-2 bg-gradient-to-r from-cosmic-aurora to-sky-500 hover:from-cosmic-aurora/80 hover:to-sky-500/80 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-glow"
+              class="inline-flex items-center gap-2 bg-gradient-to-r from-cosmic-aurora to-sky-500 hover:from-cosmic-aurora/80 hover:to-sky-500/80 text-white font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-glow"
             >
               ← Back to API Documentation
             </nuxt-link>
           </div>
 
+          </div>
         </div>
-      </section>
+      </div>
     </div>
     <navfooter></navfooter>
   </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
     <navheader></navheader>
-    <div class="container mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div class="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
         <!-- Sidebar -->
         <div class="lg:col-span-1">
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-6 sticky top-8">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-4 sm:p-6 sticky top-8">
             <nav>
-              <div class="mb-6">
+              <div class="mb-4 sm:mb-6">
                 <h2 class="text-lg font-semibold text-white">API Documentation</h2>
               </div>
               <ul class="space-y-2">
@@ -75,7 +75,7 @@
                   </ul>
                 </li>
                 <li>
-                  <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-4">Examples</div>
+                  <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-3 sm:mt-4">Examples</div>
                   <ul class="ml-4 space-y-1">
                     <li>
                       <NuxtLink 
@@ -102,25 +102,25 @@
 
         <!-- Main Content -->
         <div class="lg:col-span-3">
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8">
-            <h1 class="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-4 sm:p-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               NetScanner API Documentation
             </h1>
             
             <!-- Introduction -->
-            <div class="bg-slate-800/50 rounded-lg p-6 mb-8 border border-purple-500/10">
+            <div class="bg-slate-800/50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 border border-purple-500/10">
               <p class="text-gray-300 mb-4">
                 NetScanner provides a comprehensive REST API for network reconnaissance, DNS analysis, and infrastructure discovery. 
                 Built with FastAPI and powered by MongoDB, it offers real-time insights into internet infrastructure.
               </p>
-              <div class="bg-slate-700/50 rounded p-4 font-mono text-sm">
+              <div class="bg-slate-700/50 rounded p-3 sm:p-4 font-mono text-sm">
                 <div class="text-purple-300 mb-1">Base URL:</div>
                 <div class="text-white">{{ apiUrl }}</div>
               </div>
             </div>
 
             <!-- Authentication & Rate Limits -->
-            <div class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-6 mb-8">
+            <div class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6 mb-6 sm:mb-8">
               <h2 class="text-2xl font-semibold text-white mb-4">Authentication & Limits</h2>
               <div class="space-y-4">
                 <div>
@@ -139,15 +139,15 @@
             </div>
 
             <!-- Core Endpoints -->
-            <div class="space-y-8">
+            <div class="space-y-6 sm:space-y-8">
               <!-- Query Endpoint -->
-              <div id="query-endpoint" class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-6">
+              <div id="query-endpoint" class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6">
                 <h2 class="text-2xl font-semibold text-white mb-4 flex items-center">
                   <div class="w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3"></div>
                   Domain Search
                 </h2>
                 <div class="space-y-4">
-                  <div class="bg-slate-900/50 rounded p-4">
+                  <div class="bg-slate-900/50 rounded p-3 sm:p-4">
                     <div class="flex items-center gap-2 mb-2">
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/query/{domain}</code>
@@ -163,13 +163,13 @@
               </div>
 
               <!-- DNS Endpoint -->
-              <div id="dns-endpoint" class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-6">
+              <div id="dns-endpoint" class="bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6">
                 <h2 class="text-2xl font-semibold text-white mb-4 flex items-center">
                   <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full mr-3"></div>
                   DNS Records
                 </h2>
                 <div class="space-y-4">
-                  <div class="bg-slate-900/50 rounded p-4">
+                  <div class="bg-slate-900/50 rounded p-3 sm:p-4">
                     <div class="flex items-center gap-2 mb-2">
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/dns</code>
@@ -358,12 +358,12 @@
             </div>
 
             <!-- Response Format -->
-            <div class="mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-6">
+            <div class="mt-6 sm:mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6">
               <h2 class="text-2xl font-semibold text-white mb-4">Response Format</h2>
               <div class="space-y-4">
                 <div>
                   <h3 class="text-lg font-medium text-purple-300 mb-2">Standard Response</h3>
-                  <div class="bg-slate-900/50 rounded p-4 font-mono text-sm">
+                  <div class="bg-slate-900/50 rounded p-3 sm:p-4 font-mono text-sm">
                     <pre class="text-gray-300">{
   "results": [...],
   "pagination": {
@@ -377,7 +377,7 @@
                 </div>
                 <div>
                   <h3 class="text-lg font-medium text-purple-300 mb-2">Error Response</h3>
-                  <div class="bg-slate-900/50 rounded p-4 font-mono text-sm">
+                  <div class="bg-slate-900/50 rounded p-3 sm:p-4 font-mono text-sm">
                     <pre class="text-gray-300">{
   "detail": "No documents found"
 }</pre>
@@ -387,14 +387,14 @@
             </div>
 
             <!-- Examples -->
-            <div class="mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-6">
-              <h2 class="text-2xl font-semibold text-white mb-6">Interactive Examples</h2>
+            <div class="mt-6 sm:mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6">
+              <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Interactive Examples</h2>
               
               <!-- Basic Search Examples -->
-              <div class="mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">Basic Domain & Infrastructure Search</h3>
-                <div class="grid gap-4 md:grid-cols-2">
-                  <div class="bg-slate-900/50 rounded p-4">
+              <div class="mb-6 sm:mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Basic Domain & Infrastructure Search</h3>
+                <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
+                  <div class="bg-slate-900/50 rounded p-3 sm:p-4">
                     <div class="text-gray-300 text-sm mb-2">Search for Google domains:</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
                       {{ apiUrl }}/query/google.com
@@ -429,9 +429,9 @@
               </div>
 
               <!-- Advanced Match Conditions -->
-              <div class="mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">Advanced Match Conditions</h3>
-                <div class="grid gap-4 md:grid-cols-2">
+              <div class="mb-6 sm:mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Advanced Match Conditions</h3>
+                <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Domains on Google's ASN:</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
@@ -483,9 +483,9 @@
               </div>
 
               <!-- Network Analysis -->
-              <div class="mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">Network Analysis & Topology</h3>
-                <div class="grid gap-4 md:grid-cols-2">
+              <div class="mb-6 sm:mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Network Analysis & Topology</h3>
+                <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Subnet analysis:</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
@@ -521,9 +521,9 @@
               </div>
 
               <!-- Specialized Match Conditions -->
-              <div class="mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">Specialized Security & Certificate Analysis</h3>
-                <div class="grid gap-4 md:grid-cols-2">
+              <div class="mb-6 sm:mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Specialized Security & Certificate Analysis</h3>
+                <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Certificate authorities:</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
@@ -575,9 +575,9 @@
               </div>
 
               <!-- API Analytics -->
-              <div class="mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">API Analytics & Monitoring</h3>
-                <div class="grid gap-4 md:grid-cols-2">
+              <div class="mb-6 sm:mb-8">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">API Analytics & Monitoring</h3>
+                <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Request trends (hourly):</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
@@ -613,9 +613,9 @@
               </div>
 
               <!-- Sample Response -->
-              <div class="mb-6">
-                <h3 class="text-lg font-medium text-purple-300 mb-4">Sample Response Structure</h3>
-                <div class="bg-slate-900/50 rounded p-4 font-mono text-sm">
+              <div class="mb-4 sm:mb-6">
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Sample Response Structure</h3>
+                <div class="bg-slate-900/50 rounded p-3 sm:p-4 font-mono text-sm">
                   <pre class="text-gray-300 whitespace-pre-wrap overflow-x-auto">{
   "results": [
     {
@@ -677,7 +677,7 @@
               </div>
 
               <!-- Try It Out -->
-              <div class="text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-6 border border-purple-500/20">
+              <div class="text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-4 sm:p-6 border border-purple-500/20">
                 <h3 class="text-lg font-semibold text-white mb-3">Ready to Explore?</h3>
                 <p class="text-gray-300 mb-4">
                   Start with these endpoints or build your own queries using the comprehensive API reference above.
@@ -686,13 +686,13 @@
                   <a 
                     :href="`${apiUrl}/dns?page=1&page_size=5`"
                     target="_blank"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
                   >
                     🚀 Try Live API
                   </a>
                   <NuxtLink 
                     to="/docs/examples/status" 
-                    class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                    class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
                   >
                     📖 View More Examples
                   </NuxtLink>

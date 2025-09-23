@@ -184,14 +184,10 @@ export default defineNuxtConfig({
         },
         {
           'http-equiv': 'Content-Security-Policy',
-          content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; connect-src 'self' https: wss:; font-src 'self' data:; object-src 'none'; media-src 'self'; frame-src 'none';"
+          content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' img-src 'self' data: https:; connect-src 'self' https: wss: http://localhost:8000 ws://localhost:8000; font-src 'self' data:; object-src 'none'; media-src 'self'; frame-src 'none';"
         }
       ],
       link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://unpkg.com/vis-network/styles/vis-network.min.css'
-        },
         {
           rel: 'apple-touch-icon',
           sizes: '60x60',
@@ -270,22 +266,22 @@ export default defineNuxtConfig({
   plugins: ['~/plugins/env', '~/plugins/store', '~/plugins/router', '~/plugins/persistedState.client'],
   runtimeConfig: {
     public: {
-      BASE_URL: process.env.BASE_URL || '',
-      FAQ_URL: process.env.FAQ_URL || '#',
-      HELP_URL: process.env.HELP_URL || '#',
-      SUPPORT_URL: process.env.SUPPORT_URL || '#',
-      API_URL: process.env.API_URL || '',
-      DOCS_URL: process.env.DOCS_URL || '#',
-      ISSUES_URL: process.env.ISSUES_URL || '#',
-      TWITTER_URL: process.env.TWITTER_URL || '#',
-      FACEBOOK_URL: process.env.FACEBOOK_URL || '#',
-      LINKEDIN_URL: process.env.LINKEDIN_URL || '#',
-      ABOUT_URL: process.env.ABOUT_URL || '#',
-      CONTACT_URL: process.env.CONTACT_URL || '#',
-      BLOG_URL: process.env.BLOG_URL || '#',
-      TERMS_URL: process.env.TERMS_URL || '#',
-      PRIVACY_URL: process.env.PRIVACY_URL || '#',
-      IMPRINT_URL: process.env.IMPRINT_URL || '#'
+      BASE_URL: process.env.BASE_URL,
+      FAQ_URL: process.env.FAQ_URL,
+      HELP_URL: process.env.HELP_URL,
+      SUPPORT_URL: process.env.SUPPORT_URL,
+      API_URL: process.env.API_URL,
+      DOCS_URL: process.env.DOCS_URL,
+      ISSUES_URL: process.env.ISSUES_URL,
+      TWITTER_URL: process.env.TWITTER_URL,
+      FACEBOOK_URL: process.env.FACEBOOK_URL,
+      LINKEDIN_URL: process.env.LINKEDIN_URL,
+      ABOUT_URL: process.env.ABOUT_URL,
+      CONTACT_URL: process.env.CONTACT_URL,
+      BLOG_URL: process.env.BLOG_URL,
+      TERMS_URL: process.env.TERMS_URL,
+      PRIVACY_URL: process.env.PRIVACY_URL,
+      IMPRINT_URL: process.env.IMPRINT_URL
     }
   }
 })

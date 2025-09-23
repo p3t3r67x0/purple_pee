@@ -5,7 +5,7 @@
         <!-- Logo -->
         <div class="flex w-full items-center justify-between md:w-auto">
           <nuxt-link to="/" class="flex items-center gap-2 text-slate-100 transition hover:drop-shadow-neon">
-            <span class="hidden text-xl font-light tracking-[0.2em] sm:inline bg-gradient-to-r from-slate-100 via-white to-slate-200 bg-clip-text text-transparent transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)] cursor-pointer">
+            <span class="text-xl font-light tracking-[0.2em] bg-gradient-to-r from-slate-100 via-white to-slate-200 bg-clip-text text-transparent transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)] cursor-pointer">
               <span class="relative">
                 Net<span class="text-slate-100">Scanner</span>
                 <span class="absolute -inset-1 bg-gradient-to-r from-white/10 via-slate-100/15 to-white/10 blur-sm -z-10 rounded-lg opacity-75"></span>
