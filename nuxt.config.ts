@@ -3,12 +3,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   app: {
     head: {
-      script: [
-        {
-          src: 'https://unpkg.com/vis-network/standalone/umd/vis-network.min.js',
-          body: true
-        }
-      ],
       meta: [
         { charset: 'utf-8' },
         {
@@ -184,7 +178,7 @@ export default defineNuxtConfig({
         },
         {
           'http-equiv': 'Content-Security-Policy',
-          content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' img-src 'self' data: https:; connect-src 'self' https: wss: http://localhost:8000 ws://localhost:8000; font-src 'self' data:; object-src 'none'; media-src 'self'; frame-src 'none';"
+          content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https: wss: http://localhost:8000 ws://localhost:8000; font-src 'self' data:; object-src 'none'; media-src 'self'; frame-src 'none';"
         }
       ],
       link: [

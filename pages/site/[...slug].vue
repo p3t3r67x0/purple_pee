@@ -43,14 +43,6 @@ const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPa
   buildQueryTitle: (decodedQuery) => ['site', decodedQuery]
 })
 
-useHead(() => ({
-  script: [
-    {
-      src: 'https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'
-    }
-  ]
-}))
-
 const fetchGraph = async (query: string) => {
   if (!query) {
     graphResults.value = { nodes: [], edges: [] }
