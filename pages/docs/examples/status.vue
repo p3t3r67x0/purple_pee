@@ -1064,8 +1064,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import Modal from '@/components/Modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { useMainStore } from '~/stores/main'
 
 const mainStore = useMainStore()
