@@ -367,6 +367,26 @@ const renderGraph = async () => {
         })
     )
 
+  const getNavigationUrl = (d: any) => {
+    const label = d.label || ''
+    switch (d.nodeType) {
+      case 'domain':
+        return `/site/${label}`
+      case 'ipv4':
+        return `/ipv4/${label}`
+      case 'ipv6':
+        return `/ipv6/${label}`
+      case 'ssl':
+        // Replace *. with '' for SSL domains
+        const cleanDomain = label.replace(/^\*\./, '')
+        return `/site/${cleanDomain}`
+      case 'ns':
+        return `/site/${label}`
+      default:
+        return null
+    }
+  }
+
   const label = container
     .append('g')
     .selectAll('text')
@@ -378,6 +398,29 @@ const renderGraph = async () => {
     .attr('dy', -20)
     .attr('text-anchor', 'middle')
     .attr('fill', palette.label)
+    .style('cursor', (d: any) => getNavigationUrl(d) ? 'pointer' : 'default')
+    .style('text-decoration', (d: any) => getNavigationUrl(d) ? 'underline' : 'none')
+    .style('text-decoration-color', (d: any) => getNavigationUrl(d) ? 'rgba(255,255,255,0.5)' : 'none')
+    .on('click', (event: any, d: any) => {
+      const url = getNavigationUrl(d)
+      if (url) {
+        window.location.href = url
+      }
+    })
+    .on('mouseover', (event: any, d: any) => {
+      if (getNavigationUrl(d)) {
+        d3.select(event.target)
+          .style('fill', '#60a5fa')
+          .style('text-decoration-color', 'rgba(96,165,250,0.8)')
+      }
+    })
+    .on('mouseout', (event: any, d: any) => {
+      if (getNavigationUrl(d)) {
+        d3.select(event.target)
+          .style('fill', palette.label)
+          .style('text-decoration-color', 'rgba(255,255,255,0.5)')
+      }
+    })
 
   d3.selectAll('.graph-tooltip').remove()
 
