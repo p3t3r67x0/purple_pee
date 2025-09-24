@@ -256,7 +256,18 @@ export default defineNuxtConfig({
     }
   },
   css: [],
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/content'],
+  // @ts-expect-error: content module runtime key not in base Nuxt types without module augmentation loaded
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-dark',
+        dark: 'github-dark',
+        light: 'github-light'
+      },
+      preload: ['bash', 'json', 'typescript', 'javascript', 'html', 'css', 'markdown']
+    }
+  },
   plugins: ['~/plugins/env', '~/plugins/store', '~/plugins/router', '~/plugins/persistedState.client'],
   runtimeConfig: {
     public: {

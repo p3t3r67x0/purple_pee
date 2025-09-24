@@ -492,9 +492,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Tailwind CSS** - For the utility-first CSS framework
 - **Vue.js Community** - For the reactive framework
 - **Contributors** - For all the contributions and feedback
-
----
-
 <div align="center">
 
 **Made with ❤️ by the NetScanner Team**
@@ -502,3 +499,63 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [Website](https://netscanner.io) • [API](https://api.netscanner.io) • [Documentation](https://netscanner.io/docs) • [GitHub](https://github.com/p3t3r67x0/purple_pee)
 
 </div>
+
+##  Blog System (Nuxt Content)
+
+The blog now uses **@nuxt/content**. Add new tutorials by creating markdown files under `content/blog/`:
+
+```bash
+content/blog/my-new-tutorial.md
+```
+
+Front‑matter example:
+
+```markdown
+---
+slug: my-new-tutorial
+title: My New Tutorial
+description: Short summary.
+date: 2025-09-24
+author: NetScanner Team
+tags:
+    - dns
+    - analysis
+published: true
+---
+
+# Heading
+Your content...
+```
+
+### Features
+- Automatic routing: `/blog/{slug}`
+- Auto indexing on `/blog`
+- Tag + search filtering (client-side)
+- Per‑post SEO injection (`useHead`)
+- Markdown rendered via `<ContentRenderer />`
+
+### Legacy Parser Removal
+The former custom parser (`utils/markdown.ts`) and in‑memory post source (`data/posts.ts`) are deprecated. All tutorials must now be authored as markdown under `content/blog/`. You can delete those legacy files safely if they still exist.
+
+### Enhancements (Future)
+- Shiki-based code highlighting already enabled
+- Generate RSS & JSON Feed dynamically
+- Add tag pages (`/blog/tag/{tag}`)
+- Add sitemap extension for blog posts
+1. Create a server API route (e.g. `server/routes/rss.get.ts`)
+2. Import `getSortedPosts()` and build XML with real publication dates
+3. Set correct `Content-Type: application/rss+xml`
+4. Optionally add caching headers
+
+### Roadmap Ideas
+
+- Add scrollspy highlighting for headings
+- Add author profiles & avatars
+- Tag landing pages (`/blog/tag/{tag}`)
+- Full‑text search (client-side index or server endpoint)
+- Incremental static regeneration / payload caching
+- Dynamic RSS + JSON Feed
+
+---
+
+Feel free to open a PR if you want to enhance the blog system.

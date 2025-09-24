@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-cosmic-haze via-[#1a1440] to-black text-white">
+    <!-- Navigation Header -->
+    <NavHeader />
+    
     <!-- Background Pattern -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/10 to-transparent"></div>
     <div class="absolute inset-0 bg-grid-white/[0.02] [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
@@ -232,6 +235,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Navigation Footer -->
+    <NavFooter />
   </div>
 </template>
 

@@ -18,6 +18,132 @@ body {
   min-height: 100vh;
 }
 
+/* Prose (markdown) customization */
+.prose {
+  @apply text-slate-300; /* base text color */
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply font-semibold tracking-tight text-slate-100;
+}
+
+.prose h2 {
+  @apply mt-12 mb-4 border-b border-white/10 pb-2;
+}
+
+.prose a {
+  @apply text-purple-300 no-underline font-medium transition-colors;
+}
+.prose a:hover {
+  @apply text-pink-300;
+}
+
+.prose pre {
+  @apply bg-[#140f27] rounded-xl border border-white/10 p-4 shadow-lg shadow-purple-900/30;
+}
+.prose code {
+  @apply text-pink-200 font-medium;
+}
+.prose :not(pre)>code {
+  @apply bg-[#201838] px-1.5 py-0.5 rounded-md border border-white/10;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-purple-400/40 bg-purple-500/10 backdrop-blur-sm px-6 py-4 italic rounded-r-xl text-slate-200;
+}
+
+.prose ul>li::marker {
+  @apply text-purple-300;
+}
+.prose ol>li::marker {
+  @apply text-pink-300;
+}
+
+.prose table {
+  @apply w-full border-collapse text-sm overflow-hidden rounded-xl my-8;
+}
+.prose table thead tr {
+  @apply bg-white/5;
+}
+.prose table th, .prose table td {
+  @apply border border-white/10 px-3 py-2;
+}
+.prose table tbody tr:nth-child(even) {
+  @apply bg-white/5;
+}
+
+.prose img, .prose video {
+  @apply rounded-xl border border-white/10 shadow-md shadow-black/40;
+}
+
+.prose hr {
+  @apply border-none h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent my-12;
+}
+
+.prose strong {
+  @apply text-slate-100 font-semibold;
+}
+
+.prose em {
+  @apply text-slate-200;
+}
+
+.prose .lead {
+  @apply text-slate-200 font-normal;
+}
+
+.prose p {
+  @apply leading-relaxed;
+}
+
+.prose figure figcaption {
+  @apply text-center text-xs text-slate-400 mt-2;
+}
+
+.prose kbd {
+  @apply bg-[#201838] text-slate-200 border border-white/10 rounded-md px-2 py-0.5 text-[11px] shadow-inner shadow-black/40;
+}
+
+.prose del {
+  @apply text-slate-400;
+}
+
+.prose details {
+  @apply bg-[#140f27] rounded-xl border border-white/10 px-5 py-4 shadow-lg shadow-black/40;
+}
+.prose details[open] > summary {
+  @apply mb-2;
+}
+.prose summary {
+  @apply cursor-pointer text-purple-300 font-medium;
+}
+
+.prose sup, .prose sub {
+  @apply text-purple-300;
+}
+
+.prose mark {
+  @apply bg-purple-500/30 text-white px-1 rounded;
+}
+
+.prose tbody tr:hover {
+  @apply bg-purple-500/5;
+}
+
+.prose::-webkit-scrollbar {
+  width: 10px;
+}
+.prose::-webkit-scrollbar-track {
+  background: transparent;
+}
+.prose::-webkit-scrollbar-thumb {
+  background: rgba(127, 90, 240, 0.35);
+  border-radius: 9999px;
+}
+.prose::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 118, 164, 0.55);
+}
+
 :root {
   color-scheme: dark;
 }
