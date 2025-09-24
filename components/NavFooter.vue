@@ -225,11 +225,11 @@
               </a>
             </li>
             <li>
-              <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/changelog" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Changelog
-              </a>
+              </nuxt-link>
             </li>
             <li>
               <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
