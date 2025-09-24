@@ -256,18 +256,18 @@
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/about" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 About Us
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/contact" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Contact
-              </a>
+              </nuxt-link>
             </li>
             <li>
               <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
