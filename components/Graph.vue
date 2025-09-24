@@ -65,7 +65,7 @@ const palette = {
   mainNode: '#2cb1bc',
   domainNode: '#5c1bb3',
   ipv4Node: '#e11d48',
-  ipv6Node: '#7c3aed',
+  ipv6Node: '#f97316',
   defaultNode: '#6b7280',
   nodeStroke: 'rgba(255,255,255,0.85)',
   linkStroke: 'rgba(255,255,255,0.28)',
@@ -398,24 +398,13 @@ const renderGraph = async () => {
     return baseOffset + extraOffset
   }
 
-  // Truncate long labels for better spacing
-  const truncateLabel = (label: string) => {
-    if (nodeCount > 30 && label.length > 15) {
-      return label.substring(0, 12) + '...'
-    }
-    if (nodeCount > 50 && label.length > 10) {
-      return label.substring(0, 8) + '...'
-    }
-    return label
-  }
-
   const label = container
     .append('g')
     .selectAll('text')
     .data(nodes)
     .enter()
     .append('text')
-    .text((d: any) => truncateLabel(d.label))
+    .text((d: any) => d.label)
     .attr('font-size', getLabelFontSize())
     .attr('dy', (d: any) => getLabelOffset(d))
     .attr('text-anchor', 'middle')
