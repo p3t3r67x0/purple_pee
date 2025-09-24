@@ -1,28 +1,21 @@
 <template>
-<div class="min-h-screen flex flex-col">
-  <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <list
-      v-bind:results="results"
-      :total="pagination.total"
-      :currentPage="currentPage"
-      :hasNext="pagination.has_next"
-      :hasPrevious="pagination.has_previous"
-      @nextPage="nextPage"
-      @prevPage="prevPage"
-    ></list>
+  <div class="min-h-screen flex flex-col">
+    <div class="flex-grow">
+      <Navbar />
+      <Modal v-if="modalVisible"></Modal>
+      <List v-bind:results="results" :total="pagination.total" :currentPage="currentPage" :hasNext="pagination.has_next"
+        :hasPrevious="pagination.has_previous" @nextPage="nextPage" @prevPage="prevPage"></List>
+    </div>
+    <Footer />
   </div>
-  <navfooter></navfooter>
-</div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Modal from '@/components/modal.vue'
-import List from '@/components/ipv4-list.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Modal from '@/components/Modal.vue'
+import List from '@/components/Ipv4List.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'

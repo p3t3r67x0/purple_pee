@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-screen flex-col">
     <div class="flex-grow">
-      <navheader />
+      <Navbar />
 
       <main class="mx-auto max-w-7xl space-y-8 px-3 py-8 sm:space-y-12 sm:px-6 sm:py-16 lg:px-8">
         <section
@@ -84,17 +84,17 @@
           </p>
         </section>
 
-        <filter-help />
+        <FilterHelp />
       </main>
     </div>
-    <navfooter />
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
-import FilterHelp from '/components/filter.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
+import FilterHelp from '@/components/Filter.vue'
 import SearchBar from '@/components/SearchBar.vue'
 
 useHead(() => ({

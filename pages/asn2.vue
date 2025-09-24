@@ -1,18 +1,18 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <asn v-bind:results="results"></asn>
+    <Navbar />
+    <Asn v-bind:results="results"></Asn>
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Asn from '@/components/asn2.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Asn from '@/components/Asn2.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useNuxtApp } from '#app'
 

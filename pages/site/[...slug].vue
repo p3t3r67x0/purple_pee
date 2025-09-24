@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <div class="flex-grow">
-      <navheader></navheader>
-      <modal v-if="modalVisible"></modal>
-      <dns
+      <Navbar />
+      <Modal v-if="modalVisible"></Modal>
+      <Dns
         v-if="!loadingIndicator"
         v-bind:results="results"
         :currentPage="currentPage"
@@ -12,22 +12,22 @@
         :hasPrevious="pagination.has_previous"
         @nextPage="nextPage"
         @prevPage="prevPage"
-      ></dns>
+      ></Dns>
       <client-only>
-        <graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults"></graph>
+        <Graph v-if="!loadingIndicator && showGraph" v-bind:results="graphResults" ></Graph>
       </client-only>
     </div>
-    <navfooter></navfooter>
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import Dns from '@/components/dns.vue'
-import Modal from '@/components/modal.vue'
-import Graph from '@/components/graph.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Dns from '@/components/Dns.vue'
+import Modal from '@/components/Modal.vue'
+import Graph from '@/components/Graph.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 import { useNuxtApp } from '#app'
@@ -54,16 +54,25 @@ const fetchGraph = async (query: string) => {
     const response = await fetchJson(`${$env.API_URL}/graph/${query}`, { trackLoading: false })
     const payload = isPaginatedResponse<any>(response) ? response.results : response
 
-    if (Array.isArray(payload) && payload.length > 0) {
+    // Check if the API response already has the correct format
+    if (payload && payload.nodes && payload.edges) {
+      // API response is already in the correct format
+      graphResults.value = {
+        nodes: payload.nodes,
+        edges: payload.edges
+      }
+      showGraph.value = payload.nodes.length > 0 && payload.edges.length > 0
+    } else if (Array.isArray(payload) && payload.length > 0) {
+      // Fallback for old format
       const raw = payload[0] as { main: Array<{ domain: string }>; all: Array<{ domain: string }> }
       const nodes = [
-        ...raw.main.map((m, index) => ({ id: `main-${index}`, label: m.domain })),
-        ...raw.all.map((a, index) => ({ id: `all-${index}`, label: a.domain }))
+        ...raw.main.map((m, index) => ({ id: `main-${index}`, label: m.domain, type: 'domain' })),
+        ...raw.all.map((a, index) => ({ id: `all-${index}`, label: a.domain, type: 'domain' }))
       ]
-      const edges = raw.all.map((_, index) => ({ from: 'main-0', to: `all-${index}` }))
+      const edges = raw.all.map((_, index) => ({ source: 'main-0', target: `all-${index}`, type: 'related' }))
 
       graphResults.value = { nodes, edges }
-      showGraph.value = true
+      showGraph.value = nodes.length > 0
     } else {
       graphResults.value = { nodes: [], edges: [] }
       showGraph.value = false

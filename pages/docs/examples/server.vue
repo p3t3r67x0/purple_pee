@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
-    <navheader></navheader>
+    <Navbar />
     <div class="container mx-auto px-4 py-8">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <!-- Sidebar -->
@@ -12,10 +12,8 @@
               </div>
               <ul class="space-y-2">
                 <li>
-                  <NuxtLink 
-                    to="/docs/api" 
-                    class="block py-2 px-3 text-sm text-gray-300 hover:text-purple-300 hover:bg-purple-500/10 rounded-md transition-colors"
-                  >
+                  <NuxtLink to="/docs/api"
+                    class="block py-2 px-3 text-sm text-gray-300 hover:text-purple-300 hover:bg-purple-500/10 rounded-md transition-colors">
                     Overview
                   </NuxtLink>
                 </li>
@@ -23,18 +21,14 @@
                   <div class="text-purple-300 text-sm font-medium py-2 px-3">Examples</div>
                   <ul class="ml-4 space-y-1">
                     <li>
-                      <NuxtLink 
-                        to="/docs/examples/status" 
-                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
-                      >
+                      <NuxtLink to="/docs/examples/status"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         Match Conditions
                       </NuxtLink>
                     </li>
                     <li>
-                      <NuxtLink 
-                        to="/docs/examples/server" 
-                        class="block py-1 px-2 text-sm bg-purple-500/20 text-purple-300 rounded font-medium"
-                      >
+                      <NuxtLink to="/docs/examples/server"
+                        class="block py-1 px-2 text-sm bg-purple-500/20 text-purple-300 rounded font-medium">
                         Server Examples
                       </NuxtLink>
                     </li>
@@ -48,14 +42,15 @@
         <!-- Main Content -->
         <div class="lg:col-span-3">
           <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8">
-            <h1 class="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1
+              class="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               API Usage Examples
             </h1>
-            
+
             <div class="bg-slate-800/50 rounded-lg p-6 mb-8 border border-purple-500/10">
               <p class="text-gray-300 mb-4">
-                Practical examples demonstrating how to use the NetScanner API for network reconnaissance, 
-                infrastructure analysis, and security research. These examples show real-world usage patterns 
+                Practical examples demonstrating how to use the NetScanner API for network reconnaissance,
+                infrastructure analysis, and security research. These examples show real-world usage patterns
                 and advanced filtering techniques.
               </p>
             </div>
@@ -68,8 +63,8 @@
                   Network Discovery
                 </h2>
                 <div class="space-y-4">
-                  <div v-for="example in networkExamples" :key="example.title" 
-                       class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
+                  <div v-for="example in networkExamples" :key="example.title"
+                    class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
                     <h3 class="text-lg font-medium text-white mb-2">{{ example.title }}</h3>
                     <p class="text-gray-300 text-sm mb-3">{{ example.description }}</p>
                     <div class="bg-slate-800/50 rounded p-3 font-mono text-xs">
@@ -79,11 +74,8 @@
                       <div class="text-gray-300">{{ example.useCase }}</div>
                     </div>
                     <div class="mt-3">
-                      <a 
-                        :href="`${apiUrl}${example.endpoint}`" 
-                        target="_blank"
-                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                      >
+                      <a :href="`${apiUrl}${example.endpoint}`" target="_blank"
+                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors">
                         Try this example →
                       </a>
                     </div>
@@ -98,8 +90,8 @@
                   SSL Certificate Analysis
                 </h2>
                 <div class="space-y-4">
-                  <div v-for="example in sslExamples" :key="example.title" 
-                       class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
+                  <div v-for="example in sslExamples" :key="example.title"
+                    class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
                     <h3 class="text-lg font-medium text-white mb-2">{{ example.title }}</h3>
                     <p class="text-gray-300 text-sm mb-3">{{ example.description }}</p>
                     <div class="bg-slate-800/50 rounded p-3 font-mono text-xs">
@@ -109,11 +101,8 @@
                       <div class="text-gray-300">{{ example.useCase }}</div>
                     </div>
                     <div class="mt-3">
-                      <a 
-                        :href="`${apiUrl}${example.endpoint}`" 
-                        target="_blank"
-                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                      >
+                      <a :href="`${apiUrl}${example.endpoint}`" target="_blank"
+                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors">
                         Try this example →
                       </a>
                     </div>
@@ -128,8 +117,8 @@
                   Geographic & ISP Analysis
                 </h2>
                 <div class="space-y-4">
-                  <div v-for="example in geoExamples" :key="example.title" 
-                       class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
+                  <div v-for="example in geoExamples" :key="example.title"
+                    class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
                     <h3 class="text-lg font-medium text-white mb-2">{{ example.title }}</h3>
                     <p class="text-gray-300 text-sm mb-3">{{ example.description }}</p>
                     <div class="bg-slate-800/50 rounded p-3 font-mono text-xs">
@@ -139,11 +128,8 @@
                       <div class="text-gray-300">{{ example.useCase }}</div>
                     </div>
                     <div class="mt-3">
-                      <a 
-                        :href="`${apiUrl}${example.endpoint}`" 
-                        target="_blank"
-                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                      >
+                      <a :href="`${apiUrl}${example.endpoint}`" target="_blank"
+                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors">
                         Try this example →
                       </a>
                     </div>
@@ -158,8 +144,8 @@
                   Infrastructure & Services
                 </h2>
                 <div class="space-y-4">
-                  <div v-for="example in infraExamples" :key="example.title" 
-                       class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
+                  <div v-for="example in infraExamples" :key="example.title"
+                    class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
                     <h3 class="text-lg font-medium text-white mb-2">{{ example.title }}</h3>
                     <p class="text-gray-300 text-sm mb-3">{{ example.description }}</p>
                     <div class="bg-slate-800/50 rounded p-3 font-mono text-xs">
@@ -169,11 +155,8 @@
                       <div class="text-gray-300">{{ example.useCase }}</div>
                     </div>
                     <div class="mt-3">
-                      <a 
-                        :href="`${apiUrl}${example.endpoint}`" 
-                        target="_blank"
-                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                      >
+                      <a :href="`${apiUrl}${example.endpoint}`" target="_blank"
+                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors">
                         Try this example →
                       </a>
                     </div>
@@ -188,8 +171,8 @@
                   Advanced Query Patterns
                 </h2>
                 <div class="space-y-4">
-                  <div v-for="example in advancedExamples" :key="example.title" 
-                       class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
+                  <div v-for="example in advancedExamples" :key="example.title"
+                    class="bg-slate-900/50 rounded-lg p-4 border border-purple-500/5">
                     <h3 class="text-lg font-medium text-white mb-2">{{ example.title }}</h3>
                     <p class="text-gray-300 text-sm mb-3">{{ example.description }}</p>
                     <div class="bg-slate-800/50 rounded p-3 font-mono text-xs">
@@ -199,11 +182,8 @@
                       <div class="text-gray-300">{{ example.useCase }}</div>
                     </div>
                     <div class="mt-3">
-                      <a 
-                        :href="`${apiUrl}${example.endpoint}`" 
-                        target="_blank"
-                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors"
-                      >
+                      <a :href="`${apiUrl}${example.endpoint}`" target="_blank"
+                        class="text-purple-400 hover:text-purple-300 text-sm transition-colors">
                         Try this example →
                       </a>
                     </div>
@@ -242,7 +222,7 @@
         </div>
       </div>
     </div>
-    <navfooter></navfooter>
+    <Footer />
   </div>
 </template>
 

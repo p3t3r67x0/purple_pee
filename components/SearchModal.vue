@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, watch } from 'vue'
-import Search from '@/components/search.vue'
+import Search from '@/components/Search.vue'
 
 const props = defineProps<{ open: boolean }>()
 const emit = defineEmits<{ close: [] }>()

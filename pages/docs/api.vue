@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
-    <navheader></navheader>
+    <NavHeader />
     <div class="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
         <!-- Sidebar -->
@@ -12,10 +12,8 @@
               </div>
               <ul class="space-y-2">
                 <li>
-                  <NuxtLink 
-                    to="/docs/api" 
-                    class="block py-2 px-3 text-sm bg-purple-500/20 text-purple-300 rounded font-medium"
-                  >
+                  <NuxtLink to="/docs/api"
+                    class="block py-2 px-3 text-sm bg-purple-500/20 text-purple-300 rounded font-medium">
                     Overview
                   </NuxtLink>
                 </li>
@@ -23,52 +21,62 @@
                   <div class="text-purple-300 text-sm font-medium py-2 px-3">Core Endpoints</div>
                   <ul class="ml-4 space-y-1">
                     <li>
-                      <a href="#query-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#query-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /query
                       </a>
                     </li>
                     <li>
-                      <a href="#dns-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#dns-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /dns
                       </a>
                     </li>
                     <li>
-                      <a href="#match-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#match-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /match
                       </a>
                     </li>
                     <li>
-                      <a href="#ipv4-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#ipv4-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /ipv4
                       </a>
                     </li>
                     <li>
-                      <a href="#asn-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#asn-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /asn
                       </a>
                     </li>
                     <li>
-                      <a href="#cidr-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#cidr-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /cidr
                       </a>
                     </li>
                     <li>
-                      <a href="#ip-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#ip-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /ip
                       </a>
                     </li>
                     <li>
-                      <a href="#subnet-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#subnet-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /subnet
                       </a>
                     </li>
                     <li>
-                      <a href="#graph-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#graph-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /graph
                       </a>
                     </li>
                     <li>
-                      <a href="#trends-endpoint" class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
+                      <a href="#trends-endpoint"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         /trends
                       </a>
                     </li>
@@ -78,18 +86,14 @@
                   <div class="text-purple-300 text-sm font-medium py-2 px-3 mt-3 sm:mt-4">Examples</div>
                   <ul class="ml-4 space-y-1">
                     <li>
-                      <NuxtLink 
-                        to="/docs/examples/status" 
-                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
-                      >
+                      <NuxtLink to="/docs/examples/status"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         Match Conditions
                       </NuxtLink>
                     </li>
                     <li>
-                      <NuxtLink 
-                        to="/docs/examples/server" 
-                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded"
-                      >
+                      <NuxtLink to="/docs/examples/server"
+                        class="block py-1 px-2 text-sm text-gray-400 hover:text-purple-300 rounded">
                         Server Examples
                       </NuxtLink>
                     </li>
@@ -103,14 +107,16 @@
         <!-- Main Content -->
         <div class="lg:col-span-3">
           <div class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-4 sm:p-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1
+              class="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               NetScanner API Documentation
             </h1>
-            
+
             <!-- Introduction -->
             <div class="bg-slate-800/50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 border border-purple-500/10">
               <p class="text-gray-300 mb-4">
-                NetScanner provides a comprehensive REST API for network reconnaissance, DNS analysis, and infrastructure discovery. 
+                NetScanner provides a comprehensive REST API for network reconnaissance, DNS analysis, and
+                infrastructure discovery.
                 Built with FastAPI and powered by MongoDB, it offers real-time insights into internet infrastructure.
               </p>
               <div class="bg-slate-700/50 rounded p-3 sm:p-4 font-mono text-sm">
@@ -125,7 +131,8 @@
               <div class="space-y-4">
                 <div>
                   <h3 class="text-lg font-medium text-purple-300 mb-2">Authentication</h3>
-                  <p class="text-gray-300">Currently, the API is publicly accessible without authentication. Rate limiting may apply.</p>
+                  <p class="text-gray-300">Currently, the API is publicly accessible without authentication. Rate
+                    limiting may apply.</p>
                 </div>
                 <div>
                   <h3 class="text-lg font-medium text-purple-300 mb-2">Pagination</h3>
@@ -152,7 +159,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/query/{domain}</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Full-text search across DNS records for domain names and related information.</p>
+                    <p class="text-gray-300 text-sm mb-3">Full-text search across DNS records for domain names and
+                      related information.</p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Parameters:</strong></div>
                       <div>• <code>domain</code> (path): Domain name to search for</div>
@@ -174,9 +182,11 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/dns</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Retrieve the most recently updated DNS records with comprehensive domain information.</p>
+                    <p class="text-gray-300 text-sm mb-3">Retrieve the most recently updated DNS records with
+                      comprehensive domain information.</p>
                     <div class="text-xs text-gray-400 space-y-1">
-                      <div><strong>Returns:</strong> A/AAAA records, CNAME, MX, NS records, WHOIS data, GeoIP information</div>
+                      <div><strong>Returns:</strong> A/AAAA records, CNAME, MX, NS records, WHOIS data, GeoIP
+                        information</div>
                     </div>
                   </div>
                 </div>
@@ -229,7 +239,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/ipv4</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Get the most recent IPv4 address records and their associated domains.</p>
+                    <p class="text-gray-300 text-sm mb-3">Get the most recent IPv4 address records and their associated
+                      domains.</p>
                   </div>
                 </div>
               </div>
@@ -246,7 +257,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/asn</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Retrieve Autonomous System Number information and associated networks.</p>
+                    <p class="text-gray-300 text-sm mb-3">Retrieve Autonomous System Number information and associated
+                      networks.</p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Query Parameters:</strong></div>
                       <div>• <code>country_code</code> (optional): Filter by country code</div>
@@ -267,7 +279,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/cidr</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Get the latest CIDR network ranges and associated ASN information.</p>
+                    <p class="text-gray-300 text-sm mb-3">Get the latest CIDR network ranges and associated ASN
+                      information.</p>
                   </div>
                 </div>
               </div>
@@ -284,7 +297,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/ip/{ipv4}</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Detailed information about a specific IPv4 address including domains and reverse DNS.</p>
+                    <p class="text-gray-300 text-sm mb-3">Detailed information about a specific IPv4 address including
+                      domains and reverse DNS.</p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Parameters:</strong></div>
                       <div>• <code>ipv4</code> (path): IPv4 address to lookup</div>
@@ -305,7 +319,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/subnet/{network}/{prefix}</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Analyze specific subnet ranges and discover associated domains.</p>
+                    <p class="text-gray-300 text-sm mb-3">Analyze specific subnet ranges and discover associated
+                      domains.</p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Example:</strong> <code>/subnet/192.168.1/24</code></div>
                     </div>
@@ -325,7 +340,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/graph/{domain}</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Discover related domains through SSL certificates, DNS records, and infrastructure connections.</p>
+                    <p class="text-gray-300 text-sm mb-3">Discover related domains through SSL certificates, DNS
+                      records, and infrastructure connections.</p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Relations:</strong> SSL SANs, CNAME records, MX records, nameservers</div>
                     </div>
@@ -345,7 +361,8 @@
                       <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-mono">GET</span>
                       <code class="text-white">/trends/requests</code>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">Analyze API usage patterns and request statistics over time.</p>
+                    <p class="text-gray-300 text-sm mb-3">Analyze API usage patterns and request statistics over time.
+                    </p>
                     <div class="text-xs text-gray-400 space-y-1">
                       <div><strong>Parameters:</strong></div>
                       <div>• <code>interval</code>: minute, hour, day</div>
@@ -389,7 +406,7 @@
             <!-- Examples -->
             <div class="mt-6 sm:mt-8 bg-slate-800/30 rounded-lg border border-purple-500/10 p-4 sm:p-6">
               <h2 class="text-2xl font-semibold text-white mb-4 sm:mb-6">Interactive Examples</h2>
-              
+
               <!-- Basic Search Examples -->
               <div class="mb-6 sm:mb-8">
                 <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Basic Domain & Infrastructure Search</h3>
@@ -401,7 +418,7 @@
                     </div>
                     <div class="text-xs text-gray-400">Full-text search across DNS records</div>
                   </div>
-                  
+
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Latest DNS records:</div>
                     <div class="font-mono text-xs text-purple-300 break-all mb-3">
@@ -522,7 +539,8 @@
 
               <!-- Specialized Match Conditions -->
               <div class="mb-6 sm:mb-8">
-                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Specialized Security & Certificate Analysis</h3>
+                <h3 class="text-lg font-medium text-purple-300 mb-3 sm:mb-4">Specialized Security & Certificate Analysis
+                </h3>
                 <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
                   <div class="bg-slate-900/50 rounded p-4">
                     <div class="text-gray-300 text-sm mb-2">Certificate authorities:</div>
@@ -677,23 +695,19 @@
               </div>
 
               <!-- Try It Out -->
-              <div class="text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-4 sm:p-6 border border-purple-500/20">
+              <div
+                class="text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-4 sm:p-6 border border-purple-500/20">
                 <h3 class="text-lg font-semibold text-white mb-3">Ready to Explore?</h3>
                 <p class="text-gray-300 mb-4">
                   Start with these endpoints or build your own queries using the comprehensive API reference above.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                  <a 
-                    :href="`${apiUrl}/dns?page=1&page_size=5`"
-                    target="_blank"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
-                  >
+                  <a :href="`${apiUrl}/dns?page=1&page_size=5`" target="_blank"
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">
                     🚀 Try Live API
                   </a>
-                  <NuxtLink 
-                    to="/docs/examples/status" 
-                    class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
-                  >
+                  <NuxtLink to="/docs/examples/status"
+                    class="inline-flex items-center gap-2 border border-purple-400/50 bg-purple-400/10 hover:bg-purple-400/20 text-purple-300 font-medium px-4 sm:px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">
                     📖 View More Examples
                   </NuxtLink>
                 </div>
@@ -703,13 +717,14 @@
         </div>
       </div>
     </div>
-    <navfooter></navfooter>
+    <NavFooter />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useNuxtApp } from '#imports'
+import NavHeader from '../../components/NavHeader.vue'
 
 const { $env } = useNuxtApp()
 const apiUrl = computed(() => $env?.API_URL)

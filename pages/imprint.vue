@@ -1,17 +1,17 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <imprint></imprint>
+    <Navbar />
+    <Imprint />
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
-import Imprint from '@/components/imprint.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
+import Imprint from '@/components/Imprint.vue'
 
 useHead(() => ({
   title: 'Legal Disclaimer & Imprint | NetScanner Privacy Policy',

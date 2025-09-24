@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <div class="flex-grow">
-      <navheader></navheader>
-      <modal v-if="modalVisible"></modal>
+      <Navbar />
+      <Modal v-if="modalVisible"></Modal>
       <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <div class="glass-panel rounded-3xl border border-white/10 bg-black/80 shadow-glass">
           <div class="flex items-center space-x-2 border-b border-white/10 bg-black/40 px-5 py-3 rounded-t-3xl">
@@ -17,17 +17,10 @@
                 <span class="text-emerald-300">netscanner@live</span>:~$ live-scan
                 <span v-if="decodedDomain" class="ml-2 text-white/80">{{ decodedDomain }}</span>
                 <span v-else class="ml-2">
-                  <input
-                    ref="domainInput"
-                    v-model="inputDomain"
-                    @keyup.enter="startScanWithInput"
+                  <input ref="domainInput" v-model="inputDomain" @keyup.enter="startScanWithInput"
                     @blur="handleInputBlur"
                     class="bg-transparent text-white/80 border-none outline-none placeholder-white/50 caret-emerald-300 min-w-[200px]"
-                    placeholder="waiting-for-target"
-                    type="text"
-                    autocomplete="off"
-                    spellcheck="false"
-                  />
+                    placeholder="waiting-for-target" type="text" autocomplete="off" spellcheck="false" />
                 </span>
               </p>
 
@@ -64,15 +57,15 @@
         </div>
       </section>
     </div>
-    <navfooter></navfooter>
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import Modal from '@/components/modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Modal from '@/components/Modal.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { useSlugParam } from '~/composables/useSlugParam'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'

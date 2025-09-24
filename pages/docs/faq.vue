@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <div class="flex-grow">
-      <navheader></navheader>
-      <modal v-if="modalVisible"></modal>
-      
+      <Navbar />
+      <Modal v-if="modalVisible"></Modal>
+
       <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
         <!-- Header -->
         <div class="text-center mb-12">
@@ -20,27 +20,33 @@
             <!-- General Questions -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-cosmic-aurora to-sky-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🌐</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-cosmic-aurora to-sky-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🌐</span>
                 General Questions
               </h2>
               <div class="space-y-4">
-                
+
                 <div class="faq-item">
                   <button @click="toggleFaq('what-is-netscanner')" class="faq-question">
                     <span>What is NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['what-is-netscanner'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['what-is-netscanner'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['what-is-netscanner']" class="faq-answer">
-                    <p>NetScanner is a comprehensive open-source internet intelligence platform that provides deep insights into network infrastructure, security configurations, and digital assets. It combines multiple reconnaissance tools into a single, user-friendly interface for analyzing domains, IP addresses, ASNs, DNS records, SSL certificates, and more.</p>
+                    <p>NetScanner is a comprehensive open-source internet intelligence platform that provides deep
+                      insights into network infrastructure, security configurations, and digital assets. It combines
+                      multiple reconnaissance tools into a single, user-friendly interface for analyzing domains, IP
+                      addresses, ASNs, DNS records, SSL certificates, and more.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('who-uses-netscanner')" class="faq-question">
                     <span>Who uses NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['who-uses-netscanner'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['who-uses-netscanner'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -60,24 +66,31 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('is-netscanner-free')" class="faq-question">
                     <span>Is NetScanner free to use?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['is-netscanner-free'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['is-netscanner-free'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['is-netscanner-free']" class="faq-answer">
-                    <p>Yes! NetScanner is completely free and open-source. You can use it without any registration, subscription fees, or hidden costs. The platform is funded by the community and maintained by volunteers who believe in open internet intelligence.</p>
+                    <p>Yes! NetScanner is completely free and open-source. You can use it without any registration,
+                      subscription fees, or hidden costs. The platform is funded by the community and maintained by
+                      volunteers who believe in open internet intelligence.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('legal-ethical')" class="faq-question">
                     <span>Is it legal and ethical to use NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['legal-ethical'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['legal-ethical'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['legal-ethical']" class="faq-answer">
-                    <p>NetScanner only accesses publicly available information and follows responsible disclosure practices. All data comes from legitimate sources like public DNS records, certificate transparency logs, and published WHOIS databases. However, users are responsible for ensuring their use complies with local laws and organizational policies.</p>
+                    <p>NetScanner only accesses publicly available information and follows responsible disclosure
+                      practices. All data comes from legitimate sources like public DNS records, certificate
+                      transparency logs, and published WHOIS databases. However, users are responsible for ensuring
+                      their use complies with local laws and organizational policies.</p>
                   </div>
                 </div>
 
@@ -87,7 +100,8 @@
             <!-- Features & Capabilities -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🔍</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🔍</span>
                 Features & Capabilities
               </h2>
               <div class="space-y-4">
@@ -95,7 +109,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('what-can-scan')" class="faq-question">
                     <span>What can I scan with NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['what-can-scan'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['what-can-scan'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -116,24 +131,30 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('live-scan-feature')" class="faq-question">
                     <span>How does the Live Scan feature work?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['live-scan-feature'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['live-scan-feature'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['live-scan-feature']" class="faq-answer">
-                    <p>Live Scan performs real-time reconnaissance of a target domain or IP address. It establishes a WebSocket connection to our scanning infrastructure and provides instant results including DNS resolution, port scanning, SSL certificate analysis, and HTTP header inspection. Results are streamed live to your browser as they're discovered.</p>
+                    <p>Live Scan performs real-time reconnaissance of a target domain or IP address. It establishes a
+                      WebSocket connection to our scanning infrastructure and provides instant results including DNS
+                      resolution, port scanning, SSL certificate analysis, and HTTP header inspection. Results are
+                      streamed live to your browser as they're discovered.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('match-conditions')" class="faq-question">
                     <span>What are Match Conditions and how do I use them?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['match-conditions'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['match-conditions'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['match-conditions']" class="faq-answer">
-                    <p>Match Conditions allow advanced filtering of domains based on specific criteria. Use the format <code>/match/{condition}:{query}</code> where condition can be:</p>
+                    <p>Match Conditions allow advanced filtering of domains based on specific criteria. Use the format
+                      <code>/match/{condition}:{query}</code> where condition can be:</p>
                     <ul class="list-disc list-inside mt-2 space-y-1">
                       <li><code>asn:13335</code> - Find domains on specific ASN</li>
                       <li><code>country:US</code> - Find domains in specific country</li>
@@ -147,7 +168,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('data-freshness')" class="faq-question">
                     <span>How fresh is the data in NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['data-freshness'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['data-freshness'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -169,7 +191,8 @@
             <!-- Technical Questions -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">⚙️</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">⚙️</span>
                 Technical Questions
               </h2>
               <div class="space-y-4">
@@ -177,19 +200,25 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('api-access')" class="faq-question">
                     <span>Does NetScanner have an API?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['api-access'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['api-access'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['api-access']" class="faq-answer">
-                    <p>Yes! NetScanner provides a comprehensive RESTful API that mirrors all web interface functionality. The API supports JSON responses, pagination, filtering, and real-time WebSocket connections for live scanning. Check our <nuxt-link to="/docs/api" class="text-cosmic-aurora hover:underline">API Documentation</nuxt-link> for complete details and examples.</p>
+                    <p>Yes! NetScanner provides a comprehensive RESTful API that mirrors all web interface
+                      functionality. The API supports JSON responses, pagination, filtering, and real-time WebSocket
+                      connections for live scanning. Check our <nuxt-link to="/docs/api"
+                        class="text-cosmic-aurora hover:underline">API Documentation</nuxt-link> for complete details
+                      and examples.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('rate-limits')" class="faq-question">
                     <span>Are there any rate limits or usage restrictions?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['rate-limits'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['rate-limits'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -207,19 +236,24 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('self-hosting')" class="faq-question">
                     <span>Can I self-host NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['self-hosting'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['self-hosting'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['self-hosting']" class="faq-answer">
-                    <p>Absolutely! NetScanner is open-source and can be self-hosted. The complete source code is available on GitHub, including both the frontend interface and backend API. We provide Docker containers and detailed deployment guides for various environments including cloud platforms and on-premises infrastructure.</p>
+                    <p>Absolutely! NetScanner is open-source and can be self-hosted. The complete source code is
+                      available on GitHub, including both the frontend interface and backend API. We provide Docker
+                      containers and detailed deployment guides for various environments including cloud platforms and
+                      on-premises infrastructure.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('browser-compatibility')" class="faq-question">
                     <span>Which browsers are supported?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['browser-compatibility'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['browser-compatibility'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -231,7 +265,8 @@
                       <li><strong>Safari:</strong> Version 14+</li>
                       <li><strong>Edge:</strong> Version 90+</li>
                     </ul>
-                    <p class="mt-2">Live Scan features require WebSocket support, which is available in all supported browsers.</p>
+                    <p class="mt-2">Live Scan features require WebSocket support, which is available in all supported
+                      browsers.</p>
                   </div>
                 </div>
 
@@ -241,7 +276,8 @@
             <!-- Privacy & Security -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-red-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🔒</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-red-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🔒</span>
                 Privacy & Security
               </h2>
               <div class="space-y-4">
@@ -249,7 +285,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('data-collection')" class="faq-question">
                     <span>What data does NetScanner collect about users?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['data-collection'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['data-collection'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -258,7 +295,8 @@
                     <ul class="list-disc list-inside mt-2 space-y-1">
                       <li><strong>No Registration Required:</strong> No personal information stored</li>
                       <li><strong>Basic Analytics:</strong> Anonymous usage statistics for improvement</li>
-                      <li><strong>Search Queries:</strong> Temporarily logged for rate limiting and abuse prevention</li>
+                      <li><strong>Search Queries:</strong> Temporarily logged for rate limiting and abuse prevention
+                      </li>
                       <li><strong>No Tracking:</strong> No persistent user tracking or profiling</li>
                     </ul>
                   </div>
@@ -267,19 +305,23 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('query-logging')" class="faq-question">
                     <span>Are my search queries logged or stored?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['query-logging'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['query-logging'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['query-logging']" class="faq-answer">
-                    <p>Search queries are temporarily logged for operational purposes including rate limiting, abuse prevention, and system optimization. Logs are automatically purged after 30 days and contain no personally identifiable information. We never share or sell query data.</p>
+                    <p>Search queries are temporarily logged for operational purposes including rate limiting, abuse
+                      prevention, and system optimization. Logs are automatically purged after 30 days and contain no
+                      personally identifiable information. We never share or sell query data.</p>
                   </div>
                 </div>
 
                 <div class="faq-item">
                   <button @click="toggleFaq('security-measures')" class="faq-question">
                     <span>What security measures protect NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['security-measures'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['security-measures'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -301,7 +343,8 @@
             <!-- Troubleshooting -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🛠️</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">🛠️</span>
                 Troubleshooting
               </h2>
               <div class="space-y-4">
@@ -309,7 +352,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('live-scan-not-working')" class="faq-question">
                     <span>Live Scan is not working or showing errors</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['live-scan-not-working'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['live-scan-not-working'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -328,7 +372,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('no-results')" class="faq-question">
                     <span>Why am I getting no results for my search?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['no-results'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['no-results'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -336,7 +381,8 @@
                     <p>No results can occur for several reasons:</p>
                     <ul class="list-disc list-inside mt-2 space-y-1">
                       <li><strong>New Domain:</strong> Recently registered domains may not be indexed yet</li>
-                      <li><strong>Private Infrastructure:</strong> Internal/private networks aren't publicly scanned</li>
+                      <li><strong>Private Infrastructure:</strong> Internal/private networks aren't publicly scanned
+                      </li>
                       <li><strong>Typos:</strong> Check spelling and format of your query</li>
                       <li><strong>Data Coverage:</strong> We may not have scanned this target recently</li>
                       <li><strong>Try Live Scan:</strong> Use real-time scanning for immediate results</li>
@@ -347,7 +393,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('slow-performance')" class="faq-question">
                     <span>NetScanner is loading slowly</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['slow-performance'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['slow-performance'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -369,7 +416,8 @@
             <!-- Support & Contact -->
             <div>
               <h2 class="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                <span class="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">💬</span>
+                <span
+                  class="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">💬</span>
                 Support & Contact
               </h2>
               <div class="space-y-4">
@@ -377,7 +425,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('get-help')" class="faq-question">
                     <span>How can I get help or report issues?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['get-help'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['get-help'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -395,7 +444,8 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('contribute')" class="faq-question">
                     <span>How can I contribute to NetScanner?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['contribute'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['contribute'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -415,12 +465,16 @@
                 <div class="faq-item">
                   <button @click="toggleFaq('commercial-use')" class="faq-question">
                     <span>Can I use NetScanner for commercial purposes?</span>
-                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['commercial-use'] }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="faq-icon" :class="{ 'rotate-180': openFaqs['commercial-use'] }"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
                   <div v-if="openFaqs['commercial-use']" class="faq-answer">
-                    <p>Yes! NetScanner can be used for commercial purposes under our open-source license. This includes security consulting, penetration testing, network analysis, and integration into commercial products. For high-volume commercial usage, consider self-hosting or contact us about dedicated infrastructure options.</p>
+                    <p>Yes! NetScanner can be used for commercial purposes under our open-source license. This includes
+                      security consulting, penetration testing, network analysis, and integration into commercial
+                      products. For high-volume commercial usage, consider self-hosting or contact us about dedicated
+                      infrastructure options.</p>
                   </div>
                 </div>
 
@@ -436,17 +490,12 @@
               Can't find what you're looking for? We're here to help you get the most out of NetScanner.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="https://github.com/p3t3r67x0/purple_pee" 
-                target="_blank"
-                class="inline-flex items-center gap-2 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
-              >
+              <a href="https://github.com/p3t3r67x0/purple_pee" target="_blank"
+                class="inline-flex items-center gap-2 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">
                 📚 GitHub Repository
               </a>
-              <nuxt-link 
-                to="/docs/api" 
-                class="inline-flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-              >
+              <nuxt-link to="/docs/api"
+                class="inline-flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm">
                 📖 API Documentation
               </nuxt-link>
             </div>
@@ -455,16 +504,16 @@
         </div>
       </section>
     </div>
-    <navfooter></navfooter>
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import Modal from '@/components/modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Modal from '@/components/Modal.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { useMainStore } from '~/stores/main'
 
 const mainStore = useMainStore()

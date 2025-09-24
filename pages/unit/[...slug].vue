@@ -1,9 +1,9 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <dns
+    <Navbar />
+    <Modal v-if="modalVisible"></Modal>
+    <Dns
       v-if="!loadingIndicator"
       v-bind:results="results"
       :currentPage="currentPage"
@@ -12,17 +12,17 @@
       :hasPrevious="pagination.has_previous"
       @nextPage="nextPage"
       @prevPage="prevPage"
-    ></dns>
+    ></Dns>
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
-import Dns from '@/components/dns.vue'
-import Modal from '@/components/modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Dns from '@/components/Dns.vue'
+import Modal from '@/components/Modal.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { useMatchResultsPage } from '~/composables/useMatchResultsPage'
 
 const { results, currentPage, pagination, modalVisible, loadingIndicator, nextPage, prevPage } = useMatchResultsPage({

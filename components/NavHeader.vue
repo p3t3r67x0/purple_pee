@@ -336,8 +336,8 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import Loading from '@/components/loading.vue'
-import SearchModal from '@/components/search-modal.vue'
+import Loading from '@/components/Loading.vue'
+import SearchModal from '@/components/SearchModal.vue'
 import { useMainStore } from '~/stores/main'
 
 const mainStore = useMainStore()

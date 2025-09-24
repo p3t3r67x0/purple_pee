@@ -1,26 +1,26 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <list
+    <Navbar />
+    <Modal v-if="modalVisible"></Modal>
+    <List
       v-bind:results="results"
       :timeline="timeline"
       :topPaths="topPaths"
       :recentRequests="recentRequests"
       :metadata="metadata"
-    ></list>
+    ></List>
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Modal from '@/components/modal.vue'
-import List from '@/components/trends-list.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Modal from '@/components/Modal.vue'
+import List from '@/components/TrendsList.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'

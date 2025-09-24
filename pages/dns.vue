@@ -1,9 +1,9 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <dns
+    <Navbar />
+    <Modal v-if="modalVisible"></Modal>
+    <Dns
       v-bind:results="results"
       :total="pagination.total"
       :currentPage="currentPage"
@@ -11,18 +11,18 @@
       :hasPrevious="pagination.has_previous"
       @nextPage="nextPage"
       @prevPage="prevPage"
-    ></dns>
+    ></Dns>
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Dns from '@/components/dns.vue'
-import Modal from '@/components/modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Dns from '@/components/Dns.vue'
+import Modal from '@/components/Modal.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { fetchJson, handleFetchError, isPaginatedResponse } from '~/utils/http'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'

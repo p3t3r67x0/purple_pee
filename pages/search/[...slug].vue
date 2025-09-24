@@ -1,20 +1,20 @@
 <template>
 <div class="min-h-screen flex flex-col">
   <div class="flex-grow">
-    <navheader></navheader>
-    <modal v-if="modalVisible"></modal>
-    <dns v-if="!loadingIndicator" v-bind:results="results"></dns>
+    <Navbar />
+    <Modal v-if="modalVisible"></Modal>
+    <Dns v-if="!loadingIndicator" v-bind:results="results"></Dns>
   </div>
-  <navfooter></navfooter>
+  <Footer />
 </div>
 </template>
 
 <script setup lang="ts">
 import { computed, watch } from 'vue'
-import Dns from '@/components/dns.vue'
-import Modal from '@/components/modal.vue'
-import Footer from '@/components/navfooter.vue'
-import Navbar from '@/components/navheader.vue'
+import Dns from '@/components/Dns.vue'
+import Modal from '@/components/Modal.vue'
+import Footer from '@/components/NavFooter.vue'
+import Navbar from '@/components/NavHeader.vue'
 import { useRouter } from '#app'
 import { useMainStore } from '~/stores/main'
 import { storeToRefs } from 'pinia'
