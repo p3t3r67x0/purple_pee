@@ -4,7 +4,7 @@
 
     <main class="flex-grow">
       <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <div class="inline-flex items-center gap-3 mb-6">
               <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
@@ -18,15 +18,14 @@
                 </svg>
               </div>
               <div class="text-left">
-                <h1 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                   NetScanner Changelog
                 </h1>
-                <p class="text-sm uppercase tracking-[0.3em] text-amber-300/80 mt-2">Release notes & platform updates</p>
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80 mt-2">Release notes & platform updates</p>
               </div>
             </div>
             <p class="text-lg text-slate-300 leading-relaxed">
               Stay up to date with the latest improvements, fixes, and enhancements shipped to the NetScanner platform.
-              These release notes are automatically sourced from our public GitHub repository.
             </p>
           </div>
 
@@ -38,7 +37,7 @@
             <div v-else-if="error" class="p-8 sm:p-10 space-y-4 text-center">
               <h2 class="text-2xl font-semibold text-white">We couldn't load the changelog right now</h2>
               <p class="text-slate-300">
-                Something went wrong while fetching the latest updates from GitHub.
+                Something went wrong while loading the latest updates.
                 You can try again in a moment or read the changelog directly on GitHub.
               </p>
               <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -66,7 +65,7 @@
                 <div class="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.3em] text-amber-200/70">
                   <span class="flex items-center gap-2">
                     <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Live from GitHub
+                    Synced with GitHub
                   </span>
                   <a :href="githubChangelogUrl" target="_blank" class="flex items-center gap-2 text-amber-200 hover:text-white transition">
                     <span>Open on GitHub</span>
@@ -75,10 +74,16 @@
                     </svg>
                   </a>
                 </div>
-
-                <pre class="max-h-[70vh] overflow-y-auto whitespace-pre-wrap leading-relaxed text-sm text-slate-200/90 font-mono bg-black/20 rounded-2xl p-6 border border-white/5 shadow-inner">
-{{ changelogText }}
-                </pre>
+                <div v-if="changelog" class="rounded-2xl border border-white/5 bg-black/15 p-6 shadow-inner">
+                  <ContentRenderer
+                    :value="changelog"
+                    class="prose prose-invert max-w-none prose-headings:text-amber-200 prose-h2:text-3xl prose-h3:text-2xl prose-strong:text-amber-200 prose-a:text-amber-300 hover:prose-a:text-amber-200 prose-li:marker:text-amber-300 prose-hr:border-amber-500/30"
+                  />
+                </div>
+                <div v-else class="p-6 text-center text-slate-300 border border-white/5 rounded-2xl bg-black/15 shadow-inner">
+                  <h3 class="text-lg font-semibold text-white">No changelog entries yet</h3>
+                  <p class="mt-2 text-sm">Check back soon, or follow the GitHub link above for the latest updates.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -95,22 +100,14 @@ import Footer from '@/components/NavFooter.vue'
 import Navbar from '@/components/NavHeader.vue'
 const githubChangelogUrl = 'https://github.com/p3t3r67x0/purple_pee/blob/main/CHANGELOG.md'
 
-const { data, pending, error, refresh } = await useAsyncData('repo-changelog', async () => {
-  try {
-    const response = await $fetch<string>('https://raw.githubusercontent.com/p3t3r67x0/purple_pee/main/CHANGELOG.md', {
-      responseType: 'text',
-      headers: {
-        Accept: 'text/plain'
-      }
-    })
-    return response?.trim() ?? ''
-  } catch (err) {
-    console.error('Failed to load changelog', err)
-    throw err
-  }
+declare const useHead: any, useAsyncData: any, queryContent: any
+
+const { data: changelogDoc, pending, error, refresh } = await useAsyncData('changelog-entry', async () => {
+  const doc = await queryContent('/changelog').findOne()
+  return doc ?? null
 })
 
-const changelogText = computed(() => data.value ?? '')
+const changelog = computed(() => changelogDoc.value)
 
 useHead(() => ({
   title: 'NetScanner Changelog & Release Notes',
