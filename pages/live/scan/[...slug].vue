@@ -40,10 +40,22 @@
                 </template>
 
                 <template v-else-if="status === 'complete'">
-                  <div class="space-y-2">
-                    <p><span class="text-slate-400">payload</span>:</p>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between gap-3">
+                      <p class="text-slate-400"><span>payload</span>:</p>
+                      <button
+                        type="button"
+                        class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 px-3 py-1.5 text-xs font-medium text-emerald-200 transition hover:border-emerald-300 hover:text-emerald-100"
+                        @click="copyPayload"
+                      >
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8a2 2 0 012 2v9a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zm12-3H8a2 2 0 00-2 2v1m12-3a2 2 0 012 2v9m0-11h-2a2 2 0 00-2 2v1" />
+                        </svg>
+                        <span>{{ copyLabel }}</span>
+                      </button>
+                    </div>
                     <pre
-                      class="max-h-[32rem] overflow-auto rounded-xl border border-emerald-400/20 bg-black/60 p-4 text-xs text-emerald-200 whitespace-pre-wrap">{{ formattedResult }}</pre>
+                      class="rounded-xl border border-emerald-400/20 bg-black/60 p-4 text-xs text-emerald-200 whitespace-pre-wrap">{{ formattedResult }}</pre>
                     <p class="text-slate-500"># reload to trigger a new live request.</p>
                   </div>
                 </template>
@@ -83,6 +95,7 @@ const lastUpdated = ref<number | null>(null)
 const socket = ref<WebSocket | null>(null)
 const inputDomain = ref<string>('')
 const domainInput = ref<HTMLInputElement | null>(null)
+const copyLabel = ref('Copy payload')
 
 const rawDomain = computed(() => slug.value)
 const decodedDomain = computed(() => {
@@ -103,6 +116,35 @@ const formattedResult = computed(() => {
     return String(result.value)
   }
 })
+
+let copyTimeout: ReturnType<typeof setTimeout> | null = null
+
+const copyPayload = async () => {
+  const text = formattedResult.value
+  if (!text) {
+    copyLabel.value = 'Nothing to copy'
+    resetCopyLabel()
+    return
+  }
+
+  try {
+    await navigator.clipboard.writeText(text)
+    copyLabel.value = 'Copied!'
+  } catch {
+    copyLabel.value = 'Copy failed'
+  }
+
+  resetCopyLabel()
+}
+
+const resetCopyLabel = () => {
+  if (copyTimeout) {
+    clearTimeout(copyTimeout)
+  }
+  copyTimeout = setTimeout(() => {
+    copyLabel.value = 'Copy payload'
+  }, 2000)
+}
 
 const statusLabel = computed(() => {
   switch (status.value) {
@@ -261,6 +303,9 @@ onMounted(() => {
 onBeforeUnmount(() => {
   stopWatching?.()
   socket.value?.close()
+  if (copyTimeout) {
+    clearTimeout(copyTimeout)
+  }
 })
 
 useHead(() => ({
