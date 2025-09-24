@@ -1,11 +1,6 @@
 <template>
-  <div
-    id="xhr"
-    class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"
-  >
-    <div
-      class="glass-panel rounded-3xl border border-white/10 px-5 pb-6 pt-5 shadow-glass sm:px-8"
-    >
+  <div id="xhr" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="glass-panel rounded-3xl border border-white/10 px-5 pb-6 pt-5 shadow-glass sm:px-8">
       <h2 class="text-lg font-semibold uppercase tracking-[0.35em] text-white/60">
         Relationship graph
       </h2>
@@ -30,7 +25,7 @@
             <span class="text-white/80">IPv6</span>
           </div>
         </div>
-        
+
         <!-- Zoom Instructions -->
         <div class="absolute bottom-4 left-4 z-10 bg-black/60 backdrop-blur-sm rounded-lg p-3 text-xs text-white/70">
           <div class="font-semibold mb-1 text-white/90">Navigation</div>
@@ -38,13 +33,8 @@
           <div>• Click + drag: Pan around</div>
           <div>• Use controls (top-right)</div>
         </div>
-        
-        <svg
-          ref="svg"
-          class="h-[32rem] w-full sm:h-[36rem] lg:h-[40rem]"
-          width="100%"
-          height="640"
-        ></svg>
+
+        <svg ref="svg" class="h-[32rem] w-full sm:h-[36rem] lg:h-[40rem]" width="100%" height="640"></svg>
       </div>
     </div>
   </div>
@@ -133,7 +123,7 @@ const renderGraph = async () => {
     nodeDegree.set(link.source, (nodeDegree.get(link.source) || 0) + 1)
     nodeDegree.set(link.target, (nodeDegree.get(link.target) || 0) + 1)
   })
-  
+
   let maxDegree = 0
   let mainNodeId: string | number | null = null
   nodeDegree.forEach((degree, nodeId) => {
@@ -142,7 +132,7 @@ const renderGraph = async () => {
       mainNodeId = nodeId
     }
   })
-  
+
   // Mark the main node
   nodes.forEach(node => {
     node.isMainNode = node.id === mainNodeId
@@ -262,12 +252,20 @@ const renderGraph = async () => {
     .attr('d', 'M0,-5L10,0L0,5')
     .attr('fill', palette.linkStroke)
 
+  // Dynamic parameters based on number of nodes
+  const nodeCount = nodes.length
+  const linkDistance = Math.max(100, Math.min(200, 50 + nodeCount * 2))
+  const chargeStrength = Math.max(-800, -200 - nodeCount * 8)
+  const collisionRadius = Math.max(40, 25 + Math.sqrt(nodeCount) * 2)
+
   const simulation = d3
     .forceSimulation(nodes)
-    .force('link', d3.forceLink(links).id((d: any) => d.id).distance(80))
-    .force('charge', d3.forceManyBody().strength(-400))
+    .force('link', d3.forceLink(links).id((d: any) => d.id).distance(linkDistance))
+    .force('charge', d3.forceManyBody().strength(chargeStrength))
     .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius(30))
+    .force('collision', d3.forceCollide().radius(collisionRadius))
+    .force('x', d3.forceX().strength(0.1))
+    .force('y', d3.forceY().strength(0.1))
 
   const getEdgeColor = (d: any) => {
     switch (d.edgeType) {
@@ -387,15 +385,39 @@ const renderGraph = async () => {
     }
   }
 
+  // Dynamic label parameters based on node count
+  const getLabelFontSize = () => {
+    if (nodeCount > 50) return 10
+    if (nodeCount > 20) return 11
+    return 12
+  }
+
+  const getLabelOffset = (d: any) => {
+    const baseOffset = d.isMainNode ? -22 : -18
+    const extraOffset = nodeCount > 30 ? -4 : 0
+    return baseOffset + extraOffset
+  }
+
+  // Truncate long labels for better spacing
+  const truncateLabel = (label: string) => {
+    if (nodeCount > 30 && label.length > 15) {
+      return label.substring(0, 12) + '...'
+    }
+    if (nodeCount > 50 && label.length > 10) {
+      return label.substring(0, 8) + '...'
+    }
+    return label
+  }
+
   const label = container
     .append('g')
     .selectAll('text')
     .data(nodes)
     .enter()
     .append('text')
-    .text((d: any) => d.label)
-    .attr('font-size', 12)
-    .attr('dy', -20)
+    .text((d: any) => truncateLabel(d.label))
+    .attr('font-size', getLabelFontSize())
+    .attr('dy', (d: any) => getLabelOffset(d))
     .attr('text-anchor', 'middle')
     .attr('fill', palette.label)
     .style('cursor', (d: any) => getNavigationUrl(d) ? 'pointer' : 'default')
@@ -467,7 +489,7 @@ const renderGraph = async () => {
 
     label
       .attr('x', (d: any) => d.x)
-      .attr('y', (d: any) => d.y - (d.isMainNode ? 20 : 14))
+      .attr('y', (d: any) => d.y + getLabelOffset(d))
   })
 }
 
