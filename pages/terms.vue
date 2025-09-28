@@ -1,5 +1,9 @@
 <template>
-  <TermsOfService />
+  <div>
+    <NavHeader />
+    <TermsOfService />
+    <NavFooter />
+  </div>
 </template>
 
 <script setup>
@@ -13,7 +17,7 @@ useHead({
     },
     {
       name: 'robots',
-      content: 'index, follow'
+      content: 'noindex, nofollow'
     }
   ]
 })
