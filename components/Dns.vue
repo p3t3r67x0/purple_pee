@@ -26,69 +26,77 @@
               </svg>
             </a>
           </div>
-          <div v-if="result.a_record" class="mt-3 md:mt-4">
+          <div v-if="getStringRecords(result.a_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">A records</strong>
             <ul class="font-mono text-sm sm:text-base font-light">
-              <li v-for="a_record in result.a_record">
+              <li v-for="a_record in getStringRecords(result.a_record)" :key="`a-${a_record}`">
                 <nuxt-link v-bind:to="generateLink('ipv4', a_record)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == a_record && prefix == 'ipv4' }"
                   class="text-cosmic-aurora hover:text-cosmic-rose">{{ a_record }}</nuxt-link>
               </li>
             </ul>
           </div>
-          <div v-if="result.aaaa_record" class="mt-3 md:mt-4">
+          <div v-if="getStringRecords(result.aaaa_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">AAAA records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="aaaa_record in result.aaaa_record">
+              <li v-for="aaaa_record in getStringRecords(result.aaaa_record)" :key="`aaaa-${aaaa_record}`">
                 <nuxt-link v-bind:to="generateLink('ipv6', aaaa_record)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == aaaa_record && prefix == 'ipv6' }"
                   class="text-cosmic-aurora hover:text-cosmic-rose">{{ aaaa_record }}</nuxt-link>
               </li>
             </ul>
           </div>
-          <div v-if="result.cname_record" class="mt-3 md:mt-4">
+          <div v-if="getCnameRecords(result.cname_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">CNAME records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="cname_record in result.cname_record" class="break-all">
+              <li v-for="cname_record in getCnameRecords(result.cname_record)" :key="`cname-${cname_record.target}`" class="break-all">
                 <nuxt-link v-bind:to="generateLink('cname', cname_record.target)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == cname_record.target && prefix == 'cname' }"
                   class="text-cosmic-aurora hover:text-cosmic-rose">{{ cname_record.target }}</nuxt-link>
               </li>
             </ul>
           </div>
-          <div v-if="result.mx_record" class="mt-3 md:mt-4">
-            <strong class="text-base sm:text-lg">MX records</strong>
+          <div v-if="getStringRecords(result.txt_record).length" class="mt-3 md:mt-4">
+            <strong class="text-base sm:text-lg">TXT records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="mx_record in result.mx_record" class="break-all">
-                <nuxt-link v-bind:to="generateLink('mx', mx_record.exchange)"
-                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == mx_record.exchange && prefix == 'mx' }"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ mx_record.exchange }}</nuxt-link>, {{
-                    mx_record.preference }}
+              <li v-for="txt_record in getStringRecords(result.txt_record)" :key="`txt-${txt_record}`">
+                {{ txt_record }}
               </li>
             </ul>
           </div>
-          <div v-if="result.ns_record" class="mt-3 md:mt-4">
+          <div v-if="getMxRecords(result.mx_record).length" class="mt-3 md:mt-4">
+            <strong class="text-base sm:text-lg">MX records</strong>
+            <ul class="font-mono font-light text-sm sm:text-base text-white/70">
+              <li v-for="mx_record in getMxRecords(result.mx_record)" :key="`mx-${mx_record.exchange}`" class="break-all">
+                <nuxt-link v-bind:to="generateLink('mx', mx_record.exchange)"
+                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == mx_record.exchange && prefix == 'mx' }"
+                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ mx_record.exchange }}</nuxt-link>
+                <span v-if="mx_record.preference !== undefined && mx_record.preference !== null">, {{ mx_record.preference }}</span>
+              </li>
+            </ul>
+          </div>
+          <div v-if="getStringRecords(result.ns_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">NS records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="ns_record in result.ns_record" class="break-all">
+              <li v-for="ns_record in getStringRecords(result.ns_record)" :key="`ns-${ns_record}`" class="break-all">
                 <nuxt-link v-bind:to="generateLink('ns', ns_record)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == ns_record && prefix == 'ns' }"
                   class="text-cosmic-aurora hover:text-cosmic-rose">{{ ns_record }}</nuxt-link>
               </li>
             </ul>
           </div>
-          <div v-if="result.soa_record" class="mt-3 md:mt-4">
+          <div v-if="getStringRecords(result.soa_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">SOA records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="soa_record in result.soa_record">
+              <li v-for="soa_record in getStringRecords(result.soa_record)" :key="`soa-${soa_record}`">
                 {{ soa_record }}
               </li>
             </ul>
           </div>
-          <div v-if="result.txt_record" class="mt-3 md:mt-4">
+          <div v-if="getStringRecords(result.txt_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">TXT records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="txt_record in result.txt_record">
+              <li v-for="txt_record in getStringRecords(result.txt_record)" :key="`txt-${txt_record}`">
                 {{ txt_record }}
               </li>
             </ul>
@@ -103,65 +111,68 @@
               </li>
             </ul>
           </div>
-          <div v-if="result.geo" class="mt-3 md:mt-4">
+          <div v-if="getGeoEntries(result.geo).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">GEO data</strong>
             <ul class="font-mono text-sm sm:text-base font-light">
-              <li v-for="v, k in result.geo" class="mt-1">
-                <strong class="font-bold">geo_{{ k }}</strong>:
-                <span v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'country' }">
-                  <nuxt-link v-if="k == 'country_code'" v-bind:to="generateLink('country', v)"
-                    class="text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                  <span><img v-if="k == 'country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <li v-for="{ key, value } in getGeoEntries(result.geo)" :key="key" class="mt-1">
+                <strong class="font-bold">geo_{{ key }}</strong>:
+                <span v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'country' }">
+                  <nuxt-link v-if="key == 'country_code'" v-bind:to="generateLink('country', value as string)"
+                    class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                  <span><img v-if="key == 'country_code'" v-bind:src="generatePath(value as string)" class="inline w-9 h-4"></span>
                 </span>
-                <nuxt-link v-if="k == 'country'" v-bind:to="generateLink('country', result.geo.country_code)"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'state'" v-bind:to="generateLink('state', v)"
-                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'state' }"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'city'" v-bind:to="generateLink('city', v)"
-                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'city' }"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'loc'" v-bind:to="generateLink('loc', v.coordinates[0] + ',' + v.coordinates[1])"
+                <nuxt-link v-if="key == 'country'" v-bind:to="generateLink('country', result.geo?.country_code ?? value as string)"
+                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'state'" v-bind:to="generateLink('state', value as string)"
+                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'state' }"
+                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'city'" v-bind:to="generateLink('city', value as string)"
+                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'city' }"
+                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'loc' && isLocEntry(value)"
+                  v-bind:to="generateLink('loc', `${value.coordinates[0]},${value.coordinates[1]}`)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'loc' }"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ v.coordinates[0] }},{{ v.coordinates[1] }}</nuxt-link>
-                <span v-if="k == 'distance'" class="text-white/70 font-thin">{{ v }}</span>
+                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ value.coordinates[0] }},{{ value.coordinates[1] }}</nuxt-link>
+                <span v-if="key == 'distance'" class="text-white/70 font-thin">{{ value }}</span>
               </li>
             </ul>
           </div>
-          <div v-if="result.whois" class="mt-3 md:mt-4">
+          <div v-if="getWhoisEntries(result.whois).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">ASN whois</strong>
             <ul class="font-mono text-sm sm:text-base font-light">
-              <li v-for="v, k in result.whois" class="mt-1">
-                <strong class="font-bold">{{ k }}</strong>: <span v-if="k == 'asn_date'"
-                  class="text-white/70 font-thin">{{ v }}</span>
-                <span v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'country' }">
-                  <nuxt-link v-if="k == 'asn_country_code'" v-bind:to="generateLink('country', v)"
-                    class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                  <span><img v-if="k == 'asn_country_code'" v-bind:src="generatePath(v)" class="inline w-9 h-4"></span>
+              <li v-for="{ key, value } in getWhoisEntries(result.whois)" :key="key" class="mt-1">
+                <strong class="font-bold">{{ key }}</strong>: <span v-if="key == 'asn_date'"
+                  class="text-white/70 font-thin">{{ value }}</span>
+                <span v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'country' }">
+                  <nuxt-link v-if="key == 'asn_country_code'" v-bind:to="generateLink('country', value)"
+                    class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                  <span><img v-if="key == 'asn_country_code'" v-bind:src="generatePath(value as string)" class="inline w-9 h-4"></span>
                 </span>
-                <nuxt-link v-if="k == 'asn_description'" v-bind:to="generateLink('org', v)"
-                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'org' }"
-                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'asn_registry'" v-bind:to="generateLink('registry', v)"
-                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == v && prefix == 'registry' }"
-                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'asn_cidr'" v-bind:to="generateLink('cidr', v)"
+                <nuxt-link v-if="key == 'asn_description'" v-bind:to="generateLink('org', value as string)"
+                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'org' }"
+                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'asn_registry'" v-bind:to="generateLink('registry', value as string)"
+                  v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'registry' }"
+                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'asn_cidr'" v-bind:to="generateLink('cidr', value as string)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'cidr' }"
-                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
-                <nuxt-link v-if="k == 'asn'" v-bind:to="generateLink('asn', v)"
+                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+                <nuxt-link v-if="key == 'asn'" v-bind:to="generateLink('asn', value as string)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': prefix == 'asn' }"
-                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ v }}</nuxt-link>
+                  class="font-thin text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
               </li>
             </ul>
           </div>
-          <div v-if="result.ports" class="mt-3 md:mt-4">
+          <div v-if="getPortRecords(result.ports).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">Ports</strong>
             <ul class="font-mono text-sm sm:text-base font-light">
-              <li v-for="port in result.ports" class="mt-1">
+              <li v-for="port in getPortRecords(result.ports)" :key="`port-${port.port}-${port.proto ?? 'unknown'}`" class="mt-1">
                 <nuxt-link v-bind:to="generateLink('port', port.port)"
                   v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == port.port && prefix == 'port' }"
-                  class="text-cosmic-aurora hover:text-cosmic-rose">{{ port.port }}/{{ port.proto }}</nuxt-link>: <span>{{
-                    port.status }}</span>
+                  class="text-cosmic-aurora hover:text-cosmic-rose">
+                  {{ port.port }}<template v-if="port.proto">/{{ port.proto }}</template>
+                </nuxt-link>
+                <template v-if="port.status">: <span>{{ port.status }}</span></template>
               </li>
             </ul>
           </div>
@@ -414,15 +425,15 @@
           </div>
         </div>
       </div>
-      <div v-if="result.header" class="mt-3 md:mt-4">
+      <div v-if="getHeaderEntries(result.header).length" class="mt-3 md:mt-4">
         <strong class="text-base sm:text-lg">HTTP header</strong>
         <code class="font-mono text-sm sm:text-base">
         <ul class="bg-white/10 overflow-scroll px-3 pt-3">
-          <li v-for="val, key in result.header">
-            <span class="font-bold">{{ key }}</span>: <span v-if="key !== 'x-powered-by' && key !== 'status' && key !== 'server'" class="font-thin">{{ val }}</span>
-            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', val)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'status' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', val)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'server' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
-            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', val)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == val && prefix == 'service' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ val }}</nuxt-link>
+          <li v-for="{ key, value } in getHeaderEntries(result.header)" :key="key">
+            <span class="font-bold">{{ key }}</span>: <span v-if="key !== 'x-powered-by' && key !== 'status' && key !== 'server'" class="font-thin">{{ value }}</span>
+            <nuxt-link v-if="key === 'status'" v-bind:to="generateLink('status', value as string)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'status' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+            <nuxt-link v-if="key === 'server'" v-bind:to="generateLink('server', value as string)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'server' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
+            <nuxt-link v-if="key === 'x-powered-by'" v-bind:to="generateLink('service', value as string)" v-bind:class="{ 'rounded-full border border-white/15 bg-white/10 px-2 py-1': filter == value && prefix == 'service' }" class="text-cosmic-aurora hover:text-cosmic-rose">{{ value }}</nuxt-link>
           </li>
         </ul>
       </code>
@@ -549,6 +560,187 @@ const getAltNames = (ssl: Record<string, unknown> | null | undefined): string[] 
 }
 
 const hasAltNames = (ssl: Record<string, unknown> | null | undefined): boolean => getAltNames(ssl).length > 0
+
+const normalizeArray = <T>(value: unknown, extractor: (item: unknown) => T | null): T[] => {
+  if (!Array.isArray(value)) {
+    return []
+  }
+
+  return (value as unknown[])
+    .map((item) => extractor(item))
+    .filter((item): item is T => item != null)
+}
+
+const getStringRecords = (value: unknown): string[] => normalizeArray<string>(value, (item) => {
+  if (item == null) {
+    return null
+  }
+
+  if (typeof item === 'string') {
+    const trimmed = item.trim()
+    return trimmed ? trimmed : null
+  }
+
+  if (typeof item === 'number') {
+    return item.toString()
+  }
+
+  return null
+})
+
+type CnameRecord = {
+  target: string
+}
+
+const getCnameRecords = (value: unknown): CnameRecord[] => normalizeArray<CnameRecord>(value, (item) => {
+  if (!item || typeof item !== 'object') {
+    return null
+  }
+
+  const target = (item as Record<string, unknown>).target
+
+  if (typeof target !== 'string') {
+    return null
+  }
+
+  const trimmed = target.trim()
+
+  if (!trimmed) {
+    return null
+  }
+
+  return { target: trimmed }
+})
+
+type MxRecord = {
+  exchange: string
+  preference?: number | string
+}
+
+const getMxRecords = (value: unknown): MxRecord[] => normalizeArray<MxRecord>(value, (item) => {
+  if (!item || typeof item !== 'object') {
+    return null
+  }
+
+  const record = item as Record<string, unknown>
+  const exchange = typeof record.exchange === 'string' ? record.exchange.trim() : null
+
+  if (!exchange) {
+    return null
+  }
+
+  let preference: number | string | undefined
+  if (typeof record.preference === 'number') {
+    preference = record.preference
+  } else if (typeof record.preference === 'string' && record.preference.trim()) {
+    preference = record.preference.trim()
+  }
+
+  return preference !== undefined ? { exchange, preference } : { exchange }
+})
+
+type PortRecord = {
+  port: string
+  proto?: string
+  status?: string
+}
+
+const getPortRecords = (value: unknown): PortRecord[] => normalizeArray<PortRecord>(value, (item) => {
+  if (!item || typeof item !== 'object') {
+    return null
+  }
+
+  const record = item as Record<string, unknown>
+  const rawPort = record.port
+
+  if (rawPort == null) {
+    return null
+  }
+
+  const port = typeof rawPort === 'number' ? rawPort.toString() : typeof rawPort === 'string' ? rawPort.trim() : ''
+
+  if (!port) {
+    return null
+  }
+
+  const proto = typeof record.proto === 'string' && record.proto.trim() ? record.proto.trim() : undefined
+  const status = typeof record.status === 'string' && record.status.trim() ? record.status.trim() : undefined
+
+  return { port, proto, status }
+})
+
+type KeyValueEntry = {
+  key: string
+  value: unknown
+}
+
+const getWhoisEntries = (value: unknown): KeyValueEntry[] => {
+  if (!value || typeof value !== 'object') {
+    return []
+  }
+
+  return Object.entries(value as Record<string, unknown>)
+    .filter(([, entryValue]) => entryValue !== null && entryValue !== undefined && entryValue !== '')
+    .map(([entryKey, entryValue]) => ({ key: entryKey, value: entryValue }))
+}
+
+const getHeaderEntries = (value: unknown): KeyValueEntry[] => getWhoisEntries(value)
+
+const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
+
+const getGeoEntries = (value: unknown): KeyValueEntry[] => {
+  if (!value || typeof value !== 'object') {
+    return []
+  }
+
+  return Object.entries(value as Record<string, unknown>)
+    .map(([entryKey, entryValue]) => {
+      if (entryKey === 'loc') {
+        if (!isLocEntry(entryValue)) {
+          return null
+        }
+
+        const [latitude, longitude] = entryValue.coordinates
+
+        if (!isFiniteNumber(latitude) || !isFiniteNumber(longitude)) {
+          return null
+        }
+
+        return { key: entryKey, value: { coordinates: [latitude, longitude] as [number, number] } }
+      }
+
+      if (entryValue === null || entryValue === undefined) {
+        return null
+      }
+
+      if (typeof entryValue === 'string') {
+        const trimmed = entryValue.trim()
+        return trimmed ? { key: entryKey, value: trimmed } : null
+      }
+
+      if (typeof entryValue === 'number') {
+        return Number.isFinite(entryValue) ? { key: entryKey, value: entryValue } : null
+      }
+
+      return null
+    })
+    .filter((entry): entry is KeyValueEntry => entry != null)
+}
+
+type GeoLoc = {
+  coordinates: [number, number]
+}
+
+const isLocEntry = (value: unknown): value is GeoLoc => {
+  if (!value || typeof value !== 'object' || !('coordinates' in value)) {
+    return false
+  }
+
+  const { coordinates } = value as { coordinates?: unknown }
+
+  return Array.isArray(coordinates) && coordinates.length >= 2 &&
+    typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number'
+}
 
 const describeCipher = (cipher: unknown): string => {
   if (!cipher) {

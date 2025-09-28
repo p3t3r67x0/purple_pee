@@ -286,7 +286,11 @@ export default defineNuxtConfig({
       BLOG_URL: process.env.BLOG_URL,
       TERMS_URL: process.env.TERMS_URL,
       PRIVACY_URL: process.env.PRIVACY_URL,
-      IMPRINT_URL: process.env.IMPRINT_URL
+      IMPRINT_URL: process.env.IMPRINT_URL,
+      IMPRINT_NAME: process.env.IMPRINT_NAME,
+      IMPRINT_STREET: process.env.IMPRINT_STREET,
+      IMPRINT_LOCATION: process.env.IMPRINT_LOCATION,
+      IMPRINT_EMAIL: process.env.IMPRINT_EMAIL
     }
   }
 })

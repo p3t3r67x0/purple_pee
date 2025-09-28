@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  netscanner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: netscanner-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+      - BASE_URL=http://localhost:3000
+      - API_URL=http://localhost:8000
+      # Legal Imprint Information
+      - IMPRINT_NAME=${IMPRINT_NAME}
+      - IMPRINT_STREET=${IMPRINT_STREET}
+      - IMPRINT_LOCATION=${IMPRINT_LOCATION}
+      - IMPRINT_EMAIL=${IMPRINT_EMAIL}
+      # URLs
+      - FAQ_URL=
+      - HELP_URL=
+      - SUPPORT_URL=
+      - DOCS_URL=
+      - ISSUES_URL=
+      - TWITTER_URL=
+      - FACEBOOK_URL=
+      - LINKEDIN_URL=
+      - ABOUT_URL=
+      - CONTACT_URL=
+      - BLOG_URL=
+      - TERMS_URL=
+      - PRIVACY_URL=
+      - IMPRINT_URL=
+    volumes:
+      # Optional: Mount logs directory
+      - ./logs:/app/logs
+    networks:
+      - netscanner-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.netscanner.rule=Host(`localhost`)"
+      - "traefik.http.services.netscanner.loadbalancer.server.port=3000"
+
+  # Optional: Add a reverse proxy (Nginx)
+  nginx:
+    image: nginx:alpine
+    container_name: netscanner-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - netscanner
+    networks:
+      - netscanner-network
+    profiles:
+      - nginx
+
+  # Optional: Add Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: netscanner-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - netscanner-network
+    profiles:
+      - cache
+
+networks:
+  netscanner-network:
+    driver: bridge
+    name: netscanner-network
+
+volumes:
+  redis-data:
+    driver: local

@@ -51,28 +51,28 @@
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <nuxt-link to="/dns" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/dns" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 DNS Lookup
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/live/scan" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/live/scan" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Live Scanner
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/asn" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/asn" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 ASN Lookup
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/ipv4" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/ipv4" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 IP Analysis
@@ -96,21 +96,21 @@
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <nuxt-link to="/docs/api" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/docs/api" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 API Reference
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/docs/examples" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/docs/examples" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Examples
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/docs/faq" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/docs/faq" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 FAQ
@@ -211,7 +211,7 @@
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <nuxt-link to="/trends" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/trends" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Analytics
@@ -225,14 +225,14 @@
               </a>
             </li>
             <li>
-              <nuxt-link to="/changelog" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/changelog" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Changelog
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/blog" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/blog" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Blog
@@ -241,7 +241,7 @@
           </ul>
         </div>
 
-        <!-- Company Section -->
+        <!-- Team Section -->
         <div class="text-center sm:text-left">
           <div class="flex items-center gap-2 mb-5">
             <div
@@ -252,18 +252,18 @@
                 </path>
               </svg>
             </div>
-            <p class="text-xs font-semibold uppercase tracking-[0.35em] text-rose-400">Company</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.35em] text-rose-400">Team</p>
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <nuxt-link to="/about" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/about" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 About Us
               </nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/contact" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/contact" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Contact
@@ -273,15 +273,15 @@
               <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                Careers
+                Contributers
               </a>
             </li>
             <li>
-              <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/press-kit" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-rose-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Press Kit
-              </a>
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -301,11 +301,11 @@
           </div>
           <ul class="space-y-3 text-sm text-slate-200/80">
             <li>
-              <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/terms" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-slate-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Terms of Service
-              </a>
+              </nuxt-link>
             </li>
             <li>
               <a href="#" class="group flex items-center gap-2 transition hover:text-white/95">
@@ -315,7 +315,7 @@
               </a>
             </li>
             <li>
-              <nuxt-link to="/imprint" class="group flex items-center gap-2 transition hover:text-white/95">
+              <nuxt-link to="/imprint" @click="scrollToTop" class="group flex items-center gap-2 transition hover:text-white/95">
                 <span
                   class="w-1 h-1 rounded-full bg-slate-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Imprint
@@ -414,4 +414,8 @@
 
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>

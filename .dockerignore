@@ -1,0 +1,49 @@
+# Docker ignore file
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+README.md
+.env
+.env.local
+.env.production
+.nuxt
+.output
+coverage
+.nyc_output
+.cache
+dist
+logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Testing
+coverage
+.nyc_output
+
+# Build artifacts
+build
+dist
+.output
+
+# Development files
+.env.local
+.env.development
+docker-compose.override.yml

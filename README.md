@@ -56,6 +56,104 @@ npm run dev
 
 The application will be available at `http://localhost:3000`
 
+## 🐳 Docker Setup
+
+### Quick Start with Docker Compose
+
+```bash
+# Clone the repository
+git clone https://github.com/p3t3r67x0/purple_pee.git
+cd purple_pee
+
+# Ensure .env file exists with required variables
+cp .env.example .env  # If you have an example file
+# or edit .env directly with your configuration
+
+# Start the application with Docker Compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f netscanner
+
+# Stop the application
+docker-compose down
+```
+
+### Available Docker Compose Profiles
+
+#### Basic Setup (Default)
+```bash
+# Run only the Nuxt application
+docker-compose up -d
+```
+
+#### With Nginx Reverse Proxy
+```bash
+# Include Nginx for production-like setup
+docker-compose --profile nginx up -d
+```
+
+#### With Redis Caching
+```bash
+# Include Redis for caching capabilities
+docker-compose --profile cache up -d
+```
+
+#### Full Stack
+```bash
+# Run all services (Nuxt + Nginx + Redis)
+docker-compose --profile nginx --profile cache up -d
+```
+
+### Production Deployment
+
+```bash
+# Use production configuration
+docker-compose -f docker-compose.prod.yml up -d
+
+# Build and deploy with custom environment
+docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+### Required Environment Variables
+
+Make sure your `.env` file contains all required variables before running Docker Compose:
+
+```bash
+# Required for Docker Compose
+IMPRINT_NAME="Your Name"
+IMPRINT_STREET="Your Street Address" 
+IMPRINT_LOCATION="Your City and Postal Code"
+IMPRINT_EMAIL="your.email@domain.com"
+
+# Other required variables
+BASE_URL=http://localhost:3000
+API_URL=http://localhost:8000
+```
+
+Docker Compose will automatically read these values from your `.env` file.
+
+### Docker Commands
+
+```bash
+# Build the image manually
+docker build -t netscanner:latest .
+
+# Run container manually
+docker run -d \
+  --name netscanner \
+  -p 3000:3000 \
+  -e NODE_ENV=production \
+  -e BASE_URL=http://localhost:3000 \
+  netscanner:latest
+
+# View container logs
+docker logs -f netscanner
+
+# Access container shell
+docker exec -it netscanner sh
+```
+
 ### Environment Configuration
 
 Create a `.env.local` file (ignored by git) with your configuration:
@@ -81,6 +179,12 @@ LINKEDIN_URL=https://linkedin.com/company/netscanner
 TERMS_URL=https://netscanner.io/terms
 PRIVACY_URL=https://netscanner.io/privacy
 IMPRINT_URL=https://netscanner.io/imprint
+
+# Legal Imprint Information (Required for German/EU compliance)
+IMPRINT_NAME="Your Name"
+IMPRINT_STREET="Your Street Address"
+IMPRINT_LOCATION="Your City and Postal Code"
+IMPRINT_EMAIL="your.email@domain.com"
 ```
 
 

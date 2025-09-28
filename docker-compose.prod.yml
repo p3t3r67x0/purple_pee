@@ -1,0 +1,89 @@
+# Production Docker Compose
+version: '3.8'
+
+services:
+  netscanner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: netscanner-production
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+      - BASE_URL=https://netscanner.io
+      - API_URL=https://api.netscanner.io
+      # Legal Imprint Information
+      - IMPRINT_NAME=${IMPRINT_NAME}
+      - IMPRINT_STREET=${IMPRINT_STREET}
+      - IMPRINT_LOCATION=${IMPRINT_LOCATION}
+      - IMPRINT_EMAIL=${IMPRINT_EMAIL}
+    volumes:
+      - app-logs:/app/logs
+    networks:
+      - production-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  nginx:
+    image: nginx:alpine
+    container_name: netscanner-nginx-prod
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - netscanner
+    networks:
+      - production-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.25'
+
+  redis:
+    image: redis:7-alpine
+    container_name: netscanner-redis-prod
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-netscanner123}
+    networks:
+      - production-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
+networks:
+  production-network:
+    driver: bridge
+    name: netscanner-production
+
+volumes:
+  app-logs:
+    driver: local
+  redis-data:
+    driver: local

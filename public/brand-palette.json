@@ -1,0 +1,17 @@
+{
+  "primary": {
+    "cosmic-void": "#06041a",
+    "cosmic-haze": "#1f153b",
+    "cosmic-flare": "#5c1bb3",
+    "cosmic-aurora": "#2cb1bc",
+    "cosmic-rose": "#f076a4"
+  },
+  "gradients": {
+    "cosmic-gradient": "radial-gradient(circle at 20% 20%, rgba(92,27,179,0.35), transparent 55%), radial-gradient(circle at 80% 10%, rgba(44,177,188,0.28), transparent 50%), linear-gradient(145deg, #06041a 0%, #0b0d26 50%, #040211 100%)",
+    "aurora-gradient": "linear-gradient(135deg, rgba(92,27,179,0.35), rgba(240,118,164,0.18))"
+  },
+  "shadows": {
+    "glass": "0 20px 60px rgba(15, 23, 42, 0.55)",
+    "glow": "0 0 20px rgba(127, 90, 240, 0.45)"
+  }
+}

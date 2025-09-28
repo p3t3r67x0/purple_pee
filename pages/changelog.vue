@@ -18,10 +18,12 @@
                 </svg>
               </div>
               <div class="text-left">
-                <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                <h1
+                  class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent leading-tight pb-1"
+                >
                   NetScanner Changelog
                 </h1>
-                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80 mt-2">Release notes & platform updates</p>
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80 mt-1">Release notes & platform updates</p>
               </div>
             </div>
             <p class="text-lg text-slate-300 leading-relaxed">
@@ -98,7 +100,7 @@
 <script setup lang="ts">
 import Footer from '@/components/NavFooter.vue'
 import Navbar from '@/components/NavHeader.vue'
-const githubChangelogUrl = 'https://github.com/p3t3r67x0/purple_pee/blob/main/CHANGELOG.md'
+const githubChangelogUrl = 'https://github.com/p3t3r67x0/purple_pee/blob/master/CHANGELOG.md'
 
 declare const useHead: any, useAsyncData: any, queryContent: any
 
