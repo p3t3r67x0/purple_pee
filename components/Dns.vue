@@ -56,14 +56,6 @@
               </li>
             </ul>
           </div>
-          <div v-if="getStringRecords(result.txt_record).length" class="mt-3 md:mt-4">
-            <strong class="text-base sm:text-lg">TXT records</strong>
-            <ul class="font-mono font-light text-sm sm:text-base text-white/70">
-              <li v-for="txt_record in getStringRecords(result.txt_record)" :key="`txt-${txt_record}`">
-                {{ txt_record }}
-              </li>
-            </ul>
-          </div>
           <div v-if="getMxRecords(result.mx_record).length" class="mt-3 md:mt-4">
             <strong class="text-base sm:text-lg">MX records</strong>
             <ul class="font-mono font-light text-sm sm:text-base text-white/70">

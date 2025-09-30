@@ -174,7 +174,7 @@
               <p class="mt-4 text-slate-400 text-sm">
                 Please reference "NetScanner" as one word with a capital N and S. The platform URL is
                 <a :href="marketingHref" class="text-purple-300 hover:text-purple-200" target="_blank">{{ marketingUrl
-                  }}</a>.
+                }}</a>.
               </p>
             </div>
             <div class="rounded-2xl border border-white/10 bg-black/20 p-6 text-sm text-slate-200 max-w-sm">
