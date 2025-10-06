@@ -11,7 +11,7 @@ tags:
   - ssl
   - dns
   - methodology
-canonical: https://netscanner.example.com/blog/advanced-pivoting-techniques
+canonical: https://netscanner.io/blog/advanced-pivoting-techniques
 ogImage: /logo-300x300.png
 published: true
 related:
@@ -27,24 +27,24 @@ Infrastructure analysis shines when you combine multiple data surfaces. This tut
 
 ## Core Pivot Matrix
 
-| Source | Pivot | Reveal | Follow-Up |
-| ------ | ----- | ------ | --------- |
-| Domain | A/AAAA | Hosting IP | Reverse PTR / co-hosted domains |
-| Domain | MX | Mail provider footprint | Other zones using provider |
-| Domain | NS | DNS authority scope | Enumerate sibling zones |
-| IP | PTR | Candidate canonical domain | Cert / forward DNS |
-| IP | Cert | Multi-tenant SAN set | Pivot each SAN → domain intel |
-| ASN | Prefix | Surface expansion | Sample IPs → reverse / certs |
+| Source | Pivot  | Reveal                     | Follow-Up                       |
+| ------ | ------ | -------------------------- | ------------------------------- |
+| Domain | A/AAAA | Hosting IP                 | Reverse PTR / co-hosted domains |
+| Domain | MX     | Mail provider footprint    | Other zones using provider      |
+| Domain | NS     | DNS authority scope        | Enumerate sibling zones         |
+| IP     | PTR    | Candidate canonical domain | Cert / forward DNS              |
+| IP     | Cert   | Multi-tenant SAN set       | Pivot each SAN → domain intel   |
+| ASN    | Prefix | Surface expansion          | Sample IPs → reverse / certs    |
 
 ---
 
 ## Converging Evidence Strategy
 
-| Signal Pair | Confidence Gain | Example |
-| ----------- | --------------- | ------- |
-| Shared NS + Shared Cert SAN | Medium-High | Multi-site same hosting cluster |
-| Shared NS + Shared IP block | Medium | Typical managed hosting platform |
-| Shared Cert SAN + Reverse PTR pattern | High | Coordinated service naming |
+| Signal Pair                           | Confidence Gain | Example                          |
+| ------------------------------------- | --------------- | -------------------------------- |
+| Shared NS + Shared Cert SAN           | Medium-High     | Multi-site same hosting cluster  |
+| Shared NS + Shared IP block           | Medium          | Typical managed hosting platform |
+| Shared Cert SAN + Reverse PTR pattern | High            | Coordinated service naming       |
 
 > Heuristic: Avoid strong attribution decisions on a **single** weak signal (e.g. one reused cert SAN on a CDN edge IP).
 
@@ -75,21 +75,21 @@ function scoreCluster(c: { sharedNS: boolean; sharedCert: boolean; sharedASN: bo
 - Color & shape cues: leverage differing entity visual encodings.
 
 ### Visual Heuristics
-| Pattern | Interpretation |
-| ------- | -------------- |
-| Many domains → one IP → shared cert | Likely shared hosting tier |
+| Pattern                                         | Interpretation             |
+| ----------------------------------------------- | -------------------------- |
+| Many domains → one IP → shared cert             | Likely shared hosting tier |
 | Divergent SAN entries crossing unrelated themes | CDN / edge / SaaS platform |
-| Repeated ASN + NS pairing | Managed provider segment |
+| Repeated ASN + NS pairing                       | Managed provider segment   |
 
 ---
 
 ## Anti-Patterns & Noise Control
 
-| Anti-Pattern | Issue | Mitigation |
-| ------------ | ----- | ---------- |
-| Treating CDN edges as owned | False ownership | Filter known CDN ASNs |
-| Blind trust in WHOIS org | Generic registrant reuse | Use multiple signals |
-| Over-valuing wildcard SANs | Wildcards broad & noisy | Weight exact SANs higher |
+| Anti-Pattern                | Issue                    | Mitigation               |
+| --------------------------- | ------------------------ | ------------------------ |
+| Treating CDN edges as owned | False ownership          | Filter known CDN ASNs    |
+| Blind trust in WHOIS org    | Generic registrant reuse | Use multiple signals     |
+| Over-valuing wildcard SANs  | Wildcards broad & noisy  | Weight exact SANs higher |
 
 ---
 
@@ -110,6 +110,6 @@ function scoreCluster(c: { sharedNS: boolean; sharedCert: boolean; sharedASN: bo
 
 ## Changelog
 
-| Date | Change |
-| ---- | ------ |
+| Date       | Change              |
+| ---------- | ------------------- |
 | 2025-09-24 | Initial publication |

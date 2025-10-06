@@ -10,7 +10,7 @@ tags:
   - automation
   - scripting
   - integration
-canonical: https://netscanner.example.com/blog/building-automations-with-the-api
+canonical: https://netscanner.io/blog/building-automations-with-the-api
 ogImage: /logo-300x300.png
 published: true
 related:
@@ -26,12 +26,12 @@ While the UI is great for exploration, resilient monitoring and intelligence pro
 
 ## Key Automation Use Cases
 
-| Goal | Pattern | Benefit |
-| ---- | ------- | ------- |
-| Detect asset expansion | Diff new domains per ASN | Early visibility |
-| Cert change monitoring | Track SAN list deltas | Spot infra shifts |
+| Goal                    | Pattern                    | Benefit                    |
+| ----------------------- | -------------------------- | -------------------------- |
+| Detect asset expansion  | Diff new domains per ASN   | Early visibility           |
+| Cert change monitoring  | Track SAN list deltas      | Spot infra shifts          |
 | IP / provider migration | Observe prefix / ASN churn | Risk & dependency tracking |
-| DNS hygiene | Flag stale MX / NS records | Reduce attack surface |
+| DNS hygiene             | Flag stale MX / NS records | Reduce attack surface      |
 
 ---
 
@@ -46,12 +46,12 @@ While the UI is great for exploration, resilient monitoring and intelligence pro
 > Tip: Separate collection cadence (slow) from alert evaluation cadence (fast) to minimize quota pressure.
 
 ### Data Freshness Strategy
-| Data Type | Suggested TTL | Notes |
-| --------- | ------------- | ----- |
-| ASN meta | 7d | Changes rarely |
-| DNS A/AAAA | 5m - 30m | Volatile for some CDNs |
-| Cert chains | 1d | Unless monitoring issuance events |
-| Reverse PTR | 1d | Updates infrequently |
+| Data Type   | Suggested TTL | Notes                             |
+| ----------- | ------------- | --------------------------------- |
+| ASN meta    | 7d            | Changes rarely                    |
+| DNS A/AAAA  | 5m - 30m      | Volatile for some CDNs            |
+| Cert chains | 1d            | Unless monitoring issuance events |
+| Reverse PTR | 1d            | Updates infrequently              |
 
 ---
 
@@ -106,11 +106,11 @@ echo "[+] Done." >&2
 
 ## Security & Secret Handling
 
-| Concern | Recommendation |
-| ------- | -------------- |
-| Token exposure | Use env vars / secret managers, never commit |
-| Rotation | Rotate keys quarterly or on suspicion |
-| Least privilege | Scope tokens to required endpoints (future) |
+| Concern         | Recommendation                               |
+| --------------- | -------------------------------------------- |
+| Token exposure  | Use env vars / secret managers, never commit |
+| Rotation        | Rotate keys quarterly or on suspicion        |
+| Least privilege | Scope tokens to required endpoints (future)  |
 
 ---
 
@@ -131,6 +131,6 @@ echo "[+] Done." >&2
 
 ## Changelog
 
-| Date | Change |
-| ---- | ------ |
+| Date       | Change              |
+| ---------- | ------------------- |
 | 2025-09-24 | Initial publication |

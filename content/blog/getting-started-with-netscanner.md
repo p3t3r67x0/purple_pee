@@ -11,7 +11,7 @@ tags:
   - dns
   - ip
   - tutorial
-canonical: https://netscanner.example.com/blog/getting-started-with-netscanner
+canonical: https://netscanner.io/blog/getting-started-with-netscanner
 ogImage: /logo-300x300.png
 published: true
 related:
@@ -25,13 +25,13 @@ Welcome to **NetScanner** — an advanced network intelligence platform that hel
 
 ### Core Capabilities Snapshot
 
-| Capability | What You Learn | Typical Pivot |
-| ---------- | -------------- | ------------- |
-| ASN Lookup | Ownership, announced prefixes | Into CIDR ranges → IPs |
-| IP Intel | Hosted domains, geography, infra reuse | Reverse DNS → domains |
-| DNS Records | Mail flow, authority, service hints | MX/NS → more zones |
-| SSL Certs | Multi-tenant footprint, SAN graph | SAN entries → domains |
-| Graph View | Relationship clustering | Visual multi-hop pivots |
+| Capability  | What You Learn                         | Typical Pivot           |
+| ----------- | -------------------------------------- | ----------------------- |
+| ASN Lookup  | Ownership, announced prefixes          | Into CIDR ranges → IPs  |
+| IP Intel    | Hosted domains, geography, infra reuse | Reverse DNS → domains   |
+| DNS Records | Mail flow, authority, service hints    | MX/NS → more zones      |
+| SSL Certs   | Multi-tenant footprint, SAN graph      | SAN entries → domains   |
+| Graph View  | Relationship clustering                | Visual multi-hop pivots |
 
 ---
 
@@ -77,11 +77,11 @@ You have a list of interesting prefixes or sub-allocations to expand into indivi
 Use the **DNS** page for A, AAAA, MX, NS, CNAME, TXT exploration. Every answer element is clickable to continue a chain.
 
 ### Practical Pattern
-| Query | Insight | Next Pivot |
-| ----- | ------- | ---------- |
-| MX | Mail provider / self-host | Other domains using same MX |
-| NS | Authoritative hosters | Enumerate sibling zones |
-| CNAME | Service / platform hints | Origin / target consolidation |
+| Query | Insight                   | Next Pivot                    |
+| ----- | ------------------------- | ----------------------------- |
+| MX    | Mail provider / self-host | Other domains using same MX   |
+| NS    | Authoritative hosters     | Enumerate sibling zones       |
+| CNAME | Service / platform hints  | Origin / target consolidation |
 
 ---
 
@@ -96,10 +96,10 @@ The **Graph** unifies relationships: domains, IPs, ASNs, certificates. Click nod
 ## Step 5: Form a Hypothesis
 
 At this stage you should be able to answer:
-| Question | You Should Know |
-| -------- | --------------- |
-| What infra edges exist? | Domains ↔ IPs ↔ ASNs ↔ Certs |
-| Any shared service providers? | Common MX / NS / CDN hints |
+| Question                        | You Should Know               |
+| ------------------------------- | ----------------------------- |
+| What infra edges exist?         | Domains ↔ IPs ↔ ASNs ↔ Certs  |
+| Any shared service providers?   | Common MX / NS / CDN hints    |
 | Potential asset expansion path? | Additional zones, SAN entries |
 
 Document early—later automation will refine assumptions.
@@ -108,11 +108,11 @@ Document early—later automation will refine assumptions.
 
 ## Common Pitfalls
 
-| Pitfall | Avoidance |
-| ------- | --------- |
-| Over-attributing CDN IPs | Validate with cert + NS + host patterns |
-| Single-signal conclusions | Require at least 2 independent signals |
-| Ignoring IPv6 space | Many providers surface unique clues there |
+| Pitfall                   | Avoidance                                 |
+| ------------------------- | ----------------------------------------- |
+| Over-attributing CDN IPs  | Validate with cert + NS + host patterns   |
+| Single-signal conclusions | Require at least 2 independent signals    |
+| Ignoring IPv6 space       | Many providers surface unique clues there |
 
 ---
 
@@ -126,8 +126,8 @@ Document early—later automation will refine assumptions.
 
 ## Changelog
 
-| Date | Change |
-| ---- | ------ |
+| Date       | Change              |
+| ---------- | ------------------- |
 | 2025-09-24 | Initial publication |
 
 ---
